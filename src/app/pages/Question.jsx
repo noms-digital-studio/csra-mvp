@@ -16,15 +16,14 @@ class Question extends Component {
         this.props.getQuestions();
     }
 
-    handleFormSubmit(data) {
+    handleFormSubmit(e) {
+        e.preventDefault();
         const { questionIndex } = this.sectionData(this.props.questions, this.props.params.section);
         const nextQuestionIndex = questionIndex + 1;
         if (this.props.questions[nextQuestionIndex]) {
             const nextQuestion = this.props.questions[nextQuestionIndex];
             return hashHistory.push({pathname: `${Routes.ASSESSMENT}/${nextQuestion.risk_indicator}` })  
         }
-
-        
         
         return hashHistory.push({ pathname: "/" });
         // this.props.storeAnswer({});

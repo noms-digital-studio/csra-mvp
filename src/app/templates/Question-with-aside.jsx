@@ -1,6 +1,5 @@
 import React, { PropTypes, Component } from 'react';
 import { hashHistory, Link } from 'react-router';
-
 import uuid from 'uuid/v4';
 
 import RadioButton from '../components/RadioButton';
