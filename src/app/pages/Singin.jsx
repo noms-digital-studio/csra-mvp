@@ -1,9 +1,18 @@
 import React, { Component } from 'react';
+import { hashHistory } from 'react-router';
+
+import Routes from '../constants/routes';
+
 
 class Signin extends Component {
+  handleSubmit(e){
+    e.preventDefault();
+    hashHistory.push({pathname: `${Routes.ASSESSMENT}/introduction` })  
+  }
+
   render() {
     return (
-        <form action="/" method="post" className="form">
+        <form action="/" method="post" className="form" onSubmit={this.handleSubmit}>
           <h1 className="heading-xlarge">CSRA</h1>
           <h2 className="form-title heading-large">Sign in</h2>
 
