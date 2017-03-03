@@ -1,0 +1,56 @@
+[
+    {
+        "risk_indicator": "introduction",
+        "title": "Introduction",
+        "description": "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Esse itaque, tenetur suscipit maxime ea molestiae? Dolorem in, aliquam fugiat ea beatae voluptate saepe laborum? Facilis atque quibusdam tempora delectus officiis?",
+        "aside": {
+            "title": "Supporting information",
+            "description": "incidunt modi quos, rerum cumque velit minima beatae sit perferendis officia accusamus laudantium libero commodi. Ad pariatur facilis consequatur optio."
+        }
+    },
+    {
+        "risk_indicator": "violence-risk",
+        "title": "Violence Risk",
+        "description": "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Esse itaque, tenetur suscipit maxime ea molestiae? Dolorem in, aliquam fugiat ea beatae voluptate saepe laborum? Facilis atque quibusdam tempora delectus officiis?",
+        "aside": {
+            "title": "Supporting information",
+            "description": "incidunt modi quos, rerum cumque velit minima beatae sit perferendis officia accusamus laudantium libero commodi. Ad pariatur facilis consequatur optio."
+        }
+    },
+    {
+        "risk_indicator": "violence-risk2",
+        "title": "Violence Risk",
+        "description": "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Esse itaque, tenetur suscipit maxime ea molestiae? Dolorem in, aliquam fugiat ea beatae voluptate saepe laborum? Facilis atque quibusdam tempora delectus officiis?",
+        "aside": {
+            "title": "Supporting information",
+            "description": "incidunt modi quos, rerum cumque velit minima beatae sit perferendis officia accusamus laudantium libero commodi. Ad pariatur facilis consequatur optio."
+        }
+    },
+    {
+        "risk_indicator": "gang-afiliaion",        
+        "title": "Gang Afiliation",
+        "description": "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Esse itaque, tenetur suscipit maxime ea molestiae? Dolorem in, aliquam fugiat ea beatae voluptate saepe laborum? Facilis atque quibusdam tempora delectus officiis?",
+        "aside": {
+            "title": "Supporting information",
+            "description": "incidunt modi quos, rerum cumque velit minima beatae sit perferendis officia accusamus laudantium libero commodi. Ad pariatur facilis consequatur optio."
+        }
+    },
+    {
+        "risk_indicator": "gang-afiliaion2",           
+        "title": "Gang Afiliation",
+        "description": "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Esse itaque, tenetur suscipit maxime ea molestiae? Dolorem in, aliquam fugiat ea beatae voluptate saepe laborum? Facilis atque quibusdam tempora delectus officiis?",
+        "aside": {
+            "title": "Supporting information",
+            "description": "incidunt modi quos, rerum cumque velit minima beatae sit perferendis officia accusamus laudantium libero commodi. Ad pariatur facilis consequatur optio."
+        }
+    },
+    {
+        "risk_indicator": "vulnarability",        
+        "title": "Vulnarability",
+        "description": "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Esse itaque, tenetur suscipit maxime ea molestiae? Dolorem in, aliquam fugiat ea beatae voluptate saepe laborum? Facilis atque quibusdam tempora delectus officiis?",
+        "aside": {
+            "title": "Supporting information",
+            "description": "incidunt modi quos, rerum cumque velit minima beatae sit perferendis officia accusamus laudantium libero commodi. Ad pariatur facilis consequatur optio."
+        }
+    }
+]

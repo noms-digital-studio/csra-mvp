@@ -1,1 +1,109 @@
 @import "govuk-elements";
+
+.govuk-related-items {
+  margin-top: $gutter;
+  border-top: 10px solid $govuk-blue;
+  padding-top: 5px;
+
+  .heading-medium {
+    margin-top: 0.3em;
+    margin-bottom: 0.5em;
+  }
+
+  li {
+    margin-bottom: 10px;
+    list-style-type: none;
+  }
+}
+
+.o-question {
+    padding-top: $gutter; 
+}
+
+.c-section-title {
+    // padding-top: 20px;
+}
+
+.u-text-align-right {
+    text-align: right;
+}
+
+.u-margin-top-default {
+    margin-top: $gutter;
+}
+
+.u-no-margin-top {
+    margin-top: 0;
+}
+
+
+
+// .c-radio-control {
+//     display: block;
+//     float: left;
+//     clear: left;
+//     position: relative;
+//     padding: 8px 10px 9px 50px;
+//     margin-bottom: 10px;
+//     cursor: pointer;
+//     -ms-touch-action: manipulation;
+//     touch-action: manipulation;
+// }
+
+.c-radio-control:before {
+    content: "";
+    border: 2px solid;
+    background: transparent;
+    width: 34px;
+    height: 34px;
+    position: absolute;
+    top: 0;
+    left: 0;
+    -webkit-border-radius: 50%;
+    -moz-border-radius: 50%;
+    border-radius: 50%;
+}
+
+.c-radio-control__indictor {
+    content: "";
+    border: 10px solid;
+    width: 0;
+    height: 0;
+    position: absolute;
+    top: 9px;
+    left: 9px;
+    -webkit-border-radius: 50%;
+    -moz-border-radius: 50%;
+    border-radius: 50%;
+    zoom: 1;
+    filter: alpha(opacity=0);
+    opacity: 0;
+}
+
+
+
+.c-radio-control input:checked ~ .c-radio-control__indictor {
+    opacity: 1
+}
+
+
+.c-radio-control input:focus ~ .c-radio-control__indictor:after {
+    content: "";
+    width: 38px;
+    height: 38px;
+    position: absolute;
+    top: -19px;
+    left: -19px;
+    border-radius: 50%;
+    box-shadow: 0 0 0 5px #FFBF47;
+}
+
+
+
+//Temporary overide
+@media only screen and (-webkit-min-device-pixel-ratio: 2), not all, not all, not all, only screen and (min-resolution: 192dpi), only screen and (min-resolution: 2dppx) {
+    .button-start, .button-get-started {
+        background-image: image-url('../images/icon-pointer-2x.png');
+        background-size: 30px 19px;
+    }
+}

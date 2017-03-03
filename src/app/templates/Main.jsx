@@ -4,7 +4,7 @@ import Footer from '../components/Footer';
 
 const MainTemplate = ({ children }) => {
     return (
-        <div className="o-csra-container">
+        <div className="o-csra-container js-enabled">
           <Header location="Liverpool" />
           <main id="content" role="main">
             {children}

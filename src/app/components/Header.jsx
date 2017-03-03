@@ -9,7 +9,7 @@ const Header = ({ location }) => {
             <div className="header-logo">
               <a href="/" title="Go to the HMPPS homepage" id="logo" className="content">
                 <img src={require("../../images/gov.uk_logotype_crown_invert_trans.png")} width="36" height="32" alt="GOV.UK" />
-                <span>&nbsp;HMPPS {location}</span>
+                <span>&nbsp;HMP {location}</span>
             </a>
             </div>
           </div>
