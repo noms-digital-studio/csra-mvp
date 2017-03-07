@@ -8,12 +8,12 @@ import {
 import { Provider } from 'react-redux';
 import { syncHistoryWithStore } from 'react-router-redux';
 
-import Layout from './templates/Main.jsx';
+import Layout from './templates/Main';
 
 //Pages
-import Signin from './pages/Singin.jsx';
-
-import Question from './pages/Question.jsx';
+import LoadData from './pages/LoadData';
+import Signin from './pages/Singin';
+import Question from './pages/Question';
 
 
 //Routes
@@ -27,9 +27,9 @@ export default (store) => {
          <Provider store={store}>
             <Router history={history}>
                 <Route component={Layout}>
-                    <Route path="/" name="Sign in" component={Signin} />                    
+                    <Route path="/" name="Sign in" component={Signin} />
+                    <Route path="load-data" name="load-data" component={LoadData} />                    
                     <Route path={SIGNIN} name="Sign in" component={Signin} />
-
                     <Route name="assessment">
                         <Route path="assessment/:section" component={Question} />
                     </Route>
