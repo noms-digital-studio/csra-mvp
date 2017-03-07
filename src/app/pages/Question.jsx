@@ -8,6 +8,23 @@ import Routes from '../constants/routes';
 import { getQuestions, storeAnswer } from '../actions';
 
 import QuestionWithAsideTemplate from '../templates/Question-with-aside';
+import ConfirmationTemplate from '../templates/Confirmation';
+import ConfirmationWithAsideTemplate from '../templates/CofirmationWithAside';
+
+
+function templateSelector (data) {
+    switch(data.template) {
+        case 'confirmation':
+            return <ConfirmationTemplate {...data} />
+        case 'confirmation_with_aside':
+            return <ConfirmationWithAsideTemplate {...data} />
+        case 'default_with_aside':
+            return <QuestionWithAsideTemplate {...data} />
+        default:
+            return null
+    }
+}
+
 
 
 class Question extends Component {
@@ -18,10 +35,10 @@ class Question extends Component {
 
     handleFormSubmit(e) {
         e.preventDefault();
-        const { questionIndex } = this.sectionData(this.props.questions, this.props.params.section);
-        const nextQuestionIndex = questionIndex + 1;
-        if (this.props.questions[nextQuestionIndex]) {
-            const nextQuestion = this.props.questions[nextQuestionIndex];
+        const { sectionIndex } = this.sectionData(this.props.questions, this.props.params.section);
+        const nextsectionIndex = sectionIndex + 1;
+        if (this.props.questions[nextsectionIndex]) {
+            const nextQuestion = this.props.questions[nextsectionIndex];
             return hashHistory.push({pathname: `${Routes.ASSESSMENT}/${nextQuestion.risk_indicator}` })  
         }
         
@@ -33,10 +50,8 @@ class Question extends Component {
         if (isEmpty(questions)) {
             return {
                 totalSections: 0,
-                question: {
-                    aside: {}
-                },
-                questionIndex: 0
+                question: {},
+                sectionIndex: 0
             }
         } else {
             const sectionEqls = item => item.risk_indicator === section;        
@@ -48,103 +63,47 @@ class Question extends Component {
             return {
                 totalSections: total,
                 question: question,
-                questionIndex: adJustedIndex
+                sectionIndex: adJustedIndex
             };
         }        
     }
 
     render() {
-        const { questions, params: { section } } = this.props;
+        const { 
+            questions, 
+            params: { section },
+            profileFirstName,
+            profileLastName 
+        } = this.props;
 
-        return (
-            <QuestionWithAsideTemplate
-                section={section}
-                data={this.sectionData(questions, section)}
-                handleFormSubmit={(e) => this.handleFormSubmit(e)}
-            />
-        )
+        const { totalSections, sectionIndex, question } = this.sectionData(questions, section);
         
-    }
-}
-
-/*class Question extends Component {
-
-    render() {
-        const { title, description } = this.props;
         return (
             <div className="o-question">
                 <div className="grid-row">
                     <div className="column-half">
-                        <h2 className="c-section-title">Section 1 of 12</h2>
+                        <h2 className="c-section-title">Section {sectionIndex + 1} of {totalSections}</h2>
                     </div>
                     <div className="column-half">
-                        <h2 className="bold-medium u-text-align-right" id="subsection-title">Kenedy Brian</h2>                        
+                        <h2 className="bold-medium u-text-align-right" id="subsection-title">{profileFirstName} {profileLastName}</h2>
                     </div>
                 </div>
-
-                <div className="grid-row">
-                    <div className="column-half">
-                        <form action="/" method="post" className="form">
-                            <h3 className="heading-medium">{title}</h3>
-                            <p>
-                                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptatum dolorem, 
-                                similique consequatur vero quia quisquam laborum dolore excepturi ipsam voluptatibus 
-                                rerum at ea reiciendis in laudantium, laboriosam quam soluta. Laborum.
-                            </p>
-
-                            <div className="form-group">
-                                <fieldset>
-                                    <RadioButton name="answer" id="radio-yes" value="Yes" textValue="Yes"/>
-                                    <RadioButton name="answer" id="radio-no" value="No" textValue="No" />
-                                </fieldset>
-                            </div>
-
-                            <p>
-                                <input type="submit" className="button button-start" value="Save &amp; Continue" />
-                            </p>
-                            <p>
-                                <a href="#">Save and return</a>  
-                            </p>                          
-                        </form>
-                    </div>
-                    <div className="column-half">
-                        <aside className="govuk-related-items" role="complementary">
-                            <h3 className="heading-medium u-margin-top-default" id="subsection-title">How to ask</h3>
-                            
-                            <p>
-                                Lorem ipsum dolor sit amet, consectetur adipisicing elit. 
-                                Earum aut, incidunt modi quos, rerum cumque velit minima beatae sit 
-                                perferendis officia accusamus laudantium libero commodi. 
-                                Ad pariatur facilis consequatur optio.
-                            </p>
-
-                            <p>
-                                Lorem ipsum dolor sit amet, consectetur adipisicing elit. 
-                                Earum aut, incidunt modi quos, rerum cumque velit minima beatae sit 
-                                perferendis officia accusamus laudantium libero commodi. 
-                                Ad pariatur facilis consequatur optio.
-                            </p>
-                        </aside>
-                    </div>
-                </div>
+                { templateSelector({...question, onSubmit: (e) => this.handleFormSubmit(e)}) }
             </div>
-        );
+        )
     }
 }
 
-
-Question.defaultProps = {
-    title: "Introduction",
-    description: "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptatum dolorem, similique consequatur vero quia quisquam laborum dolore excepturi ipsam voluptatibus rerum at ea reiciendis in laudantium, laboriosam quam soluta. Laborum.",
-};
-
-
-export default Question;*/
 
 const mapStateToProps = (state, ownProps) => ({
     ...ownProps,
     questions: state.questions.questions
 });
 
+
+Question.defaultProps = {
+    profileFirstName: "John",
+    profileLastName: "Smith"
+};
 
 export default connect(mapStateToProps, { getQuestions })(Question);

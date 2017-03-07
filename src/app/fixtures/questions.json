@@ -2,54 +2,81 @@
     {
         "risk_indicator": "introduction",
         "title": "Introduction",
-        "description": "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Esse itaque, tenetur suscipit maxime ea molestiae? Dolorem in, aliquam fugiat ea beatae voluptate saepe laborum? Facilis atque quibusdam tempora delectus officiis?",
-        "aside": {
-            "title": "Supporting information",
-            "description": "incidunt modi quos, rerum cumque velit minima beatae sit perferendis officia accusamus laudantium libero commodi. Ad pariatur facilis consequatur optio."
-        }
+        "description": "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Esse itaque, tenetur suscipit maxime ea molestiae? Dolorem in, aliquam fugiat ea beatae voluptate saepe laborum? Facilis atque quibusdam tempora delectus officiis? Lorem ipsum dolor sit amet, consectetur adipisicing elit. Esse itaque, tenetur suscipit maxime ea molestiae? Dolorem in, aliquam fugiat ea beatae voluptate saepe laborum",
+        "template": "confirmation"
     },
     {
-        "risk_indicator": "violence-risk",
+        "risk_indicator": "risk_of_violence",
         "title": "Violence Risk",
         "description": "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Esse itaque, tenetur suscipit maxime ea molestiae? Dolorem in, aliquam fugiat ea beatae voluptate saepe laborum? Facilis atque quibusdam tempora delectus officiis?",
+        "template": "confirmation_with_aside",
         "aside": {
+            "type": "violence_risk"
+        }
+    },
+    {
+        "risk_indicator": "prison_self_assessment",
+        "title": "Prison self assesment",
+        "description": "Do you think you might harm someone if you share a cell with them",
+        "template": "default_with_aside",
+        "aside": {
+            "type": "static",
+            "title": "Suggested Guidence",
+            "description": "incidunt modi quos, rerum cumque velit minima beatae sit perferendis officia accusamus laudantium libero commodi. Ad pariatur facilis consequatur optio."
+        }
+    },
+    {
+        "risk_indicator": "gang_affiliation",        
+        "title": "Gang Affiliation",
+        "template": "default_with_aside",        
+        "description": "Do you know anyone in a gang at this prison?",
+        "aside": {
+            "type": "static",
             "title": "Supporting information",
             "description": "incidunt modi quos, rerum cumque velit minima beatae sit perferendis officia accusamus laudantium libero commodi. Ad pariatur facilis consequatur optio."
         }
     },
     {
-        "risk_indicator": "violence-risk2",
-        "title": "Violence Risk",
-        "description": "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Esse itaque, tenetur suscipit maxime ea molestiae? Dolorem in, aliquam fugiat ea beatae voluptate saepe laborum? Facilis atque quibusdam tempora delectus officiis?",
+        "risk_indicator": "vulnerability",           
+        "title": "Vulnerability",
+        "template": "default_with_aside",                
+        "description": "Have you been hurt or threatened in prison before?",
         "aside": {
+            "type": "static",
             "title": "Supporting information",
             "description": "incidunt modi quos, rerum cumque velit minima beatae sit perferendis officia accusamus laudantium libero commodi. Ad pariatur facilis consequatur optio."
         }
     },
     {
-        "risk_indicator": "gang-afiliaion",        
-        "title": "Gang Afiliation",
-        "description": "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Esse itaque, tenetur suscipit maxime ea molestiae? Dolorem in, aliquam fugiat ea beatae voluptate saepe laborum? Facilis atque quibusdam tempora delectus officiis?",
+        "risk_indicator": "vulnerability_2",        
+        "title": "Vulnerability",
+        "description": "Do you owe any money or have any other reason why someone here might harm you?",
+        "template": "default_with_aside",                        
         "aside": {
             "title": "Supporting information",
+            "type": "static",
             "description": "incidunt modi quos, rerum cumque velit minima beatae sit perferendis officia accusamus laudantium libero commodi. Ad pariatur facilis consequatur optio."
         }
     },
     {
-        "risk_indicator": "gang-afiliaion2",           
-        "title": "Gang Afiliation",
-        "description": "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Esse itaque, tenetur suscipit maxime ea molestiae? Dolorem in, aliquam fugiat ea beatae voluptate saepe laborum? Facilis atque quibusdam tempora delectus officiis?",
+        "risk_indicator": "drug_misuse",        
+        "title": "Drug misuse",
+        "description": "Have you been using any drugs in the last 2 months",
+        "template": "default_with_aside",                        
         "aside": {
-            "title": "Supporting information",
+            "title": "Sugestions",
+            "type": "static",
             "description": "incidunt modi quos, rerum cumque velit minima beatae sit perferendis officia accusamus laudantium libero commodi. Ad pariatur facilis consequatur optio."
         }
     },
     {
-        "risk_indicator": "vulnarability",        
-        "title": "Vulnarability",
-        "description": "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Esse itaque, tenetur suscipit maxime ea molestiae? Dolorem in, aliquam fugiat ea beatae voluptate saepe laborum? Facilis atque quibusdam tempora delectus officiis?",
+        "risk_indicator": "prejudice",        
+        "title": "Prejudice / hostile views",
+        "description": "Lorem ipsun erum cumque velit minima beatae sit perferendis officia accusamus laudantium libero commodi. Ad pariatur facilis consequatur",
+        "template": "default_with_aside",                        
         "aside": {
-            "title": "Supporting information",
+            "title": "Sugestions",
+            "type": "static",
             "description": "incidunt modi quos, rerum cumque velit minima beatae sit perferendis officia accusamus laudantium libero commodi. Ad pariatur facilis consequatur optio."
         }
     }
