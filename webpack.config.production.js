@@ -10,7 +10,7 @@ module.exports = [
     {
         context: __dirname,
         entry: {
-            'main': './src/app/index.js',
+            'main': './src/javascript/index.js',
         },
         output: {
             path: path.join(__dirname, '/dist'),
@@ -36,7 +36,6 @@ module.exports = [
                         fallback: 'style-loader',
                         use: [
                             'css-loader',
-                            "resolve-url-loader",
                             {
                                 loader: 'postcss-loader',
                                 options: {
@@ -63,7 +62,6 @@ module.exports = [
                                     sourceMap: true
                                 }
                             },
-                            "resolve-url-loader",
                             {
                                 loader: "sass-loader",
                                 options: {
@@ -79,27 +77,55 @@ module.exports = [
                     })
                 },
                 {
-                    test: /\.png$/,
-                    loader: "file-loader?name=[name].[hash:8].[ext]&publicPath=images/"
+                    test: /\.(eot|svg|ttf|woff|woff2)$/,
+                    use: ['url-loader?limit=10000']
+                },
+                {
+                    test: /\.(jpe?g|png|gif|svg)$/i,
+                    use: [
+                        "url-loader?limit=10000",
+                        // "file-loader?name=[name].[hash:8].[ext]"
+                    ],
                 }
             ]
         },
         plugins: [
-            new webpack.DefinePlugin({
-                'process.env': {
-                    'NODE_ENV': JSON.stringify('production')
-                }
-            }),
-            new HtmlWebpackPlugin({
-                template: 'src/index.tmpl.html',
-                chunksSortMode: 'dependency'
-            }),
+            new webpack.DefinePlugin({ 'process.env.NODE_ENV': '"production"' }),
             new webpack.LoaderOptionsPlugin({
                 minimize: true,
                 debug: false
             }),
+            new webpack.optimize.OccurrenceOrderPlugin(),                
             new ExtractTextPlugin('style.css'),
-            
+            new webpack.optimize.UglifyJsPlugin({
+                compress: {
+                    screw_ie8: true,
+                    warnings: false
+                },
+                mangle: {
+                    screw_ie8: true
+                },
+                output: {
+                    comments: false,
+                    screw_ie8: true
+                }
+            }),
+            new HtmlWebpackPlugin({
+                inject: true,
+                template: 'src/index.tmpl.html',
+                minify: {
+                    removeComments: true,
+                    collapseWhitespace: true,
+                    removeRedundantAttributes: true,
+                    useShortDoctype: true,
+                    removeEmptyAttributes: true,
+                    removeStyleLinkTypeAttributes: true,
+                    keepClosingSlash: true,
+                    minifyJS: true,
+                    minifyCSS: true,
+                    minifyURLs: true
+                }
+            }),
         ],
         resolve: {
             extensions: ['*', '.js', '.jsx']

@@ -7,12 +7,12 @@ module.exports = [
     {
         context: __dirname,
         entry: {
-            'main': './src/app/index.js',
+            'main': './src/javascript/index.js',
         },
         output: {
-            path: __dirname + 'dist/assets',
+            path: __dirname + 'dist/',
             filename: '[name].bundle.js',
-            publicPath: '/assets'
+            publicPath: '/'
         },
         devServer: {
             contentBase: __dirname,
@@ -34,7 +34,6 @@ module.exports = [
                     use: [
                         "style-loader",
                         "css-loader",
-                        "resolve-url-loader",
                         {
                             loader: 'postcss-loader',
                             options: {
@@ -58,14 +57,13 @@ module.exports = [
                                 sourceMap: true
                             }
                         },
-                        "resolve-url-loader",
                         {
                             loader: "sass-loader",
                             options: {
                                 sourceMap: true,
                                 includePaths: [
                                     path.join(__dirname, "node_modules/govuk-elements-sass/public/sass"),
-                                    path.join(__dirname, "node_modules/govuk_frontend_toolkit/stylesheets")                                    
+                                    path.join(__dirname, "node_modules/govuk_frontend_toolkit/stylesheets"),     
                                 ]
                             }
                         }
@@ -73,11 +71,15 @@ module.exports = [
                     ]
                 },
                 {
-                    test: /\.png$/,
-                    loader: "file-loader",
-                    options: { 
-                        prefix: "img/"
-                    }
+                    test: /\.(eot|svg|ttf|woff|woff2)$/,
+                    use: ['url-loader?limit=10000']
+                },
+                {
+                    test: /\.(jpe?g|png|gif|svg)$/i,
+                    use: [
+                        "url-loader?limit=10000",
+                        // "file-loader?name=[name].[hash:8].[ext]"
+                    ],
                 }
             ]
         },
