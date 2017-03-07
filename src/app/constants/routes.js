@@ -1,4 +1,5 @@
 export default {
     SIGNIN: '/signin',
-    ASSESSMENT: '/assessment'
+    ASSESSMENT: '/assessment',
+    LOAD_DATA: '/load-data'
 };
