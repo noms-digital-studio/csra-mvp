@@ -10,7 +10,7 @@ const ConfirmationWithAside = ({ title, description, aside, onSubmit }) => {
                 <div className="column-two-thirds">
                     <h3 className="heading-medium">{title}</h3>
                     <div role="note" aria-label="Information" className="panel panel-border-wide">
-                       {description}
+                       <p>{description}</p>
                     </div>
 
                     <form className="c-confirmation-form" onSubmit={onSubmit}>
@@ -18,9 +18,8 @@ const ConfirmationWithAside = ({ title, description, aside, onSubmit }) => {
                             <input type="checkbox" name="confirm" value="accept" id="confirm" />
                             <span className="heading-small">I confirm that this has been explained to the prisoner</span>
                         </label>
-
                         <p>
-                            <input type="submit" className="button" value="Save &amp; Continue" />
+                            <input type="submit" className="button" value="Save and continue" />
                         </p>
                         <p>
                             <Link to="/">Save and return</Link>

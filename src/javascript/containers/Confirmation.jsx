@@ -8,7 +8,7 @@ const Confirmation = ({ title, description, onSubmit }) => {
                 <div className="column-full">
                     <h3 className="heading-medium">{title}</h3>
                     <div role="note" aria-label="Information" className="panel panel-border-wide">
-                       {description}
+                        <p>{description}</p>                       
                     </div>
                 </div>
             </div>
@@ -21,7 +21,7 @@ const Confirmation = ({ title, description, onSubmit }) => {
                         </label>
 
                         <p>
-                            <input type="submit" className="button" value="Save &amp; Continue" />
+                            <input className="button" type="submit" value="Save and continue" />
                         </p>
                         <p>
                             <Link to="/">Save and return</Link>

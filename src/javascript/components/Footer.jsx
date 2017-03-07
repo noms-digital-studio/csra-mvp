@@ -7,7 +7,9 @@ const Footer = () => {
         <div className="footer-meta">
           <div className="footer-meta-inner">
             <div className="open-government-licence">
-              <p className="logo"><a href="https://www.nationalarchives.gov.uk/doc/open-government-licence/version/3/" rel="license">Open Government Licence</a></p>
+              <p className="logo">
+                <a href="https://www.nationalarchives.gov.uk/doc/open-government-licence/version/3/" rel="license">Open Government Licence</a>
+              </p>
               <p>All content is available under the <a href="https://www.nationalarchives.gov.uk/doc/open-government-licence/version/3/" rel="license">Open Government Licence v3.0</a>, except where otherwise stated</p>
             </div>
           </div>

@@ -17,10 +17,7 @@ const Header = ({ location }) => {
 
           <div className="header-proposition">
             <div className="content">
-              <a href="#proposition-links" className="js-header-toggle menu">Menu</a>
-              <nav id="proposition-menu">
-                {/*<a href="/" id="proposition-name">HMPPS {location}</a>*/}
-              </nav>
+              {/*Content here*/}
             </div>
           </div>
         </div>

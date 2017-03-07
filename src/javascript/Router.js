@@ -8,7 +8,7 @@ import {
 import { Provider } from 'react-redux';
 import { syncHistoryWithStore } from 'react-router-redux';
 
-import Layout from './templates/Main';
+import Layout from './containers/Main';
 
 import LoadData from './pages/LoadData';
 import Signin from './pages/Singin';

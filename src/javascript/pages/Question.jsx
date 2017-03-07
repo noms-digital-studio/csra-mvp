@@ -7,9 +7,9 @@ import { isEmpty } from 'ramda';
 import Routes from '../constants/routes';
 import { getQuestions, storeAnswer } from '../actions';
 
-import QuestionWithAsideTemplate from '../templates/Question-with-aside';
-import ConfirmationTemplate from '../templates/Confirmation';
-import ConfirmationWithAsideTemplate from '../templates/CofirmationWithAside';
+import QuestionWithAsideTemplate from '../containers/Question-with-aside';
+import ConfirmationTemplate from '../containers/Confirmation';
+import ConfirmationWithAsideTemplate from '../containers/CofirmationWithAside';
 
 
 function templateSelector (data) {
