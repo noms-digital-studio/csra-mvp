@@ -80,7 +80,7 @@ module.exports = [
                 },
                 {
                     test: /\.png$/,
-                    loader: "file-loader"
+                    loader: "file-loader?name=[name].[hash:8].[ext]&publicPath=images/"
                 }
             ]
         },
