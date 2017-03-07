@@ -1,8 +1,10 @@
+$path: "../../node_modules/govuk_frontend_toolkit/images/";
+
 @import "govuk-elements";
 
 .govuk-related-items {
   margin-top: $gutter;
-  border-top: 10px solid $govuk-blue;
+  border-top: 4px solid $govuk-blue;
   padding-top: 5px;
 
   .heading-medium {
@@ -18,10 +20,6 @@
 
 .o-question {
     padding-top: $gutter; 
-}
-
-.c-section-title {
-    // padding-top: 20px;
 }
 
 .u-text-align-right {
@@ -102,43 +100,13 @@
   margin-bottom: $gutter !important;
 }
 
-.c-govuk-box-highlight {
-    background-color: #dee0e2;
-    color: #454a4c;
-    padding: 1.5em;
-    text-align: left;
-}
-
-.c-box-blockquote {
-    position: relative;
-    padding: 1.5em;
-
-    &:before {
-        top: 0;
-        left: 0;
-        content: '\201C';
-    }
-
-    &:after {
-        bottom: 0;
-        right: 10px;
-        content: '\201D';
-
-    }
-    &:after, &:before {
-        color: #454a4c;
-        font-size: 40px;
-        position: absolute;
-    }
-}
-
 
 .c-message-text {
     font-weight: bold;
     margin-top: 15px;
 }
 .c-messgae-text--success {
-    color: #28A197;
+    color: $turquoise;
 }
 
 
@@ -146,13 +114,4 @@
     margin-top: 100px;
     float: right;
 }
-
-//Temporary overide
-@media only screen and (-webkit-min-device-pixel-ratio: 2), not all, not all, not all, only screen and (min-resolution: 192dpi), only screen and (min-resolution: 2dppx) {
-    .button-start, .button-get-started {
-        background-image: image-url('../images/icon-pointer-2x.png');
-        background-size: 30px 19px;
-    }
-}
-
 
