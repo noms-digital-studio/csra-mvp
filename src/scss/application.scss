@@ -133,10 +133,18 @@
 }
 
 
-.success {
-    color: #28A197;
+.c-message-text {
     font-weight: bold;
     margin-top: 15px;
+}
+.c-messgae-text--success {
+    color: #28A197;
+}
+
+
+.c-btn-right--xcustom {
+    margin-top: 100px;
+    float: right;
 }
 
 //Temporary overide
@@ -146,3 +154,5 @@
         background-size: 30px 19px;
     }
 }
+
+

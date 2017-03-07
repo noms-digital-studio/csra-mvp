@@ -1,4 +1,7 @@
 import React, { Component } from 'react';
+import { Link } from 'react-router';
+
+import { SIGNIN } from '../constants/routes.js';
 
 const readSingleFile = (file, callback) => {
     if (!file) return;
@@ -16,7 +19,7 @@ const readSingleFile = (file, callback) => {
 }
 
 const storeData = (key, data) => {
-    localStorage.setItem(key, data);
+    sessionStorage.setItem(key, data);
 }
 
 class LoadData extends Component {
@@ -46,8 +49,9 @@ class LoadData extends Component {
                 <input name="viperScores" onChange={::this.handleChange} type="file" ref={(ref) => { this.viperScoreInput }}/>
 
                 {(this.state.error) && <div>Whoops something went wrong</div>}
-                {(this.state.success) && <div><h2 className="success">File successfully loaded</h2></div>}
+                {(this.state.success) && <div><h2 className="c-message-text c-messgae-text--success">File successfully loaded</h2></div>}
                 
+                {(this.state.success) && <Link to="signin" className="button c-btn-right--xcustom">Continue to signin</Link>}
 
             </div>
         )
