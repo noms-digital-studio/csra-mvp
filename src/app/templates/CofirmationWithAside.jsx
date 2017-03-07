@@ -9,8 +9,8 @@ const ConfirmationWithAside = ({ title, description, aside, onSubmit }) => {
             <div className="grid-row">
                 <div className="column-two-thirds">
                     <h3 className="heading-medium">{title}</h3>
-                    <div className="govuk-box-highlight c-govuk-box-highlight">
-                       <blockquote className="c-box-blockquote">{description}</blockquote>
+                    <div role="note" aria-label="Information" className="panel panel-border-wide">
+                       {description}
                     </div>
 
                     <form className="c-confirmation-form" onSubmit={onSubmit}>
