@@ -39,7 +39,7 @@ class Question extends Component {
         const nextsectionIndex = sectionIndex + 1;
         if (this.props.questions[nextsectionIndex]) {
             const nextQuestion = this.props.questions[nextsectionIndex];
-            return hashHistory.push({pathname: `${Routes.ASSESSMENT}/${nextQuestion.risk_indicator}` })  
+            return hashHistory.push({pathname: `${Routes.ASSESSMENT}/${nextQuestion.riskIndicator}` })  
         }
         
         return hashHistory.push({ pathname: "/" });
@@ -54,7 +54,7 @@ class Question extends Component {
                 sectionIndex: 0
             }
         } else {
-            const sectionEqls = item => item.risk_indicator === section;        
+            const sectionEqls = item => item.riskIndicator === section;        
             const index = questions.findIndex(sectionEqls);    
             const total = questions.length;
             const question = questions.find(sectionEqls);

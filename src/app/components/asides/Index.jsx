@@ -4,8 +4,8 @@ import Static from './Static';
 import ViolenceRisk from './ViolenceRisk';
 
 
-const asideSelector = (type, data) => {
-    switch(type) {
+const selectAside = (template, data) => {
+    switch(template) {
         case 'violence_risk':
             return <ViolenceRisk {...data} />
         case 'static':
@@ -16,8 +16,8 @@ const asideSelector = (type, data) => {
 };
 
 
-const Aside = ({ type, title, description }) => {
-    return asideSelector(type, {title, description});
+const Aside = ({ template, title, description }) => {
+    return selectAside(template, {title, description});
 }
 
 

@@ -20,7 +20,7 @@ const ConfirmationWithAside = ({ title, description, aside, onSubmit }) => {
                         </label>
 
                         <p>
-                            <input type="submit" className="button button-start" value="Save &amp; Continue" />
+                            <input type="submit" className="button" value="Save &amp; Continue" />
                         </p>
                         <p>
                             <Link to="/">Save and return</Link>
