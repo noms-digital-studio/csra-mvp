@@ -16,8 +16,8 @@
     },
     {
         "riskIndicator": "prison-self-assessment",
-        "title": "Prison self assesment",
-        "description": "Do you think you might harm someone if you share a cell with them",
+        "title": "Prison self assessment",
+        "description": "Do you think you might harm someone if you share a cell with them?",
         "template": "default_with_aside",
         "aside": {
             "template": "static",
