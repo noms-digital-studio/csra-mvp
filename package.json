@@ -4,8 +4,7 @@
   "description": "Frontend prototype for CSRA",
   "main": "index.js",
   "scripts": {
-    "build": "rm -rf dist && ./node_modules/.bin/webpack --progress --profile --colors",
-    "build:prod": "rm -rf dist && ./node_modules/.bin/webpack --env=prod --progress --profile --colors --config webpack.config.production.js",
+    "build": "rm -rf dist && ./node_modules/.bin/webpack --env=prod --progress --profile --colors --config webpack.config.production.js",
     "dev": "./node_modules/.bin/webpack-dev-server --progress --profile",
     "test": "./node_modules/karma/bin/karma start --single-run --browsers PhantomJS",
     "test:watch": "./node_modules/karma/bin/karma start",
