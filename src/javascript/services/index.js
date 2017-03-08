@@ -1,3 +1,5 @@
+import localViperScores from '../fixtures/viper.json';
+
 export const calculateRiskFor = (nomisId, riskScores = []) => {
     const LOW_RISK_LEVEL = 0.50;
     const MEDIUM_RISK_LEVEL = 0.75;
@@ -14,4 +16,13 @@ export const calculateRiskFor = (nomisId, riskScores = []) => {
     }
 
     return 'high';
+}
+
+
+export const getViperScores = () => {
+    if (sessionStorage.getItem('viperScores')) {
+        return JSON.parse(sessionStorage.getItem('viperScores'));
+    } else {
+        return localViperScores;
+    }
 }

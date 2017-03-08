@@ -1,7 +1,7 @@
 import React, { Component, PropTypes } from 'react';
 import { connect } from 'react-redux';
 import classnames from 'classnames';
-import { calculateRiskFor } from '../../services';
+import { calculateRiskFor, getViperScores } from '../../services';
 
 const ViolenceRisk = ({ rating }) => {
     const riskScoreClasses = classnames({
@@ -24,7 +24,7 @@ ViolenceRisk.propTypes = {
 };
 
 const mapStateToProps = (state, ownProps) => ({ 
-    rating: calculateRiskFor(state.prisoner.current.nomsID, JSON.parse(sessionStorage.getItem('viperScores'))) 
+    rating: calculateRiskFor(state.prisoner.current.nomsID, getViperScores()) 
 });
 
 
