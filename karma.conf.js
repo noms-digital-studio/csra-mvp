@@ -3,6 +3,7 @@ module.exports = function (config) {
         basePath: '',
         frameworks: ['mocha', 'chai', 'sinon'],
         files: [
+            './node_modules/babel-polyfill/dist/polyfill.js',
             'tests/**/*.spec.js'
         ],
         exclude: [],
