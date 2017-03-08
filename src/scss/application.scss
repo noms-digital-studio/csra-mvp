@@ -83,6 +83,26 @@ $path: "../../node_modules/govuk_frontend_toolkit/images/";
     opacity: 1
 }
 
+.c-risk-threat {
+    text-transform: uppercase;
+}
+
+.c-risk-threat--low {
+    color: $turquoise;
+}
+
+.c-risk-threat--medium {
+    color: $orange;
+}
+
+.c-risk-threat--high {
+    color: $red;
+}
+
+.c-risk-threat--unknown {
+    color: $mauve;
+}
+
 .c-radio-control input:focus ~ .c-radio-control__indictor:after {
     content: "";
     width: 38px;
