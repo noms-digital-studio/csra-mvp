@@ -1,5 +1,6 @@
-import React, { Component } from 'react';
+import React, { Component, PropTypes } from 'react';
 import ReactDOM from 'react-dom';
+
 import SelecteableInput from './SelecteableInput';
 
 class SelecteableInputGroup extends Component {
@@ -20,12 +21,15 @@ class SelecteableInputGroup extends Component {
     }
 
     renderButtons() {
-        return this.props.fields.map(({ name, value, text }) => (
+        const { fields, type } = this.props;
+
+        return fields.map(({ name, value, text }) => (
             <SelecteableInput 
                 key={`radio-${value}`}
                 id={`radio-${value}`}
                 name={name} 
                 value={value}
+                type={type}
                 text={text}
                 selected={ this.state.selectedInputValue === value }
                 focused={ this.state.selectedInputValue === value && this.state.selectedFocused }
@@ -43,5 +47,19 @@ class SelecteableInputGroup extends Component {
         )
     }
 }
+
+SelecteableInputGroup.propTypes = {
+    default: PropTypes.string,
+    fields: PropTypes.arrayOf(PropTypes.shape({
+        name: PropTypes.string, 
+        value: PropTypes.string, 
+        text: PropTypes.string
+    })),
+    type: PropTypes.string
+};
+
+SelecteableInputGroup.defaultProps = {
+    type: "checkbox"
+};
 
 export default SelecteableInputGroup;

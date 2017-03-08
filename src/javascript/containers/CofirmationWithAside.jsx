@@ -1,6 +1,7 @@
 import React, { PropTypes } from 'react';
 import { Link } from 'react-router';
 
+import SelecteableInput from '../components/SelecteableInput';
 import Aside from '../components/asides/Index'; 
 
 const ConfirmationWithAside = ({ title, description, aside, onSubmit }) => {
@@ -14,10 +15,15 @@ const ConfirmationWithAside = ({ title, description, aside, onSubmit }) => {
                     </div>
 
                     <form className="c-confirmation-form" onSubmit={onSubmit}>
-                        <label htmlFor="confirm" className="block-label c-form-label selection-button-checkbox">
-                            <input type="checkbox" name="confirm" value="accept" id="confirm" />
-                            <span className="heading-small">I confirm that this has been explained to the prisoner</span>
-                        </label>
+                        <p className="c-form-label-container u-clear-fix bold">
+                            <SelecteableInput
+                                type="checkbox"
+                                id="confirmation"
+                                value="accept"
+                                text="I confirm that this has been explained to the prisoner"
+                                name="confirmation"
+                            />
+                        </p>
                         <p>
                             <input type="submit" className="button" value="Save and continue" />
                         </p>
@@ -27,7 +33,7 @@ const ConfirmationWithAside = ({ title, description, aside, onSubmit }) => {
                     </form>
                 </div>
                 <div className="column-third">
-                    <Aside  {...aside} />
+                    <Aside {...aside} />
                 </div>
             </div>
         </div>
