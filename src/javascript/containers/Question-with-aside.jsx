@@ -3,7 +3,8 @@ import { hashHistory, Link } from 'react-router';
 import uuid from 'uuid/v4';
 
 import Aside from '../components/asides/Index';
-import RadioButton from '../components/RadioButton';
+// import RadioButton from '../components/RadioButton';
+import SelecteableInputGroup from '../components/SelecteableInputGroup';
 
 
 class QuestionWithAside extends Component {
@@ -25,8 +26,14 @@ class QuestionWithAside extends Component {
 
                         <div className="form-group">
                             <fieldset>
-                                <RadioButton name="answer" id="radio-yes" value="Yes" textValue="Yes" />
-                                <RadioButton name="answer" id="radio-no" value="No" textValue="No" />
+                                <SelecteableInputGroup
+                                    fields={[
+                                        { value: "yes", text: "Yes", name: "answer" },
+                                        { value: "no", text: "No", name: "answer" }, 
+                                    ]}
+                                />
+                                {/*<RadioButton name="answer" id="radio-yes" value="Yes" textValue="Yes" />*/}
+                                {/*<RadioButton name="answer" id="radio-no" value="No" textValue="No" />*/}
                             </fieldset>
                         </div>
 
