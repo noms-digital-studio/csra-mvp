@@ -3,29 +3,29 @@ module.exports = function (config) {
         basePath: '',
         frameworks: ['mocha', 'chai', 'sinon'],
         files: [
-            'tests/*.spec.js'
+            'tests/**/*.spec.js'
         ],
         exclude: [],
         preprocessors: {
-            "tests/*.spec.js": ["webpack"]
+            "tests/**/*.spec.js": ["webpack"]
         },
         // webpack configuration
         webpack: require("./webpack.config.js"),
         webpackMiddleware: {
+            noInfo: true,
             stats: "errors-only"
         },
-        reporters: ['progress'],
+        reporters: ['spec'],
         port: 9876,
         colors: true,
         logLevel: config.LOG_INFO,
         autoWatch: true,
-        browsers: ['ChromeWithoutSecurity'],
-        customLaunchers: {
-            ChromeWithoutSecurity: {
-                base: 'Chrome',
-                flags: ['--disable-web-security']
-            }
+        browsers: ['PhantomJS'],
+        phantomjsLauncher: {
+        // Have phantomjs exit if a ResourceError is encountered (useful if karma exits without killing phantom) 
+            exitOnResourceError: true
         },
+        
         // Continuous Integration mode
         // if true, Karma captures browsers, runs the tests and exits
         singleRun: false,
