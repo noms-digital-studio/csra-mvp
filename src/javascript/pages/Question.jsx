@@ -42,8 +42,7 @@ class Question extends Component {
             return hashHistory.push({pathname: `${Routes.ASSESSMENT}/${nextQuestion.riskIndicator}` })  
         }
         
-        return hashHistory.push({ pathname: "/" });
-        // this.props.storeAnswer({});
+        return hashHistory.push({ pathname: Routes.SUMMARY });
     }
 
     sectionData(questions = [], section = "") {
