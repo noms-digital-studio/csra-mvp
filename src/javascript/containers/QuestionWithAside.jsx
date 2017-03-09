@@ -49,5 +49,4 @@ QuestionWithAside.propTypes = {
     onSubmit: PropTypes.func
 };
 
-
 export default QuestionWithAside;
