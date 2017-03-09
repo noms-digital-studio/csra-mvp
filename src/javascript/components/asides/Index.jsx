@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { PropTypes } from 'react';
 
 import Static from './Static';
 import ViolenceRisk from './ViolenceRisk';
@@ -20,10 +20,12 @@ const Aside = ({ template, title, description }) => {
     return selectAside(template, {title, description});
 }
 
-
-Aside.defaultProps = {
-    data: {}
+Aside.propTypes = {
+    template: PropTypes.string.isRequired,
+    title: PropTypes.string,
+    description: PropTypes.string
 };
+
 
 export default Aside;
 
