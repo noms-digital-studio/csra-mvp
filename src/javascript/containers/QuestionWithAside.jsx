@@ -23,8 +23,6 @@ const QuestionWithAside = ({ title, description, aside, onSubmit }) => {
                                     { value: "no", text: "No", name: "answer" }, 
                                 ]}
                             />
-                            {/*<RadioButton name="answer" id="radio-yes" value="Yes" textValue="Yes" />*/}
-                            {/*<RadioButton name="answer" id="radio-no" value="No" textValue="No" />*/}
                         </fieldset>
                     </div>
 
@@ -47,7 +45,7 @@ const QuestionWithAside = ({ title, description, aside, onSubmit }) => {
 QuestionWithAside.propTypes = {
     title: PropTypes.string, 
     description: PropTypes.string, 
-    aside: PropTypes.object, 
+    aside: PropTypes.object.isRequired, 
     onSubmit: PropTypes.func
 };
 

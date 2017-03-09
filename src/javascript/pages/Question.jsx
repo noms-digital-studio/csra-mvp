@@ -7,7 +7,7 @@ import { isEmpty } from 'ramda';
 import Routes from '../constants/routes';
 import { getQuestions, storeAnswer } from '../actions';
 
-import QuestionWithAsideTemplate from '../containers/Question-with-aside';
+import QuestionWithAsideTemplate from '../containers/QuestionWithAside';
 import ConfirmationTemplate from '../containers/Confirmation';
 import ConfirmationWithAsideTemplate from '../containers/CofirmationWithAside';
 
