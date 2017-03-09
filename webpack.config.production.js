@@ -8,6 +8,7 @@ const HtmlWebpackPlugin = require("html-webpack-plugin");
 
 module.exports = [
     {
+        devtool: 'hidden-source-map',
         context: __dirname,
         entry: {
             'main': './src/javascript/index.js',
@@ -16,6 +17,9 @@ module.exports = [
             path: path.join(__dirname, '/dist'),
             filename: '[name].bundle.js',
             sourceMapFilename: '[name].map'
+        },
+        stats: {
+            children: false,
         },
         module: {
             rules: [

@@ -5,9 +5,13 @@ const path = require("path");
 
 module.exports = [
     {
+        devtool: 'cheap-module-source-map',
         context: __dirname,
         entry: {
             'main': './src/javascript/index.js',
+        },
+        stats: {
+            children: false,
         },
         output: {
             path: __dirname + 'dist/',
