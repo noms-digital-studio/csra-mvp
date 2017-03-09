@@ -1,8 +1,8 @@
-import {calculateRiskFor, viperScores, offenderNomisData} from '../../src/javascript/services';
+import {calculateRiskFor, viperScores, offenderNomisProfiles} from '../../src/javascript/services';
 import localViperScores from '../../src/javascript/fixtures/viper.json';
-import localOffenderData from '../../src/javascript/fixtures/nomis.json';
+import localOffenderProfiles from '../../src/javascript/fixtures/nomis.json';
 import testViperScores from '../fixtures/viperScore.json';
-import testOffenderData from '../fixtures/offenderData.json';
+import testOffenderProfiles from '../fixtures/offenderProfiles.json';
 
 describe('Services', () => {
 
@@ -52,24 +52,24 @@ describe('Services', () => {
 
     });
 
-    describe('#offenderNomisData', () => {
+    describe('#offenderNomisProfiles', () => {
 
-        context('when offenderNomisData is available in browser storage', () => {
+        context('when offenderNomisProfiles is available in browser storage', () => {
             after(() => sessionStorage.clear());
 
             it('returns offender NOMIS data form browser storage', () => {
-                const offenderData = JSON.stringify(testOffenderData);
+                const offenderProfiles = JSON.stringify(testOffenderProfiles);
 
-                sessionStorage.setItem("offenderData", offenderData);
+                sessionStorage.setItem("offenderProfiles", offenderProfiles);
 
-                expect(offenderNomisData()).to.eql(JSON.parse(offenderData));
+                expect(offenderNomisProfiles()).to.eql(JSON.parse(offenderProfiles));
 
             })
         });
 
-        context('when offenderNomisData is unavailable in browser storage', () => {
-            it('returns offenderNomisData found in a local json file', () => {
-                expect(offenderNomisData()).to.eql(localOffenderData);
+        context('when offenderNomisProfiles is unavailable in browser storage', () => {
+            it('returns offenderNomisProfiles found in a local json file', () => {
+                expect(offenderNomisProfiles()).to.eql(localOffenderProfiles);
             });
         });
 

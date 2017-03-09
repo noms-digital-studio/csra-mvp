@@ -1,5 +1,5 @@
 import defaultViperScores from '../fixtures/viper.json';
-import defaultOffenderData from '../fixtures/nomis.json';
+import defaultOffenderProfiles from '../fixtures/nomis.json';
 
 export const calculateRiskFor = (nomisId, riskScores = []) => {
     const LOW_RISK_LEVEL = 0.50;
@@ -47,11 +47,11 @@ export const storeData = (key, data) => {
     sessionStorage.setItem(key, data);
 };
 
-export const offenderNomisData = () => {
-    if (sessionStorage.getItem('offenderData')) {
-        return JSON.parse(sessionStorage.getItem('offenderData'));
+export const offenderNomisProfiles = () => {
+    if (sessionStorage.getItem('offenderProfiles')) {
+        return JSON.parse(sessionStorage.getItem('offenderProfiles'));
     }
 
-    return defaultOffenderData;
+    return defaultOffenderProfiles;
 };
 
