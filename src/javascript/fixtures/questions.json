@@ -64,7 +64,7 @@
         "description": "Have you been using any drugs in the last 2 months",
         "template": "default_with_aside",                        
         "aside": {
-            "title": "Sugestions",
+            "title": "Suggestions",
             "template": "static",
             "description": "incidunt modi quos, rerum cumque velit minima beatae sit perferendis officia accusamus laudantium libero commodi. Ad pariatur facilis consequatur optio."
         }
@@ -75,7 +75,7 @@
         "description": "Lorem ipsun erum cumque velit minima beatae sit perferendis officia accusamus laudantium libero commodi. Ad pariatur facilis consequatur",
         "template": "default_with_aside",                        
         "aside": {
-            "title": "Sugestions",
+            "title": "Suggestions",
             "template": "static",
             "description": "incidunt modi quos, rerum cumque velit minima beatae sit perferendis officia accusamus laudantium libero commodi. Ad pariatur facilis consequatur optio."
         }
