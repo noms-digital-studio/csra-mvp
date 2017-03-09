@@ -3,24 +3,7 @@ import { Link } from 'react-router';
 
 import { SIGNIN } from '../constants/routes.js';
 
-const readSingleFile = (file, callback) => {
-    if (!file) return;
-
-    const reader = new FileReader();
-    reader.onload = ({ target: { result }}) => { 
-        callback(null, result);
-    }
-
-    reader.onerror = (error) => {
-        callback(error.message, null);
-    } 
-
-    reader.readAsText(file);
-}
-
-const storeData = (key, data) => {
-    sessionStorage.setItem(key, data);
-}
+import { storeData, readSingleFile } from '../services';
 
 class LoadData extends Component {
 
@@ -45,8 +28,11 @@ class LoadData extends Component {
         return (
             <div>
                 <h1 className="heading-xlarge">Load data</h1>
+                <h3 className="heading-medium">Offender NOMIS File</h3>
+                <input name="offenderData" onChange={::this.handleChange} type="file" />
+
                 <h3 className="heading-medium">Viper Scores File</h3>
-                <input name="viperScores" onChange={::this.handleChange} type="file" ref={(ref) => { this.viperScoreInput }}/>
+                <input name="viperScores" onChange={::this.handleChange} type="file" />
 
                 {(this.state.error) && <div>Whoops something went wrong</div>}
                 {(this.state.success) && <div><h2 className="c-message-text c-messgae-text--success">File successfully loaded</h2></div>}

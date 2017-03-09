@@ -16,13 +16,33 @@ export const calculateRiskFor = (nomisId, riskScores = []) => {
     }
 
     return 'high';
-}
+};
 
 
-export const getViperScores = () => {
+export const viperScores = () => {
     if (sessionStorage.getItem('viperScores')) {
         return JSON.parse(sessionStorage.getItem('viperScores'));
     } else {
         return localViperScores;
     }
-}
+};
+
+export const readSingleFile = (file, callback) => {
+    if (!file) return;
+
+    const reader = new FileReader();
+    reader.onload = ({ target: { result }}) => {
+        callback(null, result);
+    };
+
+    reader.onerror = (error) => {
+        callback(error.message, null);
+    };
+
+    reader.readAsText(file);
+};
+
+export const storeData = (key, data) => {
+    sessionStorage.setItem(key, data);
+};
+
