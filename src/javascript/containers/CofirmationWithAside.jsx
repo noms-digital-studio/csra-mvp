@@ -42,11 +42,9 @@ const ConfirmationWithAside = ({ title, description, aside, onSubmit }) => {
 
 ConfirmationWithAside.propTypes = {
     title: PropTypes.string,
-    details: PropTypes.string
+    details: PropTypes.string,
+    aside: PropTypes.object.isRequired
 };
 
-ConfirmationWithAside.defaultProps = {
-    aside: {}
-};
 
 export default ConfirmationWithAside;
