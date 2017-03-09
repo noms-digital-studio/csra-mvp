@@ -3,7 +3,6 @@ import React, { PropTypes } from 'react';
 import Static from './Static';
 import ViolenceRisk from './ViolenceRisk';
 
-
 const selectAside = (template, data) => {
     switch(template) {
         case 'violence_risk':
@@ -14,7 +13,6 @@ const selectAside = (template, data) => {
             return null;
     }
 };
-
 
 const Aside = ({ template, title, description }) => {
     return selectAside(template, {title, description});
