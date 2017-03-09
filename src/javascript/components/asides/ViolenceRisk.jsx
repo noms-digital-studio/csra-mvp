@@ -24,7 +24,7 @@ ViolenceRisk.propTypes = {
 };
 
 const mapStateToProps = (state, ownProps) => ({ 
-    rating: calculateRiskFor(state.prisoner.current.nomsID, viperScores())
+    rating: calculateRiskFor(state.offender.current.nomsID, viperScores())
 });
 
 

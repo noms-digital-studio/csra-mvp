@@ -1,16 +1,16 @@
 import { compose, createStore, combineReducers } from 'redux';
 import { routerReducer } from 'react-router-redux';
 
-import questionaireReducer from '../reducers/questionaire';
-import prisonerReducer from '../reducers/prisoner';
+import questionnaireReducer from '../reducers/questionnaire';
+import offenderReducer from '../reducers/offender';
 
 // import persistState from 'redux-localstorage';
 
 
 const reducers = combineReducers({
   routing: routerReducer,
-  questions: questionaireReducer,
-  prisoner: prisonerReducer,
+  questions: questionnaireReducer,
+  offender: offenderReducer,
 });
 
 
