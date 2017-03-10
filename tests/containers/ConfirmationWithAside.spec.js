@@ -1,7 +1,7 @@
 import React from 'react';
 import { mount } from 'enzyme';
 
-import CofirmationWithAside from '../../src/javascript/containers/CofirmationWithAside';
+import CofirmationWithAside from '../../src/javascript/containers/ConfirmationWithAside';
 import Aside from '../../src/javascript/components/asides/Index';
 
 
