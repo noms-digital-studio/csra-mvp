@@ -1,5 +1,14 @@
 [
-  {"nomisId": "A1558YO", "viperScore": 0.35},
-  {"nomisId": "A1564RV", "viperScore": 0.68},
-  {"nomisId": "A4845YO", "viperScore": 0.92}
+  {
+    "nomisId": "A1558YO",
+    "viperScore": 0.35
+  },
+  {
+    "nomisId": "A1564RV",
+    "viperScore": 0.50
+  },
+  {
+    "nomisId": "A4845YO",
+    "viperScore": 0.92
+  }
 ]

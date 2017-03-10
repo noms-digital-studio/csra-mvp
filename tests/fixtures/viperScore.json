@@ -8,16 +8,8 @@
     "viperScore": "0.50"
   },
   {
-    "nomisId": "nomisIdForMediumRiskPerson1",
-    "viperScore": "0.51"
-  },
-  {
-    "nomisId": "nomisIdForMediumRiskPerson2",
-    "viperScore": "0.75"
-  },
-  {
     "nomisId": "nomisIdForHighRiskPerson1",
-    "viperScore": "0.76"
+    "viperScore": "0.51"
   },
   {
     "nomisId": "nomisIdForHighRiskPerson2",
