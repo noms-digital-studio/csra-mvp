@@ -1,11 +1,20 @@
-import { compose, createStore, combineReducers } from 'redux';
-import { routerReducer } from 'react-router-redux';
+import { createStore, combineReducers, applyMiddleware } from 'redux';
+import { routerReducer, routerMiddleware } from 'react-router-redux';
+import { hashHistory } from 'react-router';
+import { composeWithDevTools } from 'redux-devtools-extension';
+import persistState from 'redux-sessionstorage';
+
+
 
 import questionnaireReducer from '../reducers/questionnaire';
 import offenderReducer from '../reducers/offender';
 
-// import persistState from 'redux-localstorage';
-
+const enhancer = composeWithDevTools(
+  applyMiddleware(
+    routerMiddleware(hashHistory)
+  ),
+  persistState()
+);
 
 const reducers = combineReducers({
   routing: routerReducer,
@@ -14,4 +23,4 @@ const reducers = combineReducers({
 });
 
 
-export default createStore(reducers, window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__())
+export default createStore(reducers, enhancer);
