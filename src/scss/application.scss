@@ -88,6 +88,40 @@ $path: "../../node_modules/govuk_frontend_toolkit/images/";
     float: right;
 }
 
+.c-table-start-btn {
+    font-size: 20px;
+}
+
+
+.c-offender-details-container {
+    width: 100%;
+    margin-top: 40px;
+    padding-bottom: 40px;
+    margin-bottom: 40px;
+    border-bottom: 1px solid #bfc1c3;
+}
+
+.c-offender-profile-image {
+    float: left;
+    max-width: 100px;
+    
+    height: auto;
+    margin-right: 40px;
+}
+
+.c-offender-profile-image img {
+    max-width: 100%;
+    height: auto;
+}
+
+.c-offender-profile-details {
+    float: left;
+}
+
+.c-offender-profile-item {
+    display: block;
+    text-transform: capitalize;
+}
 
 /*******************
 * Utilities
@@ -107,6 +141,14 @@ $path: "../../node_modules/govuk_frontend_toolkit/images/";
     margin-top: $gutter;
 }
 
+.u-margin-bottom-default {
+    margin-bottom: $gutter;
+}
+
 .u-no-margin-top {
     margin-top: 0;
+}
+
+.u-pt-20 {
+    padding-top: 20px;
 }

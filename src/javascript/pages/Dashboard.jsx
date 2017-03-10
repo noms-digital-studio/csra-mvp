@@ -27,7 +27,10 @@ class Dashboard extends Component {
                 <td>{profile.Date_of_Birth}</td>
                 <td>{profile.NOMS_Number}</td>
                 <td className="numeric">
-                    <button onClick={() => this.props.onOffenderSelect(profile)} className="button button-start">Start</button>
+                    <button 
+                        onClick={() => this.props.onOffenderSelect(profile)} 
+                        className="button button-start c-table-start-btn"
+                    >Start</button>
                 </td>
             </tr>
         ));
@@ -68,7 +71,7 @@ const mapActionsToProps = (dispatch, ownProps) => {
       getOffenderNomisProfiles: () => dispatch(getOffenderNomisProfiles()),
       onOffenderSelect: (offender, nextPath) => {
           dispatch(selectOffender(offender));
-          dispatch(push(`${routes.ASSESSMENT}/introduction`));
+          dispatch(push(`${routes.PRISONER_PROFILE}`));
       } 
     };
 }

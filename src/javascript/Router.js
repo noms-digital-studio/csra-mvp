@@ -11,8 +11,9 @@ import { syncHistoryWithStore } from 'react-router-redux';
 import Layout from './containers/Main';
 
 import LoadData from './pages/LoadData';
-import SignIn from './pages/Singin';
+import SignIn from './pages/SignIn';
 import Dashboard from './pages/Dashboard';
+import OffenderProfile from './pages/OffenderProfile';
 import Question from './pages/Question';
 import Summary from './pages/Summary';
 import Error404 from './pages/Error404';
@@ -27,6 +28,7 @@ export default (store) => {
                 <Route component={Layout}>
                     <Route path="/" name="home" component={SignIn} />
                     <Route path="/dashboard" name="dashboard" component={Dashboard} />
+                    <Route path="/offender-profile" name="offender-profile" component={OffenderProfile} />
                     <Route path="/load-data" name="load-data" component={LoadData} />
                     <Route path="/sign-in" name="sign-in" component={SignIn} />
                     <Route path="/assessment/:section" component={Question} />

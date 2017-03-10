@@ -3,5 +3,6 @@ export default {
     ASSESSMENT: '/assessment',
     LOAD_DATA: '/load-data',
     SUMMARY: '/summary',
-    DASHBOARD: '/dashboard'
+    DASHBOARD: '/dashboard',
+    PRISONER_PROFILE: '/offender-profile'
 };
