@@ -3,7 +3,7 @@ import classnames from 'classnames';
 
 const noop = () => {};
 
-class SelecteableInput extends Component {
+class SelectableInput extends Component {
     constructor(props) {
         super();
         this.state = {
@@ -56,7 +56,7 @@ class SelecteableInput extends Component {
 }
 
 
-SelecteableInput.propType = {
+SelectableInput.propType = {
     onChange: PropTypes.func,
     id: PropTypes.string,
     name: PropTypes.string,
@@ -64,4 +64,4 @@ SelecteableInput.propType = {
     selected: PropTypes.bool
 };
 
-export default SelecteableInput;
+export default SelectableInput;

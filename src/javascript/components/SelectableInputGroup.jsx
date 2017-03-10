@@ -1,9 +1,9 @@
 import React, { Component, PropTypes } from 'react';
 import ReactDOM from 'react-dom';
 
-import SelecteableInput from './SelecteableInput';
+import SelectableInput from './SelectableInput';
 
-class SelecteableInputGroup extends Component {
+class SelectableInputGroup extends Component {
     constructor(props) {
         super();
         this.state = { 
@@ -24,7 +24,7 @@ class SelecteableInputGroup extends Component {
         const { fields, type } = this.props;
 
         return fields.map(({ name, value, text }) => (
-            <SelecteableInput 
+            <SelectableInput 
                 key={`radio-${value}`}
                 id={`radio-${value}`}
                 name={name} 
@@ -48,7 +48,7 @@ class SelecteableInputGroup extends Component {
     }
 }
 
-SelecteableInputGroup.propTypes = {
+SelectableInputGroup.propTypes = {
     default: PropTypes.string,
     fields: PropTypes.arrayOf(PropTypes.shape({
         name: PropTypes.string, 
@@ -58,8 +58,8 @@ SelecteableInputGroup.propTypes = {
     type: PropTypes.string
 };
 
-SelecteableInputGroup.defaultProps = {
+SelectableInputGroup.defaultProps = {
     type: "checkbox"
 };
 
-export default SelecteableInputGroup;
+export default SelectableInputGroup;
