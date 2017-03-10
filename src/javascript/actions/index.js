@@ -1,7 +1,8 @@
 import { 
     GET_QUESTIONS,
     GET_OFFENDER_NOMIS_PROFILES,
-    GET_VIPER_SCORES
+    GET_VIPER_SCORES,
+    SELECT_OFFENDER
 } from '../constants/actions';
 
 import Questions from '../fixtures/questions.json';
@@ -17,5 +18,7 @@ export const getOffenderNomisProfiles = (profiles = offenderNomisProfiles()) => 
 export const getViperScores = (scores = viperScores()) => {
     return { type: GET_VIPER_SCORES, payload: scores };
 };
+
+export const selectOffender = (offender) => ({ type: SELECT_OFFENDER, payload: offender });
 
 

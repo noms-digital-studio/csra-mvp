@@ -39,6 +39,15 @@ $path: "../../node_modules/govuk_frontend_toolkit/images/";
 * Components
 ***************************/
 
+.c-profile-holder {
+    width: 50px;
+    height: 50px;
+    display: block;
+    background-image: url("../images/profile-placeholder.png");
+    background-size: contain;
+    background-repeat: no-repeat;
+}
+
 .c-risk-threat {
     text-transform: uppercase;
 }
@@ -78,8 +87,6 @@ $path: "../../node_modules/govuk_frontend_toolkit/images/";
     margin-top: 100px;
     float: right;
 }
-
-
 
 
 /*******************

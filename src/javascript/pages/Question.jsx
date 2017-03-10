@@ -9,7 +9,7 @@ import { getQuestions, storeAnswer } from '../actions';
 
 import QuestionWithAsideTemplate from '../containers/QuestionWithAside';
 import ConfirmationTemplate from '../containers/Confirmation';
-import ConfirmationWithAsideTemplate from '../containers/CofirmationWithAside';
+import ConfirmationWithAsideTemplate from '../containers/ConfirmationWithAside';
 
 
 function templateSelector (data) {
@@ -36,9 +36,9 @@ class Question extends Component {
     handleFormSubmit(e) {
         e.preventDefault();
         const { sectionIndex } = this.sectionData(this.props.questions, this.props.params.section);
-        const nextsectionIndex = sectionIndex + 1;
-        if (this.props.questions[nextsectionIndex]) {
-            const nextQuestion = this.props.questions[nextsectionIndex];
+        const nextSectionIndex = sectionIndex + 1;
+        if (this.props.questions[nextSectionIndex]) {
+            const nextQuestion = this.props.questions[nextSectionIndex];
             return hashHistory.push({pathname: `${Routes.ASSESSMENT}/${nextQuestion.riskIndicator}` })  
         }
         
@@ -71,8 +71,7 @@ class Question extends Component {
         const { 
             questions, 
             params: { section },
-            profileFirstName,
-            profileLastName 
+            selectedOffender: { firstName, surname }
         } = this.props;
 
         const { totalSections, sectionIndex, question } = this.sectionData(questions, section);
@@ -84,7 +83,7 @@ class Question extends Component {
                         <h2 className="c-section-title">Section {sectionIndex + 1} of {totalSections}</h2>
                     </div>
                     <div className="column-half">
-                        <h2 className="bold-medium u-text-align-right" id="subsection-title">{profileFirstName} {profileLastName}</h2>
+                        <h2 className="bold-medium u-text-align-right" id="subsection-title">{firstName} {surname}</h2>
                     </div>
                 </div>
                 { templateSelector({...question, onSubmit: (e) => this.handleFormSubmit(e)}) }
@@ -96,7 +95,11 @@ class Question extends Component {
 
 const mapStateToProps = (state, ownProps) => ({
     ...ownProps,
-    questions: state.questions.questions
+    questions: state.questions.questions,
+    selectedOffender: {
+        firstName: state.offender.selected.First_Name,
+        surname: state.offender.selected.Surname
+    }
 });
 
 

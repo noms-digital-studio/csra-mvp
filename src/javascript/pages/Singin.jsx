@@ -1,13 +1,13 @@
 import React, { Component } from 'react';
 import { hashHistory } from 'react-router';
 
-import Routes from '../constants/routes';
+import routes from '../constants/routes';
 
 
 class Signin extends Component {
   handleSubmit(e){
     e.preventDefault();
-    hashHistory.push({pathname: `${Routes.ASSESSMENT}/introduction` })  
+    hashHistory.push({pathname: `${routes.DASHBOARD}` })  
   }
 
   render() {

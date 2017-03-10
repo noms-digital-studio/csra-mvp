@@ -1,6 +1,14 @@
-import React, {Component} from 'react';
+import React, { Component, PropTypes } from 'react';
 import { connect } from 'react-redux';
-import { getOffenderNomisProfiles, getViperScores } from '../actions'
+import { push } from 'react-router-redux';
+
+import { 
+    getOffenderNomisProfiles, 
+    getViperScores,
+    selectOffender
+} from '../actions';
+
+import routes from '../constants/routes';
 
 class Dashboard extends Component {
 
@@ -10,20 +18,22 @@ class Dashboard extends Component {
     }
 
     renderProfiles() {
-        return this.props.profiles.map(({First_Name, Surname, NOMS_Number, Date_of_Birth}) => (
-            <tr key={NOMS_Number}>
-                <td>[Photo]</td>
-                <td>{First_Name} {Surname}</td>
-                <td>{Date_of_Birth}</td>
-                <td>{NOMS_Number}</td>
-                <td>[]</td>
-                <td>Start</td>
+        return this.props.profiles.map((profile) => (
+            <tr key={profile.NOMS_Number}>
+                <td>
+                    <span className="c-profile-holder"></span>
+                </td>
+                <td>{profile.First_Name} {profile.Surname}</td>
+                <td>{profile.Date_of_Birth}</td>
+                <td>{profile.NOMS_Number}</td>
+                <td className="numeric">
+                    <button onClick={() => this.props.onOffenderSelect(profile)} className="button button-start">Start</button>
+                </td>
             </tr>
         ));
     }
 
     render() {
-        console.log(this.props.profiles)
         return (
             <div>
                 <h1 className="heading-xlarge">Dashboard</h1>
@@ -35,8 +45,7 @@ class Dashboard extends Component {
                         <th scope="col">Name</th>
                         <th scope="col">DoB</th>
                         <th scope="col">NOMIS ID</th>
-                        <th scope="col">Assessment</th>
-                        <th scope="col"></th>
+                        <th className="numeric" scope="col">Assessment</th>
                     </tr>
                     </thead>
                     <tbody>
@@ -53,4 +62,24 @@ const mapStateToProps = (state, ownProps) => ({
     profiles: state.offender.profiles
 });
 
-export default connect(mapStateToProps, { getOffenderNomisProfiles, getViperScores }) (Dashboard);
+const mapActionsToProps = (dispatch, ownProps) => {
+    return {
+      getViperScores: () => dispatch(getViperScores()),
+      getOffenderNomisProfiles: () => dispatch(getOffenderNomisProfiles()),
+      onOffenderSelect: (offender, nextPath) => {
+          dispatch(selectOffender(offender));
+          dispatch(push(`${routes.ASSESSMENT}/introduction`));
+      } 
+    };
+}
+
+
+Dashboard.propTypes = {
+    profiles: PropTypes.array,
+    getViperScores: PropTypes.func,
+    getOffenderNomisProfiles: PropTypes.func,
+    onOffenderSelect: PropTypes.func
+};
+
+
+export default connect(mapStateToProps, mapActionsToProps)(Dashboard);
