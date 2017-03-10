@@ -3,7 +3,7 @@ import offenderReducer from '../../src/javascript/reducers/offender';
 describe('#offenderReducer', () => {
     const defaultState = {
         selectedOffender: {},
-        offendersProfiles: [],
+        profiles: [],
         viperScores: []
     };
 
@@ -29,7 +29,7 @@ describe('#offenderReducer', () => {
             }
         ];
         const action = { type: "GET_OFFENDER_NOMIS_PROFILES", payload: profiles };
-        const expectedState = { ...defaultState, offendersProfiles: profiles }
+        const expectedState = { ...defaultState, profiles: profiles }
 
         expect(offenderReducer(undefined, action)).to.eql(expectedState);
     });
