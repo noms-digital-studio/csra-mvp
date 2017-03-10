@@ -16,9 +16,9 @@ const OffenderProfile = ({ details: { First_Name, Date_of_Birth, NOMS_Number, Su
                 <div className="grid-row">
                     <div className="column-one-half">
                         <div className="c-offender-profile-image">
-                            <img src={require('../../images/profile-placeholder.png')} />
+                            <img src={require('../../images/profile-placeholder.gif')} />
                         </div>
-                        <div className="c-offender-profile-details u-pt-20">
+                        <div className="c-offender-profile-details">
                             <div>
                                 <span className="c-offender-profile-item">
                                     <span className="heading-small">Name:&nbsp;</span>
@@ -34,7 +34,7 @@ const OffenderProfile = ({ details: { First_Name, Date_of_Birth, NOMS_Number, Su
                         </div>
                     </div>
                     <div className="column-one-third">
-                        <div className="c-offender-profile-details u-pt-20">
+                        <div className="c-offender-profile-details">
                             <div><span className="heading-small">Offence:&nbsp;&nbsp;&nbsp;</span> Unavailable</div>
                             <div><span className="heading-small">Sentence:</span> Unavailable</div>
                         </div>

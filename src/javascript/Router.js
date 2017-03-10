@@ -24,7 +24,7 @@ export default (store) => {
 
     return (
          <Provider store={store}>
-            <Router history={history}>
+            <Router history={history} onUpdate={() => window.scrollTo(0, 0) }>
                 <Route component={Layout}>
                     <Route path="/" name="home" component={SignIn} />
                     <Route path="/dashboard" name="dashboard" component={Dashboard} />
