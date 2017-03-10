@@ -3,7 +3,7 @@ import { hashHistory, Link } from 'react-router';
 import uuid from 'uuid/v4';
 
 import Aside from '../components/asides/Index';
-import SelecteableInputGroup from '../components/SelecteableInputGroup';
+import SelectableInputGroup from '../components/SelectableInputGroup';
 
 
 const QuestionWithAside = ({ title, description, aside, onSubmit }) => {
@@ -16,7 +16,7 @@ const QuestionWithAside = ({ title, description, aside, onSubmit }) => {
 
                     <div className="form-group">
                         <fieldset>
-                            <SelecteableInputGroup
+                            <SelectableInputGroup
                                 type="radio"
                                 fields={[
                                     { value: "yes", text: "Yes", name: "answer" },

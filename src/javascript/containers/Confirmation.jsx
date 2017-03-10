@@ -1,7 +1,7 @@
 import React, { PropTypes } from 'react';
 import { Link } from 'react-router';
 
-import SelecteableInput from '../components/SelecteableInput';
+import SelectableInput from '../components/SelectableInput';
 
 const Confirmation = ({ title, description, onSubmit }) => {
     return (
@@ -18,7 +18,7 @@ const Confirmation = ({ title, description, onSubmit }) => {
                 <div className="column-two-thirds">
                     <form className="c-confirmation-form" onSubmit={onSubmit}>
                         <p className="c-form-label-container u-clear-fix bold">
-                            <SelecteableInput
+                            <SelectableInput
                                 type="checkbox"
                                 id="confirmation"
                                 value="accept"
