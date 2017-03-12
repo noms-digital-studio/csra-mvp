@@ -2,6 +2,7 @@ import React, { Component, PropTypes } from 'react';
 import { connect } from 'react-redux';
 import { push } from 'react-router-redux';
 import moment from 'moment';
+import { Link } from 'react-router';
 
 import {
     getOffenderNomisProfiles,
@@ -20,7 +21,7 @@ class Dashboard extends Component {
 
     renderProfiles() {
         return this.props.profiles.map((profile) => (
-            <tr key={profile.NOMS_Number}>
+            <tr data-profile-row key={profile.NOMS_Number}>
                 <td>
                     <span className="c-profile-holder"></span>
                 </td>
@@ -41,20 +42,20 @@ class Dashboard extends Component {
     render() {
         return (
             <div>
-                <header className="">
+                <header>
                     <div className="grid-row">
                         <div className="column-one-half">
                             <span className="heading-large u-d-block">Prisoners arriving on</span>
                         </div>
                         <div className="column-one-half u-text-align-right">
-                            <span className="heading-large u-d-block">{moment().format('dddd MMMM DD YYYY')}</span>
+                            <span className="heading-large u-d-block">{this.props.date}</span>
                         </div>
                     </div>
                 </header>
                 <div className="c-dashboard-header">
                     <div className="grid-row">
                         <div className="column-one-half">
-                            <button className="button">Add an offender</button>
+                            <Link to={routes.ADD_OFFENDER} className="button">Add an offender</Link>
                         </div>
                         <div className="column-one-half u-text-align-right">
                             <span className="heading-medium">Total offenders: {this.props.profiles.length}</span>
@@ -91,7 +92,7 @@ const mapActionsToProps = (dispatch, ownProps) => {
     return {
         getViperScores: () => dispatch(getViperScores()),
         getOffenderNomisProfiles: () => dispatch(getOffenderNomisProfiles()),
-        onOffenderSelect: (offender, nextPath) => {
+        onOffenderSelect: (offender) => {
             dispatch(selectOffender(offender));
             dispatch(push(`${routes.PRISONER_PROFILE}`));
         }
@@ -103,8 +104,15 @@ Dashboard.propTypes = {
     profiles: PropTypes.array,
     getViperScores: PropTypes.func,
     getOffenderNomisProfiles: PropTypes.func,
-    onOffenderSelect: PropTypes.func
+    onOffenderSelect: PropTypes.func,
+    date: PropTypes.string
 };
 
+Dashboard.defaultProps = {
+    profiles: [],
+    date: moment().format('dddd MMMM DD YYYY')
+};
+
+export { Dashboard };
 
 export default connect(mapStateToProps, mapActionsToProps)(Dashboard);

@@ -13,10 +13,12 @@ import Layout from './containers/Main';
 import LoadData from './pages/LoadData';
 import SignIn from './pages/SignIn';
 import Dashboard from './pages/Dashboard';
+import AddOffender from './pages/AddOffender';
 import OffenderProfile from './pages/OffenderProfile';
 import Question from './pages/Question';
 import Summary from './pages/Summary';
 import Error404 from './pages/Error404';
+
 
 
 export default (store) => {
@@ -28,6 +30,7 @@ export default (store) => {
                 <Route component={Layout}>
                     <Route path="/" name="home" component={SignIn} />
                     <Route path="/dashboard" name="dashboard" component={Dashboard} />
+                    <Route path="/add-offender" name="add-offender" component={AddOffender} />
                     <Route path="/offender-profile" name="offender-profile" component={OffenderProfile} />
                     <Route path="/load-data" name="load-data" component={LoadData} />
                     <Route path="/sign-in" name="sign-in" component={SignIn} />
