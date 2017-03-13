@@ -5,5 +5,6 @@ export default {
     SUMMARY: '/summary',
     DASHBOARD: '/dashboard',
     PRISONER_PROFILE: '/offender-profile',
-    ADD_OFFENDER: '/add-offender'
+    ADD_OFFENDER: '/add-offender',
+    CONFIRM_OFFENDER: '/confirm-offender'
 };
