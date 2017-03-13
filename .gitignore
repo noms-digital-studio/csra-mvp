@@ -4,4 +4,5 @@ node_modules
 .env
 dist
 npm-debug.log
+.eslintcache
 .idea/

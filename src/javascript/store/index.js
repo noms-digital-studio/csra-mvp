@@ -5,15 +5,14 @@ import { composeWithDevTools } from 'redux-devtools-extension';
 import persistState from 'redux-sessionstorage';
 
 
-
 import questionnaireReducer from '../reducers/questionnaire';
 import offenderReducer from '../reducers/offender';
 
 const enhancer = composeWithDevTools(
   applyMiddleware(
-    routerMiddleware(hashHistory)
+    routerMiddleware(hashHistory),
   ),
-  persistState()
+  persistState(),
 );
 
 const reducers = combineReducers({

@@ -1,6 +1,5 @@
-import "es5-shim";
-import "babel-polyfill";
-import React from 'react';
+import 'es5-shim';
+import 'babel-polyfill';
 import { render } from 'react-dom';
 
 import store from './store';
@@ -13,5 +12,5 @@ import SassStyles from '../scss/application.scss';
 
 render(
   routes(store),
-  document.getElementById('mountNode')
+  document.getElementById('mountNode'),
 );

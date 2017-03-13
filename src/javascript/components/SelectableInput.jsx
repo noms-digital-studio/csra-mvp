@@ -4,64 +4,64 @@ import classnames from 'classnames';
 const noop = () => {};
 
 class SelectableInput extends Component {
-    constructor(props) {
-        super();
-        this.state = {
-            selected: !!props.selected,
-            focused: false
-        };
-    }
+  constructor(props) {
+    super();
+    this.state = {
+      selected: !!props.selected,
+      focused: false,
+    };
+  }
 
-    handleChange() {
-        this.setState({ selected: !this.state.selected, focused: true });
-    }
+  handleChange() {
+    this.setState({ selected: !this.state.selected, focused: true });
+  }
 
-    handleBlur() {
-        this.setState({ focused: false });        
-    }
+  handleBlur() {
+    this.setState({ focused: false });
+  }
 
-    render() {
-        const { text, id, value, name, type, selected, focused, onChange, onBlur } = this.props;
-        const isFocused = !!focused || this.state.focused;
-        const isSelected = !!selected || this.state.selected;
-        const onChangeFnc = onChange || this.handleChange.bind(this);
-        const onBlurFnc = onBlur || this.handleBlur.bind(this); 
+  render() {
+    const { text, id, value, name, type, selected, focused, onChange, onBlur } = this.props;
+    const isFocused = !!focused || this.state.focused;
+    const isSelected = !!selected || this.state.selected;
+    const onChangeFnc = onChange || (e => this.handleChange(e));
+    const onBlurFnc = onBlur || (e => this.handleBlur(e));
 
-        const cssClasses = classnames({
-            "block-label": true, 
-            "selection-button-radio": type === 'radio',
-            "selection-button-checkbox": type === 'checkbox',
-            "selected": isSelected,
-            "focused": isFocused,
-        });
-        
-        return (
-            <label 
-                className={cssClasses}
-                htmlFor={id}
-            >
-                <input 
-                    id={id} 
-                    type={type} 
-                    name={name} 
-                    defaultValue={value} 
-                    checked={isSelected}
-                    onChange={onChangeFnc}
-                    onBlur={onBlurFnc}
-                />
-                {text}
-            </label>
-        )
-    }
+    const cssClasses = classnames({
+      'block-label': true,
+      'selection-button-radio': type === 'radio',
+      'selection-button-checkbox': type === 'checkbox',
+      selected: isSelected,
+      focused: isFocused,
+    });
+
+    return (
+      <label
+        className={cssClasses}
+        htmlFor={id}
+      >
+        <input
+          id={id}
+          type={type}
+          name={name}
+          defaultValue={value}
+          checked={isSelected}
+          onChange={onChangeFnc}
+          onBlur={onBlurFnc}
+        />
+        {text}
+      </label>
+    );
+  }
 }
 
 
 SelectableInput.propType = {
-    onChange: PropTypes.func,
-    id: PropTypes.string,
-    name: PropTypes.string,
-    text: PropTypes.string,
-    selected: PropTypes.bool
+  onChange: PropTypes.func,
+  id: PropTypes.string,
+  name: PropTypes.string,
+  text: PropTypes.string,
+  selected: PropTypes.bool,
 };
 
 export default SelectableInput;

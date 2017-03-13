@@ -1,11 +1,9 @@
-import React, { Component } from 'react';
+import React from 'react';
 
-const Error404 = () => {
-    return (
-        <div>
-            <h1 className="heading-xlarge">Error: Page Not Found</h1>
-        </div>
-    )
-}
+const Error404 = () => (
+  <div>
+    <h1 className="heading-xlarge">Error: Page Not Found</h1>
+  </div>
+);
 
 export default Error404;
