@@ -21,6 +21,9 @@
     "react-router",
     "webpack-2"
   ],
+  "pre-commit": {
+    "run": ["test"]
+  },
   "dependencies": {
     "babel-polyfill": "6.22.0",
     "babel-runtime": "^6.23.0",
@@ -78,6 +81,7 @@
     "postcss-import": "^9.1.0",
     "postcss-loader": "^1.3.3",
     "postcss-url": "^5.1.2",
+    "pre-commit": "^1.2.2",
     "precss": "^1.4.0",
     "react": "15.4.2",
     "react-addons-test-utils": "^15.4.2",
