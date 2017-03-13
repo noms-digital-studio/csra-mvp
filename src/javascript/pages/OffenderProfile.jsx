@@ -17,7 +17,7 @@ const OffenderProfile = ({ details: { First_Name, Date_of_Birth, NOMS_Number, Su
           <div className="c-offender-profile-image">
             <img src={require('../../images/profile-placeholder.gif')} />
           </div>
-          <div className="c-offender-profile-details">
+          <div data-offender-profile-details className="c-offender-profile-details">
             <div>
               <p className="c-offender-profile-item">
                 <span className="heading-small">Name:&nbsp;</span>
@@ -28,6 +28,12 @@ const OffenderProfile = ({ details: { First_Name, Date_of_Birth, NOMS_Number, Su
               <p className="c-offender-profile-item">
                 <span className="heading-small">DOB:&nbsp;&nbsp;&nbsp;&nbsp;</span>
                 {Date_of_Birth}
+              </p>
+            </div>
+            <div>
+              <p className="c-offender-profile-item">
+                <span className="heading-small">NOMIS ID:&nbsp;</span>
+                {NOMS_Number}
               </p>
             </div>
           </div>
@@ -48,7 +54,7 @@ const OffenderProfile = ({ details: { First_Name, Date_of_Birth, NOMS_Number, Su
         to={routes.SUMMARY}
         className="button button-start u-margin-bottom-default"
       >
-          Continue to assessment
+          Continue to Assessment
         </Link>
     </p>
 
@@ -70,5 +76,7 @@ OffenderProfile.propTypes = {
     Surname: PropTypes.string,
   }),
 };
+
+export { OffenderProfile };
 
 export default connect(mapStateToProps)(OffenderProfile);

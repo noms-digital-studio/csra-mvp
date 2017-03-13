@@ -25,7 +25,7 @@ const profiles = [
 ];
 
 describe('<Dashboard />', () => {
-  context('Default Dashboard', () => {
+  context('Standalone Dashboard', () => {
     it('accepts and correctly renders profiles', () => {
       const wrapper = shallow(<Dashboard profiles={profiles} />);
       expect(wrapper.find('[data-profile-row]').length).to.equal(2);
