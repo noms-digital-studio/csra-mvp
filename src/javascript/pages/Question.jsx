@@ -80,7 +80,14 @@ class Question extends Component {
             <div className="o-question">
                 <div className="grid-row">
                     <div className="column-half">
-                        <h2 className="c-section-title">Section {sectionIndex + 1} of {totalSections}</h2>
+                        {/*<h2 className="c-section-title">Section {sectionIndex + 1} of {totalSections}</h2>*/}
+                        <h2 className="c-section-title">
+                            <span>Section &nbsp;</span>
+                            <span className="circle circle-step">{sectionIndex + 1}</span>
+                            <span>&nbsp; of &nbsp;</span>
+                            <span className="circle circle-step">{totalSections}</span>                            
+                        </h2>
+                        
                     </div>
                     <div className="column-half">
                         <h2 className="bold-medium u-text-align-right" id="subsection-title">{firstName} {surname}</h2>

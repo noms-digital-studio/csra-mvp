@@ -7,7 +7,7 @@ const Confirmation = ({ title, description, onSubmit }) => {
     return (
         <div>
             <div className="grid-row">
-                <div className="column-full">
+                <div className="column-two-thirds">
                     <h3 className="heading-medium">{title}</h3>
                     <div role="note" aria-label="Information" className="panel panel-border-wide">
                         <p>{description}</p>                       

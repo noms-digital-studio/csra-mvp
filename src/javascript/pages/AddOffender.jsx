@@ -1,19 +1,26 @@
 import React, { PropTypes } from 'react';
 import { connect } from 'react-redux';
 import moment from 'moment';
+import { Link } from 'react-router';
+import routes from '../constants/routes';
 
 const AddOffender = ({ date }) => {
     return (
         <div className="form-section">
+            <p><Link className="link-back" to={routes.DASHBOARD}>Back to dashboard</Link></p>
             <header>
-                <div className="grid-row">
+                <h1 className="heading-xlarge">
+                    <span className="heading-secondary">Add Offender</span>
+                    {date}
+                </h1>
+                {/*<div className="grid-row">
                     <div className="column-one-half">
                         <h1 className="heading-large">Add Offender</h1>
                     </div>
                     <div className="column-one-half u-text-align-right">
                         <span className="heading-large u-d-block">{date}</span>
                     </div>
-                </div>
+                </div>*/}
             </header>
             <form>
                 <div className="form-group">

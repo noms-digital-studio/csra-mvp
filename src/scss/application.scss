@@ -33,16 +33,30 @@ $path: "../../node_modules/govuk_frontend_toolkit/images/";
 
 
 
-
-
 /**************************
 * Components
 ***************************/
 
+.c-section-title {
+    span {
+        vertical-align: top;
+    }
+}
+
 .c-dashboard-header {
-    margin-bottom: 3em;
-    // border-bottom: solid 1px $grey-2;
+    // margin-top: 1em;
+    border-bottom: solid 1px $grey-2;
+    padding-top: $gutter;
     padding-bottom: $gutter;
+    
+}
+
+.c-offender-count {
+    display: block;
+    font-size: 24px;
+    line-height: 1.25;
+    font-weight: bold;
+    padding-top: 8px;
 }
 
 .c-profile-holder {
@@ -52,6 +66,10 @@ $path: "../../node_modules/govuk_frontend_toolkit/images/";
     background-image: url("../images/profile-placeholder.gif");
     background-size: contain;
     background-repeat: no-repeat;
+}
+
+.c-date-title {
+    margin-bottom: 3em;
 }
 
 .c-risk-threat {
@@ -101,7 +119,7 @@ $path: "../../node_modules/govuk_frontend_toolkit/images/";
 
 .c-status-indicator {
     padding: 0.3em 0.8em;
-    border: solid 1px $grey-1; 
+    border: solid 1px $grey-2; 
     display: inline-block;
     background-color: $grey-3;
 }

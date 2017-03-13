@@ -42,27 +42,31 @@ class Dashboard extends Component {
     render() {
         return (
             <div>
-                <header>
-                    <div className="grid-row">
-                        <div className="column-one-half">
-                            <span className="heading-large u-d-block">Prisoners arriving on</span>
-                        </div>
-                        <div className="column-one-half u-text-align-right">
-                            <span className="heading-large u-d-block">{this.props.date}</span>
-                        </div>
-                    </div>
-                </header>
                 <div className="c-dashboard-header">
                     <div className="grid-row">
                         <div className="column-one-half">
                             <Link to={routes.ADD_OFFENDER} className="button">Add an offender</Link>
                         </div>
                         <div className="column-one-half u-text-align-right">
-                            <span className="heading-medium">Total offenders: {this.props.profiles.length}</span>
+                            <span className="c-offender-count ">Total offenders: {this.props.profiles.length}</span>
                         </div>
                     </div>
                 </div>
-
+                <div className="c-date-title">
+                    <h1 className="heading-large">
+                        <span className="heading-secondary">Prisoners arriving on</span>
+                        {this.props.date}
+                    </h1>
+                    {/*<div className="grid-row">
+                        <div className="column-one-half">
+                            <span className="heading-large u-d-block">Prisoners arriving on</span>
+                        </div>
+                        <div className="column-one-half u-text-align-right">
+                            <span className="heading-large u-d-block">{this.props.date}</span>
+                        </div>
+                    </div>*/}
+                </div>
+                
                 <table>
                     <thead>
                         <tr>
