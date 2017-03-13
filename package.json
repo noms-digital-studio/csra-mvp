@@ -9,6 +9,7 @@
   "scripts": {
     "build": "rm -rf dist && ./node_modules/.bin/webpack --env=prod --progress --profile --colors --config webpack.config.production.js",
     "dev": "./node_modules/.bin/webpack-dev-server --progress --profile",
+    "lint": "./node_modules/.bin/eslint src/javascript/*.js src/javascript/**/*.js src/javascript/*.jsx src/javascript/**/*.jsx tests/**/*.js tests/*.js ",
     "test": "./node_modules/karma/bin/karma start --single-run --browsers PhantomJS",
     "test:watch": "./node_modules/karma/bin/karma start",
     "start": "npm run dev"
@@ -54,6 +55,11 @@
     "chai": "^3.5.0",
     "css-loader": "^0.26.2",
     "enzyme": "^2.7.1",
+    "eslint": "^3.17.1",
+    "eslint-config-airbnb": "^14.1.0",
+    "eslint-plugin-import": "^2.2.0",
+    "eslint-plugin-jsx-a11y": "^4.0.0",
+    "eslint-plugin-react": "^6.10.0",
     "extract-text-webpack-plugin": "^2.0.0",
     "html-webpack-plugin": "^2.28.0",
     "karma": "^1.5.0",
