@@ -8,7 +8,8 @@ module.exports = function (config) {
         ],
         exclude: [],
         preprocessors: {
-            "tests/**/*.spec.js": ["webpack"]
+            "tests/*.spec.js": ["webpack", "sourcemap"],            
+            "tests/**/*.spec.js": ["webpack", "sourcemap"]
         },
         // webpack configuration
         webpack: require("./webpack.config.js"),

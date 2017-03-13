@@ -4,7 +4,7 @@
   "description": "Frontend prototype for CSRA",
   "main": "index.js",
   "engines": {
-    "node": ">=6.x"
+    "node": "^6.x"
   },
   "scripts": {
     "build": "rm -rf dist && ./node_modules/.bin/webpack --env=prod --progress --profile --colors --config webpack.config.production.js",
