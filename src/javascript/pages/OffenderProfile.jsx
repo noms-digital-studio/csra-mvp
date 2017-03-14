@@ -45,10 +45,10 @@ const OffenderProfile = ({ details: { First_Name, Date_of_Birth, NOMS_Number, Su
 
     <p>
       <Link
-        to={`${routes.ASSESSMENT}/introduction`}
+        to={routes.SUMMARY}
         className="button button-start u-margin-bottom-default"
       >
-          Start Assessment
+          Continue to assessment
         </Link>
     </p>
 

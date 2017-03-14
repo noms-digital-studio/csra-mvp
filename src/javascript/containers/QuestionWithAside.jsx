@@ -2,6 +2,8 @@ import React, { PropTypes } from 'react';
 import { Link } from 'react-router';
 import uuid from 'uuid/v4';
 
+import routes from '../constants/routes';
+
 import Aside from '../components/asides/Index';
 import SelectableInputGroup from '../components/SelectableInputGroup';
 
@@ -28,7 +30,7 @@ const QuestionWithAside = ({ title, description, aside, onSubmit }) => (
           <input type="submit" className="button" value="Save and continue" />
         </p>
         <p>
-          <Link to="/">Save and return</Link>
+          <Link to={routes.SUMMARY}>Save and return</Link>
         </p>
       </form>
     </div>
@@ -41,7 +43,7 @@ const QuestionWithAside = ({ title, description, aside, onSubmit }) => (
 QuestionWithAside.propTypes = {
   title: PropTypes.string.isRequired,
   description: PropTypes.string.isRequired,
-  aside: PropTypes.object.isRequired.isRequired,
+  aside: PropTypes.object.isRequired,
   onSubmit: PropTypes.func.isRequired,
 };
 

@@ -122,6 +122,9 @@ $path: "../../node_modules/govuk_frontend_toolkit/images/";
     border: solid 1px $grey-2;
     display: inline-block;
     background-color: $grey-3;
+    text-transform: uppercase;
+    font-size: 1rem;
+    font-weight: bold;
 }
 
 
@@ -158,6 +161,10 @@ $path: "../../node_modules/govuk_frontend_toolkit/images/";
     text-transform: capitalize;
 }
 
+.c-row-title {
+  font-size: 24px;
+}
+
 /*******************
 * Utilities
 *******************/
@@ -188,6 +195,15 @@ $path: "../../node_modules/govuk_frontend_toolkit/images/";
     margin-top: 0;
 }
 
+.u-no-margin {
+  margin: 0;
+}
+
 .u-d-block {
     display: block;
+}
+
+.u-no-link {
+  text-decoration: none;
+  color: $text-colour !important;
 }

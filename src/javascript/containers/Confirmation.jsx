@@ -1,6 +1,8 @@
 import React, { PropTypes } from 'react';
 import { Link } from 'react-router';
 
+import routes from '../constants/routes';
+
 import SelectableInput from '../components/SelectableInput';
 
 const Confirmation = ({ title, description, onSubmit }) => (
@@ -30,7 +32,7 @@ const Confirmation = ({ title, description, onSubmit }) => (
             <input className="button" type="submit" value="Save and continue" />
           </p>
           <p>
-            <Link to="/">Save and return</Link>
+            <Link to={routes.SUMMARY}>Save and return</Link>
           </p>
         </form>
       </div>
