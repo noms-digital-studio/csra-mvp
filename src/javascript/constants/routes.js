@@ -7,4 +7,5 @@ export default {
   PRISONER_PROFILE: '/offender-profile',
   ADD_OFFENDER: '/add-offender',
   CONFIRM_OFFENDER: '/confirm-offender',
+  ASSESSMENT_COMPLETE: 'assessment-complete',
 };

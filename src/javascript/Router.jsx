@@ -13,7 +13,8 @@ import AddOffenderHoc from './pages/AddOffender';
 import ConfirmOffender from './pages/ConfirmOffender';
 import OffenderProfile from './pages/OffenderProfile';
 import Question from './pages/Question';
-import Summary from './pages/Summary';
+import SummaryHoc from './pages/Summary';
+import AssessmentComplete from './pages/AssessmentComplete';
 import Error404 from './pages/Error404';
 
 export default (store) => {
@@ -31,7 +32,8 @@ export default (store) => {
           <Route path="/load-data" name="load-data" component={LoadData} />
           <Route path="/sign-in" name="sign-in" component={SignIn} />
           <Route path="/assessment/:section" component={Question} />
-          <Route path="/summary" component={Summary} />
+          <Route path="/summary" component={SummaryHoc} />
+          <Route path="/assessment-complete" component={AssessmentComplete} />
           <Route path="*" name="404" component={Error404} />
         </Route>
       </Router>
