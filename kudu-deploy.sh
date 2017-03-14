@@ -131,7 +131,7 @@ selectNodeVersion
 installYarn
 
 echo "Installing npm packages via yarn"
-yarn.cmd install --frozen-lockfile
+NODE_ENV= yarn.cmd install --frozen-lockfile
 exitWithMessageOnError "yarn install failed"
 
 echo "Building static assets via 'yarn run build'"
