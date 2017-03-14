@@ -26,9 +26,9 @@
         }
     },
     {
-        "riskIndicator": "gang-affiliation",        
+        "riskIndicator": "gang-affiliation",
         "title": "Gang Affiliation",
-        "template": "default_with_aside",        
+        "template": "default_with_aside",
         "description": "Do you know anyone in a gang at this prison?",
         "aside": {
             "template": "static",
@@ -37,9 +37,9 @@
         }
     },
     {
-        "riskIndicator": "vulnerability",           
+        "riskIndicator": "vulnerability",
         "title": "Vulnerability",
-        "template": "default_with_aside",                
+        "template": "default_with_aside",
         "description": "Have you been hurt or threatened in prison before?",
         "aside": {
             "template": "static",
@@ -48,10 +48,10 @@
         }
     },
     {
-        "riskIndicator": "vulnerability-2",        
+        "riskIndicator": "vulnerability-2",
         "title": "Vulnerability",
         "description": "Do you owe any money or have any other reason why someone here might harm you?",
-        "template": "default_with_aside",                        
+        "template": "default_with_aside",
         "aside": {
             "title": "Supporting information",
             "template": "static",
@@ -59,23 +59,56 @@
         }
     },
     {
-        "riskIndicator": "drug-misuse",        
+        "riskIndicator": "drug-misuse",
         "title": "Drug misuse",
         "description": "Have you been using any drugs in the last 2 months",
-        "template": "default_with_aside",                        
+        "template": "default_with_aside",
         "aside": {
-            "title": "Suggestions",
+            "title": "Guidance",
             "template": "static",
             "description": "incidunt modi quos, rerum cumque velit minima beatae sit perferendis officia accusamus laudantium libero commodi. Ad pariatur facilis consequatur optio."
         }
     },
     {
-        "riskIndicator": "prejudice",        
+        "riskIndicator": "prejudice",
         "title": "Prejudice / hostile views",
         "description": "Lorem ipsun erum cumque velit minima beatae sit perferendis officia accusamus laudantium libero commodi. Ad pariatur facilis consequatur",
-        "template": "default_with_aside",                        
+        "template": "default_with_aside",
         "aside": {
-            "title": "Suggestions",
+            "title": "Guidance",
+            "template": "static",
+            "description": "incidunt modi quos, rerum cumque velit minima beatae sit perferendis officia accusamus laudantium libero commodi. Ad pariatur facilis consequatur optio."
+        }
+    },
+    {
+        "riskIndicator": "officer-comments",
+        "title": "Officer comments",
+        "description": "Lorem ipsun erum cumque velit minima beatae sit perferendis officia accusamus laudantium libero commodi. Ad pariatur facilis consequatur",
+        "template": "default_with_comments",
+        "aside": {
+            "title": "Guidence",
+            "template": "static",
+            "description": "incidunt modi quos, rerum cumque velit minima beatae sit perferendis officia accusamus laudantium libero commodi. Ad pariatur facilis consequatur optio."
+        }
+    },
+    {
+        "riskIndicator": "health-care-assessment",
+        "title": "Healthcare assessment",
+        "description": "Lorem ipsun erum cumque velit minima beatae sit perferendis officia accusamus laudantium libero commodi. Ad pariatur facilis consequatur",
+        "template": "healthcare_assessment",
+        "aside": {
+            "title": "Example of the healthcare form",
+            "template": "static",
+            "description": "Some image"
+        }
+    },
+    {
+        "riskIndicator": "mental-health",
+        "title": "Mental health assessment",
+        "description": "Lorem ipsun erum cumque velit minima beatae sit perferendis officia accusamus laudantium libero commodi. Ad pariatur facilis consequatur",
+        "template": "default_with_aside",
+        "aside": {
+            "title": "Guidance",
             "template": "static",
             "description": "incidunt modi quos, rerum cumque velit minima beatae sit perferendis officia accusamus laudantium libero commodi. Ad pariatur facilis consequatur optio."
         }

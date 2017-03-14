@@ -8,8 +8,10 @@ import Routes from '../constants/routes';
 import { getQuestions, storeAnswer } from '../actions';
 
 import QuestionWithAsideTemplate from '../containers/QuestionWithAside';
+import QuestionWithComments from '../containers/QuestionWithComments';
 import ConfirmationTemplate from '../containers/Confirmation';
 import ConfirmationWithAsideTemplate from '../containers/ConfirmationWithAside';
+import HealthcareAssessment from '../containers/HealthAssessment';
 
 
 function templateSelector(data) {
@@ -20,6 +22,10 @@ function templateSelector(data) {
       return <ConfirmationWithAsideTemplate {...data} />;
     case 'default_with_aside':
       return <QuestionWithAsideTemplate {...data} />;
+    case 'default_with_comments':
+      return <QuestionWithComments {...data} />;
+    case 'healthcare_assessment':
+      return <HealthcareAssessment {...data} />;
     default:
       return null;
   }
