@@ -2,17 +2,15 @@
   "name": "csra_frontend",
   "version": "0.0.1",
   "description": "Frontend prototype for CSRA",
-  "main": "index.js",
   "engines": {
-    "node": "^6.x"
+    "node": "^6.10.0"
   },
   "scripts": {
-    "build": "rm -rf dist && ./node_modules/.bin/webpack --env=prod --progress --profile --colors --config webpack.config.production.js",
-    "dev": "./node_modules/.bin/webpack-dev-server --progress --profile",
-    "lint": "./node_modules/.bin/eslint src/javascript/*.js src/javascript/**/*.js src/javascript/*.jsx src/javascript/**/*.jsx tests/**/*.js tests/*.js --cache",
-    "test": "./node_modules/karma/bin/karma start --single-run --browsers PhantomJS",
-    "test:watch": "./node_modules/karma/bin/karma start",
-    "start": "npm run dev"
+    "build": "webpack --progress",
+    "lint": "eslint . --cache --max-warnings 0",
+    "test": "karma start --single-run --browsers PhantomJS",
+    "test:watch": "karma start",
+    "start": "node server.js"
   },
   "keywords": [
     "react",
@@ -31,12 +29,13 @@
     "babel-runtime": "^6.23.0",
     "classnames": "^2.2.5",
     "es5-shim": "^4.5.9",
-    "express": "4.14.0",
+    "express": "^4.15.2",
     "form-serialize": "^0.7.1",
     "govuk-elements-sass": "2.2.1",
     "govuk_frontend_toolkit": "5.0.2",
     "history": "4.5.1",
     "moment": "^2.17.1",
+    "morgan": "^1.8.1",
     "ramda": "^0.23.0",
     "react": "15.4.2",
     "react-dom": "15.4.2",
@@ -46,7 +45,9 @@
     "redux": "3.6.0",
     "redux-devtools-extension": "^2.13.0",
     "redux-sessionstorage": "^0.4.0",
-    "uuid": "3.0.1"
+    "uuid": "3.0.1",
+    "webpack-cleanup-plugin": "^0.5.1",
+    "webpack-dev-middleware": "^1.10.1"
   },
   "devDependencies": {
     "autoprefixer": "^6.7.6",
@@ -93,8 +94,7 @@
     "sinon-chai": "^2.8.0",
     "style-loader": "^0.13.2",
     "url-loader": "^0.5.8",
-    "webpack": "^2.2.1",
-    "webpack-dev-server": "2.4.1"
+    "webpack": "^2.2.1"
   },
   "author": "Steven Bapaga",
   "license": "ISC"
