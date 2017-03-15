@@ -2,14 +2,14 @@ import defaultViperScores from '../fixtures/viper.json';
 import defaultOffenderProfiles from '../fixtures/nomis.json';
 
 export const calculateRiskFor = (nomisId, riskScores = []) => {
-  const LOW_RISK_LEVEL = 0.50;
+  const LOW_RISK_THRESHOLD = 0.59;
   const offenderRiskScore = riskScores.find((offender) => offender.nomisId === nomisId);
 
   if (!offenderRiskScore)  return 'unknown';
 
   const {viperScore} = offenderRiskScore;
 
-  if (viperScore <= LOW_RISK_LEVEL) {
+  if (viperScore <= LOW_RISK_THRESHOLD) {
     return 'low';
   }
 
