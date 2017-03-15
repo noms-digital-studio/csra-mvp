@@ -5,7 +5,7 @@ import { SIGN_IN } from '../constants/routes.js';
 
 import { storeData, readSingleFile } from '../services';
 
-class LoadData extends Component {
+class Admin extends Component {
   constructor() {
     super();
     this.state = {
@@ -26,11 +26,11 @@ class LoadData extends Component {
   render() {
     return (
       <div>
-        <h1 className="heading-xlarge">Load data</h1>
-        <h3 className="heading-medium">Offender NOMIS File</h3>
+        <h1 className="heading-xlarge">Admin</h1>
+        <h3 className="heading-medium">Load NOMIS file</h3>
         <input name="offenderProfiles" onChange={e => this.handleChange(e)} type="file" />
 
-        <h3 className="heading-medium">Viper Scores File</h3>
+        <h3 className="heading-medium">Load Viper scores file</h3>
         <input name="viperScores" onChange={e => this.handleChange(e)} type="file" />
 
         {this.state.error && <div>Whoops something went wrong</div>}

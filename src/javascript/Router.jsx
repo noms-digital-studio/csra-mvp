@@ -6,8 +6,8 @@ import { syncHistoryWithStore } from 'react-router-redux';
 
 import Layout from './containers/Main';
 
-import LoadData from './pages/LoadData';
-import SignInHoc from './pages/SignIn';
+import Admin from './pages/Admin';
+import SignIn from './pages/SignIn';
 import DashboardHoC from './pages/Dashboard';
 import AddOffenderHoc from './pages/AddOffender';
 import ConfirmOffender from './pages/ConfirmOffender';
@@ -29,7 +29,7 @@ export default (store) => {
           <Route path="/add-offender" name="add-offender" component={AddOffenderHoc} />
           <Route path="/confirm-offender" name="confirm-offender" component={ConfirmOffender} />
           <Route path="/offender-profile" name="offender-profile" component={OffenderProfileHoc} />
-          <Route path="/load-data" name="load-data" component={LoadData} />
+          <Route path="/admin" name="admin" component={Admin} />
           <Route path="/sign-in" name="sign-in" component={SignInHoc} />
           <Route path="/assessment/:section" component={Question} />
           <Route path="/summary" component={SummaryHoc} />
