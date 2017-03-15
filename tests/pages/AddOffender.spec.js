@@ -14,7 +14,7 @@ const profiles = {
 };
 
 describe('<AddOffender />', () => {
-  context('Default AddOffender', () => {
+  context('Standalone AddOffender', () => {
     it('accepts a date', () => {
       const date = 'Fooday FooDay FooMonth FooYear';
       const wrapper = shallow(<AddOffender date={date} />);
