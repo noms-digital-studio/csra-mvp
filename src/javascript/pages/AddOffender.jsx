@@ -5,13 +5,10 @@ import serialize from 'form-serialize';
 
 import moment from 'moment';
 import { Link } from 'react-router';
+
+import { allFormFieldsComplete } from '../utils';
+
 import routes from '../constants/routes';
-
-const allFormFieldsComplete = (formData = {}, expectedKeys = []) => {
-  if (Object.keys(formData).length === 0) return false;
-
-  return expectedKeys.reduce((acc, key) => !!formData[key], false);
-};
 
 class AddOffender extends Component {
   handleSubmit(event) {
