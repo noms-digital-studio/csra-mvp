@@ -1,4 +1,4 @@
-import {calculateRiskFor, viperScores, offenderNomisProfiles} from '../../src/javascript/services';
+import {calculateRiskFor, viperScores, offenderNomisProfiles, clearBrowserStorage} from '../../src/javascript/services';
 import localViperScores from '../../src/javascript/fixtures/viper.json';
 import localOffenderProfiles from '../../src/javascript/fixtures/nomis.json';
 import testViperScores from '../fixtures/viperScore.json';
@@ -69,4 +69,20 @@ describe('Services', () => {
     });
 
   });
+
+  describe('#clearBrowserStorage', () => {
+
+      it('clears browser session and local storage', () => {
+
+          sessionStorage.setItem('foo', 'bar');
+          localStorage.setItem('sna', 'fu');
+
+          clearBrowserStorage();
+
+          expect(sessionStorage.length).to.eql(0);
+          expect(localStorage.length).to.eql(0);
+
+        })
+      });
+
 });

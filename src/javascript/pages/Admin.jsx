@@ -1,52 +1,74 @@
 import React, {Component} from 'react';
 import {Link} from 'react-router';
 
-import routes from '../constants/routes';
+import {storeData, readSingleFile, clearBrowserStorage} from '../services';
 
-import {storeData, readSingleFile} from '../services';
+import routes from '../constants/routes';
 
 class Admin extends Component {
   constructor() {
     super();
     this.state = {
       error: false,
+      errorMessage: '',
       success: false,
+      successMessage: ''
     };
   }
 
-  handleChange({target: {files, name}}) {
+  loadFile({target: {files, name}}) {
     readSingleFile(files[0], (error, data) => {
       if (error) return this.setState({error: true, success: false});
 
+      try {
+        JSON.parse(data);
+      } catch (err) {
+        return this.setState({error: true, success: false, errorMessage: err.message });
+      }
+
       storeData(name, data);
-      this.setState({error: false, success: true});
+      this.setState({error: false, success: true, successMessage: 'File successfully loaded'});
     });
   }
 
-  clearBrowserData() {
-    sessionStorage.clear();
-    localStorage.clear();
+  clearBrowser() {
+    clearBrowserStorage();
+    this.setState({error: false, success: true, successMessage: 'Browser data cleared successfully'});
   }
 
   render() {
     return (
       <div>
         <h1 className="heading-xlarge">Admin</h1>
+
+        {this.state.error &&
+        <div className="error-summary" role="group" aria-labelledby="error-summary-heading-example-1" tabIndex="-1">
+
+          <h1 className="heading-medium error-summary-heading" id="error-summary-heading-example-1">
+            Whoops something went wrong. Please ensure that this is a valid JSON file.<br/>
+            { this.state.errorMessage }
+          </h1>
+
+        </div>
+        }
+
+        {this.state.success &&
+          <div className="govuk-box-highlight">
+            <h1 className="bold-large">Success</h1>
+            <p>
+              { this.state.successMessage } <br />
+            </p>
+          </div>
+        }
+
         <h3 className="heading-medium">Load NOMIS file</h3>
-        <input name="offenderProfiles" onChange={e => this.handleChange(e)} type="file"/>
+        <input name="offenderProfiles" onChange={e => this.loadFile(e)} type="file"/>
 
         <h3 className="heading-medium">Load Viper scores file</h3>
-        <input name="viperScores" onChange={e => this.handleChange(e)} type="file"/>
-
-        {this.state.error && <div>Whoops something went wrong</div>}
-        {this.state.success &&
-        <div>
-          <h2 className="c-message-text c-messgae-text--success">File successfully loaded</h2>
-        </div>}
-
+        <input name="viperScores" onChange={e => this.loadFile(e)} type="file"/>
 
         <h3 className="heading-medium">Reset</h3>
-        <button onClick={() => this.clearBrowserData()} className="button">
+        <button onClick={() => this.clearBrowser()} className="button">
           Clear Browser Session and Local Storage
         </button>
 

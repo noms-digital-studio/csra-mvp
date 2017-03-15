@@ -52,3 +52,8 @@ export const offenderNomisProfiles = () => {
   return defaultOffenderProfiles;
 };
 
+export const clearBrowserStorage = () => {
+  sessionStorage.clear();
+  localStorage.clear();
+};
+
