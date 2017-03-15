@@ -7,7 +7,7 @@ import { syncHistoryWithStore } from 'react-router-redux';
 import Layout from './containers/Main';
 
 import Admin from './pages/Admin';
-import SignIn from './pages/SignIn';
+import SignInHoc from './pages/SignIn';
 import DashboardHoC from './pages/Dashboard';
 import AddOffenderHoc from './pages/AddOffender';
 import ConfirmOffender from './pages/ConfirmOffender';
