@@ -110,6 +110,13 @@ describe('<Dashboard />', () => {
       expect(
         store.dispatch.calledWithMatch({ type: 'SELECT_OFFENDER', payload: profiles[0] }),
       ).to.be.true;
+
+      expect(
+        store.dispatch.calledWithMatch({
+          type: '@@router/CALL_HISTORY_METHOD',
+          payload: { method: 'push', args: ['/offender-profile'] },
+        }),
+      ).to.be.true;
     });
 
     it('calls actions when component mounts', () => {
