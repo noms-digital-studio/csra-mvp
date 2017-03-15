@@ -2,6 +2,8 @@ import React, { PropTypes } from 'react';
 import { Link } from 'react-router';
 import uuid from 'uuid/v4';
 
+import { newLineToParagraph } from '../utils/components';
+
 import routes from '../constants/routes';
 
 import Aside from '../components/asides/Index';
@@ -12,7 +14,7 @@ const QuestionWithAside = ({ title, description, aside, onSubmit }) => (
     <div className="column-two-thirds">
       <form key={uuid()} action="/" method="post" className="form" onSubmit={onSubmit}>
         <h3 className="heading-medium">{title}</h3>
-        <p>{description}</p>
+        {newLineToParagraph(description)}
 
         <div className="form-group">
           <fieldset>

@@ -1,6 +1,8 @@
 import React, { PropTypes } from 'react';
 import { Link } from 'react-router';
 
+import { newLineToParagraph } from '../utils/components';
+
 import routes from '../constants/routes';
 
 import SelectableInput from '../components/SelectableInput';
@@ -12,7 +14,7 @@ const ConfirmationWithAside = ({ title, description, aside, onSubmit }) => (
       <div className="column-two-thirds">
         <h3 className="heading-medium">{title}</h3>
         <div role="note" aria-label="Information" className="panel panel-border-wide">
-          <p>{description}</p>
+          {newLineToParagraph(description)}
         </div>
 
         <form className="c-confirmation-form" onSubmit={onSubmit}>
@@ -38,7 +40,7 @@ const ConfirmationWithAside = ({ title, description, aside, onSubmit }) => (
       </div>
     </div>
   </div>
-    );
+);
 
 ConfirmationWithAside.propTypes = {
   title: PropTypes.string.isRequired,
@@ -46,6 +48,5 @@ ConfirmationWithAside.propTypes = {
   onSubmit: PropTypes.func.isRequired,
   aside: PropTypes.object,
 };
-
 
 export default ConfirmationWithAside;

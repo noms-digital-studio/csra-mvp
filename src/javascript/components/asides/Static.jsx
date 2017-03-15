@@ -1,12 +1,16 @@
-import React from 'react';
+import React, { PropTypes } from 'react';
+import { newLineToParagraph } from '../../utils/components';
 
-const Static = ({ title, description }) => {
-    return (
-        <aside className="govuk-related-items" role="complementary">
-            <h3 className="heading-medium u-margin-top-default" id="subsection-title">{title}</h3>
-            <p>{description}</p>
-        </aside>
-    )
-}
+const Static = ({ title, description }) => (
+  <aside className="govuk-related-items" role="complementary">
+    <h3 className="heading-medium u-margin-top-default" id="subsection-title">{title}</h3>
+    {newLineToParagraph(description)}
+  </aside>
+);
+
+Static.propTypes = {
+  title: PropTypes.string,
+  description: PropTypes.string,
+};
 
 export default Static;

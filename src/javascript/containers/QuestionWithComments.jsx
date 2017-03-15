@@ -4,6 +4,8 @@ import uuid from 'uuid/v4';
 
 import routes from '../constants/routes';
 
+import { newLineToParagraph } from '../utils/components';
+
 import Aside from '../components/asides/Index';
 import SelectableInputGroup from '../components/SelectableInputGroup';
 
@@ -12,7 +14,7 @@ const QuestionWithComments = ({ title, description, aside, onSubmit }) => (
     <div className="column-two-thirds">
       <form key={uuid()} action="/" method="post" className="form" onSubmit={onSubmit}>
         <h3 className="heading-medium">{title}</h3>
-        <p>{description}</p>
+        {newLineToParagraph(description)}
 
         <div className="form-group">
           <fieldset>
@@ -26,7 +28,12 @@ const QuestionWithComments = ({ title, description, aside, onSubmit }) => (
           </fieldset>
         </div>
         <p>
-          <textarea placeholder="Comments" rows="5" cols="20" className="form-control form-control-3-4" />
+          <textarea
+            placeholder="Comments"
+            rows="5"
+            cols="20"
+            className="form-control form-control-3-4"
+          />
         </p>
 
         <p>

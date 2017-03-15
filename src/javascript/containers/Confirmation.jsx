@@ -3,6 +3,8 @@ import { Link } from 'react-router';
 
 import routes from '../constants/routes';
 
+import { newLineToParagraph } from '../utils/components';
+
 import SelectableInput from '../components/SelectableInput';
 
 const Confirmation = ({ title, description, onSubmit }) => (
@@ -11,7 +13,7 @@ const Confirmation = ({ title, description, onSubmit }) => (
       <div className="column-two-thirds">
         <h3 className="heading-medium">{title}</h3>
         <div role="note" aria-label="Information" className="panel panel-border-wide">
-          <p>{description}</p>
+          {newLineToParagraph(description)}
         </div>
       </div>
     </div>
@@ -38,11 +40,12 @@ const Confirmation = ({ title, description, onSubmit }) => (
       </div>
     </div>
   </div>
-    );
+);
 
 Confirmation.propTypes = {
   title: PropTypes.string,
-  details: PropTypes.string,
+  description: PropTypes.string,
+  onSubmit: PropTypes.func,
 };
 
 export default Confirmation;
