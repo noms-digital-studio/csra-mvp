@@ -1,8 +1,9 @@
 import {
-    getQuestions,
-    getOffenderNomisProfiles,
-    getViperScores,
-    selectOffender,
+  signIn,
+  getQuestions,
+  getOffenderNomisProfiles,
+  getViperScores,
+  selectOffender,
 } from '../../src/javascript/actions';
 import questions from '../../src/javascript/fixtures/questions.json';
 
@@ -53,6 +54,13 @@ describe('Actions', () => {
       };
 
       expect(selectOffender(offender)).to.eql({ type: 'SELECT_OFFENDER', payload: offender });
+    });
+  });
+
+  describe('#signIn', () => {
+    it('it returns a sign in action', () => {
+      const user = 'Foo bar';
+      expect(signIn(user)).to.eql({ type: 'SIGN_IN', payload: user });
     });
   });
 });
