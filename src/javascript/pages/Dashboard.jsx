@@ -92,7 +92,7 @@ const mapActionsToProps = dispatch => ({
   getOffenderNomisProfiles: () => dispatch(getOffenderNomisProfiles()),
   onOffenderSelect: (offender) => {
     dispatch(selectOffender(offender));
-    dispatch(push(`${routes.PRISONER_PROFILE}`));
+    dispatch(push(routes.PRISONER_PROFILE));
   },
 });
 
