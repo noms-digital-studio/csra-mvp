@@ -1,60 +1,66 @@
 import React, { PropTypes } from 'react';
+import { replace } from 'react-router-redux';
 import { Link } from 'react-router';
 import { connect } from 'react-redux';
 import routes from '../constants/routes';
+import { confirmPrisoner } from '../actions'
 
-const ConfirmOffender = ({ details: { First_Name, Date_of_Birth, NOMS_Number, Surname } }) => (
-  <div>
-    <h1 className="heading-xlarge">Offender Added</h1>
+const ConfirmOffender = (props) => {
+  const { prisonerDetails: prisoner, onClick } = props;
+  return (
+    <div>
+      <h1 className="heading-xlarge">Offender Added</h1>
 
-    <div className="grid-row">
-      <div className="column-one-half">
-        <p>
-          <span className="heading-small">Name:&nbsp;</span>
-          <span>{First_Name} {Surname}</span>
-        </p>
+      <div className="grid-row">
+        <div className="column-one-half">
+          <p>
+            <span className="heading-small">Name:&nbsp;</span>
+            <span>{prisoner['first-name']} {prisoner['last-name']}</span>
+          </p>
 
-        <p>
-          <span className="heading-small">DOB:&nbsp;&nbsp;&nbsp;&nbsp;</span>
-          {Date_of_Birth}
-        </p>
+          <p>
+            <span className="heading-small">DOB:&nbsp;&nbsp;&nbsp;&nbsp;</span>
+            {`${prisoner['dob-day']}-${prisoner['dob-month']}-${prisoner['dob-year']}`}
+          </p>
+        </div>
+        <div className="column-one-half">
+          <p>
+            <span className="heading-small">NOMIS No:</span> {prisoner['nomis-id']}
+          </p>
+        </div>
       </div>
-      <div className="column-one-half">
-        <p>
-          <span className="heading-small">NOMIS No:</span> Unavailable
-        </p>
-      </div>
+
+      <p>
+        <button data-confirm onClick={() => { onClick(prisoner) }} className="button">
+          Confirm
+        </button>
+      </p>
+      <Link to={routes.ADD_OFFENDER}>Edit</Link>
     </div>
+  );
+};
 
-    <p>
-      <Link to={`${routes.DASHBOARD}`} className="button">
-        Confirm
-      </Link>
-    </p>
-    <Link to={routes.ADD_OFFENDER}>Edit</Link>
-  </div>
-);
+const mapStateToProps = state => ({
+  prisonerDetails: state.offender.prisonerFormData,
+});
 
-// const mapStateToProps = state => ({
-//   details: state.offender.selected,
-// });
+const mapActionsToProps = dispatch => ({
+  onClick: (prisoner) => {
+    dispatch(confirmPrisoner(prisoner));
+    dispatch(replace(routes.DASHBOARD));
+  }
+});
 
 ConfirmOffender.propTypes = {
-  details: PropTypes.shape({
-    First_Name: PropTypes.string,
-    Date_of_Birth: PropTypes.string,
-    NOMS_Number: PropTypes.string,
-    Surname: PropTypes.string,
-  }),
+  prisonerDetails: PropTypes.object,
+  onClick: PropTypes.func
 };
 
 ConfirmOffender.defaultProps = {
-  details: {
-    First_Name: 'Foo first name',
-    Date_of_Birth: 'Foo DOB',
-    NOMS_Number: 'Foo NOMS_Number',
-    Surname: 'FOO surname',
-  },
+  prisonerDetails: {},
+  onClick: () => {},
 };
 
-export default connect(null)(ConfirmOffender);
+export {ConfirmOffender};
+
+export default connect(mapStateToProps, mapActionsToProps)(ConfirmOffender);

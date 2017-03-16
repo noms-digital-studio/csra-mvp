@@ -11,7 +11,9 @@ import routes from '../constants/routes';
 class Dashboard extends Component {
   componentDidMount() {
     this.props.getViperScores();
-    this.props.getOffenderNomisProfiles();
+    if(!this.props.profiles.length) {
+      this.props.getOffenderNomisProfiles();
+    }
   }
 
   renderProfiles() {

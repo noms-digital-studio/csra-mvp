@@ -121,7 +121,7 @@ AddOffender.defaultProps = {
 
 const mapStateToProps = state => ({
   date: moment().format('dddd MMMM DD YYYY'),
-  prisonerDetails: state.offender.temporaryProfile,
+  prisonerDetails: state.offender.prisonerFormData,
 });
 
 const mapActionsToProps = dispatch => ({

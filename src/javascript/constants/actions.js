@@ -4,4 +4,5 @@ export const GET_VIPER_SCORES = 'GET_VIPER_SCORES';
 export const SELECT_OFFENDER = 'SELECT_OFFENDER';
 export const SIGN_IN = 'SIGN_IN';
 export const SIGN_OUT = 'SIGN_OUT';
+export const CONFIRM_PRISONER = 'CONFIRM_PRISONER';
 export const ADD_PRISONER = 'ADD_PRISONER';

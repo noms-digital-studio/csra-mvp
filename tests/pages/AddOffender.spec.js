@@ -75,7 +75,7 @@ describe('<AddOffender />', () => {
       it('calls onSubmit callback when form submits successfully', () => {
         const store = fakeStore({
           offender: {
-            temporaryProfile: {}
+            prisonerFormData: {}
           },
         });
 
@@ -101,7 +101,7 @@ describe('<AddOffender />', () => {
       it('displays prisoner data in the form', () => {
         const store = fakeStore({
           offender: {
-            temporaryProfile: prisoner
+            prisonerFormData: prisoner
           },
         });
 

@@ -5,7 +5,7 @@ describe('#offenderReducer', () => {
     selected: {},
     profiles: [],
     viperScores: [],
-    temporaryProfile: {},
+    prisonerFormData: {},
   };
 
   it('returns a default state', () => {
@@ -49,17 +49,43 @@ describe('#offenderReducer', () => {
   });
 
   it('returns the state with the temporary created prisoner', () => {
-    const profile = {
-      NOMS_Number: 'foo',
-      Surname: 'foobar',
-      First_Name: 'foobaz',
-      Date_of_Birth: 'foo-age',
+    const prisonerData = {
+      'first-name': 'foo',
+      'last-name': 'bar',
+      'dob-day': '01',
+      'dob-month': '10',
+      'dob-year': '1997',
+      'nomis-id': 'AA12345'
     };
-    const action = { type: 'ADD_PRISONER', payload: profile };
-    const expectedState = { ...defaultState, temporaryProfile: profile };
+
+    const action = { type: 'ADD_PRISONER', payload: prisonerData };
+    const expectedState = { ...defaultState, prisonerFormData: prisonerData };
 
     expect(offenderReducer(undefined, action)).to.eql(expectedState);
   });
 
+  it('returns the state with the prisoner added to the profiles', () => {
+    const prisonerFormData = {
+      'first-name': 'foo',
+      'last-name': 'bar',
+      'dob-day': '01',
+      'dob-month': '10',
+      'dob-year': '1997',
+      'nomis-id': 'AA12345'
+    };
+
+    const newProfile = {
+      NOMS_Number: 'AA12345',
+      Surname: 'bar',
+      First_Name: 'foo',
+      Date_of_Birth: '01-10-1997',
+    };
+
+    const state = {...defaultState, prisonerFormData}
+    const action = { type: 'CONFIRM_PRISONER', payload: newProfile };
+    const expectedState = { ...defaultState, prisonerFormData: {}, profiles: [...state.profiles, newProfile] };
+
+    expect(offenderReducer(state, action)).to.eql(expectedState);
+  });
 
 });

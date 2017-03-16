@@ -6,6 +6,7 @@ import {
   getViperScores,
   selectOffender,
   addPrisoner,
+  confirmPrisoner,
 } from '../../src/javascript/actions';
 import questions from '../../src/javascript/fixtures/questions.json';
 
@@ -86,4 +87,24 @@ describe('Actions', () => {
       expect(addPrisoner(prisoner)).to.eql({ type: 'ADD_PRISONER', payload: prisoner});
     });
   });
+
+  describe('#confirmPrisoner', () => {
+    const prisonerData = {
+      'first-name': 'foo',
+      'last-name': 'bar',
+      'dob-day': '01',
+      'dob-month': '10',
+      'dob-year': '1997',
+      'nomis-id': 'AA12345'
+    };
+
+    const prisoner = {
+      NOMS_Number: 'AA12345',
+      Surname: 'bar',
+      First_Name: 'foo',
+      Date_of_Birth: '01-10-1997',
+    };
+
+    expect(confirmPrisoner(prisonerData)).to.eql({ type: 'CONFIRM_PRISONER', payload: prisoner });
+  })
 });

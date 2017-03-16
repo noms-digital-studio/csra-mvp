@@ -3,13 +3,14 @@ import {
     GET_VIPER_SCORES,
     SELECT_OFFENDER,
     ADD_PRISONER,
+    CONFIRM_PRISONER,
 } from '../constants/actions';
 
 const defaultState = {
   selected: {},
   profiles: [],
   viperScores: [],
-  temporaryProfile: {},
+  prisonerFormData: {},
 };
 
 export default (state = defaultState, { type, payload }) => {
@@ -21,7 +22,9 @@ export default (state = defaultState, { type, payload }) => {
     case SELECT_OFFENDER:
       return { ...state, selected: payload };
     case ADD_PRISONER:
-      return { ...state, temporaryProfile: payload };
+      return { ...state, prisonerFormData: payload };
+    case CONFIRM_PRISONER:
+      return { ...state, prisonerFormData: {}, profiles: [...state.profiles, payload] };
     default:
       return state;
   }

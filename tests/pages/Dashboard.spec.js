@@ -1,13 +1,13 @@
 import React from 'react';
-import { Provider } from 'react-redux';
-import { mount, shallow } from 'enzyme';
+import {Provider} from 'react-redux';
+import {mount, shallow} from 'enzyme';
 
-import { fakeStore } from '../test-helpers';
+import {fakeStore} from '../test-helpers';
 
 import offenderProfiles from '../../src/javascript/fixtures/nomis.json';
 import viperScores from '../../src/javascript/fixtures/viper.json';
 
-import ConnectedDashboard, { Dashboard } from '../../src/javascript/pages/Dashboard';
+import ConnectedDashboard, {Dashboard} from '../../src/javascript/pages/Dashboard';
 
 const profiles = [
   {
@@ -27,7 +27,7 @@ const profiles = [
 describe('<Dashboard />', () => {
   context('Standalone Dashboard', () => {
     it('accepts and correctly renders profiles', () => {
-      const wrapper = shallow(<Dashboard profiles={profiles} />);
+      const wrapper = shallow(<Dashboard profiles={profiles}/>);
       expect(wrapper.find('[data-profile-row]').length).to.equal(2);
 
       profiles.forEach((profile) => {
@@ -40,7 +40,7 @@ describe('<Dashboard />', () => {
 
     it('responds to profile selection', () => {
       const callback = sinon.spy();
-      const wrapper = shallow(<Dashboard profiles={profiles} onOffenderSelect={callback} />);
+      const wrapper = shallow(<Dashboard profiles={profiles} onOffenderSelect={callback}/>);
 
       const profileBtn = wrapper.find('[data-profile-row]').first().find('button');
 
@@ -52,7 +52,7 @@ describe('<Dashboard />', () => {
 
     it('accepts a date', () => {
       const date = 'Fooday FooDay FooMonth FooYear';
-      const wrapper = shallow(<Dashboard date={date} />);
+      const wrapper = shallow(<Dashboard date={date}/>);
 
       expect(wrapper.text()).to.include(date);
     });
@@ -108,28 +108,29 @@ describe('<Dashboard />', () => {
       profileBtn.simulate('click');
 
       expect(
-        store.dispatch.calledWithMatch({ type: 'SELECT_OFFENDER', payload: profiles[0] }),
-      ).to.be.true;
+        store.dispatch.calledWithMatch({type: 'SELECT_OFFENDER', payload: profiles[0]}),
+      ).to.equal(true, 'SELECT_OFFENDER dispatch');
 
       expect(
         store.dispatch.calledWithMatch({
           type: '@@router/CALL_HISTORY_METHOD',
-          payload: { method: 'push', args: ['/offender-profile'] },
+          payload: {method: 'push', args: ['/offender-profile']},
         }),
-      ).to.be.true;
+      ).to.equal(true, 'dispatch /offender-profile');
     });
 
     it('calls actions when component mounts', () => {
       expect(
-        store.dispatch.calledWithMatch({ type: 'GET_VIPER_SCORES', payload: viperScores }),
-      ).to.be.true;
+        store.dispatch.calledWithMatch({type: 'GET_VIPER_SCORES', payload: viperScores}),
+      ).to.equals(true, 'dispatch GET_VIPER_SCORES');
 
       expect(
         store.dispatch.calledWithMatch({
           type: 'GET_OFFENDER_NOMIS_PROFILES',
           payload: offenderProfiles.output,
         }),
-      ).to.be.true;
+      ).to.equals(false, 'dispatch GET_OFFENDER_NOMIS_PROFILES');
     });
+
   });
 });
