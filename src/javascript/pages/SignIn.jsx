@@ -28,6 +28,7 @@ class SignIn extends Component {
 
         <div className="form-group">
           <label className="form-label-bold" htmlFor="username">Username</label>
+          <span className="form-hint">Please enter your full name before continuing.</span>
           <input type="text" className="form-control" id="username" name="username" />
         </div>
 

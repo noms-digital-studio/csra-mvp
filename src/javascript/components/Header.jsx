@@ -2,7 +2,7 @@ import React, { PropTypes } from 'react';
 import { Link } from 'react-router';
 import { connect } from 'react-redux';
 
-const Header = ({ username }) => (
+const Header = ({ username, isLoggedIn }) => (
   <div>
     <header role="banner" id="global-header" className="c-global-header with-proposition">
       <div className="header-wrapper">
@@ -22,26 +22,28 @@ const Header = ({ username }) => (
 
         <div className="header-proposition">
           <div className="content">
-            {username &&
+            {isLoggedIn &&
               <div className="c-global-header__wrapper">
                 <span className="c-global-header__username">{username}</span>
-                <span className="c-profile-holder c-profile-holder--global-header"></span>
-              </div>
-            }
+                <span className="c-profile-holder c-profile-holder--global-header" />
+              </div>}
           </div>
         </div>
       </div>
     </header>
     <div id="global-header-bar" />
   </div>
-  );
+);
 
 Header.propTypes = {
+  isLoggedIn: PropTypes.bool,
   username: PropTypes.string,
 };
 
-const mapStateToProps = state => ({ username: state.user.name });
-
+const mapStateToProps = state => ({
+  username: state.login.currentUser.name,
+  isLoggedIn: state.login.loggedIn,
+});
 
 export { Header };
 export default connect(mapStateToProps)(Header);

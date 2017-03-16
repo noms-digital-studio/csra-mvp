@@ -6,10 +6,16 @@ import { fakeStore } from '../test-helpers';
 
 describe('<Header />', () => {
   context('Standalone Header', () => {
-    it('renders a username', () => {
-      const wrapper = mount(<Header username="Foo Bar" />);
+    it('renders a username if loggedIn', () => {
+      const wrapper = mount(<Header isLoggedIn username="Foo Bar" />);
 
       expect(wrapper.text()).to.contain('Foo Bar');
+    });
+
+    it('renders nothing if user is not loggedIn', () => {
+      const wrapper = mount(<Header username="Foo Bar" />);
+
+      expect(wrapper.text()).to.not.contain('Foo Bar');
     });
   });
 
@@ -19,8 +25,11 @@ describe('<Header />', () => {
 
     beforeEach(() => {
       store = fakeStore({
-        user: {
-          name: 'Foo Bar',
+        login: {
+          loggedIn: true,
+          currentUser: {
+            name: 'Foo Bar',
+          },
         },
       });
 
