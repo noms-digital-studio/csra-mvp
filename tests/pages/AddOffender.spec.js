@@ -1,109 +1,113 @@
 import React from 'react';
-import { Provider } from 'react-redux';
-import { mount, shallow } from 'enzyme';
+import {Provider} from 'react-redux';
+import {mount, shallow} from 'enzyme';
 
-import { fakeStore } from '../test-helpers';
+import {fakeStore} from '../test-helpers';
 
-import ConnectedAddOffender, { AddOffender } from '../../src/javascript/pages/AddOffender';
+import ConnectedAddOffender, {AddOffender} from '../../src/javascript/pages/AddOffender';
 
-const profiles = {
-  NOMS_Number: 'foo-id',
-  Surname: 'foo-surname',
-  First_Name: 'foo-first-name',
-  Date_of_Birth: 'foo-age',
+const prisoner = {
+  'first-name': 'foo-first-name',
+  'last-name': 'foo-last-name',
+  'dob-day': '01',
+  'dob-month': '11',
+  'dob-year': '1960',
+  'nomis-id': 'foo-nomis-id',
+};
+
+const populateForm = (wrapper) => {
+  Object.keys(prisoner).forEach((key) => {
+    wrapper.find(`input[name="${key}"]`).node.value = prisoner[key];
+  });
+};
+
+const mountComponent = (store) => {
+  return mount(
+    <Provider store={store}>
+      <ConnectedAddOffender />
+    </Provider>,
+  );
+};
+
+const assertFormFieldsArePopulated = (wrapper) => {
+  Object.keys(prisoner).forEach((key) => {
+    expect(wrapper.find(`input[name="${key}"]`).node.value).to.equal(prisoner[key]);
+  });
 };
 
 describe('<AddOffender />', () => {
   context('Standalone AddOffender', () => {
     it('accepts a date', () => {
       const date = 'Fooday FooDay FooMonth FooYear';
-      const wrapper = shallow(<AddOffender date={date} />);
+      const wrapper = shallow(<AddOffender date={date}/>);
       expect(wrapper.text()).to.include(date);
     });
 
     it('fails to submit if fields are missing in the form', () => {
       const callback = sinon.spy();
-      const wrapper = mount(<AddOffender onSubmit={callback} />);
+      const wrapper = mount(<AddOffender onSubmit={callback}/>);
 
       wrapper.find('form').simulate('submit');
 
-      expect(callback.calledOnce).to.be.false;
+      expect(callback.calledOnce).to.equal(false, 'onSubmit not called');
     });
 
-    it('calls onSubmit callback when for submits successfully', () => {
+    it('calls onSubmit callback when form submits successfully', () => {
       const callback = sinon.spy();
-      const wrapper = mount(<AddOffender onSubmit={callback} />);
-      const expectedCallBackArgument = {
-        'first-name': 'foo-first-name',
-        'last-name': 'foo-last-name',
-        'dob-day': '01',
-        'dob-month': '11',
-        'dob-year': '1960',
-        'nomis-id': 'foo-nomis-id',
-      };
+      const wrapper = mount(<AddOffender onSubmit={callback}/>);
 
-      // Fill Form
-      Object.keys(expectedCallBackArgument).forEach((key) => {
-        wrapper.find(`input[name="${key}"]`).node.value = expectedCallBackArgument[key];
-      });
+      populateForm(wrapper);
 
       wrapper.find('form').simulate('submit');
 
-      expect(callback.calledOnce).to.be.true;
-      expect(callback.calledWith(expectedCallBackArgument));
+      expect(callback.calledOnce).to.equal(true, 'onSubmit called');
+      expect(callback.calledWith(prisoner));
+    });
+
+    it('displays prisoner data in the form', () => {
+      const wrapper = mount(<AddOffender prisonerDetails={prisoner}/>);
+      assertFormFieldsArePopulated(wrapper);
+    })
+  });
+
+  context('Connected AddOffender', () => {
+    context('When form is empty', () => {
+      it('calls onSubmit callback when form submits successfully', () => {
+        const store = fakeStore({
+          offender: {
+            temporaryProfile: {}
+          },
+        });
+
+        const wrapper = mountComponent(store);
+
+        populateForm(wrapper);
+        wrapper.find('form').simulate('submit');
+
+        expect(
+          store.dispatch.calledWithMatch({type: 'ADD_PRISONER', payload: prisoner}),
+        ).to.equal(true, 'Dispatched ADD_PRISONER');
+
+        expect(
+          store.dispatch.calledWithMatch({
+            type: '@@router/CALL_HISTORY_METHOD',
+            payload: {method: 'push', args: ['/confirm-offender']},
+          }),
+        ).to.equal(true, 'Changed path to /confirm-offender');
+      });
+    });
+
+    context('When form is pre-populated', () => {
+      it('displays prisoner data in the form', () => {
+        const store = fakeStore({
+          offender: {
+            temporaryProfile: prisoner
+          },
+        });
+
+        assertFormFieldsArePopulated(mountComponent(store));
+      })
     });
   });
 
-  // context('Connected AddOffender', () => {
-  //   let wrapper;
-  //   let store;
-
-  //   beforeEach(() => {
-  //     store = fakeStore({
-  //       offender: {
-  //         profiles,
-  //       },
-  //     });
-
-  //     wrapper = mount(
-  //       <Provider store={store}>
-  //         <ConnectedAddOffender />
-  //       </Provider>,
-  //     );
-  //   });
-
-  //   it('accepts and correctly renders profiles', () => {
-  //     expect(wrapper.find('[data-profile-row]').length).to.equal(2);
-
-  //     profiles.forEach((profile) => {
-  //       const keys = Object.keys(profile);
-  //       keys.forEach((key) => {
-  //         expect(wrapper.text()).to.include(profile[key]);
-  //       });
-  //     });
-  //   });
-
-  //   it('responds to profile selection', () => {
-  //     const profileBtn = wrapper.find('[data-profile-row]').first().find('button');
-
-  //     profileBtn.simulate('click');
-
-  //     expect(
-  //       store.dispatch.calledWithMatch({ type: 'SELECT_OFFENDER', payload: profiles[0] }),
-  //     ).to.be.true;
-  //   });
-
-  //   it('calls actions when component mounts', () => {
-  //     expect(
-  //       store.dispatch.calledWithMatch({ type: 'GET_VIPER_SCORES', payload: viperScores }),
-  //     ).to.be.true;
-
-  //     expect(
-  //       store.dispatch.calledWithMatch({
-  //         type: 'GET_OFFENDER_NOMIS_PROFILES',
-  //         payload: offenderProfiles.output,
-  //       }),
-  //     ).to.be.true;
-  //   });
-  // });
 });

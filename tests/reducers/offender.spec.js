@@ -5,6 +5,7 @@ describe('#offenderReducer', () => {
     selected: {},
     profiles: [],
     viperScores: [],
+    temporaryProfile: {},
   };
 
   it('returns a default state', () => {
@@ -46,4 +47,19 @@ describe('#offenderReducer', () => {
 
     expect(offenderReducer(undefined, action)).to.eql(expectedState);
   });
+
+  it('returns the state with the temporary created prisoner', () => {
+    const profile = {
+      NOMS_Number: 'foo',
+      Surname: 'foobar',
+      First_Name: 'foobaz',
+      Date_of_Birth: 'foo-age',
+    };
+    const action = { type: 'ADD_PRISONER', payload: profile };
+    const expectedState = { ...defaultState, temporaryProfile: profile };
+
+    expect(offenderReducer(undefined, action)).to.eql(expectedState);
+  });
+
+
 });

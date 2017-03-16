@@ -8,6 +8,8 @@ import { Link } from 'react-router';
 
 import { allFormFieldsComplete } from '../utils';
 
+import { addPrisoner } from '../actions'
+
 import routes from '../constants/routes';
 
 class AddOffender extends Component {
@@ -25,7 +27,7 @@ class AddOffender extends Component {
   }
 
   render() {
-    const { date } = this.props;
+    const { date, prisonerDetails } = this.props;
 
     return (
       <div className="form-section">
@@ -39,11 +41,11 @@ class AddOffender extends Component {
         <form action="/" method="POST" onSubmit={e => this.handleSubmit(e)}>
           <div className="form-group">
             <label className="form-label-bold" htmlFor="first-name">First name</label>
-            <input className="form-control" name="first-name" type="text" id="first-name" />
+            <input className="form-control" name="first-name" type="text" id="first-name" defaultValue={prisonerDetails['first-name']}/>
           </div>
           <div className="form-group">
             <label className="form-label-bold" htmlFor="last-name">Last name</label>
-            <input className="form-control" name="last-name" type="text" id="last-name" />
+            <input className="form-control" name="last-name" type="text" id="last-name" defaultValue={prisonerDetails['last-name']}/>
           </div>
           <div className="form-group">
             <fieldset>
@@ -63,6 +65,7 @@ class AddOffender extends Component {
                     min="0"
                     max="31"
                     aria-describedby="dob-hint"
+                    defaultValue={prisonerDetails['dob-day']}
                   />
                 </div>
                 <div className="form-group form-group-month">
@@ -75,6 +78,7 @@ class AddOffender extends Component {
                     pattern="[0-9]*"
                     min="0"
                     max="12"
+                    defaultValue={prisonerDetails['dob-month']}
                   />
                 </div>
                 <div className="form-group form-group-year">
@@ -87,6 +91,7 @@ class AddOffender extends Component {
                     pattern="[0-9]*"
                     min="0"
                     max="2016"
+                    defaultValue={prisonerDetails['dob-year']}
                   />
                 </div>
               </div>
@@ -95,26 +100,33 @@ class AddOffender extends Component {
           <div className="form-group">
             <label className="form-label-bold" htmlFor="nomis-id">Nomis ID</label>
             <span className="form-hint" id="dob-hint">For example, A5558ZO</span>
-            <input className="form-control" name="nomis-id" type="text" id="nomis-id" />
+            <input className="form-control" name="nomis-id" type="text" id="nomis-id" defaultValue={prisonerDetails['nomis-id']}/>
           </div>
           <input type="submit" className="button" value="Add offender" />
-          {/* <Link className="button" to={routes.CONFIRM_OFFENDER}>Add offender</Link>*/}
         </form>
       </div>
     );
   }
 }
+
 AddOffender.propTypes = {
   date: PropTypes.string,
   onSubmit: PropTypes.func,
+  prisonerDetails: PropTypes.object,
+};
+
+AddOffender.defaultProps = {
+  prisonerDetails: {},
 };
 
 const mapStateToProps = state => ({
   date: moment().format('dddd MMMM DD YYYY'),
+  prisonerDetails: state.offender.temporaryProfile,
 });
 
 const mapActionsToProps = dispatch => ({
-  onSubmit: (data) => {
+  onSubmit: (prisoner) => {
+    dispatch(addPrisoner(prisoner));
     dispatch(push(routes.CONFIRM_OFFENDER));
   },
 });

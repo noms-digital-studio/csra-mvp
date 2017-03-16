@@ -5,6 +5,7 @@ import {
   getOffenderNomisProfiles,
   getViperScores,
   selectOffender,
+  addPrisoner,
 } from '../../src/javascript/actions';
 import questions from '../../src/javascript/fixtures/questions.json';
 
@@ -68,6 +69,21 @@ describe('Actions', () => {
   describe('#signOut', () => {
     it('returns a SIGN_OUT action', () => {
       expect(signOut()).to.eql({ type: 'SIGN_OUT' });
+    });
+  });
+
+  describe('#addPrisoner', () => {
+    it('returns a ADD_PRISONER action', () => {
+      const prisoner = {
+        'first-name': 'foo',
+        'last-name': 'bar',
+        'dob-day': '01',
+        'dob-month': '10',
+        'dob-year': '1997',
+        'nomis-id': 'AA12345'
+      };
+
+      expect(addPrisoner(prisoner)).to.eql({ type: 'ADD_PRISONER', payload: prisoner});
     });
   });
 });

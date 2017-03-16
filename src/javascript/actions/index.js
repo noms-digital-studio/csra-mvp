@@ -5,6 +5,7 @@ import {
   SELECT_OFFENDER,
   SIGN_IN,
   SIGN_OUT,
+  ADD_PRISONER,
 } from '../constants/actions';
 
 import Questions from '../fixtures/questions.json';
@@ -28,3 +29,7 @@ export const selectOffender = offender => ({ type: SELECT_OFFENDER, payload: off
 export const signIn = user => ({ type: SIGN_IN, payload: user });
 
 export const signOut = () => ({ type: SIGN_OUT });
+
+export const addPrisoner = prisoner => {
+  return {type: ADD_PRISONER, payload: prisoner}
+}
