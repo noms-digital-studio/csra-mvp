@@ -1,16 +1,16 @@
-import { SIGN_IN } from '../constants/actions';
+import { SIGN_IN, SIGN_OUT } from '../constants/actions';
 
 const defaultState = {
-  loggedIn: false,
-  currentUser: {
-    name: '',
-  },
+  signedIn: false,
+  currentUser: {},
 };
 
 export default (state = defaultState, { type, payload }) => {
   switch (type) {
     case SIGN_IN:
-      return { ...state, currentUser: { name: payload }, loggedIn: true };
+      return { ...state, currentUser: { name: payload }, signedIn: true };
+    case SIGN_OUT:
+      return { ...state, currentUser: {}, signedIn: false };
     default:
       return state;
   }

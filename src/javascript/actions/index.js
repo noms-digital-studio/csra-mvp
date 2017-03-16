@@ -4,6 +4,7 @@ import {
   GET_VIPER_SCORES,
   SELECT_OFFENDER,
   SIGN_IN,
+  SIGN_OUT,
 } from '../constants/actions';
 
 import Questions from '../fixtures/questions.json';
@@ -25,3 +26,5 @@ export const getViperScores = (scores = viperScores()) => ({
 export const selectOffender = offender => ({ type: SELECT_OFFENDER, payload: offender });
 
 export const signIn = user => ({ type: SIGN_IN, payload: user });
+
+export const signOut = () => ({ type: SIGN_OUT });

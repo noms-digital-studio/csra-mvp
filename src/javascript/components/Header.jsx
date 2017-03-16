@@ -1,8 +1,11 @@
 import React, { PropTypes } from 'react';
 import { Link } from 'react-router';
 import { connect } from 'react-redux';
+import { replace } from 'react-router-redux';
+import { signOut } from '../actions';
+import routes from '../constants/routes';
 
-const Header = ({ username, isLoggedIn }) => (
+const Header = ({ username, signedIn, onSignOut }) => (
   <div>
     <header role="banner" id="global-header" className="c-global-header with-proposition">
       <div className="header-wrapper">
@@ -22,10 +25,13 @@ const Header = ({ username, isLoggedIn }) => (
 
         <div className="header-proposition">
           <div className="content">
-            {isLoggedIn &&
+            {signedIn &&
               <div className="c-global-header__wrapper">
                 <span className="c-global-header__username">{username}</span>
                 <span className="c-profile-holder c-profile-holder--global-header" />
+                <button data-sign-out onClick={onSignOut} className="c-profile-logout">
+                  Sign out
+                </button>
               </div>}
           </div>
         </div>
@@ -36,14 +42,26 @@ const Header = ({ username, isLoggedIn }) => (
 );
 
 Header.propTypes = {
-  isLoggedIn: PropTypes.bool,
+  signedIn: PropTypes.bool,
   username: PropTypes.string,
+  onSignOut: PropTypes.func,
+};
+
+Header.defaultProps = {
+  onSignOut: () => {},
 };
 
 const mapStateToProps = state => ({
   username: state.login.currentUser.name,
-  isLoggedIn: state.login.loggedIn,
+  signedIn: state.login.signedIn,
+});
+
+const mapActionsToProps = dispatch => ({
+  onSignOut: () => {
+    dispatch(signOut());
+    dispatch(replace(routes.SIGN_IN));
+  },
 });
 
 export { Header };
-export default connect(mapStateToProps)(Header);
+export default connect(mapStateToProps, mapActionsToProps)(Header);

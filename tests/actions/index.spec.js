@@ -1,5 +1,6 @@
 import {
   signIn,
+  signOut,
   getQuestions,
   getOffenderNomisProfiles,
   getViperScores,
@@ -58,9 +59,15 @@ describe('Actions', () => {
   });
 
   describe('#signIn', () => {
-    it('it returns a sign in action', () => {
+    it('returns a SIGN_IN action', () => {
       const user = 'Foo bar';
       expect(signIn(user)).to.eql({ type: 'SIGN_IN', payload: user });
+    });
+  });
+
+  describe('#signOut', () => {
+    it('returns a SIGN_OUT action', () => {
+      expect(signOut()).to.eql({ type: 'SIGN_OUT' });
     });
   });
 });

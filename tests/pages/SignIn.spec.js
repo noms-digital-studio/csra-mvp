@@ -7,7 +7,7 @@ import ConnectedSignIn, { SignIn } from '../../src/javascript/pages/SignIn';
 
 describe('<SignIn />', () => {
   context('Standalone Sign', () => {
-    it('fails to sign in if empty form is submitted', () => {
+    it('fails to sign in if an empty form is submitted', () => {
       const callback = sinon.spy();
       const wrapper = mount(<SignIn onSubmit={callback} />);
 
@@ -16,18 +16,20 @@ describe('<SignIn />', () => {
       expect(callback.calledOnce).to.be.false;
     });
 
-    it('submits the form is correctly completed', () => {
-      const callback = sinon.spy();
-      const wrapper = mount(<SignIn onSubmit={callback} />);
-      const form = wrapper.find('form');
-      const name = 'Foo Bar';
+    context('when a username has been provided to the sign in form', () => {
+      it('submits the form with the username', () => {
+        const callback = sinon.spy();
+        const wrapper = mount(<SignIn onSubmit={callback} />);
+        const form = wrapper.find('form');
+        const name = 'Foo Bar';
 
-      form.find('[name="username"]').node.value = name;
+        form.find('[name="username"]').node.value = name;
 
-      form.simulate('submit');
+        form.simulate('submit');
 
-      expect(callback.calledOnce).to.be.true;
-      expect(callback.calledWith(name)).to.be.true;
+        expect(callback.calledOnce).to.be.true;
+        expect(callback.calledWith(name)).to.be.true;
+      });
     });
   });
 
@@ -45,22 +47,24 @@ describe('<SignIn />', () => {
       );
     });
 
-    it('submits the form is correctly completed', () => {
-      const form = wrapper.find('form');
-      const name = 'Foo Bar';
+    context('when a username has been provided to the sign in form', () => {
+      it('submits the form with the username', () => {
+        const form = wrapper.find('form');
+        const name = 'Foo Bar';
 
-      form.find('[name="username"]').node.value = name;
+        form.find('[name="username"]').node.value = name;
 
-      form.simulate('submit');
+        form.simulate('submit');
 
-      expect(store.dispatch.calledWithMatch({ type: 'SIGN_IN', payload: name })).to.be.true;
+        expect(store.dispatch.calledWithMatch({ type: 'SIGN_IN', payload: name })).to.be.true;
 
-      expect(
-        store.dispatch.calledWithMatch({
-          type: '@@router/CALL_HISTORY_METHOD',
-          payload: { method: 'replace', args: ['/dashboard'] },
-        }),
-      ).to.be.true;
+        expect(
+          store.dispatch.calledWithMatch({
+            type: '@@router/CALL_HISTORY_METHOD',
+            payload: { method: 'replace', args: ['/dashboard'] },
+          }),
+        ).to.be.true;
+      });
     });
   });
 });

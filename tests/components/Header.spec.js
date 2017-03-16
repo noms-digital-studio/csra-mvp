@@ -6,16 +6,29 @@ import { fakeStore } from '../test-helpers';
 
 describe('<Header />', () => {
   context('Standalone Header', () => {
-    it('renders a username if loggedIn', () => {
-      const wrapper = mount(<Header isLoggedIn username="Foo Bar" />);
+    context('when signed out', () => {
+      it('does not render a username', () => {
+        const wrapper = mount(<Header username="Foo Bar" />);
 
-      expect(wrapper.text()).to.contain('Foo Bar');
+        expect(wrapper.text()).to.not.contain('Foo Bar');
+      });
     });
 
-    it('renders nothing if user is not loggedIn', () => {
-      const wrapper = mount(<Header username="Foo Bar" />);
+    context('when signed in', () => {
+      it('renders a username', () => {
+        const wrapper = mount(<Header signedIn username="Foo Bar" />);
 
-      expect(wrapper.text()).to.not.contain('Foo Bar');
+        expect(wrapper.text()).to.contain('Foo Bar');
+      });
+
+      it('accepts a logout action', () => {
+        const callback = sinon.spy();
+        const wrapper = mount(<Header signedIn username="Foo Bar" onSignOut={callback} />);
+
+        wrapper.find('[data-sign-out]').simulate('click');
+
+        expect(callback.calledOnce).to.be.true;
+      });
     });
   });
 
@@ -26,7 +39,7 @@ describe('<Header />', () => {
     beforeEach(() => {
       store = fakeStore({
         login: {
-          loggedIn: true,
+          signedIn: true,
           currentUser: {
             name: 'Foo Bar',
           },
@@ -40,8 +53,25 @@ describe('<Header />', () => {
       );
     });
 
-    it('render a username from the store', () => {
-      expect(wrapper.text()).to.contain('Foo Bar');
+    context('when signed in', () => {
+      it('renders a username', () => {
+        expect(wrapper.text()).to.contain('Foo Bar');
+      });
+
+      it('accepts a logout action', () => {
+        wrapper.find('[data-sign-out]').simulate('click');
+
+        expect(
+          store.dispatch.calledWithMatch({ type: 'SIGN_OUT' }),
+        ).to.be.true;
+
+        expect(
+          store.dispatch.calledWithMatch({
+            type: '@@router/CALL_HISTORY_METHOD',
+            payload: { method: 'replace', args: ['/sign-in'] },
+          }),
+        ).to.be.true;
+      });
     });
   });
 });
