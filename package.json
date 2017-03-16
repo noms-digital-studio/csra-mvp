@@ -6,7 +6,7 @@
     "node": "^6.10.0"
   },
   "scripts": {
-    "build": "webpack --progress",
+    "build": "NODE_ENV=production webpack --progress",
     "lint": "eslint . --cache --max-warnings 0",
     "test": "karma start --single-run --browsers PhantomJS",
     "test:watch": "karma start",
