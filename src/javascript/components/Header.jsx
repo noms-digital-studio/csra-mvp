@@ -5,42 +5,45 @@ import { replace } from 'react-router-redux';
 import { signOut } from '../actions';
 import routes from '../constants/routes';
 
-const Header = ({ username, signedIn, onSignOut }) => (
-  <div>
-    <header role="banner" id="global-header" className="c-global-header with-proposition">
-      <div className="header-wrapper">
-        <div className="header-global">
-          <div className="header-logo">
-            <Link to="/" title="Go to the HMPS homepage" id="logo" className="content">
-              <img
-                src={require('../../images/gov.uk_logotype_crown_invert_trans.png')}
-                width="36"
-                height="32"
-                alt="GOV.UK"
-              />
-              <span>&nbsp;HMP</span>
-            </Link>
+const Header = ({ username, signedIn, onSignOut }) => {
+  const url = (signedIn) ? routes.DASHBOARD : '/';
+
+  return (
+    <div>
+      <header role="banner" id="global-header" className="c-global-header with-proposition">
+        <div className="header-wrapper">
+          <div className="header-global">
+            <div className="header-logo">
+              <Link to={url} title="Go to the HMPS homepage" id="logo" className="content">
+                <img
+                  src={require('../../images/gov.uk_logotype_crown_invert_trans.png')}
+                  width="36"
+                  height="32"
+                  alt="GOV.UK"
+                />
+                <span>&nbsp;HMP</span>
+              </Link>
+            </div>
+          </div>
+
+          <div className="header-proposition">
+            <div className="content">
+              {signedIn &&
+                <div className="c-global-header__wrapper">
+                  <span className="c-global-header__username">{username}</span>
+                  <span className="c-profile-holder c-profile-holder--global-header" />
+                  <button data-sign-out onClick={onSignOut} className="c-profile-logout">
+                    Sign out
+                  </button>
+                </div>}
+            </div>
           </div>
         </div>
-
-        <div className="header-proposition">
-          <div className="content">
-            {signedIn &&
-              <div className="c-global-header__wrapper">
-                <span className="c-global-header__username">{username}</span>
-                <span className="c-profile-holder c-profile-holder--global-header" />
-                <button data-sign-out onClick={onSignOut} className="c-profile-logout">
-                  Sign out
-                </button>
-              </div>}
-          </div>
-        </div>
-      </div>
-    </header>
-    <div id="global-header-bar" />
-  </div>
-);
-
+      </header>
+      <div id="global-header-bar" />
+    </div>
+  );
+};
 Header.propTypes = {
   signedIn: PropTypes.bool,
   username: PropTypes.string,
