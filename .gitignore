@@ -3,6 +3,6 @@ node_modules
 .vscode
 .env
 dist
-npm-debug.log
+npm-debug.log*
 .eslintcache
 .idea/
