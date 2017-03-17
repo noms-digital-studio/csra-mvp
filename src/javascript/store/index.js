@@ -8,6 +8,7 @@ import persistState from 'redux-sessionstorage';
 import questionnaireReducer from '../reducers/questionnaire';
 import offenderReducer from '../reducers/offender';
 import loginReducer from '../reducers/login';
+import answersReducer from '../reducers/answers';
 
 const enhancer = composeWithDevTools(
   applyMiddleware(
@@ -21,6 +22,7 @@ const reducers = combineReducers({
   questions: questionnaireReducer,
   offender: offenderReducer,
   login: loginReducer,
+  answers: answersReducer,
 });
 
 
