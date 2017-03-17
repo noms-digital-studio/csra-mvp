@@ -29,6 +29,7 @@ const QuestionWithComments = ({ title, description, aside, onSubmit }) => (
         </div>
         <p>
           <textarea
+            name="comments"
             placeholder="Comments"
             rows="5"
             cols="20"
