@@ -1,24 +1,24 @@
-#CSRA MVP
+# CSRA MVP
 This a static version on the CSRA questionnaire
 
 [![CircleCI](https://circleci.com/gh/noms-digital-studio/csra-mvp.svg?style=svg)](https://circleci.com/gh/noms-digital-studio/csra-mvp)
 
-##Install dependencies
+## Install dependencies
 ```
 yarn
 ```
 
-##Build
+## Build
 ```
-npm run build
-```
-
-##Test
-```
-npm test
+yarn run build
 ```
 
-##Run
+## Test
 ```
-npm start
+yarn test
+```
+
+## Run
+```
+yarn start
 ```
