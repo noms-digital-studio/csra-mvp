@@ -6,3 +6,4 @@ export const SIGN_IN = 'SIGN_IN';
 export const SIGN_OUT = 'SIGN_OUT';
 export const CONFIRM_PRISONER = 'CONFIRM_PRISONER';
 export const ADD_PRISONER = 'ADD_PRISONER';
+export const SAVE_ANSWER = 'SAVE_ANSWER';

@@ -7,6 +7,7 @@ import {
   SIGN_OUT,
   ADD_PRISONER,
   CONFIRM_PRISONER,
+  SAVE_ANSWER,
 } from '../constants/actions';
 
 import Questions from '../fixtures/questions.json';
@@ -31,17 +32,17 @@ export const signIn = user => ({ type: SIGN_IN, payload: user });
 
 export const signOut = () => ({ type: SIGN_OUT });
 
-export const addPrisoner = prisoner => {
-  return {type: ADD_PRISONER, payload: prisoner}
-};
+export const addPrisoner = prisoner => ({ type: ADD_PRISONER, payload: prisoner });
 
-export const confirmPrisoner = prisonerData => {
+export const confirmPrisoner = (prisonerData) => {
   const prisoner = {
     NOMS_Number: prisonerData['nomis-id'],
     Surname: prisonerData['last-name'],
     First_Name: prisonerData['first-name'],
-    Date_of_Birth: `${prisonerData['dob-day']}-${prisonerData['dob-month']}-${prisonerData['dob-year']}`
+    Date_of_Birth: `${prisonerData['dob-day']}-${prisonerData['dob-month']}-${prisonerData['dob-year']}`,
   };
 
-  return {type: CONFIRM_PRISONER, payload: prisoner};
+  return { type: CONFIRM_PRISONER, payload: prisoner };
 };
+
+export const saveAnswer = (key, value) => ({ type: SAVE_ANSWER, payload: { [key]: value } });

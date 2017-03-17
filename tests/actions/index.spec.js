@@ -7,6 +7,7 @@ import {
   selectOffender,
   addPrisoner,
   confirmPrisoner,
+  saveAnswer,
 } from '../../src/javascript/actions';
 import questions from '../../src/javascript/fixtures/questions.json';
 
@@ -81,10 +82,10 @@ describe('Actions', () => {
         'dob-day': '01',
         'dob-month': '10',
         'dob-year': '1997',
-        'nomis-id': 'AA12345'
+        'nomis-id': 'AA12345',
       };
 
-      expect(addPrisoner(prisoner)).to.eql({ type: 'ADD_PRISONER', payload: prisoner});
+      expect(addPrisoner(prisoner)).to.eql({ type: 'ADD_PRISONER', payload: prisoner });
     });
   });
 
@@ -95,7 +96,7 @@ describe('Actions', () => {
       'dob-day': '01',
       'dob-month': '10',
       'dob-year': '1997',
-      'nomis-id': 'AA12345'
+      'nomis-id': 'AA12345',
     };
 
     const prisoner = {
@@ -106,5 +107,17 @@ describe('Actions', () => {
     };
 
     expect(confirmPrisoner(prisonerData)).to.eql({ type: 'CONFIRM_PRISONER', payload: prisoner });
-  })
+  });
+
+  describe('saveAnswer', () => {
+    it('returns a SAVE_ANSWER action', () => {
+      const riskIndicator = 'foo-risk';
+      const answer = { confirmation: 'accept' };
+
+      expect(saveAnswer(riskIndicator, answer)).to.eql({
+        type: 'SAVE_ANSWER',
+        payload: { [riskIndicator]: answer },
+      });
+    });
+  });
 });
