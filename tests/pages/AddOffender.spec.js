@@ -1,10 +1,10 @@
 import React from 'react';
-import {Provider} from 'react-redux';
-import {mount, shallow} from 'enzyme';
+import { Provider } from 'react-redux';
+import { mount, shallow } from 'enzyme';
 
-import {fakeStore} from '../test-helpers';
+import { fakeStore } from '../test-helpers';
 
-import ConnectedAddOffender, {AddOffender} from '../../src/javascript/pages/AddOffender';
+import ConnectedAddOffender, { AddOffender } from '../../src/javascript/pages/AddOffender';
 
 const prisoner = {
   'first-name': 'foo-first-name',
@@ -21,13 +21,11 @@ const populateForm = (wrapper) => {
   });
 };
 
-const mountComponent = (store) => {
-  return mount(
-    <Provider store={store}>
-      <ConnectedAddOffender />
-    </Provider>,
-  );
-};
+const mountComponent = store => mount(
+  <Provider store={store}>
+    <ConnectedAddOffender />
+  </Provider>,
+);
 
 const assertFormFieldsArePopulated = (wrapper) => {
   Object.keys(prisoner).forEach((key) => {
@@ -39,13 +37,13 @@ describe('<AddOffender />', () => {
   context('Standalone AddOffender', () => {
     it('accepts a date', () => {
       const date = 'Fooday FooDay FooMonth FooYear';
-      const wrapper = shallow(<AddOffender date={date}/>);
+      const wrapper = shallow(<AddOffender date={date} />);
       expect(wrapper.text()).to.include(date);
     });
 
     it('fails to submit if fields are missing in the form', () => {
       const callback = sinon.spy();
-      const wrapper = mount(<AddOffender onSubmit={callback}/>);
+      const wrapper = mount(<AddOffender onSubmit={callback} />);
 
       wrapper.find('form').simulate('submit');
 
@@ -54,7 +52,7 @@ describe('<AddOffender />', () => {
 
     it('calls onSubmit callback when form submits successfully', () => {
       const callback = sinon.spy();
-      const wrapper = mount(<AddOffender onSubmit={callback}/>);
+      const wrapper = mount(<AddOffender onSubmit={callback} />);
 
       populateForm(wrapper);
 
@@ -65,9 +63,9 @@ describe('<AddOffender />', () => {
     });
 
     it('displays prisoner data in the form', () => {
-      const wrapper = mount(<AddOffender prisonerDetails={prisoner}/>);
+      const wrapper = mount(<AddOffender prisonerDetails={prisoner} />);
       assertFormFieldsArePopulated(wrapper);
-    })
+    });
   });
 
   context('Connected AddOffender', () => {
@@ -75,7 +73,7 @@ describe('<AddOffender />', () => {
       it('calls onSubmit callback when form submits successfully', () => {
         const store = fakeStore({
           offender: {
-            prisonerFormData: {}
+            prisonerFormData: {},
           },
         });
 
@@ -85,13 +83,13 @@ describe('<AddOffender />', () => {
         wrapper.find('form').simulate('submit');
 
         expect(
-          store.dispatch.calledWithMatch({type: 'ADD_PRISONER', payload: prisoner}),
+          store.dispatch.calledWithMatch({ type: 'ADD_PRISONER', payload: prisoner }),
         ).to.equal(true, 'Dispatched ADD_PRISONER');
 
         expect(
           store.dispatch.calledWithMatch({
             type: '@@router/CALL_HISTORY_METHOD',
-            payload: {method: 'push', args: ['/confirm-offender']},
+            payload: { method: 'push', args: ['/confirm-offender'] },
           }),
         ).to.equal(true, 'Changed path to /confirm-offender');
       });
@@ -101,13 +99,12 @@ describe('<AddOffender />', () => {
       it('displays prisoner data in the form', () => {
         const store = fakeStore({
           offender: {
-            prisonerFormData: prisoner
+            prisonerFormData: prisoner,
           },
         });
 
         assertFormFieldsArePopulated(mountComponent(store));
-      })
+      });
     });
   });
-
 });

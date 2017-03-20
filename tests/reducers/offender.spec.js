@@ -55,7 +55,7 @@ describe('#offenderReducer', () => {
       'dob-day': '01',
       'dob-month': '10',
       'dob-year': '1997',
-      'nomis-id': 'AA12345'
+      'nomis-id': 'AA12345',
     };
 
     const action = { type: 'ADD_PRISONER', payload: prisonerData };
@@ -71,7 +71,7 @@ describe('#offenderReducer', () => {
       'dob-day': '01',
       'dob-month': '10',
       'dob-year': '1997',
-      'nomis-id': 'AA12345'
+      'nomis-id': 'AA12345',
     };
 
     const newProfile = {
@@ -81,11 +81,14 @@ describe('#offenderReducer', () => {
       Date_of_Birth: '01-10-1997',
     };
 
-    const state = {...defaultState, prisonerFormData}
+    const state = { ...defaultState, prisonerFormData };
     const action = { type: 'CONFIRM_PRISONER', payload: newProfile };
-    const expectedState = { ...defaultState, prisonerFormData: {}, profiles: [...state.profiles, newProfile] };
+    const expectedState = {
+      ...defaultState,
+      prisonerFormData: {},
+      profiles: [...state.profiles, newProfile],
+    };
 
     expect(offenderReducer(state, action)).to.eql(expectedState);
   });
-
 });

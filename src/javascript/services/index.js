@@ -3,11 +3,11 @@ import defaultOffenderProfiles from '../fixtures/nomis.json';
 
 export const calculateRiskFor = (nomisId, riskScores = []) => {
   const LOW_RISK_THRESHOLD = 0.59;
-  const offenderRiskScore = riskScores.find((offender) => offender.nomisId === nomisId);
+  const offenderRiskScore = riskScores.find(offender => offender.nomisId === nomisId);
 
-  if (!offenderRiskScore)  return 'unknown';
+  if (!offenderRiskScore) return 'unknown';
 
-  const {viperScore} = offenderRiskScore;
+  const { viperScore } = offenderRiskScore;
 
   if (viperScore <= LOW_RISK_THRESHOLD) {
     return 'low';
@@ -15,7 +15,6 @@ export const calculateRiskFor = (nomisId, riskScores = []) => {
 
   return 'high';
 };
-
 
 export const viperScores = () => {
   if (sessionStorage.getItem('viperScores')) {
@@ -29,7 +28,7 @@ export const readSingleFile = (file, callback) => {
   if (!file) return;
 
   const reader = new FileReader();
-  reader.onload = ({target: {result}}) => {
+  reader.onload = ({ target: { result } }) => {
     callback(null, result);
   };
 
@@ -56,4 +55,3 @@ export const clearBrowserStorage = () => {
   sessionStorage.clear();
   localStorage.clear();
 };
-

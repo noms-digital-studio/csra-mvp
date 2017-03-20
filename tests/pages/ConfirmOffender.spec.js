@@ -1,10 +1,12 @@
 import React from 'react';
-import {Provider} from 'react-redux';
-import {mount, shallow} from 'enzyme';
+import { Provider } from 'react-redux';
+import { mount, shallow } from 'enzyme';
 
-import {fakeStore} from '../test-helpers';
+import { fakeStore } from '../test-helpers';
 
-import ConnectedConfirmOffender, {ConfirmOffender} from '../../src/javascript/pages/ConfirmOffender';
+import ConnectedConfirmOffender, {
+  ConfirmOffender,
+} from '../../src/javascript/pages/ConfirmOffender';
 
 const prisoner = {
   'first-name': 'foo-first-name',
@@ -15,20 +17,17 @@ const prisoner = {
   'nomis-id': 'foo-nomis-id',
 };
 
-const mountComponent = (store) => {
-  return mount(
-    <Provider store={store}>
-      <ConnectedConfirmOffender />
-    </Provider>,
-  );
-};
+const mountComponent = store => mount(
+  <Provider store={store}>
+    <ConnectedConfirmOffender />
+  </Provider>,
+);
 
 describe('<ConfirmOffender />', () => {
   context('Standalone ConfirmOffender', () => {
-
     it('calls onSubmit callback when user clicks Confirm', () => {
       const callback = sinon.spy();
-      const wrapper = mount(<ConfirmOffender prisonerDetails={prisoner} onClick={callback}/>);
+      const wrapper = mount(<ConfirmOffender prisonerDetails={prisoner} onClick={callback} />);
 
       wrapper.find('[data-confirm]').simulate('click');
 
@@ -37,11 +36,11 @@ describe('<ConfirmOffender />', () => {
     });
 
     it('displays prisoner data in the page', () => {
-      const wrapper = mount(<ConfirmOffender prisonerDetails={prisoner}/>);
+      const wrapper = mount(<ConfirmOffender prisonerDetails={prisoner} />);
       Object.keys(prisoner).forEach((key) => {
         expect(wrapper.text()).to.contain(prisoner[key]);
       });
-    })
+    });
   });
 
   context('Connected ConfirmOffender', () => {
@@ -51,13 +50,12 @@ describe('<ConfirmOffender />', () => {
       beforeEach(() => {
         store = fakeStore({
           offender: {
-            prisonerFormData: prisoner
+            prisonerFormData: prisoner,
           },
         });
 
         wrapper = mountComponent(store);
       });
-
 
       it('calls onClick callback when user clicks Confirm', () => {
         const newProfile = {
@@ -69,11 +67,13 @@ describe('<ConfirmOffender />', () => {
 
         wrapper.find('[data-confirm]').simulate('click');
 
-        expect(store.dispatch.calledWithMatch({ type: 'CONFIRM_PRISONER', payload: newProfile })).to.equal(true, 'dispatched CONFIRM_PRISONER');
+        expect(
+          store.dispatch.calledWithMatch({ type: 'CONFIRM_PRISONER', payload: newProfile }),
+        ).to.equal(true, 'dispatched CONFIRM_PRISONER');
         expect(
           store.dispatch.calledWithMatch({
             type: '@@router/CALL_HISTORY_METHOD',
-            payload: {method: 'replace', args: ['/dashboard']},
+            payload: { method: 'replace', args: ['/dashboard'] },
           }),
         ).to.equal(true, 'Changed path to /dashboard');
       });
@@ -85,5 +85,4 @@ describe('<ConfirmOffender />', () => {
       });
     });
   });
-
 });

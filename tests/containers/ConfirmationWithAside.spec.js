@@ -4,7 +4,6 @@ import { mount } from 'enzyme';
 import CofirmationWithAside from '../../src/javascript/containers/ConfirmationWithAside';
 import Aside from '../../src/javascript/components/asides/Index';
 
-
 describe('<CofirmationWithAside />', () => {
   it('renders the title', () => {
     const wrapper = mount(<CofirmationWithAside title="foo-title" />);

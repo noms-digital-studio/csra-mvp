@@ -61,9 +61,7 @@ describe('<Header />', () => {
       it('accepts a logout action', () => {
         wrapper.find('[data-sign-out]').simulate('click');
 
-        expect(
-          store.dispatch.calledWithMatch({ type: 'SIGN_OUT' }),
-        ).to.be.true;
+        expect(store.dispatch.calledWithMatch({ type: 'SIGN_OUT' })).to.be.true;
 
         expect(
           store.dispatch.calledWithMatch({

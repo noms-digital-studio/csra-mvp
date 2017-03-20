@@ -4,7 +4,6 @@ import { mount } from 'enzyme';
 import QuestionWithAside from '../../src/javascript/containers/QuestionWithAside';
 import Aside from '../../src/javascript/components/asides/Index';
 
-
 describe('<QuestionWithAside />', () => {
   it('renders the title', () => {
     const wrapper = mount(<QuestionWithAside title="foo-title" />);

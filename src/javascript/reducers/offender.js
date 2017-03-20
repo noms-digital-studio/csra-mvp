@@ -1,9 +1,9 @@
 import {
-    GET_OFFENDER_NOMIS_PROFILES,
-    GET_VIPER_SCORES,
-    SELECT_OFFENDER,
-    ADD_PRISONER,
-    CONFIRM_PRISONER,
+  GET_OFFENDER_NOMIS_PROFILES,
+  GET_VIPER_SCORES,
+  SELECT_OFFENDER,
+  ADD_PRISONER,
+  CONFIRM_PRISONER,
 } from '../constants/actions';
 
 const defaultState = {
@@ -29,4 +29,3 @@ export default (state = defaultState, { type, payload }) => {
       return state;
   }
 };
-

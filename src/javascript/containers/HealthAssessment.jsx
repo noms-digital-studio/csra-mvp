@@ -18,7 +18,12 @@ const HealthAssessment = ({ title, description, aside, onSubmit }) => (
         </p>
 
         <h2 className="heading-medium">Healthcare assessment conducted by</h2>
-        <input className="form-control u-margin-bottom-default" type="text" name="assessor-name" placeholder="Enter Name" />
+        <input
+          className="form-control u-margin-bottom-default"
+          type="text"
+          name="assessor-name"
+          placeholder="Enter Name"
+        />
 
         <p className="bold-small">{description}</p>
         <div className="form-group">

@@ -22,7 +22,6 @@ describe('#loginReducer', () => {
     expect(loginReducer(undefined, action)).to.eql(expectedState);
   });
 
-
   it('return a logged out state', () => {
     const action = { type: 'SIGN_OUT' };
     const expectedState = {
