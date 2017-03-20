@@ -7,7 +7,7 @@ class SelectableInputGroup extends Component {
   constructor(props) {
     super();
     this.state = {
-      selectedInputValue: props.default || '',
+      selectedInputValue: props.default,
       selectedFocused: false,
     };
   }

@@ -1,7 +1,6 @@
 import React, { Component, PropTypes } from 'react';
 import classnames from 'classnames';
 
-const noop = () => {};
 
 class SelectableInput extends Component {
   constructor(props) {
@@ -39,6 +38,7 @@ class SelectableInput extends Component {
     return (
       <label className={cssClasses} htmlFor={id}>
         <input
+          data-input={value}
           id={id}
           type={type}
           name={name}
@@ -60,5 +60,6 @@ SelectableInput.propType = {
   text: PropTypes.string,
   selected: PropTypes.bool,
 };
+
 
 export default SelectableInput;
