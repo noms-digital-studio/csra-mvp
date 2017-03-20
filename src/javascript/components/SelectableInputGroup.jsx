@@ -36,7 +36,7 @@ class SelectableInputGroup extends Component {
         onChange={e => this.handleInputChange(e)}
         onBlur={e => this.handleInputBlur(e)}
       />
-        ));
+    ));
   }
 
   render() {
@@ -50,16 +50,19 @@ class SelectableInputGroup extends Component {
 
 SelectableInputGroup.propTypes = {
   default: PropTypes.string,
-  fields: PropTypes.arrayOf(PropTypes.shape({
-    name: PropTypes.string,
-    value: PropTypes.string,
-    text: PropTypes.string,
-  })),
+  fields: PropTypes.arrayOf(
+    PropTypes.shape({
+      name: PropTypes.string,
+      value: PropTypes.string,
+      text: PropTypes.string,
+    }),
+  ),
   type: PropTypes.string,
 };
 
 SelectableInputGroup.defaultProps = {
   type: 'checkbox',
+  fields: [],
 };
 
 export default SelectableInputGroup;

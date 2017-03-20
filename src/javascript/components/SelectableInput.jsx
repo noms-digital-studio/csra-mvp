@@ -7,8 +7,8 @@ class SelectableInput extends Component {
   constructor(props) {
     super();
     this.state = {
-      selected: !!props.selected,
-      focused: false,
+      selected: props.selected,
+      focused: props.focused,
     };
   }
 
@@ -21,9 +21,10 @@ class SelectableInput extends Component {
   }
 
   render() {
-    const { text, id, value, name, type, selected, focused, onChange, onBlur } = this.props;
-    const isFocused = !!focused || this.state.focused;
-    const isSelected = !!selected || this.state.selected;
+    const { text, id, value, name, type, onChange, onBlur, selected, focused } = this.props;
+
+    const isFocused = onBlur ? focused : this.state.focused;
+    const isSelected = onChange ? selected : this.state.selected;
     const onChangeFnc = onChange || (e => this.handleChange(e));
     const onBlurFnc = onBlur || (e => this.handleBlur(e));
 
@@ -36,10 +37,7 @@ class SelectableInput extends Component {
     });
 
     return (
-      <label
-        className={cssClasses}
-        htmlFor={id}
-      >
+      <label className={cssClasses} htmlFor={id}>
         <input
           id={id}
           type={type}
@@ -54,7 +52,6 @@ class SelectableInput extends Component {
     );
   }
 }
-
 
 SelectableInput.propType = {
   onChange: PropTypes.func,
