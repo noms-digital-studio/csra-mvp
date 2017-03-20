@@ -56,24 +56,21 @@ export const clearBrowserStorage = () => {
   localStorage.clear();
 };
 
-export const canContinueAssessment = (question, answers, viperScore) => {
-  if (!question.singleCellPredicate) {
+export const assessmentCanContinue = (question, answers, viperScore) => {
+  if (question.sharedCellPredicate === undefined) {
     return true;
   }
 
-  if (question.singleCellPredicate.type === 'SINGLE_QUESTION') {
-    return question.singleCellPredicate.value !== answers[question.riskIndicator];
+  if (question.sharedCellPredicate.type === 'QUESTION') {
+    return question.sharedCellPredicate.dependents.some(
+      riskIndicator => answers[riskIndicator] === question.sharedCellPredicate.value,
+    );
   }
 
-  if (question.singleCellPredicate.type === 'MULTI_DEPENDENT_QUESTION') {
-    return !([...question.singleCellPredicate.dependents, question.riskIndicator].every(
-      riskIndicator => answers[riskIndicator] === question.singleCellPredicate.value,
-    ));
+  if (question.sharedCellPredicate.type === 'VIPER_SCORE') {
+    return viperScore === question.sharedCellPredicate.value;
   }
 
-  if (viperScore === question.singleCellPredicate.value) {
-    return false;
-  }
-
-  return true;
+  console.error(`Recieved an invalid sharedCellPredicate type: ${question.sharedCellPredicate.type}`);
+  return false;
 };
