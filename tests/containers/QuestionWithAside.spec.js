@@ -31,4 +31,10 @@ describe('<QuestionWithAside />', () => {
 
     expect(callback.calledOnce).to.be.true;
   });
+
+  it('pre-populates the forms if data is available', () => {
+    const wrapper = mount(<QuestionWithAside formDefaults={{ answer: 'yes' }} />);
+
+    expect(wrapper.find('[data-input="yes"]').node.checked).to.equal(true, 'radio button selected');
+  });
 });

@@ -1,17 +1,17 @@
 import React from 'react';
 import { mount } from 'enzyme';
 
-import CofirmationWithAside from '../../src/javascript/containers/ConfirmationWithAside';
+import QuestionWithComments from '../../src/javascript/containers/QuestionWithComments';
 import Aside from '../../src/javascript/components/asides/Index';
 
-describe('<CofirmationWithAside />', () => {
+describe('<QuestionWithComments />', () => {
   it('renders the title', () => {
-    const wrapper = mount(<CofirmationWithAside title="foo-title" />);
+    const wrapper = mount(<QuestionWithComments title="foo-title" />);
     expect(wrapper.text()).to.contain('foo-title');
   });
 
   it('renders the description', () => {
-    const wrapper = mount(<CofirmationWithAside description="foo-description" />);
+    const wrapper = mount(<QuestionWithComments description="foo-description" />);
     expect(wrapper.text()).to.contain('foo-description');
   });
 
@@ -19,13 +19,13 @@ describe('<CofirmationWithAside />', () => {
     const props = {
       template: 'template',
     };
-    const wrapper = mount(<CofirmationWithAside aside={props} />);
+    const wrapper = mount(<QuestionWithComments aside={props} />);
     expect(wrapper.find(Aside).length).be.equal(1);
   });
 
   it('handles form submission', () => {
     const callback = sinon.spy();
-    const wrapper = mount(<CofirmationWithAside onSubmit={callback} />);
+    const wrapper = mount(<QuestionWithComments onSubmit={callback} />);
 
     wrapper.find('form').simulate('submit');
 
@@ -33,8 +33,10 @@ describe('<CofirmationWithAside />', () => {
   });
 
   it('pre-populates the forms if data is available', () => {
-    const wrapper = mount(<CofirmationWithAside formDefaults={{ confirmation: 'accepted' }} />);
+    const wrapper = mount(<QuestionWithComments formDefaults={{ answer: 'yes', comments: 'foo-comment' }} />);
 
-    expect(wrapper.find('input[type="checkbox"]').node.checked).to.equal(true, 'Check box is checked');
+    expect(wrapper.find('[data-input="yes"]').node.checked).to.equal(true, 'radio button selected');
+
+    expect(wrapper.find('textarea').node.value).to.equal('foo-comment');
   });
 });

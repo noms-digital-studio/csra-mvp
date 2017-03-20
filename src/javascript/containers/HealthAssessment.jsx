@@ -7,7 +7,9 @@ import routes from '../constants/routes';
 import Aside from '../components/asides/Index';
 import SelectableInputGroup from '../components/SelectableInputGroup';
 
-const HealthAssessment = ({ title, description, aside, onSubmit }) => (
+const HealthAssessment = (
+  { title, description, aside, onSubmit, formDefaults: { answer, assessor } },
+) => (
   <div className="grid-row">
     <div className="column-two-thirds">
       <form key={uuid()} action="/" method="post" className="form" onSubmit={onSubmit}>
@@ -19,9 +21,10 @@ const HealthAssessment = ({ title, description, aside, onSubmit }) => (
 
         <h2 className="heading-medium">Healthcare assessment conducted by</h2>
         <input
+          defaultValue={assessor}
           className="form-control u-margin-bottom-default"
           type="text"
-          name="assessor-name"
+          name="assessor"
           placeholder="Enter Name"
         />
 
@@ -29,6 +32,7 @@ const HealthAssessment = ({ title, description, aside, onSubmit }) => (
         <div className="form-group">
           <fieldset>
             <SelectableInputGroup
+              default={answer}
               type="radio"
               fields={[
                 { value: 'yes', text: 'Yes', name: 'answer' },
@@ -57,6 +61,17 @@ HealthAssessment.propTypes = {
   description: PropTypes.string.isRequired,
   aside: PropTypes.object.isRequired,
   onSubmit: PropTypes.func.isRequired,
+  formDefaults: PropTypes.shape({
+    answer: PropTypes.string,
+    accessor: PropTypes.string,
+  }),
+};
+
+HealthAssessment.defaultProps = {
+  formDefaults: {
+    answer: '',
+    accessor: '',
+  },
 };
 
 export default HealthAssessment;

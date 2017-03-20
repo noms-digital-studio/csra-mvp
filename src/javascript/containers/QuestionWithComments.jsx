@@ -9,7 +9,18 @@ import { newLineToParagraph } from '../utils/components';
 import Aside from '../components/asides/Index';
 import SelectableInputGroup from '../components/SelectableInputGroup';
 
-const QuestionWithComments = ({ title, description, aside, onSubmit }) => (
+const QuestionWithComments = (
+  {
+    title,
+    description,
+    aside,
+    onSubmit,
+    formDefaults: {
+      answer,
+      comments,
+    },
+  },
+) => (
   <div className="grid-row">
     <div className="column-two-thirds">
       <form key={uuid()} action="/" method="post" className="form" onSubmit={onSubmit}>
@@ -19,6 +30,7 @@ const QuestionWithComments = ({ title, description, aside, onSubmit }) => (
         <div className="form-group">
           <fieldset>
             <SelectableInputGroup
+              default={answer}
               type="radio"
               fields={[
                 { value: 'yes', text: 'Yes', name: 'answer' },
@@ -29,6 +41,7 @@ const QuestionWithComments = ({ title, description, aside, onSubmit }) => (
         </div>
         <p>
           <textarea
+            defaultValue={comments}
             name="comments"
             placeholder="Comments"
             rows="5"
@@ -52,10 +65,21 @@ const QuestionWithComments = ({ title, description, aside, onSubmit }) => (
 );
 
 QuestionWithComments.propTypes = {
-  title: PropTypes.string.isRequired,
-  description: PropTypes.string.isRequired,
-  aside: PropTypes.object.isRequired,
-  onSubmit: PropTypes.func.isRequired,
+  title: PropTypes.string,
+  description: PropTypes.string,
+  aside: PropTypes.object,
+  onSubmit: PropTypes.func,
+  formDefaults: PropTypes.shape({
+    answer: PropTypes.string,
+    comments: PropTypes.string,
+  }),
+};
+
+QuestionWithComments.defaultProps = {
+  formDefaults: {
+    answer: '',
+    comments: '',
+  },
 };
 
 export default QuestionWithComments;

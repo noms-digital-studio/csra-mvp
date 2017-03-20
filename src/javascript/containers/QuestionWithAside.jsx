@@ -9,7 +9,7 @@ import routes from '../constants/routes';
 import Aside from '../components/asides/Index';
 import SelectableInputGroup from '../components/SelectableInputGroup';
 
-const QuestionWithAside = ({ title, description, aside, onSubmit }) => (
+const QuestionWithAside = ({ title, description, aside, onSubmit, formDefaults: { answer } }) => (
   <div className="grid-row">
     <div className="column-two-thirds">
       <form key={uuid()} action="/" method="post" className="form" onSubmit={onSubmit}>
@@ -19,6 +19,7 @@ const QuestionWithAside = ({ title, description, aside, onSubmit }) => (
         <div className="form-group">
           <fieldset>
             <SelectableInputGroup
+              default={answer}
               type="radio"
               fields={[
                 { value: 'yes', text: 'Yes', name: 'answer' },
@@ -47,6 +48,13 @@ QuestionWithAside.propTypes = {
   description: PropTypes.string.isRequired,
   aside: PropTypes.object.isRequired,
   onSubmit: PropTypes.func.isRequired,
+  formDefaults: PropTypes.shape({
+    answer: PropTypes.string,
+  }),
+};
+
+QuestionWithAside.defaultProps = {
+  formDefaults: { answer: '' },
 };
 
 export default QuestionWithAside;

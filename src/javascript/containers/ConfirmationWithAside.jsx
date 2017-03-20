@@ -8,7 +8,9 @@ import routes from '../constants/routes';
 import SelectableInput from '../components/SelectableInput';
 import Aside from '../components/asides/Index';
 
-const ConfirmationWithAside = ({ title, description, aside, onSubmit }) => (
+const ConfirmationWithAside = (
+  { title, description, aside, onSubmit, formDefaults: { confirmation } },
+) => (
   <div>
     <div className="grid-row">
       <div className="column-two-thirds">
@@ -22,9 +24,10 @@ const ConfirmationWithAside = ({ title, description, aside, onSubmit }) => (
             <SelectableInput
               type="checkbox"
               id="confirmation"
-              value="accept"
+              value="accepted"
               text="I confirm that this has been explained to the prisoner"
               name="confirmation"
+              selected={confirmation === 'accepted'}
             />
           </p>
           <p>
@@ -47,6 +50,15 @@ ConfirmationWithAside.propTypes = {
   description: PropTypes.string.isRequired,
   onSubmit: PropTypes.func.isRequired,
   aside: PropTypes.object,
+  formDefaults: PropTypes.shape({
+    confirmation: PropTypes.string,
+  }),
+};
+
+ConfirmationWithAside.defaultProps = {
+  formDefaults: {
+    confirmation: '',
+  },
 };
 
 export default ConfirmationWithAside;

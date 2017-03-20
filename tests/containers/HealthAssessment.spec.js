@@ -1,17 +1,17 @@
 import React from 'react';
 import { mount } from 'enzyme';
 
-import CofirmationWithAside from '../../src/javascript/containers/ConfirmationWithAside';
+import HealthAssessment from '../../src/javascript/containers/HealthAssessment';
 import Aside from '../../src/javascript/components/asides/Index';
 
-describe('<CofirmationWithAside />', () => {
+describe('<HealthAssessment />', () => {
   it('renders the title', () => {
-    const wrapper = mount(<CofirmationWithAside title="foo-title" />);
+    const wrapper = mount(<HealthAssessment title="foo-title" />);
     expect(wrapper.text()).to.contain('foo-title');
   });
 
   it('renders the description', () => {
-    const wrapper = mount(<CofirmationWithAside description="foo-description" />);
+    const wrapper = mount(<HealthAssessment description="foo-description" />);
     expect(wrapper.text()).to.contain('foo-description');
   });
 
@@ -19,13 +19,13 @@ describe('<CofirmationWithAside />', () => {
     const props = {
       template: 'template',
     };
-    const wrapper = mount(<CofirmationWithAside aside={props} />);
+    const wrapper = mount(<HealthAssessment aside={props} />);
     expect(wrapper.find(Aside).length).be.equal(1);
   });
 
   it('handles form submission', () => {
     const callback = sinon.spy();
-    const wrapper = mount(<CofirmationWithAside onSubmit={callback} />);
+    const wrapper = mount(<HealthAssessment onSubmit={callback} />);
 
     wrapper.find('form').simulate('submit');
 
@@ -33,8 +33,12 @@ describe('<CofirmationWithAside />', () => {
   });
 
   it('pre-populates the forms if data is available', () => {
-    const wrapper = mount(<CofirmationWithAside formDefaults={{ confirmation: 'accepted' }} />);
+    const wrapper = mount(
+      <HealthAssessment formDefaults={{ answer: 'yes', assessor: 'foo-name' }} />,
+    );
 
-    expect(wrapper.find('input[type="checkbox"]').node.checked).to.equal(true, 'Check box is checked');
+    expect(wrapper.find('[data-input="yes"]').node.checked).to.equal(true, 'radio button selected');
+
+    expect(wrapper.find('input[type="text"]').node.value).to.equal('foo-name');
   });
 });
