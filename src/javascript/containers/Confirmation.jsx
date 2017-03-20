@@ -7,7 +7,7 @@ import { newLineToParagraph } from '../utils/components';
 
 import SelectableInput from '../components/SelectableInput';
 
-const Confirmation = ({ title, description, onSubmit }) => (
+const Confirmation = ({ title, description, onSubmit, formDefaults: { confirmation } }) => (
   <div>
     <div className="grid-row">
       <div className="column-two-thirds">
@@ -24,9 +24,10 @@ const Confirmation = ({ title, description, onSubmit }) => (
             <SelectableInput
               type="checkbox"
               id="confirmation"
-              value="accept"
+              value="accepted"
               text="I confirm that this has been explained to the prisoner"
               name="confirmation"
+              selected={confirmation === 'accepted'}
             />
           </p>
 
@@ -46,6 +47,15 @@ Confirmation.propTypes = {
   title: PropTypes.string,
   description: PropTypes.string,
   onSubmit: PropTypes.func,
+  formDefaults: PropTypes.shape({
+    confirmation: PropTypes.string,
+  }),
+};
+
+Confirmation.defaultProps = {
+  formDefaults: {
+    confirmation: '',
+  },
 };
 
 export default Confirmation;
