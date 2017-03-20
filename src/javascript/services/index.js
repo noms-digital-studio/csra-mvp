@@ -55,3 +55,25 @@ export const clearBrowserStorage = () => {
   sessionStorage.clear();
   localStorage.clear();
 };
+
+export const canContinueAssessment = (question, answers, viperScore) => {
+  if (!question.singleCellPredicate) {
+    return true;
+  }
+
+  if (question.singleCellPredicate.type === 'SINGLE_QUESTION') {
+    return question.singleCellPredicate.value !== answers[question.riskIndicator];
+  }
+
+  if (question.singleCellPredicate.type === 'MULTI_DEPENDENT_QUESTION') {
+    return !([...question.singleCellPredicate.dependents, question.riskIndicator].every(
+      riskIndicator => answers[riskIndicator] === question.singleCellPredicate.value,
+    ));
+  }
+
+  if (viperScore === question.singleCellPredicate.value) {
+    return false;
+  }
+
+  return true;
+};
