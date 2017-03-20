@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import { push } from 'react-router-redux';
 import serialize from 'form-serialize';
 
-import { isEmpty } from 'ramda';
+import { isEmpty, path } from 'ramda';
 
 import Routes from '../constants/routes';
 import { getQuestions, saveAnswer } from '../actions';
@@ -82,6 +82,7 @@ class Question extends Component {
 
   render() {
     const {
+      answers,
       questions,
       params: { section },
       prisoner: { firstName, surname },
@@ -110,7 +111,11 @@ class Question extends Component {
             </h2>
           </div>
         </div>
-        {templateSelector({ ...question, onSubmit: e => this.handleFormSubmit(e) })}
+        {templateSelector({
+          ...question,
+          onSubmit: e => this.handleFormSubmit(e),
+          formDefaults: answers,
+        })}
       </div>
     );
   }
@@ -125,11 +130,18 @@ Question.propTypes = {
 };
 
 Question.defaultProps = {
+  answers: {},
   questions: [],
   params: {},
   prisoner: {},
   getQuestions: () => {},
   onSubmit: () => {},
+};
+
+const getPrisonerAnswers = (params, state) => {
+  const { section } = params;
+  const { selectedPrisonerId, answers } = state.answers;
+  return path([selectedPrisonerId, section], answers);
 };
 
 const mapStateToProps = (state, ownProps) => ({
@@ -139,6 +151,7 @@ const mapStateToProps = (state, ownProps) => ({
     firstName: state.offender.selected.First_Name,
     surname: state.offender.selected.Surname,
   },
+  answers: getPrisonerAnswers(ownProps.params, state),
 });
 
 const mapActionsToProps = dispatch => ({

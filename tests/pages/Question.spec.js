@@ -86,6 +86,10 @@ describe('<Question />', () => {
 
     beforeEach(() => {
       store = fakeStore({
+        answers: {
+          selectedPrisonerId: 'foo-prisoner-id',
+          answers: {},
+        },
         questions: {
           questions,
         },
