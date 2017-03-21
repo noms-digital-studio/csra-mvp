@@ -105,9 +105,9 @@ class Question extends Component {
               className="c-section-title"
             >
               <span>Section&nbsp;</span>
-              <span className="circle circle-step">{sectionIndex + 1}</span>
+              <span>{sectionIndex + 1}</span>
               <span>&nbsp;of&nbsp;</span>
-              <span className="circle circle-step">{totalSections}</span>
+              <span>{totalSections}</span>
             </h2>
 
           </div>
