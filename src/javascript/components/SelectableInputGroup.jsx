@@ -23,8 +23,9 @@ class SelectableInputGroup extends Component {
   renderButtons() {
     const { fields, type } = this.props;
 
-    return fields.map(({ name, value, text }) => (
+    return fields.map(({ name, value, text, required }) => (
       <SelectableInput
+        required={required}
         key={`radio-${value}`}
         id={`radio-${value}`}
         name={name}
@@ -55,6 +56,7 @@ SelectableInputGroup.propTypes = {
       name: PropTypes.string,
       value: PropTypes.string,
       text: PropTypes.string,
+      required: PropTypes.bool,
     }),
   ),
   type: PropTypes.string,

@@ -19,6 +19,7 @@ const QuestionWithComments = (
       answer,
       comments,
     },
+    answerRequired
   },
 ) => (
   <div className="grid-row">
@@ -33,8 +34,8 @@ const QuestionWithComments = (
               default={answer}
               type="radio"
               fields={[
-                { value: 'yes', text: 'Yes', name: 'answer' },
-                { value: 'no', text: 'No', name: 'answer' },
+                { value: 'yes', text: 'Yes', name: 'answer', required: answerRequired  },
+                { value: 'no', text: 'No', name: 'answer', required: answerRequired  },
               ]}
             />
           </fieldset>

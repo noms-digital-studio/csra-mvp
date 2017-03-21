@@ -34,7 +34,8 @@
       "template": "static",
       "title": "Why is this important?",
       "description": "Even if no other risk factors are present, if someone is stating that they intend to harm a cell mate we have to take this seriously and they must be allocated a single cell."
-    }
+    },
+    "answerRequired": true
   },
   {
     "riskIndicator": "vulnerability",
@@ -52,7 +53,8 @@
       "template": "static",
       "title": "Why is this important?",
       "description": "Research on prison violence tells us that people who are more vulnerable to victimisation in prison are also more likely to be violent in prison. This might be because they feel they have to defend themselves, or find themselves in volatile situations, or it might be because repeated victimisation is associated with mental health and behavioral problems, which can sometimes lead to violence.\nIf you consider the person to be at risk of harm if they share a cell with someone, then this will result in a recommendation of single cell allocation."
-    }
+    },
+    "answerRequired": true
   },
   {
     "riskIndicator": "gang-affiliation",
@@ -63,7 +65,8 @@
       "template": "static",
       "title": "Why is this important?",
       "description": "Research tells us that people who are part of gangs when they come to prison or who join gangs when in prison are more likely than other prisoners to be violent during their stay. For this reason, it is important to establish whether or not the person is part of a gang.\nIf this is the only risk factor present for someone, then it doesn’t mean they have to have a single cell, but if other risk factors become relevant, they might be recommended a single cell."
-    }
+    },
+    "answerRequired": true
   },
   {
     "riskIndicator": "drug-misuse",
@@ -74,7 +77,8 @@
       "title": "Why is this important?",
       "template": "static",
       "description": "Research on prison violence tells us that people who have been recently using drugs are more likely than other prisoners to be violent in prison. There are lots of possible reasons for this. For some it might be involvement in the illicit economy, dealing or getting into debt. For others, their drug use might affect their thinking, making them more suspicious and hostile, or might stop them thinking things through and controlling their impulses. Violence can also result from drug-induced psychosis.\nAs lots of people who come to prison take or have recently taken drugs, on its own this risk factor will not lead to a single cell allocation. However, when this is combined with other risk factors, it can lead to the recommendation that it would be safer to house them in a single cell."
-    }
+    },
+    "answerRequired": true
   },
   {
     "riskIndicator": "prejudice",
@@ -94,7 +98,8 @@
       "title": "Why is this important?",
       "template": "static",
       "description": "We have a duty of care to keep people safe from discrimination. If someone has hostile attitudes towards a particular group, this needs to be noted, to keep others safe. However, hostile attitudes on their own don’t mean that someone will automatically be given a single cell. They may be safe to share with a range of other people, and this will be taken into account in the final recommendation."
-    }
+    },
+    "answerRequired": true
   },
   {
     "riskIndicator": "other-reasons",
@@ -105,7 +110,8 @@
       "title": "Why is this important?",
       "template": "static",
       "description": "If there is any other information from case records or from the prisoner, that raises concerns that he/she might be violent towards a cell mate, then note it here."
-    }
+    },
+    "answerRequired": true
   },
   {
     "riskIndicator": "healthcare-assessment",
