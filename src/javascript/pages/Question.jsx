@@ -76,12 +76,8 @@ class Question extends Component {
 
     const canContinue = assessmentCanContinue(question, reducedAnswers, prisonerViperScore);
 
-    if (canContinue) {
-      if (questions[nextSectionIndex]) {
-        nextPath = `${basePath}/${questions[nextSectionIndex].riskIndicator}`;
-      } else {
-        nextPath = Routes.SUMMARY;
-      }
+    if (canContinue && questions[nextSectionIndex]) {
+      nextPath = `${basePath}/${questions[nextSectionIndex].riskIndicator}`;
     } else {
       nextPath = Routes.ASSESSMENT_COMPLETE;
     }
