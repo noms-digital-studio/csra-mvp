@@ -11,7 +11,7 @@ import routes from '../constants/routes';
 class Dashboard extends Component {
   componentDidMount() {
     this.props.getViperScores();
-    if(!this.props.profiles.length) {
+    if (!this.props.profiles.length) {
       this.props.getOffenderNomisProfiles();
     }
   }
@@ -55,14 +55,6 @@ class Dashboard extends Component {
             <span className="heading-secondary">Prisoners arriving on</span>
             {this.props.date}
           </h1>
-          {/* <div className="grid-row">
-                        <div className="column-one-half">
-                            <span className="heading-large u-d-block">Prisoners arriving on</span>
-                        </div>
-                        <div className="column-one-half u-text-align-right">
-                            <span className="heading-large u-d-block">{this.props.date}</span>
-                        </div>
-                    </div>*/}
         </div>
 
         <table>

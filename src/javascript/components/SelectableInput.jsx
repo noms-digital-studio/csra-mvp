@@ -20,7 +20,7 @@ class SelectableInput extends Component {
   }
 
   render() {
-    const { text, id, value, name, type, onChange, onBlur, selected, focused } = this.props;
+    const { text, id, value, name, type, onChange, onBlur, selected, focused, required } = this.props;
 
     const isFocused = onBlur ? focused : this.state.focused;
     const isSelected = onChange ? selected : this.state.selected;
@@ -38,6 +38,7 @@ class SelectableInput extends Component {
     return (
       <label className={cssClasses} htmlFor={id}>
         <input
+          required={required}
           data-input={value}
           id={id}
           type={type}
@@ -59,6 +60,11 @@ SelectableInput.propType = {
   name: PropTypes.string,
   text: PropTypes.string,
   selected: PropTypes.bool,
+  required: PropTypes.bool
+};
+
+SelectableInput.defaultProps = {
+  required: false
 };
 
 

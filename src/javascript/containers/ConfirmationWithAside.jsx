@@ -22,6 +22,7 @@ const ConfirmationWithAside = (
         <form className="c-confirmation-form" onSubmit={onSubmit}>
           <p className="c-form-label-container u-clear-fix bold">
             <SelectableInput
+              required
               type="checkbox"
               id="confirmation"
               value="accepted"

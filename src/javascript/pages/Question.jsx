@@ -5,8 +5,9 @@ import serialize from 'form-serialize';
 
 import { isEmpty, path } from 'ramda';
 
-import Routes from '../constants/routes';
+import { assessmentCanContinue, calculateRiskFor } from '../services';
 import { getQuestions, saveAnswer } from '../actions';
+import Routes from '../constants/routes';
 
 import QuestionWithAsideTemplate from '../containers/QuestionWithAside';
 import QuestionWithComments from '../containers/QuestionWithComments';
@@ -31,6 +32,31 @@ function templateSelector(data) {
   }
 }
 
+const reduceYesNoAnswers = answers =>
+  Object.keys(answers).reduce((result, key) => ({ ...result, [key]: answers[key].answer }), {});
+
+const sectionData = (questions = [], section = '') => {
+  if (isEmpty(questions)) {
+    return {
+      totalSections: 0,
+      question: {},
+      sectionIndex: 0,
+    };
+  }
+  const sectionEqls = item => item.riskIndicator === section;
+  const index = questions.findIndex(sectionEqls);
+
+  const total = questions.length;
+  const question = questions.find(sectionEqls);
+  const adJustedIndex = index !== undefined ? index : 0;
+
+  return {
+    totalSections: total,
+    question,
+    sectionIndex: adJustedIndex,
+  };
+};
+
 class Question extends Component {
   componentDidMount() {
     this.props.getQuestions();
@@ -39,56 +65,40 @@ class Question extends Component {
   handleFormSubmit(event) {
     event.preventDefault();
 
-    const { sectionIndex, question } = this.sectionData(
-      this.props.questions,
-      this.props.params.section,
-    );
+    const { params: { section }, questions, answers, prisonerViperScore } = this.props;
+    const { sectionIndex, question } = sectionData(questions, section);
     const answer = serialize(event.target, { hash: true });
     const basePath = Routes.ASSESSMENT;
     const nextSectionIndex = sectionIndex + 1;
+    const reducedAnswers = reduceYesNoAnswers({ ...answers, [section]: answer });
 
     let nextPath;
 
-    if (this.props.questions[nextSectionIndex]) {
-      nextPath = `${basePath}/${this.props.questions[nextSectionIndex].riskIndicator}`;
+    const canContinue = assessmentCanContinue(question, reducedAnswers, prisonerViperScore);
+
+    if (canContinue) {
+      if (questions[nextSectionIndex]) {
+        nextPath = `${basePath}/${questions[nextSectionIndex].riskIndicator}`;
+      } else {
+        nextPath = Routes.SUMMARY;
+      }
     } else {
-      nextPath = Routes.SUMMARY;
+      nextPath = Routes.ASSESSMENT_COMPLETE;
     }
 
     this.props.onSubmit(question.riskIndicator, answer, nextPath);
-  }
-
-  sectionData(questions = [], section = '') {
-    if (isEmpty(questions)) {
-      return {
-        totalSections: 0,
-        question: {},
-        sectionIndex: 0,
-      };
-    }
-    const sectionEqls = item => item.riskIndicator === section;
-    const index = questions.findIndex(sectionEqls);
-
-    const total = questions.length;
-    const question = questions.find(sectionEqls);
-    const adJustedIndex = index !== undefined ? index : 0;
-
-    return {
-      totalSections: total,
-      question,
-      sectionIndex: adJustedIndex,
-    };
   }
 
   render() {
     const {
       answers,
       questions,
+      prisonerViperScore,
       params: { section },
       prisoner: { firstName, surname },
     } = this.props;
 
-    const { totalSections, sectionIndex, question } = this.sectionData(questions, section);
+    const { totalSections, sectionIndex, question } = sectionData(questions, section);
 
     return (
       <div className="o-question">
@@ -114,7 +124,8 @@ class Question extends Component {
         {templateSelector({
           ...question,
           onSubmit: e => this.handleFormSubmit(e),
-          formDefaults: answers,
+          formDefaults: answers[section],
+          viperScore: prisonerViperScore,
         })}
       </div>
     );
@@ -122,6 +133,8 @@ class Question extends Component {
 }
 
 Question.propTypes = {
+  prisonerViperScore: PropTypes.string,
+  answers: PropTypes.object,
   questions: PropTypes.array,
   params: PropTypes.object,
   prisoner: PropTypes.object,
@@ -138,12 +151,6 @@ Question.defaultProps = {
   onSubmit: () => {},
 };
 
-const getPrisonerAnswers = (params, state) => {
-  const { section } = params;
-  const { selectedPrisonerId, answers } = state.answers;
-  return path([selectedPrisonerId, section], answers);
-};
-
 const mapStateToProps = (state, ownProps) => ({
   ...ownProps,
   questions: state.questions.questions,
@@ -151,7 +158,11 @@ const mapStateToProps = (state, ownProps) => ({
     firstName: state.offender.selected.First_Name,
     surname: state.offender.selected.Surname,
   },
-  answers: getPrisonerAnswers(ownProps.params, state),
+  prisonerViperScore: calculateRiskFor(
+    state.offender.selected.NOMS_Number,
+    state.offender.viperScores,
+  ),
+  answers: path([state.answers.selectedPrisonerId], state.answers.answers),
 });
 
 const mapActionsToProps = dispatch => ({
