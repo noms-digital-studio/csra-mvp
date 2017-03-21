@@ -8,4 +8,5 @@ export default {
   ADD_OFFENDER: '/add-offender',
   CONFIRM_OFFENDER: '/confirm-offender',
   ASSESSMENT_COMPLETE: 'assessment-complete',
+  ASSESSMENT_CONFIRMATION: 'assessment-confirmation',
 };

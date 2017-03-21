@@ -15,6 +15,7 @@ import OffenderProfileHoc from './pages/OffenderProfile';
 import Question from './pages/Question';
 import SummaryHoc from './pages/Summary';
 import AssessmentComplete from './pages/AssessmentComplete';
+import AssessmentConfirmation from './pages/AssessmentConfirmation';
 import Error404 from './pages/Error404';
 
 export default (store) => {
@@ -34,6 +35,7 @@ export default (store) => {
           <Route path="/assessment/:section" component={Question} />
           <Route path="/summary" component={SummaryHoc} />
           <Route path="/assessment-complete" component={AssessmentComplete} />
+          <Route path="/assessment-confirmation" component={AssessmentConfirmation} />
           <Route path="*" name="404" component={Error404} />
         </Route>
       </Router>
