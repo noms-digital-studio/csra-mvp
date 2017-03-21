@@ -34,8 +34,7 @@ class AddOffender extends Component {
         <p><Link className="link-back" to={routes.DASHBOARD}>Back to dashboard</Link></p>
         <header>
           <h1 className="heading-xlarge">
-            <span className="heading-secondary">Add Prisoner</span>
-            {date}
+            Add Prisoner
           </h1>
         </header>
         <form action="/" method="POST" onSubmit={e => this.handleSubmit(e)}>

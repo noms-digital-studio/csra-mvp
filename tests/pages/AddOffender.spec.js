@@ -35,12 +35,6 @@ const assertFormFieldsArePopulated = (wrapper) => {
 
 describe('<AddOffender />', () => {
   context('Standalone AddOffender', () => {
-    it('accepts a date', () => {
-      const date = 'Fooday FooDay FooMonth FooYear';
-      const wrapper = shallow(<AddOffender date={date} />);
-      expect(wrapper.text()).to.include(date);
-    });
-
     it('fails to submit if fields are missing in the form', () => {
       const callback = sinon.spy();
       const wrapper = mount(<AddOffender onSubmit={callback} />);
