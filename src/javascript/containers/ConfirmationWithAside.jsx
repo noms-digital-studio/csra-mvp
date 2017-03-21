@@ -34,9 +34,6 @@ const ConfirmationWithAside = (
           <p>
             <input type="submit" className="button" value="Save and continue" />
           </p>
-          <p>
-            <Link to={routes.SUMMARY}>Save and return</Link>
-          </p>
         </form>
       </div>
       <div className="column-third">

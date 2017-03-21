@@ -35,9 +35,6 @@ const Confirmation = ({ title, description, onSubmit, formDefaults: { confirmati
           <p>
             <input className="button" type="submit" value="Save and continue" />
           </p>
-          <p>
-            <Link to={routes.SUMMARY}>Save and return</Link>
-          </p>
         </form>
       </div>
     </div>
