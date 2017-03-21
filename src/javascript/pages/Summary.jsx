@@ -35,6 +35,9 @@ class Summary extends Component {
 
     return (
       <div>
+        <p>
+          <Link to={{ pathname: routes.DASHBOARD }} className="link-back">Back to dashboard</Link>
+        </p>
         <h1 className="heading-xlarge">
           <span className="heading-secondary">CSRA Officer Assessment</span>
           Complete sections below
