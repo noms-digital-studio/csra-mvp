@@ -34,7 +34,7 @@ class AddOffender extends Component {
         <p><Link className="link-back" to={routes.DASHBOARD}>Back to dashboard</Link></p>
         <header>
           <h1 className="heading-xlarge">
-            <span className="heading-secondary">Add Offender</span>
+            <span className="heading-secondary">Add Prisoner</span>
             {date}
           </h1>
         </header>
@@ -102,7 +102,7 @@ class AddOffender extends Component {
             <span className="form-hint" id="nomis-id-hint">For example, A5558ZO</span>
             <input className="form-control" name="nomis-id" type="text" id="nomis-id" defaultValue={prisonerDetails['nomis-id']}/>
           </div>
-          <input type="submit" className="button" value="Add offender" />
+          <input type="submit" className="button" value="Add prisoner" />
         </form>
       </div>
     );

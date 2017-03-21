@@ -41,11 +41,11 @@ class Dashboard extends Component {
         <div className="c-dashboard-header">
           <div className="grid-row">
             <div className="column-one-half">
-              <Link to={routes.ADD_OFFENDER} className="button">Add an offender</Link>
+              <Link to={routes.ADD_OFFENDER} className="button">Add a prisoner</Link>
             </div>
             <div className="column-one-half u-text-align-right">
               <span className="c-offender-count ">
-                Total offenders: {this.props.profiles.length}
+                Total prisoners: {this.props.profiles.length}
               </span>
             </div>
           </div>

@@ -51,7 +51,7 @@ class Summary extends Component {
           <div className="column-one-third">
             <aside className="govuk-related-items u-no-margin-top">
               <div className="c-section">
-                <h3 className="heading-medium">Offender details</h3>
+                <h3 className="heading-medium">Prisoner details</h3>
                 <p className="u-no-margin">{offender.First_Name} {offender.Surname}</p>
                 <p>Nomis ID: {offender.NOMS_Number}</p>
               </div>

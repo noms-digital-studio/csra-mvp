@@ -9,7 +9,7 @@ const ConfirmOffender = (props) => {
   const { prisonerDetails: prisoner, onClick } = props;
   return (
     <div>
-      <h1 className="heading-xlarge">Offender Added</h1>
+      <h1 className="heading-xlarge">Prisoner Added</h1>
 
       <div className="grid-row">
         <div className="column-one-half">

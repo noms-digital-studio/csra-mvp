@@ -8,8 +8,8 @@ const OffenderProfile = ({ details: { First_Name, Date_of_Birth, NOMS_Number, Su
     <p>
       <Link to={{ pathname: routes.DASHBOARD }} className="link-back">Back to dashboard</Link>
     </p>
-    <h1 className="heading-xlarge">Confirm offender identity and begin assessment</h1>
-    <h2 className="heading-large">Offender details</h2>
+    <h1 className="heading-xlarge">Confirm prisoner identity and begin assessment</h1>
+    <h2 className="heading-large">Prisoner details</h2>
 
     <div className="c-offender-details-container u-clear-fix">
       <div className="grid-row">
