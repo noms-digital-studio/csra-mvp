@@ -3,7 +3,8 @@ import { replace } from 'react-router-redux';
 import { Link } from 'react-router';
 import { connect } from 'react-redux';
 import routes from '../constants/routes';
-import { confirmPrisoner } from '../actions'
+
+import { confirmPrisoner } from '../actions';
 
 const ConfirmOffender = (props) => {
   const { prisonerDetails: prisoner, onClick } = props;

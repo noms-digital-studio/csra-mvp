@@ -8,8 +8,10 @@ const OffenderProfile = ({ details: { First_Name, Date_of_Birth, NOMS_Number, Su
     <p>
       <Link to={{ pathname: routes.DASHBOARD }} className="link-back">Back to dashboard</Link>
     </p>
-    <h1 className="heading-xlarge">Confirm prisoner identity and begin assessment</h1>
-    <h2 className="heading-large">Prisoner details</h2>
+    <h1 className="heading-xlarge">
+      <span className="heading-secondary">Confirm offender identity and begin assessment</span>
+      Offender details
+    </h1>
 
     <div className="c-offender-details-container u-clear-fix">
       <div className="grid-row">
@@ -50,19 +52,16 @@ const OffenderProfile = ({ details: { First_Name, Date_of_Birth, NOMS_Number, Su
     </div>
 
     <p>
-      <Link
-        to={routes.SUMMARY}
-        className="button button-start u-margin-bottom-default"
-      >
-          Continue to Assessment
-        </Link>
+      <Link to={routes.SUMMARY} className="button button-start u-margin-bottom-default">
+        Continue to Assessment
+      </Link>
     </p>
 
     <h3 className="heading-medium">Before you start</h3>
     <p>Confirm identity of prisoner</p>
     <p>The prisoner is able to answer questions</p>
   </div>
-  );
+);
 
 const mapStateToProps = state => ({
   details: state.offender.selected,
