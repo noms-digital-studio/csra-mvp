@@ -99,7 +99,7 @@ class AddOffender extends Component {
           </div>
           <div className="form-group">
             <label className="form-label-bold" htmlFor="nomis-id">Nomis ID</label>
-            <span className="form-hint" id="dob-hint">For example, A5558ZO</span>
+            <span className="form-hint" id="nomis-id-hint">For example, A5558ZO</span>
             <input className="form-control" name="nomis-id" type="text" id="nomis-id" defaultValue={prisonerDetails['nomis-id']}/>
           </div>
           <input type="submit" className="button" value="Add offender" />
