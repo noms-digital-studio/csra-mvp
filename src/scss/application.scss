@@ -51,7 +51,7 @@ $path: "../../node_modules/govuk_frontend_toolkit/images/";
   display: inline-block;
   background: none;
   color: #FFF;
-  border: solid 2px #FFF;
+  border: none;
   margin-left: 20px;
   font-size: 14px;
   font-weight: bold;
@@ -224,6 +224,10 @@ $path: "../../node_modules/govuk_frontend_toolkit/images/";
     margin-bottom: $gutter;
 }
 
+.u-margin-bottom-large {
+    margin-bottom: 70px;
+}
+
 .u-no-margin-top {
     margin-top: 0;
 }
@@ -233,7 +237,7 @@ $path: "../../node_modules/govuk_frontend_toolkit/images/";
 }
 
 .u-d-block {
-    display: block;
+  display: block;
 }
 
 .u-no-link {
