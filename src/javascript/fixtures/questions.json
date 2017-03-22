@@ -28,7 +28,7 @@
     "riskIndicator": "how-do-you-feel",
     "title": "How do you feel about sharing a cell?",
     "description": "",
-    "template": "default_with_comments",
+    "template": "comments",
     "aside": {
       "title": "Suggested guidance",
       "template": "static",
@@ -122,7 +122,7 @@
     "riskIndicator": "other-reasons",
     "title": "Are there any other reasons why this person should not share a cell?",
     "description": "For example, if you have information from case records or the prisoner that raises concerns about them sharing a cell safely.\nEnter the reasons why you think they should not share a cell:",
-    "template": "default_with_comments",
+    "template": "question_with_comments",
     "aside": {
       "title": "Why is this important?",
       "template": "static",

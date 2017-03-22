@@ -4,19 +4,16 @@ import uuid from 'uuid/v4';
 import { newLineToParagraph } from '../utils/components';
 
 import Aside from '../components/asides/Index';
-import SelectableInputGroup from '../components/SelectableInputGroup';
 
-const QuestionWithComments = (
+const Comments = (
   {
     title,
     description,
     aside,
     onSubmit,
     formDefaults: {
-      answer,
       comments,
     },
-    answerRequired
   },
 ) => (
   <div className="grid-row">
@@ -25,18 +22,6 @@ const QuestionWithComments = (
         <h3 className="heading-medium">{title}</h3>
         {newLineToParagraph(description)}
 
-        <div className="form-group">
-          <fieldset>
-            <SelectableInputGroup
-              default={answer}
-              type="radio"
-              fields={[
-                { value: 'yes', text: 'Yes', name: 'answer', required: answerRequired  },
-                { value: 'no', text: 'No', name: 'answer', required: answerRequired  },
-              ]}
-            />
-          </fieldset>
-        </div>
         <p>
           <textarea
             defaultValue={comments}
@@ -59,22 +44,20 @@ const QuestionWithComments = (
   </div>
 );
 
-QuestionWithComments.propTypes = {
+Comments.propTypes = {
   title: PropTypes.string,
   description: PropTypes.string,
   aside: PropTypes.object,
   onSubmit: PropTypes.func,
   formDefaults: PropTypes.shape({
-    answer: PropTypes.string,
     comments: PropTypes.string,
   }),
 };
 
-QuestionWithComments.defaultProps = {
+Comments.defaultProps = {
   formDefaults: {
-    answer: '',
     comments: '',
   },
 };
 
-export default QuestionWithComments;
+export default Comments;

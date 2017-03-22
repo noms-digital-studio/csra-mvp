@@ -1,9 +1,6 @@
 import React, { PropTypes } from 'react';
-import { Link } from 'react-router';
 
 import { newLineToParagraph } from '../utils/components';
-
-import routes from '../constants/routes';
 
 import SelectableInput from '../components/SelectableInput';
 import Aside from '../components/asides/Index';

@@ -12,6 +12,7 @@ import Routes from '../constants/routes';
 
 import QuestionWithAsideTemplate from '../containers/QuestionWithAside';
 import QuestionWithComments from '../containers/QuestionWithComments';
+import Comments from '../containers/Comments';
 import ConfirmationTemplate from '../containers/Confirmation';
 import ConfirmationWithAsideTemplate from '../containers/ConfirmationWithAside';
 import HealthcareAssessment from '../containers/HealthAssessment';
@@ -24,8 +25,10 @@ function templateSelector(data) {
       return <ConfirmationWithAsideTemplate {...data} />;
     case 'default_with_aside':
       return <QuestionWithAsideTemplate {...data} />;
-    case 'default_with_comments':
+    case 'question_with_comments':
       return <QuestionWithComments {...data} />;
+    case 'comments':
+      return <Comments {...data} />;
     case 'healthcare_assessment':
       return <HealthcareAssessment {...data} />;
     default:

@@ -1,7 +1,4 @@
 import React, { PropTypes } from 'react';
-import { Link } from 'react-router';
-
-import routes from '../constants/routes';
 
 import { newLineToParagraph } from '../utils/components';
 

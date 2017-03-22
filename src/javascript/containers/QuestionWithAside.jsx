@@ -1,10 +1,7 @@
 import React, {PropTypes} from 'react';
-import {Link} from 'react-router';
 import uuid from 'uuid/v4';
 
 import {newLineToParagraph} from '../utils/components';
-
-import routes from '../constants/routes';
 
 import Aside from '../components/asides/Index';
 import SelectableInputGroup from '../components/SelectableInputGroup';
