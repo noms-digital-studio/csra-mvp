@@ -96,12 +96,15 @@ const mapActionsToProps = dispatch => ({
 });
 
 Dashboard.propTypes = {
-  profiles: PropTypes.arrayOf({
-    NOMS_Number: PropTypes.string,
-    Surname: PropTypes.string,
-    First_Name: PropTypes.string,
-    Date_of_Birth: PropTypes.string,
-  }),
+  profiles: PropTypes.arrayOf(
+    PropTypes.shape({
+      NOMS_Number: PropTypes.string,
+      Surname: PropTypes.string,
+      First_Name: PropTypes.string,
+      Date_of_Birth: PropTypes.string,
+      completed: PropTypes.bool,
+    }),
+  ),
   getViperScores: PropTypes.func,
   getOffenderNomisProfiles: PropTypes.func,
   onOffenderSelect: PropTypes.func,
