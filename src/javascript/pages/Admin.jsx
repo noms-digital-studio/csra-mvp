@@ -61,9 +61,6 @@ class Admin extends Component {
           </div>
         }
 
-        <h3 className="heading-medium">Load NOMIS file</h3>
-        <input name="offenderProfiles" onChange={e => this.loadFile(e)} type="file"/>
-
         <h3 className="heading-medium">Load Viper scores file</h3>
         <input name="viperScores" onChange={e => this.loadFile(e)} type="file"/>
 
