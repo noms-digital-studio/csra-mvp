@@ -1,5 +1,9 @@
 {
   "compact": true,
+  "presets": [
+    "latest",
+    "react"
+  ],
   "plugins": [
     "transform-runtime",
     "transform-class-properties",
@@ -16,9 +20,7 @@
     },
     "production": {
       "presets": [
-        "latest",
-        "react",
-        "babili",
+        "babili"
       ]
     }
   }
