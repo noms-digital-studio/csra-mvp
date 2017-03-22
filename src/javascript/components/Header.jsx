@@ -6,7 +6,7 @@ import { signOut } from '../actions';
 import routes from '../constants/routes';
 
 const Header = ({ username, signedIn, onSignOut }) => {
-  const url = (signedIn) ? routes.DASHBOARD : '/';
+  const url = signedIn ? routes.DASHBOARD : '/';
 
   return (
     <div>
@@ -30,14 +30,14 @@ const Header = ({ username, signedIn, onSignOut }) => {
             <div className="content">
               <nav id="proposition-menu">
                 <a href="/" id="proposition-name">Cell Sharing Risk Assessment</a>
-              {signedIn &&
-                <div className="c-global-header__wrapper">
-                  <span className="c-global-header__username">{username}</span>
-                  <span className="c-profile-holder c-profile-holder--global-header" />
-                  <button data-sign-out onClick={onSignOut} className="c-profile-logout link">
-                    Sign out
-                  </button>
-                </div>}
+                {signedIn &&
+                  <div className="c-global-header__wrapper">
+                    <span className="c-global-header__username">{username}</span>
+                    <span className="c-profile-holder c-profile-holder--global-header" />
+                    <button data-sign-out onClick={onSignOut} className="c-profile-logout link">
+                      Sign out
+                    </button>
+                  </div>}
               </nav>
             </div>
           </div>
