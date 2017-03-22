@@ -12,13 +12,16 @@
     "template": "confirmation"
   },
   {
-    "riskIndicator": "risk-of-violence2",
+    "riskIndicator": "risk-of-violence",
     "title": "Viper result: High / Low risk of violence",
-    "description": "We’ve automatically run a background check that looks at your history in Prison case files, offence, sentence and past behaviour. It’s telling us that you may be safe able to share a cell but I need to go through some questions with you before deciding.\nWe’ve automatically run a background check that looks at your case files, sentence and behaviour in other prisons. It’s telling us that you should have your own cell. How do you feel about that?",
+    "description": "We’ve automatically run a background check that looks at your history in Prison case files, offence, sentence and past behavior. It’s telling us that you may be safe able to share a cell but I need to go through some questions with you before deciding.\nWe’ve automatically run a background check that looks at your case files, sentence and behavior in other prisons. It’s telling us that you should have your own cell. How do you feel about that?",
     "template": "confirmation_with_aside",
     "sharedCellPredicate": {
       "type": "VIPER_SCORE",
-      "value": "low"
+      "value": "low",
+      "reasons": [
+        "Our systems has flagged up that the prisoner has a high viper rating and is likely to pose a risk of violence against a cell mate"
+      ]
     },
     "aside": {
       "template": "violence_risk"
@@ -45,6 +48,9 @@
       "value": "no",
       "dependents": [
         "prison-self-assessment"
+      ],
+      "reasons": [
+        "There is evidence that the prisoner may find it difficult to share a cell"
       ]
     },
     "aside": {
@@ -64,6 +70,9 @@
       "value": "no",
       "dependents": [
         "vulnerability"
+      ],
+      "reasons": [
+        "There is evidence that the prisoner may find it difficult to share a cell"
       ]
     },
     "aside": {
@@ -81,7 +90,7 @@
     "aside": {
       "template": "static",
       "title": "Why is this important?",
-      "description": "Research tells us that people who are part of gangs when they come to prison or who join gangs when in prison are more likely than other prisoners to be violent during their stay. For this reason, it is important to establish whether or not the person is part of a gang.\nIf this is the only risk factor present for someone, then it doesn’t mean they have to have a single cell, but if other risk factors become relevant, they might be recommended a single cell."
+      "description": "Research tells us that people who are part of gangs when they come to prison or who join gangs when in prison are more likely than other prisoners to be violent during their stay. For this reason, it is important to establish whether or not the person is part of a gang.\nIf this is the only risk factor present for someone, then it doesn't mean they have to have a single cell, but if other risk factors become relevant, they might be recommended a single cell."
     },
     "answerRequired": true
   },
@@ -109,6 +118,11 @@
         "prejudice",
         "gang-affiliation",
         "drug-misuse"
+      ],
+      "reasons": [
+        "There is evidence that the prisoner may find it difficult to share a cell",
+        "There is evidence that the prisoner may be part of a gang",
+        "There is evidence that the prisoner has a history of drug misuse"
       ]
     },
     "aside": {
