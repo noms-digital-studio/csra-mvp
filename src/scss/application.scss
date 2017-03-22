@@ -251,3 +251,7 @@ $path: "../../node_modules/govuk_frontend_toolkit/images/";
   text-decoration: none;
   color: $text-colour !important;
 }
+
+.u-text-capitalize {
+  text-transform: capitalize;
+}

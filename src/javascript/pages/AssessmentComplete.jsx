@@ -35,30 +35,34 @@ const AssessmentComplete = (
 
     <h2 className="heading-large">Prisoner details</h2>
 
-    <div className="c-offender-details-container u-clear-fix u-no-margin-bottom">
-      <div className="grid-row">
-        <div className="column-one-half">
-          <div className="c-offender-profile-image">
-            <img src={require('../../images/profile-placeholder.gif')} />
-          </div>
-          <div data-offender-profile-details className="c-offender-profile-details">
-            <div>
-              <p className="c-offender-profile-item">
-                <span className="heading-small">Name:&nbsp;</span>
-                {First_Name} {Surname}
-              </p>
-            </div>
-            <div>
-              <p className="c-offender-profile-item">
-                <span className="heading-small">DOB:&nbsp;&nbsp;&nbsp;&nbsp;</span>
-                {Date_of_Birth}
-              </p>
-            </div>
-            <div>
-              <p className="c-offender-profile-item">
-                <span className="heading-small">NOMIS ID:&nbsp;</span>
-                {NOMS_Number}
-              </p>
+    <div className="grid-row">
+      <div className="column-two-thirds">
+        <div className="c-offender-details-container u-no-margin-bottom">
+          <div className="grid-row">
+            <div className="column-full">
+              <div className="c-offender-profile-image">
+                <img src={require('../../images/profile-placeholder.gif')} />
+              </div>
+              <div data-offender-profile-details className="c-offender-profile-details">
+                <div>
+                  <p className="c-offender-profile-item">
+                    <span className="heading-small">Name:&nbsp;</span>
+                    {First_Name} {Surname}
+                  </p>
+                </div>
+                <div>
+                  <p className="c-offender-profile-item">
+                    <span className="heading-small">DOB:&nbsp;&nbsp;&nbsp;&nbsp;</span>
+                    {Date_of_Birth}
+                  </p>
+                </div>
+                <div>
+                  <p className="c-offender-profile-item">
+                    <span className="heading-small">NOMIS ID:&nbsp;</span>
+                    {NOMS_Number}
+                  </p>
+                </div>
+              </div>
             </div>
           </div>
         </div>
@@ -70,11 +74,15 @@ const AssessmentComplete = (
       Suggested rating: {outcome.rating} - {outcome.recommendation}
     </h3>
 
-    <div className="panel panel-border-wide u-margin-bottom-large">
-      <p className="heading-small">Based on the indicator of violence predictor:</p>
-      <ul className="list list-bullet">
-        {outcome.reasons.map((reason, key) => <li key={key}>{reason}</li>)}
-      </ul>
+    <div className="grid-row">
+      <div className="column-two-thirds">
+        <div className="panel panel-border-wide u-margin-bottom-large">
+          <p className="heading-small">Based on the indicator of violence predictor:</p>
+          <ul className="list list-bullet">
+            {outcome.reasons.map((reason, key) => <li key={key}>{reason}</li>)}
+          </ul>
+        </div>
+      </div>
     </div>
 
     <p>

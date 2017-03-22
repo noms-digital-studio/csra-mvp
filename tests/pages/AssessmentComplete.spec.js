@@ -69,7 +69,9 @@ describe('<AssessmentComplete />', () => {
       };
 
       const callback = sinon.spy();
-      const wrapper = mount(<AssessmentComplete outcome={outcome} prisoner={prisonerDetails} onSubmit={callback} />);
+      const wrapper = mount(
+        <AssessmentComplete outcome={outcome} prisoner={prisonerDetails} onSubmit={callback} />,
+      );
       wrapper.find('button').simulate('click');
       expect(callback.calledOnce).to.equal(true, 'callback called once');
 

@@ -1,4 +1,4 @@
-import React, { Component, PropTypes } from 'react';
+import React, { PropTypes } from 'react';
 import { Link } from 'react-router';
 import { connect } from 'react-redux';
 
@@ -6,73 +6,76 @@ import routes from '../constants/routes';
 
 import SelectableInput from '../components/SelectableInput';
 
-class AssessmentComplete extends Component {
-  handleSubmit() {}
+const AssessmentConfirmation = (props) => {
+  const {
+    prisoner: { First_Name, Date_of_Birth, NOMS_Number, Surname },
+    outcome,
+  } = props;
 
-  render() {
-    const { details: { First_Name, Date_of_Birth, NOMS_Number, Surname } } = this.props;
-    return (
-      <div>
-        <div className="grid-row">
-          <div className="column-two-thirds">
-            <div className="govuk-box-highlight">
-              <h1 className="bold-large">Assessment confirmation</h1>
-              <p>
-                Prisoner risk assessment has been completed and <br />
-                the outcome has been successfully submitted.
-              </p>
-            </div>
-
-            <p className="u-margin-bottom-default">
-              The Governor will receive a copy of the assessment.
+  return (
+    <div>
+      <div className="grid-row">
+        <div className="column-two-thirds">
+          <div className="govuk-box-highlight">
+            <h1 className="bold-large">Assessment confirmation</h1>
+            <p>
+              Prisoner risk assessment has been completed and <br />
+              the outcome has been successfully submitted.
             </p>
           </div>
-        </div>
-        <h2 className="heading-medium">Summary</h2>
 
-        <div className="grid-row">
-          <div className="column-two-thirds">
-            <div className="c-offender-details-container u-clear-fix u-no-margin-top">
-              <div className="grid-row">
-                <div className="column-one-half">
-                  <div data-offender-profile-details className="c-offender-profile-details">
-                    <div>
-                      <p className="c-offender-profile-item">
-                        <span className="heading-small">Name:&nbsp;</span>
-                        {First_Name} {Surname}
-                      </p>
-                    </div>
-                    <div>
-                      <p className="c-offender-profile-item">
-                        <span className="heading-small">DOB:&nbsp;&nbsp;&nbsp;&nbsp;</span>
-                        {Date_of_Birth}
-                      </p>
-                    </div>
-                    <div>
-                      <p className="c-offender-profile-item">
-                        <span className="heading-small">NOMIS ID:&nbsp;</span>
-                        {NOMS_Number}
-                      </p>
-                    </div>
+          <p className="u-margin-bottom-default">
+            The Governor will receive a copy of the assessment.
+          </p>
+        </div>
+      </div>
+      <h2 className="heading-medium u-margin-top-default">Summary</h2>
+
+      <div className="grid-row">
+        <div className="column-two-thirds">
+          <div className="c-offender-details-container u-no-margin-top u-margin-bottom-large">
+
+            <div className="grid-row">
+              <div className="column-one-half">
+                <div data-offender-profile-prisoner className="c-offender-profile-prisoner">
+                  <div>
+                    <p className="c-offender-profile-item">
+                      <span className="heading-small">Name:&nbsp;</span>
+                      {First_Name} {Surname}
+                    </p>
+                  </div>
+                  <div>
+                    <p className="c-offender-profile-item">
+                      <span className="heading-small">DOB:&nbsp;&nbsp;&nbsp;&nbsp;</span>
+                      {Date_of_Birth}
+                    </p>
+                  </div>
+                  <div>
+                    <p className="c-offender-profile-item">
+                      <span className="heading-small">NOMIS ID:&nbsp;</span>
+                      {NOMS_Number}
+                    </p>
                   </div>
                 </div>
-                <div className="column-one-half">
-                  <div className="c-offender-profile-details">
-                    <p>
-                      <span className="heading-small">Rating: [DYNAMIC]</span>
-                    </p>
-                    <p><span className="heading-small">Outcome: [DYNAMIC]</span></p>
-                  </div>
+              </div>
+              <div className="column-one-half">
+                <div className="c-offender-profile-prisoner">
+                  <p>
+                    <span className="heading-small u-text-capitalize">
+                      Rating: {outcome.rating}
+                    </span>
+                  </p>
+                  <p><span className="heading-small">Outcome: {outcome.recommendation}</span></p>
                 </div>
               </div>
             </div>
           </div>
         </div>
+      </div>
 
+      <Link to={routes.DASHBOARD} className="link">Return to dashboard</Link>
 
-        <Link to={routes.DASHBOARD} className="link">Return to dashboard</Link>
-
-        {/*<div className="grid-row">
+      {/* <div className="grid-row">
           <div className="column-two-thirds">
             <form className="c-confirmation-form" onSubmit={this.handleSubmit}>
               <p className="c-form-label-container u-clear-fix bold">
@@ -91,26 +94,38 @@ class AssessmentComplete extends Component {
               </p>
             </form>
           </div>
-        </div>*/}
+        </div> */
+      }
 
-      </div>
-    );
-  }
-}
+    </div>
+  );
+};
 
-const mapStateToProps = state => ({
-  details: state.offender.selected,
+const mapStateToProps = ({ offender, assessmentStatus }) => ({
+  prisoner: offender.selected,
+  outcome: assessmentStatus.completed.find(
+    assessment => assessment.nomisId === offender.selected.NOMS_Number,
+  ),
 });
 
-AssessmentComplete.propTypes = {
-  details: PropTypes.shape({
+AssessmentConfirmation.propTypes = {
+  prisoner: PropTypes.shape({
     First_Name: PropTypes.string,
     Date_of_Birth: PropTypes.string,
     NOMS_Number: PropTypes.string,
     Surname: PropTypes.string,
   }),
+  outcome: PropTypes.shape({
+    rating: PropTypes.string,
+    recommendation: PropTypes.string,
+  }),
 };
 
-export { AssessmentComplete };
+AssessmentConfirmation.defaultProps = {
+  prisoner: {},
+  outcome: {},
+};
 
-export default connect(mapStateToProps)(AssessmentComplete);
+export { AssessmentConfirmation };
+
+export default connect(mapStateToProps)(AssessmentConfirmation);
