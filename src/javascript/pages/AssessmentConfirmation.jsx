@@ -28,11 +28,11 @@ class AssessmentComplete extends Component {
             </p>
           </div>
         </div>
-        <h2 className="heading-medium">Assessment Summary</h2>
+        <h2 className="heading-medium">Summary</h2>
 
         <div className="grid-row">
           <div className="column-two-thirds">
-            <div className="c-offender-details-container u-clear-fix">
+            <div className="c-offender-details-container u-clear-fix u-no-margin-top">
               <div className="grid-row">
                 <div className="column-one-half">
                   <div data-offender-profile-details className="c-offender-profile-details">

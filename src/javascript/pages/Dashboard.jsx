@@ -1,10 +1,10 @@
 import React, { Component, PropTypes } from 'react';
 import { connect } from 'react-redux';
 import { push } from 'react-router-redux';
-import moment from 'moment';
 import { Link } from 'react-router';
 
 import { getOffenderNomisProfiles, getViperScores, selectOffender } from '../actions';
+import { todaysDate } from '../utils';
 
 import routes from '../constants/routes';
 
@@ -103,7 +103,7 @@ Dashboard.defaultProps = {
   getOffenderNomisProfiles: () => {},
   onOffenderSelect: () => {},
   profiles: [],
-  date: moment().format('dddd MMMM DD YYYY'),
+  date: todaysDate(),
 };
 
 export { Dashboard };

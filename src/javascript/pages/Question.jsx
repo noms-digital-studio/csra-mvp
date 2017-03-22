@@ -1,12 +1,13 @@
-import React, {Component, PropTypes} from 'react';
-import {connect} from 'react-redux';
-import {push} from 'react-router-redux';
+import React, { Component, PropTypes } from 'react';
+import { connect } from 'react-redux';
+import { push } from 'react-router-redux';
 import serialize from 'form-serialize';
 
-import {isEmpty, path} from 'ramda';
+import path from 'ramda/src/path';
+import isEmpty from 'ramda/src/isEmpty';
 
-import {assessmentCanContinue, calculateRiskFor} from '../services';
-import {getQuestions, saveAnswer} from '../actions';
+import { assessmentCanContinue, calculateRiskFor } from '../services';
+import { getQuestions, saveAnswer } from '../actions';
 import Routes from '../constants/routes';
 
 import QuestionWithAsideTemplate from '../containers/QuestionWithAside';
@@ -33,7 +34,7 @@ function templateSelector(data) {
 }
 
 const reduceYesNoAnswers = answers =>
-  Object.keys(answers).reduce((result, key) => ({...result, [key]: answers[key].answer}), {});
+  Object.keys(answers).reduce((result, key) => ({ ...result, [key]: answers[key].answer }), {});
 
 const sectionData = (questions = [], section = '') => {
   if (isEmpty(questions)) {
@@ -65,12 +66,12 @@ class Question extends Component {
   handleFormSubmit(event) {
     event.preventDefault();
 
-    const {params: {section}, questions, answers, prisonerViperScore} = this.props;
-    const {sectionIndex, question} = sectionData(questions, section);
-    const answer = serialize(event.target, {hash: true});
+    const { params: { section }, questions, answers, prisonerViperScore } = this.props;
+    const { sectionIndex, question } = sectionData(questions, section);
+    const answer = serialize(event.target, { hash: true });
     const basePath = Routes.ASSESSMENT;
     const nextSectionIndex = sectionIndex + 1;
-    const reducedAnswers = reduceYesNoAnswers({...answers, [section]: answer});
+    const reducedAnswers = reduceYesNoAnswers({ ...answers, [section]: answer });
 
     let nextPath;
 
@@ -90,11 +91,11 @@ class Question extends Component {
       answers,
       questions,
       prisonerViperScore,
-      params: {section},
-      prisoner: {firstName, surname},
+      params: { section },
+      prisoner: { firstName, surname },
     } = this.props;
 
-    const {totalSections, sectionIndex, question} = sectionData(questions, section);
+    const { totalSections, sectionIndex, question } = sectionData(questions, section);
 
     return (
       <div className="o-question">
@@ -143,10 +144,8 @@ Question.defaultProps = {
   questions: [],
   params: {},
   prisoner: {},
-  getQuestions: () => {
-  },
-  onSubmit: () => {
-  },
+  getQuestions: () => {},
+  onSubmit: () => {},
 };
 
 const mapStateToProps = (state, ownProps) => ({
@@ -173,5 +172,5 @@ const mapActionsToProps = dispatch => ({
   },
 });
 
-export {Question};
+export { Question };
 export default connect(mapStateToProps, mapActionsToProps)(Question);

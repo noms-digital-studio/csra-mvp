@@ -3,7 +3,6 @@ import { connect } from 'react-redux';
 import { push } from 'react-router-redux';
 import serialize from 'form-serialize';
 
-import moment from 'moment';
 import { Link } from 'react-router';
 
 import { allFormFieldsComplete } from '../utils';
@@ -27,7 +26,7 @@ class AddOffender extends Component {
   }
 
   render() {
-    const { date, prisonerDetails } = this.props;
+    const { prisonerDetails } = this.props;
 
     return (
       <div className="form-section">
@@ -109,7 +108,6 @@ class AddOffender extends Component {
 }
 
 AddOffender.propTypes = {
-  date: PropTypes.string,
   onSubmit: PropTypes.func,
   prisonerDetails: PropTypes.object,
 };
@@ -119,7 +117,6 @@ AddOffender.defaultProps = {
 };
 
 const mapStateToProps = state => ({
-  date: moment().format('dddd MMMM DD YYYY'),
   prisonerDetails: state.offender.prisonerFormData,
 });
 
