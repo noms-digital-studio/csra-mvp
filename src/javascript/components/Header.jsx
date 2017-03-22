@@ -21,13 +21,15 @@ const Header = ({ username, signedIn, onSignOut }) => {
                   height="32"
                   alt="GOV.UK"
                 />
-                <span>&nbsp;HMP</span>
+                <span>&nbsp;HMPS</span>
               </Link>
             </div>
           </div>
 
           <div className="header-proposition">
             <div className="content">
+              <nav id="proposition-menu">
+                <a href="/" id="proposition-name">Cell Sharing Risk Assessment</a>
               {signedIn &&
                 <div className="c-global-header__wrapper">
                   <span className="c-global-header__username">{username}</span>
@@ -36,6 +38,7 @@ const Header = ({ username, signedIn, onSignOut }) => {
                     Sign out
                   </button>
                 </div>}
+              </nav>
             </div>
           </div>
         </div>
