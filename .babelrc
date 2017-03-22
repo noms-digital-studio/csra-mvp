@@ -1,22 +1,25 @@
 {
-    "compact": true,
-    "presets": [
+  "compact": true,
+  "plugins": [
+    "transform-runtime",
+    "transform-class-properties",
+    "transform-object-rest-spread",
+    "transform-react-jsx-self",
+    "transform-function-bind"
+  ],
+  "env": {
+    "development": {
+      "presets": [
         "latest",
         "react"
-    ],
-    "plugins": [
-        "transform-runtime",
-        "transform-class-properties",
-        "transform-object-rest-spread",
-        "transform-react-jsx-self",
-        "transform-function-bind"
-    ],
-    "env": {
-        "development": {
-            "presets": [
-                "latest",
-                "react"
-            ]
-        }
+      ]
+    },
+    "production": {
+      "presets": [
+        "latest",
+        "react",
+        "babili",
+      ]
     }
+  }
 }

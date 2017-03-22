@@ -4,6 +4,10 @@ const webpack = require('webpack');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const WebpackCleanupPlugin = require('webpack-cleanup-plugin');
+const CompressionPlugin = require('compression-webpack-plugin');
+const OptimizeCssAssetsPlugin = require('optimize-css-assets-webpack-plugin');
+const BabiliPlugin = require('babili-webpack-plugin');
+
 const precss = require('precss');
 const autoprefixer = require('autoprefixer');
 
@@ -41,6 +45,9 @@ module.exports = {
         test: /\.jsx|\.js$/,
         exclude: /node_modules/,
         loader: 'babel-loader',
+        options: {
+          presets: ['env'],
+        },
       },
       {
         test: /\.css$/,
@@ -85,7 +92,6 @@ module.exports = {
   },
 
   plugins: [
-
     // Remove old artfacts on build
     new WebpackCleanupPlugin(),
 
@@ -108,31 +114,45 @@ module.exports = {
     }),
 
     // React uses this to do dead code elimination
-    !dev && new webpack.DefinePlugin({
-      'process.env.NODE_ENV': '"production"',
-    }),
+    !dev &&
+      new webpack.DefinePlugin({
+        'process.env.NODE_ENV': '"production"',
+      }),
+
+    !dev &&
+      new CompressionPlugin({
+        asset: '[path].gz[query]',
+        algorithm: 'gzip',
+        test: /\.(js|css|html)$/,
+        threshold: 10240,
+        minRatio: 0.8,
+      }),
+
+    !dev &&
+      new OptimizeCssAssetsPlugin({
+        assetNameRegExp: /\.css$/g,
+        cssProcessor: require('cssnano'),
+        cssProcessorOptions: { discardComments: { removeAll: true } },
+        canPrint: false,
+      }),
 
     // CSS is moved into an external file for production
     !dev && new ExtractTextPlugin('[name].[hash].css'),
 
     // Minify code in production only
-    !dev && new webpack.optimize.UglifyJsPlugin({
-      sourceMap: true,
-      compress: { screw_ie8: true, warnings: false },
-      mangle: { screw_ie8: true },
-      output: { comments: false, screw_ie8: true },
-    }),
-
+    !dev && new BabiliPlugin(),
   ].filter(Boolean),
 
   // Shim some things that enzyme requires when running in karma
-  externals: {
-    jsdom: 'window',
-    cheerio: 'window',
-    'react/lib/ExecutionEnvironment': true,
-    'react/addons': true,
-    'react/lib/ReactContext': 'window',
-  },
+  externals: dev
+    ? {
+      jsdom: 'window',
+      cheerio: 'window',
+      'react/lib/ExecutionEnvironment': true,
+      'react/addons': true,
+      'react/lib/ReactContext': 'window',
+    }
+    : {},
 
   resolve: {
     extensions: ['*', '.js', '.jsx'],
