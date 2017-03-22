@@ -8,6 +8,7 @@ import {
   ADD_PRISONER,
   CONFIRM_PRISONER,
   SAVE_ANSWER,
+  COMPLETE_ASSESSMENT,
 } from '../constants/actions';
 
 import Questions from '../fixtures/questions.json';
@@ -46,3 +47,8 @@ export const confirmPrisoner = (prisonerData) => {
 };
 
 export const saveAnswer = (key, value) => ({ type: SAVE_ANSWER, payload: { [key]: value } });
+
+export const completeAssessmentFor = nomisId => ({
+  type: COMPLETE_ASSESSMENT,
+  payload: nomisId,
+});

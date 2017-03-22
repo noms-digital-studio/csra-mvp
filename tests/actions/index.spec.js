@@ -8,6 +8,7 @@ import {
   addPrisoner,
   confirmPrisoner,
   saveAnswer,
+  completeAssessmentFor,
 } from '../../src/javascript/actions';
 import questions from '../../src/javascript/fixtures/questions.json';
 
@@ -109,7 +110,7 @@ describe('Actions', () => {
     expect(confirmPrisoner(prisonerData)).to.eql({ type: 'CONFIRM_PRISONER', payload: prisoner });
   });
 
-  describe('saveAnswer', () => {
+  describe('#saveAnswer', () => {
     it('returns a SAVE_ANSWER action', () => {
       const riskIndicator = 'foo-risk';
       const answer = { confirmation: 'accept' };
@@ -117,6 +118,16 @@ describe('Actions', () => {
       expect(saveAnswer(riskIndicator, answer)).to.eql({
         type: 'SAVE_ANSWER',
         payload: { [riskIndicator]: answer },
+      });
+    });
+  });
+
+  describe('#completeAssessmentFor', () => {
+    it('returns a COMPLETE_ASSESSMENT action', () => {
+      const nomisId = 'foo-id';
+      expect(completeAssessmentFor(nomisId)).to.eql({
+        type: 'COMPLETE_ASSESSMENT',
+        payload: nomisId,
       });
     });
   });

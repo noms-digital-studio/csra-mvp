@@ -15,12 +15,14 @@ const profiles = [
     Surname: 'foo-surname',
     First_Name: 'foo-first-name',
     Date_of_Birth: 'foo-age',
+    completed: true,
   },
   {
     NOMS_Number: 'bar-id',
     Surname: 'foo-surname',
     First_Name: 'foo-first-name',
     Date_of_Birth: 'foo-age',
+    completed: false,
   },
 ];
 
@@ -33,21 +35,31 @@ describe('<Dashboard />', () => {
       profiles.forEach((profile) => {
         const keys = Object.keys(profile);
         keys.forEach((key) => {
+          if (key === 'completed') return;
           expect(wrapper.text()).to.include(profile[key]);
         });
       });
+    });
+
+    it('displays a completed assessments', () => {
+      const wrapper = mount(<Dashboard profiles={profiles} />);
+      expect(wrapper.find('[data-status-complete=true]').length).to.equal(1);
+      expect(wrapper.find('[data-status-complete=true]').text()).to.equal('Done');
     });
 
     it('responds to profile selection', () => {
       const callback = sinon.spy();
       const wrapper = shallow(<Dashboard profiles={profiles} onOffenderSelect={callback} />);
 
-      const profileBtn = wrapper.find('[data-profile-row]').first().find('button');
+      const profileBtn = wrapper.find('[data-status-complete=false] > button');
 
       profileBtn.simulate('click');
 
-      expect(callback.calledOnce).to.be.true;
-      expect(callback.calledWith(profiles[0])).to.be.true;
+      expect(callback.calledOnce).to.equal(true, 'callback called on click');
+      expect(callback.calledWith(profiles[1])).to.equal(
+        true,
+        'callback called with the correct props',
+      );
     });
 
     it('accepts a date', () => {
@@ -79,8 +91,24 @@ describe('<Dashboard />', () => {
 
     beforeEach(() => {
       store = fakeStore({
+        assessmentStatus: {
+          completed: ['foo-id'],
+        },
         offender: {
-          profiles,
+          profiles: [
+            {
+              NOMS_Number: 'foo-id',
+              Surname: 'foo-surname',
+              First_Name: 'foo-first-name',
+              Date_of_Birth: 'foo-age',
+            },
+            {
+              NOMS_Number: 'bar-id',
+              Surname: 'foo-surname',
+              First_Name: 'foo-first-name',
+              Date_of_Birth: 'foo-age',
+            },
+          ],
         },
       });
 
@@ -97,18 +125,24 @@ describe('<Dashboard />', () => {
       profiles.forEach((profile) => {
         const keys = Object.keys(profile);
         keys.forEach((key) => {
+          if (key === 'completed') return;
           expect(wrapper.text()).to.include(profile[key]);
         });
       });
     });
 
+    it('displays a completed assessments', () => {
+      expect(wrapper.find('[data-status-complete=true]').length).to.equal(1);
+      expect(wrapper.find('[data-status-complete=true]').text()).to.equal('Done');
+    });
+
     it('responds to profile selection', () => {
-      const profileBtn = wrapper.find('[data-profile-row]').first().find('button');
+      const profileBtn = wrapper.find('[data-status-complete=false] > button');
 
       profileBtn.simulate('click');
 
       expect(
-        store.dispatch.calledWithMatch({ type: 'SELECT_OFFENDER', payload: profiles[0] }),
+        store.dispatch.calledWithMatch({ type: 'SELECT_OFFENDER', payload: profiles[1] }),
       ).to.equal(true, 'SELECT_OFFENDER dispatch');
 
       expect(

@@ -26,10 +26,12 @@ class Dashboard extends Component {
         <td>{profile.Date_of_Birth}</td>
         <td>{profile.NOMS_Number}</td>
         <td className="u-text-align-center"><span className="c-status-indicator" /></td>
-        <td className="numeric">
-          <button onClick={() => this.props.onOffenderSelect(profile)} className="button">
-            Start
-          </button>
+        <td className="numeric" data-status-complete={profile.completed}>
+          {profile.completed
+            ? <span className="heading-small">Done</span>
+            : <button onClick={() => this.props.onOffenderSelect(profile)} className="button">
+                Start
+              </button>}
         </td>
       </tr>
     ));
@@ -64,7 +66,7 @@ class Dashboard extends Component {
               <th scope="col">Name</th>
               <th scope="col">DOB</th>
               <th scope="col">NOMIS ID</th>
-              <th className="u-text-align-center" scope="col">Assessment</th>
+              <th className="u-text-align-center" scope="col">Cell sharing status</th>
               <th scope="col" />
             </tr>
           </thead>
@@ -78,7 +80,10 @@ class Dashboard extends Component {
 }
 
 const mapStateToProps = state => ({
-  profiles: state.offender.profiles,
+  profiles: state.offender.profiles.map(profile => ({
+    ...profile,
+    completed: state.assessmentStatus.completed.includes(profile.NOMS_Number),
+  })),
 });
 
 const mapActionsToProps = dispatch => ({
@@ -91,7 +96,12 @@ const mapActionsToProps = dispatch => ({
 });
 
 Dashboard.propTypes = {
-  profiles: PropTypes.array,
+  profiles: PropTypes.arrayOf({
+    NOMS_Number: PropTypes.string,
+    Surname: PropTypes.string,
+    First_Name: PropTypes.string,
+    Date_of_Birth: PropTypes.string,
+  }),
   getViperScores: PropTypes.func,
   getOffenderNomisProfiles: PropTypes.func,
   onOffenderSelect: PropTypes.func,
