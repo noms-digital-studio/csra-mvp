@@ -1,4 +1,5 @@
 import React, { PropTypes } from 'react';
+import uuid from 'uuid/v4';
 
 import { newLineToParagraph } from '../utils/components';
 
@@ -16,7 +17,7 @@ const ConfirmationWithAside = (
           {newLineToParagraph(description)}
         </div>
 
-        <form className="c-confirmation-form" onSubmit={onSubmit}>
+        <form className="c-confirmation-form" onSubmit={onSubmit} key={uuid()}>
           <p className="c-form-label-container u-clear-fix bold">
             <SelectableInput
               required
