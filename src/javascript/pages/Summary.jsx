@@ -79,7 +79,7 @@ class Summary extends Component {
                 </div>}
 
               {!assessmentCompleted &&
-                <Link to={`${routes.ASSESSMENT}/introduction`} className="button button-start u-margin-top-default">
+                <Link to={`${routes.ASSESSMENT}/before-you-start`} className="button button-start u-margin-top-default">
                   Start
                 </Link>
               }

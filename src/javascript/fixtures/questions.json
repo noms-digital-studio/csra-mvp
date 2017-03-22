@@ -1,14 +1,14 @@
 [
   {
-    "riskIndicator": "introduction",
-    "title": "Explanation to the prisoner",
-    "description": "We are going to decide whether it is safe for you to share a cell with someone else.  Most people share cells in this prison.  So it is important that we know as much as possible about you to help us make the best decision.  I have some information about you already and I also have some questions.  THe information you give me will be recorded and may be used by other staff in the prison to support you and make sure you and others are safe. Do you have any concerns about sharing a cell?",
+    "riskIndicator": "before-you-start",
+    "title": "Before you start",
+    "description": "This service will help you decide whether a prisoner can safely share a cell, or should be allocated a single cell.\nIt uses the Violence in Prison Estimator (Viper) to measure a prisoner’s risk of violence in the next 6 months. This decision is based on data recorded on NOMIS, including any previous incidents, sentence information and case notes.\n<h2>Prisoners at high risk</h2>\nIf Viper estimates the prisoner’s risk of violence is high, the service will automatically recommend the prisoner is allocated a single cell.\n<h2>Prisoners at low risk</h2>\nIf the prisoner’s risk of violence is low, you must ask them to answer a short set of questions which will result in a cell sharing recommendation.",
     "template": "confirmation"
   },
   {
-    "riskIndicator": "risk-of-violence1",
-    "title": "Before you start",
-    "description": "This service will help you decide whether a prisoner can safely share a cell, or should be allocated a single cell.\nIt uses the Violence in Prison Estimator (Viper) to measure a prisoner’s risk of violence in the next 6 months. This decision is based on data recorded on NOMIS, including any previous incidents, sentence information and case notes.\n<h2>Prisoners at high risk</h2>\nIf Viper estimates the prisoner’s risk of violence is high, the service will automatically recommend the prisoner is allocated a single cell.\n<h2>Prisoners at low risk</h2>\nIf the prisoner’s risk of violence is low, you must ask them to answer a short set of questions which will result in a cell sharing recommendation.",
+    "riskIndicator": "introduction",
+    "title": "Explanation to the prisoner",
+    "description": "We are going to decide whether it is safe for you to share a cell with someone else.  Most people share cells in this prison.  So it is important that we know as much as possible about you to help us make the best decision.  I have some information about you already and I also have some questions.  The information you give me will be recorded and may be used by other staff in the prison to support you and make sure you and others are safe. Do you have any concerns about sharing a cell?",
     "template": "confirmation"
   },
   {
