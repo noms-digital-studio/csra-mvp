@@ -9,8 +9,8 @@ const OffenderProfile = ({ details: { First_Name, Date_of_Birth, NOMS_Number, Su
       <Link to={{ pathname: routes.DASHBOARD }} className="link-back">Back to dashboard</Link>
     </p>
     <h1 className="heading-xlarge">
-      <span className="heading-secondary">Confirm offender identity and begin assessment</span>
-      Offender details
+      <span className="heading-secondary">Confirm prisoner identity and begin assessment</span>
+      Prisoner details
     </h1>
 
     <div className="c-offender-details-container u-clear-fix">
@@ -57,9 +57,6 @@ const OffenderProfile = ({ details: { First_Name, Date_of_Birth, NOMS_Number, Su
       </Link>
     </p>
 
-    <h3 className="heading-medium">Before you start</h3>
-    <p>Confirm identity of prisoner</p>
-    <p>The prisoner is able to answer questions</p>
   </div>
 );
 
