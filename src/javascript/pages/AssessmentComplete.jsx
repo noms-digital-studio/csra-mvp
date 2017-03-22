@@ -6,8 +6,27 @@ import routes from '../constants/routes';
 
 import SelectableInput from '../components/SelectableInput';
 
+const extractDecision = (questions, exitPoint) => {
+  if (exitPoint) {
+    const question = questions.find(item => item.riskIndicator === exitPoint);
+    return {
+      recommendation: 'Single Cell',
+      rating: 'High',
+      reasons: question.sharedCellPredicate.reasons,
+    };
+  }
+
+  return {
+    recommendation: 'Shared Cell',
+    rating: 'Low',
+    reasons: [
+      'Based on the assessment the prisoner presents a low risk of violence and is unlikely to pose a risk against a cell mate',
+    ],
+  };
+};
+
 const AssessmentComplete = (
-  { details: { First_Name, Date_of_Birth, NOMS_Number, Surname }, onSubmit },
+  { prisoner: { First_Name, Date_of_Birth, NOMS_Number, Surname }, onSubmit, outcome },
 ) => (
   <div>
     <h1 className="heading-xlarge">
@@ -16,7 +35,7 @@ const AssessmentComplete = (
 
     <h2 className="heading-large">Prisoner details</h2>
 
-    <div className="c-offender-details-container u-clear-fix">
+    <div className="c-offender-details-container u-clear-fix u-no-margin-bottom">
       <div className="grid-row">
         <div className="column-one-half">
           <div className="c-offender-profile-image">
@@ -47,19 +66,21 @@ const AssessmentComplete = (
     </div>
 
     <h2 className="heading-large">Assessment rating</h2>
-    <h3 className="heading-medium">Suggested rating: [SOME RATING]</h3>
+    <h3 className="heading-medium">
+      Suggested rating: {outcome.rating} - {outcome.recommendation}
+    </h3>
 
     <div className="panel panel-border-wide u-margin-bottom-large">
       <p className="heading-small">Based on the indicator of violence predictor:</p>
       <ul className="list list-bullet">
-        <li>[Some reason given here]</li>
+        {outcome.reasons.map((reason, key) => <li key={key}>{reason}</li>)}
       </ul>
     </div>
 
     <p>
       <button
         className="button button-start u-margin-bottom-default"
-        onClick={() => onSubmit(NOMS_Number)}
+        onClick={() => onSubmit({ ...outcome, nomisId: NOMS_Number })}
       >
         Submit Decision
       </button>
@@ -69,8 +90,13 @@ const AssessmentComplete = (
 );
 
 AssessmentComplete.propTypes = {
+  outcome: PropTypes.shape({
+    recommendation: PropTypes.string,
+    rating: PropTypes.string,
+    reasons: PropTypes.arrayOf(PropTypes.string),
+  }),
   onSubmit: PropTypes.func,
-  details: PropTypes.shape({
+  prisoner: PropTypes.shape({
     First_Name: PropTypes.string,
     Date_of_Birth: PropTypes.string,
     NOMS_Number: PropTypes.string,
@@ -79,17 +105,21 @@ AssessmentComplete.propTypes = {
 };
 
 AssessmentComplete.defaultProps = {
-  details: {},
+  outcome: {
+    reasons: [],
+  },
+  prisoner: {},
   onSubmit: () => {},
 };
 
 const mapStateToProps = state => ({
-  details: state.offender.selected,
+  prisoner: state.offender.selected,
+  outcome: extractDecision(state.questions.questions, state.assessmentStatus.exitPoint),
 });
 
 const mapActionsToProps = dispatch => ({
-  onSubmit: (nomisId) => {
-    dispatch(completeAssessmentFor(nomisId));
+  onSubmit: (outcome) => {
+    dispatch(completeAssessmentFor(outcome));
     dispatch(push(routes.ASSESSMENT_CONFIRMATION));
   },
 });

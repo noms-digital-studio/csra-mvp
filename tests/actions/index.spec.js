@@ -9,6 +9,7 @@ import {
   confirmPrisoner,
   saveAnswer,
   completeAssessmentFor,
+  saveExitPoint,
 } from '../../src/javascript/actions';
 import questions from '../../src/javascript/fixtures/questions.json';
 
@@ -124,10 +125,25 @@ describe('Actions', () => {
 
   describe('#completeAssessmentFor', () => {
     it('returns a COMPLETE_ASSESSMENT action', () => {
-      const nomisId = 'foo-id';
-      expect(completeAssessmentFor(nomisId)).to.eql({
+      const outcome = {
+        nomisId: 'foo-id',
+        recommendation: 'foo-recommendation',
+        rating: 'foo-rating',
+        reasons: ['foo-reason'],
+      };
+      expect(completeAssessmentFor(outcome)).to.eql({
         type: 'COMPLETE_ASSESSMENT',
-        payload: nomisId,
+        payload: outcome,
+      });
+    });
+  });
+
+  describe('#saveExitPoint', () => {
+    it('returns a SAVE_EXIT_POINT action', () => {
+      const riskFactor = 'foo-risk-factor';
+      expect(saveExitPoint(riskFactor)).to.eql({
+        type: 'SAVE_EXIT_POINT',
+        payload: riskFactor,
       });
     });
   });

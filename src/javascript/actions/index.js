@@ -9,6 +9,7 @@ import {
   CONFIRM_PRISONER,
   SAVE_ANSWER,
   COMPLETE_ASSESSMENT,
+  SAVE_EXIT_POINT,
 } from '../constants/actions';
 
 import Questions from '../fixtures/questions.json';
@@ -48,7 +49,12 @@ export const confirmPrisoner = (prisonerData) => {
 
 export const saveAnswer = (key, value) => ({ type: SAVE_ANSWER, payload: { [key]: value } });
 
-export const completeAssessmentFor = nomisId => ({
+export const completeAssessmentFor = outcome => ({
   type: COMPLETE_ASSESSMENT,
-  payload: nomisId,
+  payload: outcome,
+});
+
+export const saveExitPoint = riskFactor => ({
+  type: SAVE_EXIT_POINT,
+  payload: riskFactor,
 });

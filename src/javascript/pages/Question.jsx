@@ -5,10 +5,12 @@ import serialize from 'form-serialize';
 
 import path from 'ramda/src/path';
 import isEmpty from 'ramda/src/isEmpty';
+import not from 'ramda/src/not';
+
 
 import { assessmentCanContinue, calculateRiskFor } from '../services';
-import { getQuestions, saveAnswer } from '../actions';
-import Routes from '../constants/routes';
+import { getQuestions, saveAnswer, saveExitPoint } from '../actions';
+import routes from '../constants/routes';
 
 import QuestionWithAsideTemplate from '../containers/QuestionWithAside';
 import QuestionWithComments from '../containers/QuestionWithComments';
@@ -72,7 +74,7 @@ class Question extends Component {
     const { params: { section }, questions, answers, prisonerViperScore } = this.props;
     const { sectionIndex, question } = sectionData(questions, section);
     const answer = serialize(event.target, { hash: true });
-    const basePath = Routes.ASSESSMENT;
+    const basePath = routes.ASSESSMENT;
     const nextSectionIndex = sectionIndex + 1;
     const reducedAnswers = reduceYesNoAnswers({ ...answers, [section]: answer });
 
@@ -83,10 +85,15 @@ class Question extends Component {
     if (canContinue && questions[nextSectionIndex]) {
       nextPath = `${basePath}/${questions[nextSectionIndex].riskIndicator}`;
     } else {
-      nextPath = Routes.ASSESSMENT_COMPLETE;
+      nextPath = routes.ASSESSMENT_COMPLETE;
     }
 
-    this.props.onSubmit(question.riskIndicator, answer, nextPath);
+    this.props.onSubmit({
+      riskIndicator: question.riskIndicator,
+      answer,
+      nextPath,
+      canContinue,
+    });
   }
 
   render() {
@@ -169,8 +176,13 @@ const mapActionsToProps = dispatch => ({
   getQuestions: () => {
     dispatch(getQuestions());
   },
-  onSubmit: (riskIndicator, answer, nextPath) => {
+  onSubmit: ({ riskIndicator, answer, nextPath, canContinue }) => {
     dispatch(saveAnswer(riskIndicator, answer));
+
+    if (not(canContinue)) {
+      dispatch(saveExitPoint(riskIndicator));
+    }
+
     dispatch(push(nextPath));
   },
 });

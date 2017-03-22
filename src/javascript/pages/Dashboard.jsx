@@ -3,6 +3,10 @@ import { connect } from 'react-redux';
 import { push } from 'react-router-redux';
 import { Link } from 'react-router';
 
+import isEmpty from 'ramda/src/isEmpty';
+import not from 'ramda/src/not';
+import length from 'ramda/src/length';
+
 import { getOffenderNomisProfiles, getViperScores, selectOffender } from '../actions';
 import { todaysDate } from '../utils';
 
@@ -11,7 +15,7 @@ import routes from '../constants/routes';
 class Dashboard extends Component {
   componentDidMount() {
     this.props.getViperScores();
-    if (!this.props.profiles.length) {
+    if (not(length(this.props.profiles))) {
       this.props.getOffenderNomisProfiles();
     }
   }
@@ -25,13 +29,21 @@ class Dashboard extends Component {
         <td>{profile.First_Name} {profile.Surname}</td>
         <td>{profile.Date_of_Birth}</td>
         <td>{profile.NOMS_Number}</td>
-        <td className="u-text-align-center"><span className="c-status-indicator" /></td>
-        <td className="numeric" data-status-complete={profile.completed}>
-          {profile.completed
-            ? <span className="heading-small">Done</span>
-            : <button onClick={() => this.props.onOffenderSelect(profile)} className="button">
+        <td
+          data-cell-recommendation={profile.completed.recommendation}
+          className="u-text-align-center"
+        >
+          {isEmpty(profile.completed)
+            ? <span className="c-status-indicator" />
+            : <span className="">{profile.completed.recommendation}</span>}
+
+        </td>
+        <td className="numeric" data-status-complete={not(isEmpty(profile.completed))}>
+          {isEmpty(profile.completed)
+            ? <button onClick={() => this.props.onOffenderSelect(profile)} className="button">
                 Start
-              </button>}
+              </button>
+            : <span className="heading-small">Done</span>}
         </td>
       </tr>
     ));
@@ -66,7 +78,7 @@ class Dashboard extends Component {
               <th scope="col">Name</th>
               <th scope="col">DOB</th>
               <th scope="col">NOMIS ID</th>
-              <th className="u-text-align-center" scope="col">Cell sharing status</th>
+              <th className="u-text-align-center" scope="col">Cell sharing recommendation</th>
               <th scope="col" />
             </tr>
           </thead>
@@ -82,7 +94,9 @@ class Dashboard extends Component {
 const mapStateToProps = state => ({
   profiles: state.offender.profiles.map(profile => ({
     ...profile,
-    completed: state.assessmentStatus.completed.includes(profile.NOMS_Number),
+    completed: state.assessmentStatus.completed.find(
+      assessment => assessment.nomisId === profile.NOMS_Number,
+    ) || {},
   })),
 });
 
@@ -102,7 +116,7 @@ Dashboard.propTypes = {
       Surname: PropTypes.string,
       First_Name: PropTypes.string,
       Date_of_Birth: PropTypes.string,
-      completed: PropTypes.bool,
+      completed: PropTypes.object,
     }),
   ),
   getViperScores: PropTypes.func,

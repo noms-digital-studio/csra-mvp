@@ -34,6 +34,11 @@ const questions = [
       title: 'aside-title',
       description: 'aside-description',
     },
+    sharedCellPredicate: {
+      type: 'QUESTION',
+      value: 'no',
+      dependents: ['bar-section'],
+    },
   },
 ];
 
@@ -74,14 +79,18 @@ describe('<Question />', () => {
       wrapper.find('form').simulate('submit');
 
       expect(callback.calledOnce).to.equal(true, 'onSubmit called');
-      expect(callback.args[0][0]).to.equal('foo-section');
-      expect(callback.args[0][1]).to.eql({ answer: 'yes' });
-      expect(callback.args[0][2]).to.eql('/assessment/bar-section');
+      expect(
+        callback.calledWith({
+          riskIndicator: 'foo-section',
+          answer: { answer: 'yes' },
+          nextPath: '/assessment/bar-section',
+          canContinue: true,
+        }),
+      ).to.equal(true, 'called with the correct props');
     });
   });
 
   context('Connected Question', () => {
-    let wrapper;
     let store;
 
     beforeEach(() => {
@@ -102,15 +111,15 @@ describe('<Question />', () => {
           },
         },
       });
+    });
 
-      wrapper = mount(
+    it('calls actions when component mounts', () => {
+      mount(
         <Provider store={store}>
           <ConnectedQuestion params={{ section: 'foo-section' }} />
         </Provider>,
       );
-    });
 
-    it('calls actions when component mounts', () => {
       expect(store.dispatch.calledWithMatch({ type: 'GET_QUESTIONS' })).to.equal(
         true,
         'dispatch GET_QUESTIONS',
@@ -118,11 +127,23 @@ describe('<Question />', () => {
     });
 
     it('renders offender details', () => {
+      const wrapper = mount(
+        <Provider store={store}>
+          <ConnectedQuestion params={{ section: 'foo-section' }} />
+        </Provider>,
+      );
+
       expect(wrapper.text()).to.contain('foo-surname');
       expect(wrapper.text()).to.contain('foo-first-name');
     });
 
     it('calls the onSubmit action with the answer and riskIndicator', () => {
+      const wrapper = mount(
+        <Provider store={store}>
+          <ConnectedQuestion params={{ section: 'foo-section' }} />
+        </Provider>,
+      );
+
       wrapper.find('#radio-yes').simulate('change', { target: { value: 'yes' } });
       wrapper.find('form').simulate('submit');
 
@@ -139,6 +160,24 @@ describe('<Question />', () => {
           payload: { method: 'push', args: ['/assessment/bar-section'] },
         }),
       ).to.equal(true, 'Changed path to /assessment/bar-section');
+    });
+
+    it('call the saveExit point action if question fails the decision engine', () => {
+      const wrapper = mount(
+        <Provider store={store}>
+          <ConnectedQuestion params={{ section: 'bar-section' }} />
+        </Provider>,
+      );
+
+      wrapper.find('#radio-yes').simulate('change', { target: { value: 'yes' } });
+      wrapper.find('form').simulate('submit');
+
+      expect(
+        store.dispatch.calledWithMatch({
+          type: 'SAVE_EXIT_POINT',
+          payload: 'bar-section',
+        }),
+      ).to.equal(true, 'Dispatched SAVE_EXIT_POINT');
     });
   });
 });

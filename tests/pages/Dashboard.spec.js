@@ -15,14 +15,19 @@ const profiles = [
     Surname: 'foo-surname',
     First_Name: 'foo-first-name',
     Date_of_Birth: 'foo-age',
-    completed: true,
+    completed: {
+      nomisId: 'foo-id',
+      recommendation: 'Single Cell',
+      rating: 'High',
+      reasons: ['foo-reason'],
+    },
   },
   {
     NOMS_Number: 'bar-id',
     Surname: 'foo-surname',
     First_Name: 'foo-first-name',
     Date_of_Birth: 'foo-age',
-    completed: false,
+    completed: {},
   },
 ];
 
@@ -45,6 +50,13 @@ describe('<Dashboard />', () => {
       const wrapper = mount(<Dashboard profiles={profiles} />);
       expect(wrapper.find('[data-status-complete=true]').length).to.equal(1);
       expect(wrapper.find('[data-status-complete=true]').text()).to.equal('Done');
+    });
+
+    it('displays the cell sharing assessment for a completed prisoner assessment', () => {
+      const wrapper = mount(<Dashboard profiles={profiles} />);
+
+      expect(wrapper.find('[data-cell-recommendation]').length).to.equal(1);
+      expect(wrapper.find('[data-cell-recommendation]').text()).to.equal('Single Cell');
     });
 
     it('responds to profile selection', () => {
@@ -92,7 +104,14 @@ describe('<Dashboard />', () => {
     beforeEach(() => {
       store = fakeStore({
         assessmentStatus: {
-          completed: ['foo-id'],
+          completed: [
+            {
+              nomisId: 'foo-id',
+              recommendation: 'Single Cell',
+              rating: 'High',
+              reasons: ['foo-reason'],
+            },
+          ],
         },
         offender: {
           profiles: [
@@ -134,6 +153,11 @@ describe('<Dashboard />', () => {
     it('displays a completed assessments', () => {
       expect(wrapper.find('[data-status-complete=true]').length).to.equal(1);
       expect(wrapper.find('[data-status-complete=true]').text()).to.equal('Done');
+    });
+
+    it('displays the cell sharing assessment for a completed prisoner assessment', () => {
+      expect(wrapper.find('[data-cell-recommendation]').length).to.equal(1);
+      expect(wrapper.find('[data-cell-recommendation]').text()).to.equal('Single Cell');
     });
 
     it('responds to profile selection', () => {

@@ -2,6 +2,7 @@ import assessmentStatusReducer from '../../src/javascript/reducers/assessmentSta
 
 describe('#assessmentStatusReducer', () => {
   const defaultState = {
+    exitPoint: '',
     completed: [],
   };
 
@@ -9,16 +10,40 @@ describe('#assessmentStatusReducer', () => {
     expect(assessmentStatusReducer(undefined, 'UNKNOWN_ACTION')).to.eql(defaultState);
   });
 
-  it('adds a nomis-id to the completed list', () => {
+  it('adds an exitPoint to the state', () => {
     const action = {
-      type: 'COMPLETE_ASSESSMENT',
-      payload: 'foo-id',
+      type: 'SAVE_EXIT_POINT',
+      payload: 'foo-risk-indicator',
     };
     const expectedState = {
       ...defaultState,
-      completed: ['foo-id'],
+      exitPoint: 'foo-risk-indicator',
     };
 
     expect(assessmentStatusReducer(undefined, action)).to.eql(expectedState);
+  });
+
+  it('adds a nomis-id to the completed list', () => {
+    const state = {
+      ...defaultState,
+      exitPoint: 'foo-exit-point',
+    };
+    const outcome = {
+      nomisId: 'foo-id',
+      recommendation: 'foo-recommendation',
+      rating: 'foo-rating',
+      reasons: ['foo-reason'],
+    };
+    const action = {
+      type: 'COMPLETE_ASSESSMENT',
+      payload: outcome,
+    };
+    const expectedState = {
+      ...defaultState,
+      exitPoint: '',
+      completed: [outcome],
+    };
+
+    expect(assessmentStatusReducer(state, action)).to.eql(expectedState);
   });
 });
