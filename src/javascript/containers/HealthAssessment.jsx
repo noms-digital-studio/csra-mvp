@@ -10,8 +10,8 @@ const HealthAssessment = (
   <div className="grid-row">
     <div className="column-two-thirds">
       <form key={uuid()} action="/" method="post" className="form" onSubmit={onSubmit}>
-        <h1 className="heading-xlarge">{title}</h1>
-        <p>
+        <h1 className="heading-large">{title}</h1>
+        <p className="lede text">
           This section is to be completed following the Healthcare professional assessment.
           Ensure the Healthcare form has been fully completed before starting this section.
         </p>

@@ -18,7 +18,7 @@ const AssessmentConfirmation = (props) => {
     <div>
       <div className="grid-row">
         <div className="column-two-thirds">
-          <h1 className="heading-large">CSRA Assessment</h1>
+          <h1 className="heading-xlarge">CSRA Assessment</h1>
           <div className="govuk-box-highlight">
             <h1 className="bold-large">Assessment confirmation</h1>
             <p>

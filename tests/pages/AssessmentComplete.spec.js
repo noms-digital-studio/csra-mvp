@@ -172,7 +172,7 @@ describe('<AssessmentComplete />', () => {
       expect(
         store.dispatch.calledWithMatch({
           type: '@@router/CALL_HISTORY_METHOD',
-          payload: { method: 'push', args: ['assessment-confirmation'] },
+          payload: { method: 'replace', args: ['assessment-confirmation'] },
         }),
       ).to.equal(true, 'Changed path to /assessment-confirmation');
     });

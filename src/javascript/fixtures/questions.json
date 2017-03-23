@@ -2,19 +2,19 @@
   {
     "riskIndicator": "before-you-start",
     "title": "Before you start",
-    "description": "<p>This service will help you decide whether a prisoner can safely share a cell, or should be allocated a single cell.</p><p>It uses the Violence in Prison Estimator (Viper) to measure a prisoner’s risk of violence in the next 6 months. This decision is based on data recorded on NOMIS, including any previous incidents, sentence information and case notes.</p><h2 class='heading-large'>Prisoners at high risk</h2><p>If Viper estimates the prisoner’s risk of violence is high, the service will automatically recommend the prisoner is allocated a single cell.</p><h2 class='heading-large'>Prisoners at low risk</h2><p>If the prisoner’s risk of violence is low, you must ask them to answer a short set of questions which will result in a cell sharing recommendation.</p>",
+    "description": "<p class='text'>This service will help you decide whether a prisoner can safely share a cell, or should be allocated a single cell.</p><p class='text'>It uses the Violence in Prison Estimator (Viper) to measure a prisoner’s risk of violence in the next 6 months. This decision is based on data recorded on NOMIS, including any previous incidents, sentence information and case notes.</p><h2 class='heading-medium'>Prisoners at high risk</h2><p class='text'>If Viper estimates the prisoner’s risk of violence is high, the service will automatically recommend the prisoner is allocated a single cell.</p><h2 class='heading-medium'>Prisoners at low risk</h2><p class='text'>If the prisoner’s risk of violence is low, you must ask them to answer a short set of questions which will result in a cell sharing recommendation.</p>",
     "template": "confirmation"
   },
   {
     "riskIndicator": "introduction",
     "title": "Explanation to the prisoner",
-    "description": "We are going to decide whether it is safe for you to share a cell with someone else.  Most people share cells in this prison.  So it is important that we know as much as possible about you to help us make the best decision.  I have some information about you already and I also have some questions.  The information you give me will be recorded and may be used by other staff in the prison to support you and make sure you and others are safe. Do you have any concerns about sharing a cell?",
+    "description": "<p class='text'>We are going to decide whether it is safe for you to share a cell with someone else.  Most people share cells in this prison.  So it is important that we know as much as possible about you to help us make the best decision.  I have some information about you already and I also have some questions.  The information you give me will be recorded and may be used by other staff in the prison to support you and make sure you and others are safe. Do you have any concerns about sharing a cell?</p>",
     "template": "confirmation"
   },
   {
     "riskIndicator": "risk-of-violence",
     "title": "Viper result: High / Low risk of violence",
-    "description": "<p>We’ve automatically run a background check that looks at your history in Prison case files, offence, sentence and past behavior. It’s telling us that you may be safe able to share a cell but I need to go through some questions with you before deciding.</p><p>We’ve automatically run a background check that looks at your case files, sentence and behavior in other prisons. It’s telling us that you should have your own cell. How do you feel about that?</p>",
+    "description": "<p class='text'>We’ve automatically run a background check that looks at your history in Prison case files, offence, sentence and past behavior. It’s telling us that you may be safe able to share a cell but I need to go through some questions with you before deciding.</p><p class='text'>We’ve automatically run a background check that looks at your case files, sentence and behavior in other prisons. It’s telling us that you should have your own cell. How do you feel about that?</p>",
     "template": "confirmation_with_aside",
     "sharedCellPredicate": {
       "type": "VIPER_SCORE",
@@ -56,7 +56,7 @@
     "aside": {
       "template": "static",
       "title": "Why is this important?",
-      "description": "If the prisoner says they may hurt a cellmate, they must be allocated a single cell."
+      "description": "<p class='text'>If the prisoner says they may hurt a cellmate, they must be allocated a single cell.</p>"
     },
     "answerRequired": true
   },
@@ -64,7 +64,7 @@
     "riskIndicator": "vulnerability",
     "title": "Have you been hurt or threatened in prison before?",
     "template": "default_with_aside",
-    "description": "Or do you have any reason to think that someone might hurt you if you shared a cell?",
+    "description": "<p class='lede text'>Or do you have any reason to think that someone might hurt you if you shared a cell?</p>",
     "sharedCellPredicate": {
       "type": "QUESTION",
       "value": "no",
@@ -78,7 +78,7 @@
     "aside": {
       "template": "static",
       "title": "Why is this important?",
-      "description": "If the prisoner is at risk of being harmed if they share a cell, they must be allocated a single cell."
+      "description": "<p class='text'>If the prisoner is at risk of being harmed if they share a cell, they must be allocated a single cell.</p>"
     },
     "answerRequired": true
   },
@@ -90,7 +90,7 @@
     "aside": {
       "template": "static",
       "title": "Why is this important?",
-      "description": "<p>Research tells us that people who are part of gangs when they come to prison or who join gangs when in prison are more likely than other prisoners to be violent during their stay. For this reason, it is important to establish whether or not the person is part of a gang.</p><p>If this is the only risk factor present for someone, then it doesn't mean they have to have a single cell, but if other risk factors become relevant, they might be recommended a single cell.</p>"
+      "description": "<p class='text'>Research tells us that people who are part of gangs when they come to prison or who join gangs when in prison are more likely than other prisoners to be violent during their stay. For this reason, it is important to establish whether or not the person is part of a gang.</p><p class='text'>If this is the only risk factor present for someone, then it doesn't mean they have to have a single cell, but if other risk factors become relevant, they might be recommended a single cell.</p>"
     },
     "answerRequired": true
   },
@@ -98,18 +98,18 @@
     "riskIndicator": "drug-misuse",
     "title": "Have you used drugs in the last month?",
     "template": "default_with_aside",
-    "description": "Tell me about what you’ve used and how often.",
+    "description": "<p class='lede text'>Tell me about what you’ve used and how often.</p>",
     "aside": {
       "title": "Why is this important?",
       "template": "static",
-      "description": "<p>Research on prison violence tells us that people who have been recently using drugs are more likely than other prisoners to be violent in prison. There are lots of possible reasons for this. For some it might be involvement in the illicit economy, dealing or getting into debt. For others, their drug use might affect their thinking, making them more suspicious and hostile, or might stop them thinking things through and controlling their impulses. Violence can also result from drug-induced psychosis.</p><p>As lots of people who come to prison take or have recently taken drugs, on its own this risk factor will not lead to a single cell allocation. However, when this is combined with other risk factors, it can lead to the recommendation that it would be safer to house them in a single cell.</p>"
+      "description": "<p class='text'>Research on prison violence tells us that people who have been recently using drugs are more likely than other prisoners to be violent in prison. There are lots of possible reasons for this. For some it might be involvement in the illicit economy, dealing or getting into debt. For others, their drug use might affect their thinking, making them more suspicious and hostile, or might stop them thinking things through and controlling their impulses. Violence can also result from drug-induced psychosis.</p><p class='text'>As lots of people who come to prison take or have recently taken drugs, on its own this risk factor will not lead to a single cell allocation. However, when this is combined with other risk factors, it can lead to the recommendation that it would be safer to house them in a single cell.</p>"
     },
     "answerRequired": true
   },
   {
     "riskIndicator": "prejudice",
     "title": "Are there any particular groups you would find it difficult to share a cell with?",
-    "description": "For example, someone of a different age, race, religion, sexuality, gender identity or certain offence history.",
+    "description": "<p class='lede text'>For example, someone of a different age, race, religion, sexuality, gender identity or certain offence history.</p>",
     "template": "default_with_aside",
     "sharedCellPredicate": {
       "type": "QUESTION",
@@ -128,19 +128,29 @@
     "aside": {
       "title": "Why is this important?",
       "template": "static",
-      "description": "We have a duty of care to keep people safe from discrimination. If someone has hostile attitudes towards a particular group, this needs to be noted, to keep others safe. However, hostile attitudes on their own don’t mean that someone will automatically be given a single cell. They may be safe to share with a range of other people, and this will be taken into account in the final recommendation."
+      "description": "<p class='text'>We have a duty of care to keep people safe from discrimination. If someone has hostile attitudes towards a particular group, this needs to be noted, to keep others safe. However, hostile attitudes on their own don’t mean that someone will automatically be given a single cell. They may be safe to share with a range of other people, and this will be taken into account in the final recommendation.</p>"
     },
     "answerRequired": true
   },
   {
-    "riskIndicator": "other-reasons",
+    "riskIndicator": "officers-assessment",
     "title": "Are there any other reasons why this person should not share a cell?",
-    "description": "<p>For example, if you have information from case records or the prisoner that raises concerns about them sharing a cell safely.</p><p>Enter the reasons why you think they should not share a cell:</p>",
+    "description": "<p class='lede text'>For example, if you have information from case records or the prisoner that raises concerns about them sharing a cell safely.</p><p class='text'>Enter the reasons why you think they should not share a cell:</p>",
     "template": "question_with_comments",
     "aside": {
       "title": "Why is this important?",
       "template": "static",
-      "description": "If there is any other information from case records or from the prisoner, that raises concerns that he/she might be violent towards a cell mate, then note it here."
+      "description": "<p class='text'>If there is any other information from case records or from the prisoner, that raises concerns that he/she might be violent towards a cell mate, then note it here.</p>"
+    },
+    "sharedCellPredicate": {
+      "type": "QUESTION",
+      "value": "no",
+      "dependents": [
+        "officers-assessment"
+      ],
+      "reasons": [
+        "You have decided that the prisoner is not fit to share a cell"
+      ]
     },
     "answerRequired": true
   },
@@ -152,18 +162,18 @@
     "aside": {
       "title": "here the user will get an explanation of the mental health assessment and what they are required to do (tbc)",
       "template": "static",
-      "description": "Some image"
+      "description": "<p className='text'>Some image</p>"
     }
   },
   {
     "riskIndicator": "mental-health",
     "title": "Mental health assessment",
-    "description": "here the user will get a way to record to outcome of the mental health assessment (tbc)",
+    "description": "<p class='lede text'>here the user will get a way to record to outcome of the mental health assessment (tbc)</p>",
     "template": "default_with_aside",
     "aside": {
       "title": "What this means...",
       "template": "static",
-      "description": "here the user will get some guidance on what this means and why it is important (tbc)"
+      "description": "<p class='text'>here the user will get some guidance on what this means and why it is important (tbc)</p>"
     }
   }
 ]

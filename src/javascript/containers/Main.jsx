@@ -9,14 +9,16 @@ const MainTemplate = ({ children }) => (
       <div className="phase-banner">
         <p>
           <strong className="phase-tag phase-alpha">Private Alpha</strong>
-          <span>This is a new service – your <a href="#">feedback</a> will help us to improve it.</span>
+          <span>
+            This is a new service – your <a className="link">feedback</a> will help us to improve it.
+          </span>
         </p>
       </div>
       {children}
     </main>
     <Footer />
   </div>
-    );
+);
 
 MainTemplate.propTypes = {
   children: PropTypes.element,

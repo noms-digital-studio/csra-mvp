@@ -14,14 +14,14 @@ const QuestionWithComments = (
       answer,
       comments,
     },
-    answerRequired
+    answerRequired,
   },
 ) => (
   <div className="grid-row">
     <div className="column-two-thirds">
       <form key={uuid()} action="/" method="post" className="form" onSubmit={onSubmit}>
-        <h1 className="heading-xlarge">{title}</h1>
-        <div dangerouslySetInnerHTML={{__html: description}} />
+        <h1 className="heading-large">{title}</h1>
+        <div dangerouslySetInnerHTML={{ __html: description }} />
 
         <div className="form-group">
           <fieldset>
@@ -29,8 +29,8 @@ const QuestionWithComments = (
               default={answer}
               type="radio"
               fields={[
-                { value: 'yes', text: 'Yes', name: 'answer', required: answerRequired  },
-                { value: 'no', text: 'No', name: 'answer', required: answerRequired  },
+                { value: 'yes', text: 'Yes', name: 'answer', required: answerRequired },
+                { value: 'no', text: 'No', name: 'answer', required: answerRequired },
               ]}
             />
           </fieldset>

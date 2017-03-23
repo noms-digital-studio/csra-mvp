@@ -10,10 +10,9 @@ const ConfirmationWithAside = (
   <div>
     <div className="grid-row">
       <div className="column-two-thirds">
-        <h1 className="heading-xlarge">{title}</h1>
-        <div role="note" aria-label="Information" className="panel panel-border-wide">
-          <div dangerouslySetInnerHTML={{__html: description}} />
-        </div>
+        <h1 className="heading-large">{title}</h1>
+
+        <div dangerouslySetInnerHTML={{ __html: description }} />
 
         <form className="c-confirmation-form" onSubmit={onSubmit} key={uuid()}>
           <p className="c-form-label-container u-clear-fix bold">
