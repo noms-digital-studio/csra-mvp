@@ -1,8 +1,6 @@
 import React, {PropTypes} from 'react';
 import uuid from 'uuid/v4';
 
-import {newLineToParagraph} from '../utils/components';
-
 import Aside from '../components/asides/Index';
 import SelectableInputGroup from '../components/SelectableInputGroup';
 
@@ -11,7 +9,7 @@ const QuestionWithAside = ({title, description, aside, onSubmit, formDefaults: {
       <div className="column-two-thirds">
         <form key={uuid()} action="/" method="post" className="form" onSubmit={onSubmit}>
           <h3 className="heading-medium">{title}</h3>
-          {newLineToParagraph(description)}
+          <div dangerouslySetInnerHTML={{__html: description}} />
 
           <div className="form-group">
             <fieldset>

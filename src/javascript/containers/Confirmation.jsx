@@ -1,8 +1,6 @@
 import React, { PropTypes } from 'react';
 import uuid from 'uuid/v4';
 
-import { newLineToParagraph } from '../utils/components';
-
 import SelectableInput from '../components/SelectableInput';
 
 const Confirmation = ({ title, description, onSubmit, formDefaults: { confirmation } }) => (
@@ -11,7 +9,7 @@ const Confirmation = ({ title, description, onSubmit, formDefaults: { confirmati
       <div className="column-two-thirds">
         <h3 className="heading-medium">{title}</h3>
         <div role="note" aria-label="Information" className="panel panel-border-wide">
-          {newLineToParagraph(description)}
+           <div dangerouslySetInnerHTML={{__html: description}} />
         </div>
       </div>
     </div>

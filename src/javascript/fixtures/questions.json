@@ -2,7 +2,7 @@
   {
     "riskIndicator": "before-you-start",
     "title": "Before you start",
-    "description": "This service will help you decide whether a prisoner can safely share a cell, or should be allocated a single cell.\nIt uses the Violence in Prison Estimator (Viper) to measure a prisoner’s risk of violence in the next 6 months. This decision is based on data recorded on NOMIS, including any previous incidents, sentence information and case notes.\n<h2>Prisoners at high risk</h2>\nIf Viper estimates the prisoner’s risk of violence is high, the service will automatically recommend the prisoner is allocated a single cell.\n<h2>Prisoners at low risk</h2>\nIf the prisoner’s risk of violence is low, you must ask them to answer a short set of questions which will result in a cell sharing recommendation.",
+    "description": "<p>This service will help you decide whether a prisoner can safely share a cell, or should be allocated a single cell.</p><p>It uses the Violence in Prison Estimator (Viper) to measure a prisoner’s risk of violence in the next 6 months. This decision is based on data recorded on NOMIS, including any previous incidents, sentence information and case notes.</p><h2 class='heading-large'>Prisoners at high risk</h2><p>If Viper estimates the prisoner’s risk of violence is high, the service will automatically recommend the prisoner is allocated a single cell.</p><h2 class='heading-large'>Prisoners at low risk</h2><p>If the prisoner’s risk of violence is low, you must ask them to answer a short set of questions which will result in a cell sharing recommendation.</p>",
     "template": "confirmation"
   },
   {
@@ -14,7 +14,7 @@
   {
     "riskIndicator": "risk-of-violence",
     "title": "Viper result: High / Low risk of violence",
-    "description": "We’ve automatically run a background check that looks at your history in Prison case files, offence, sentence and past behavior. It’s telling us that you may be safe able to share a cell but I need to go through some questions with you before deciding.\nWe’ve automatically run a background check that looks at your case files, sentence and behavior in other prisons. It’s telling us that you should have your own cell. How do you feel about that?",
+    "description": "<p>We’ve automatically run a background check that looks at your history in Prison case files, offence, sentence and past behavior. It’s telling us that you may be safe able to share a cell but I need to go through some questions with you before deciding.</p><p>We’ve automatically run a background check that looks at your case files, sentence and behavior in other prisons. It’s telling us that you should have your own cell. How do you feel about that?</p>",
     "template": "confirmation_with_aside",
     "sharedCellPredicate": {
       "type": "VIPER_SCORE",
@@ -90,7 +90,7 @@
     "aside": {
       "template": "static",
       "title": "Why is this important?",
-      "description": "Research tells us that people who are part of gangs when they come to prison or who join gangs when in prison are more likely than other prisoners to be violent during their stay. For this reason, it is important to establish whether or not the person is part of a gang.\nIf this is the only risk factor present for someone, then it doesn't mean they have to have a single cell, but if other risk factors become relevant, they might be recommended a single cell."
+      "description": "<p>Research tells us that people who are part of gangs when they come to prison or who join gangs when in prison are more likely than other prisoners to be violent during their stay. For this reason, it is important to establish whether or not the person is part of a gang.</p><p>If this is the only risk factor present for someone, then it doesn't mean they have to have a single cell, but if other risk factors become relevant, they might be recommended a single cell.</p>"
     },
     "answerRequired": true
   },
@@ -102,7 +102,7 @@
     "aside": {
       "title": "Why is this important?",
       "template": "static",
-      "description": "Research on prison violence tells us that people who have been recently using drugs are more likely than other prisoners to be violent in prison. There are lots of possible reasons for this. For some it might be involvement in the illicit economy, dealing or getting into debt. For others, their drug use might affect their thinking, making them more suspicious and hostile, or might stop them thinking things through and controlling their impulses. Violence can also result from drug-induced psychosis.\nAs lots of people who come to prison take or have recently taken drugs, on its own this risk factor will not lead to a single cell allocation. However, when this is combined with other risk factors, it can lead to the recommendation that it would be safer to house them in a single cell."
+      "description": "<p>Research on prison violence tells us that people who have been recently using drugs are more likely than other prisoners to be violent in prison. There are lots of possible reasons for this. For some it might be involvement in the illicit economy, dealing or getting into debt. For others, their drug use might affect their thinking, making them more suspicious and hostile, or might stop them thinking things through and controlling their impulses. Violence can also result from drug-induced psychosis.</p><p>As lots of people who come to prison take or have recently taken drugs, on its own this risk factor will not lead to a single cell allocation. However, when this is combined with other risk factors, it can lead to the recommendation that it would be safer to house them in a single cell.</p>"
     },
     "answerRequired": true
   },
@@ -135,7 +135,7 @@
   {
     "riskIndicator": "other-reasons",
     "title": "Are there any other reasons why this person should not share a cell?",
-    "description": "For example, if you have information from case records or the prisoner that raises concerns about them sharing a cell safely.\nEnter the reasons why you think they should not share a cell:",
+    "description": "<p>For example, if you have information from case records or the prisoner that raises concerns about them sharing a cell safely.</p><p>Enter the reasons why you think they should not share a cell:</p>",
     "template": "question_with_comments",
     "aside": {
       "title": "Why is this important?",
