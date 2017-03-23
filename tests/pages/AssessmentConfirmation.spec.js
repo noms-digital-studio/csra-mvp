@@ -36,6 +36,15 @@ describe('<AssessmentConfirmation />', () => {
       expect(pageText).to.contain('foo-recommendation');
       expect(pageText).to.contain('foo-rating');
     });
+
+    it('handles form submission', () => {
+      const callback = sinon.spy();
+      const wrapper = mount(<AssessmentConfirmation onSubmit={callback} />);
+
+      wrapper.find('form').simulate('submit');
+
+      expect(callback.calledOnce).to.equal(true, 'callback called');
+    });
   });
 
   context('Connected AssessmentConfirmation', () => {
@@ -72,6 +81,24 @@ describe('<AssessmentConfirmation />', () => {
       expect(pageText).to.contain('foo-nomis-id');
       expect(pageText).to.contain('High');
       expect(pageText).to.contain('Single Cell');
+    });
+
+    it('calls the onSubmit action with the answer and riskIndicator', () => {
+      const wrapper = mount(
+        <Provider store={store}>
+          <ConnectedAssessmentConfirmation />
+        </Provider>,
+      );
+
+      wrapper.find('input[type="checkbox"]').simulate('change', { target: { checked: true } });
+      wrapper.find('form').simulate('submit');
+
+      expect(
+        store.dispatch.calledWithMatch({
+          type: '@@router/CALL_HISTORY_METHOD',
+          payload: { method: 'replace', args: ['/dashboard'] },
+        }),
+      ).to.equal(true, 'Changed path to /dashboard');
     });
   });
 });

@@ -1,6 +1,7 @@
 import React, { PropTypes } from 'react';
 import { Link } from 'react-router';
 import { connect } from 'react-redux';
+import { replace } from 'react-router-redux';
 
 import routes from '../constants/routes';
 
@@ -10,12 +11,14 @@ const AssessmentConfirmation = (props) => {
   const {
     prisoner: { First_Name, Date_of_Birth, NOMS_Number, Surname },
     outcome,
+    onSubmit,
   } = props;
 
   return (
     <div>
       <div className="grid-row">
         <div className="column-two-thirds">
+          <h1 className="heading-large">CSRA Assessment</h1>
           <div className="govuk-box-highlight">
             <h1 className="bold-large">Assessment confirmation</h1>
             <p>
@@ -29,11 +32,11 @@ const AssessmentConfirmation = (props) => {
           </p>
         </div>
       </div>
-      <h2 className="heading-medium u-margin-top-default">Summary</h2>
+      <h2 className="heading-medium u-margin-top-default">Prisoner Assessment Summary</h2>
 
       <div className="grid-row">
         <div className="column-two-thirds">
-          <div className="c-offender-details-container u-no-margin-top u-margin-bottom-large">
+          <div className="c-offender-details-container u-no-margin-top u-margin-bottom-small">
 
             <div className="grid-row">
               <div className="column-one-half">
@@ -73,29 +76,32 @@ const AssessmentConfirmation = (props) => {
         </div>
       </div>
 
-      <Link to={routes.DASHBOARD} className="link">Return to dashboard</Link>
+      <div className="grid-row">
+        <div className="column-two-thirds">
+          <form
+            className="c-confirmation-form"
+            onSubmit={(e) => {
+              e.preventDefault();
+              onSubmit(routes.DASHBOARD);
+            }}
+          >
+            <p className="c-form-label-container u-clear-fix bold u-margin-bottom-medium">
+              <SelectableInput
+                required
+                type="checkbox"
+                id="confirmation"
+                value="accepted"
+                text="I have explained this rating outcome to the prisoner"
+                name="confirmation"
+              />
+            </p>
 
-      {/* <div className="grid-row">
-          <div className="column-two-thirds">
-            <form className="c-confirmation-form" onSubmit={this.handleSubmit}>
-              <p className="c-form-label-container u-clear-fix bold">
-                <SelectableInput
-                  required
-                  type="checkbox"
-                  id="confirmation"
-                  value="accepted"
-                  text="I have explained this rating outcome to the prisoner"
-                  name="confirmation"
-                />
-              </p>
-
-              <p>
-                <input className="button button-start" type="submit" value="Continue" />
-              </p>
-            </form>
-          </div>
-        </div> */
-      }
+            <p>
+              <input className="button button-start" type="submit" value="Complete" />
+            </p>
+          </form>
+        </div>
+      </div>
 
     </div>
   );
@@ -119,13 +125,15 @@ AssessmentConfirmation.propTypes = {
     rating: PropTypes.string,
     recommendation: PropTypes.string,
   }),
+  onSubmit: PropTypes.func,
 };
 
 AssessmentConfirmation.defaultProps = {
   prisoner: {},
   outcome: {},
+  onSubmit: () => {},
 };
 
 export { AssessmentConfirmation };
 
-export default connect(mapStateToProps)(AssessmentConfirmation);
+export default connect(mapStateToProps, { onSubmit: replace })(AssessmentConfirmation);
