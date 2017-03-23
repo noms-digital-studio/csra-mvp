@@ -1,7 +1,6 @@
 import React, { Component, PropTypes } from 'react';
 import classnames from 'classnames';
 
-
 class SelectableInput extends Component {
   constructor(props) {
     super();
@@ -12,7 +11,7 @@ class SelectableInput extends Component {
   }
 
   handleChange() {
-    this.setState({ selected: !this.state.selected, focused: true });
+    this.setState({ selected: !this.state.selected });
   }
 
   handleBlur() {
@@ -20,36 +19,34 @@ class SelectableInput extends Component {
   }
 
   render() {
-    const { text, id, value, name, type, onChange, onBlur, selected, focused, required } = this.props;
+    const {
+      text,
+      id,
+      value,
+      name,
+      type,
+      onChange,
+      selected,
+      required,
+    } = this.props;
 
-    const isFocused = onBlur ? focused : this.state.focused;
     const isSelected = onChange ? selected : this.state.selected;
     const onChangeFnc = onChange || (e => this.handleChange(e));
-    const onBlurFnc = onBlur || (e => this.handleBlur(e));
-
-    const cssClasses = classnames({
-      'block-label': true,
-      'selection-button-radio': type === 'radio',
-      'selection-button-checkbox': type === 'checkbox',
-      selected: isSelected,
-      focused: isFocused,
-    });
 
     return (
-      <label className={cssClasses} htmlFor={id}>
+      <span className="multiple-choice">
         <input
-          required={required}
+          checked={isSelected}
           data-input={value}
           id={id}
           type={type}
           name={name}
           defaultValue={value}
-          checked={isSelected}
+          required={required}
           onChange={onChangeFnc}
-          onBlur={onBlurFnc}
         />
-        {text}
-      </label>
+        <label htmlFor={id}>{text}</label>
+      </span>
     );
   }
 }
@@ -60,12 +57,12 @@ SelectableInput.propType = {
   name: PropTypes.string,
   text: PropTypes.string,
   selected: PropTypes.bool,
-  required: PropTypes.bool
+  required: PropTypes.bool,
 };
 
 SelectableInput.defaultProps = {
-  required: false
+  required: false,
+  selected: false,
 };
-
 
 export default SelectableInput;

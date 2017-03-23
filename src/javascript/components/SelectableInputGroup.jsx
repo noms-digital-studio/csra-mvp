@@ -1,5 +1,4 @@
 import React, { Component, PropTypes } from 'react';
-import ReactDOM from 'react-dom';
 
 import SelectableInput from './SelectableInput';
 
@@ -8,16 +7,11 @@ class SelectableInputGroup extends Component {
     super();
     this.state = {
       selectedInputValue: props.default,
-      selectedFocused: false,
     };
   }
 
   handleInputChange({ target }) {
-    this.setState({ selectedInputValue: target.value, selectedFocused: true });
-  }
-
-  handleInputBlur() {
-    this.setState({ selectedFocused: false });
+    this.setState({ selectedInputValue: target.value });
   }
 
   renderButtons() {
@@ -33,9 +27,7 @@ class SelectableInputGroup extends Component {
         type={type}
         text={text}
         selected={this.state.selectedInputValue === value}
-        focused={this.state.selectedInputValue === value && this.state.selectedFocused}
         onChange={e => this.handleInputChange(e)}
-        onBlur={e => this.handleInputBlur(e)}
       />
     ));
   }
