@@ -13,9 +13,22 @@
   },
   {
     "riskIndicator": "risk-of-violence",
-    "title": "Viper result: High / Low risk of violence",
-    "description": "<p class='text'>We’ve automatically run a background check that looks at your history in Prison case files, offence, sentence and past behavior. It’s telling us that you may be safe able to share a cell but I need to go through some questions with you before deciding.</p><p class='text'>We’ve automatically run a background check that looks at your case files, sentence and behavior in other prisons. It’s telling us that you should have your own cell. How do you feel about that?</p>",
-    "template": "confirmation_with_aside",
+    "title": "Viper result",
+    "content": {
+      "low": {
+        "title": "Viper result: Low risk of violence",
+        "description": "<p class='text'>We’ve automatically run a background check that looks at your history in Prison case files, offence, sentence and past behavior. It’s telling us that you may be safe able to share a cell but I need to go through some questions with you before deciding.</p>"
+      },
+      "high": {
+        "title": "Viper result: High risk of violence",
+        "description": "<p class='text'>We’ve automatically run a background check that looks at your case files, sentence and behavior in other prisons. It’s telling us that you should have your own cell. How do you feel about that?</p>"
+      },
+      "unknown": {
+        "title": "Viper result: Unknown",
+        "description": "<p class='text'>There is no Viper data for this prisoner.</p>"
+      }
+    },
+    "template": "viper",
     "sharedCellPredicate": {
       "type": "VIPER_SCORE",
       "value": "low",

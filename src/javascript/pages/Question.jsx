@@ -13,6 +13,7 @@ import { getQuestions, saveAnswer, saveExitPoint } from '../actions';
 import routes from '../constants/routes';
 
 import QuestionWithAsideTemplate from '../containers/QuestionWithAside';
+import Viper from '../containers/Viper';
 import QuestionWithComments from '../containers/QuestionWithComments';
 import Comments from '../containers/Comments';
 import ConfirmationTemplate from '../containers/Confirmation';
@@ -25,6 +26,8 @@ function templateSelector(data) {
       return <ConfirmationTemplate {...data} />;
     case 'confirmation_with_aside':
       return <ConfirmationWithAsideTemplate {...data} />;
+    case 'viper':
+      return <Viper {...data} />;
     case 'default_with_aside':
       return <QuestionWithAsideTemplate {...data} />;
     case 'question_with_comments':
