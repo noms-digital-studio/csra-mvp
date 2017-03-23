@@ -29,12 +29,17 @@ describe('<AssessmentConfirmation />', () => {
     it('renders the assessment cell sharing outcome', () => {
       const wrapper = shallow(
         <AssessmentConfirmation
-          outcome={{ recommendation: 'foo-recommendation', rating: 'foo-rating' }}
+          outcome={{
+            recommendation: 'foo-recommendation',
+            rating: 'foo-rating',
+            reasons: ['foo-reason'],
+          }}
         />,
       );
       const pageText = wrapper.text();
       expect(pageText).to.contain('foo-recommendation');
       expect(pageText).to.contain('foo-rating');
+      expect(pageText).to.contain('foo-reason');
     });
 
     it('handles form submission', () => {
@@ -81,6 +86,7 @@ describe('<AssessmentConfirmation />', () => {
       expect(pageText).to.contain('foo-nomis-id');
       expect(pageText).to.contain('High');
       expect(pageText).to.contain('Single Cell');
+      expect(pageText).to.contain('foo-reason');
     });
 
     it('calls the onSubmit action with the answer and riskIndicator', () => {

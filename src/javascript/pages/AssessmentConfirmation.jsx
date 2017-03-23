@@ -1,5 +1,4 @@
 import React, { PropTypes } from 'react';
-import { Link } from 'react-router';
 import { connect } from 'react-redux';
 import { replace } from 'react-router-redux';
 
@@ -18,7 +17,6 @@ const AssessmentConfirmation = (props) => {
     <div>
       <div className="grid-row">
         <div className="column-two-thirds">
-          <h1 className="heading-xlarge">CSRA Assessment</h1>
           <div className="govuk-box-highlight">
             <h1 className="bold-large">Assessment confirmation</h1>
             <p>
@@ -72,6 +70,15 @@ const AssessmentConfirmation = (props) => {
                 </div>
               </div>
             </div>
+
+            <div className="grid-row">
+              <div className="column-full">
+                <p className="heading-small">Reasons for the outcome of the assessment:</p>
+                <ul className="list list-bullet">
+                  {outcome.reasons.map((reason, key) => <li key={key}>{reason}</li>)}
+                </ul>
+              </div>
+            </div>
           </div>
         </div>
       </div>
@@ -103,6 +110,16 @@ const AssessmentConfirmation = (props) => {
         </div>
       </div>
 
+      <div className="grid-row">
+        <div className="column-two-thirds">
+          <div className="c-print-link">
+            <button className="c-icon-button link" onClick={() => window.print()}>
+              Print Page
+            </button>
+          </div>
+        </div>
+      </div>
+
     </div>
   );
 };
@@ -124,13 +141,16 @@ AssessmentConfirmation.propTypes = {
   outcome: PropTypes.shape({
     rating: PropTypes.string,
     recommendation: PropTypes.string,
+    reasons: PropTypes.arrayOf(PropTypes.string),
   }),
   onSubmit: PropTypes.func,
 };
 
 AssessmentConfirmation.defaultProps = {
   prisoner: {},
-  outcome: {},
+  outcome: {
+    reasons: []
+  },
   onSubmit: () => {},
 };
 
