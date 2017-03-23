@@ -157,7 +157,7 @@ describe('<Question />', () => {
       expect(
         store.dispatch.calledWithMatch({
           type: '@@router/CALL_HISTORY_METHOD',
-          payload: { method: 'push', args: ['/assessment/bar-section'] },
+          payload: { method: 'replace', args: ['/assessment/bar-section'] },
         }),
       ).to.equal(true, 'Changed path to /assessment/bar-section');
     });

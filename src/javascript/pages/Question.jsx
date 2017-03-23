@@ -1,6 +1,6 @@
 import React, { Component, PropTypes } from 'react';
 import { connect } from 'react-redux';
-import { push } from 'react-router-redux';
+import { replace } from 'react-router-redux';
 import serialize from 'form-serialize';
 
 import path from 'ramda/src/path';
@@ -183,7 +183,7 @@ const mapActionsToProps = dispatch => ({
       dispatch(saveExitPoint(riskIndicator));
     }
 
-    dispatch(push(nextPath));
+    dispatch(replace(nextPath));
   },
 });
 

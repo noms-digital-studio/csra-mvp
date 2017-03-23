@@ -1,6 +1,6 @@
 import React, { PropTypes } from 'react';
 import { connect } from 'react-redux';
-import { push } from 'react-router-redux';
+import { replace } from 'react-router-redux';
 import { completeAssessmentFor } from '../actions';
 import routes from '../constants/routes';
 
@@ -29,14 +29,11 @@ const AssessmentComplete = (
   { prisoner: { First_Name, Date_of_Birth, NOMS_Number, Surname }, onSubmit, outcome },
 ) => (
   <div>
-    <h1 className="heading-xlarge">
-      Assessment Complete
-    </h1>
-
-    <h2 className="heading-large">Prisoner details</h2>
-
     <div className="grid-row">
       <div className="column-two-thirds">
+        <h1 className="heading-xlarge">Assessment Complete</h1>
+        <h2 className="heading-large">Prisoner details</h2>
+
         <div className="c-offender-details-container u-no-margin-bottom">
           <div className="grid-row">
             <div className="column-full">
@@ -78,7 +75,7 @@ const AssessmentComplete = (
       <div className="column-two-thirds">
         <div className="panel panel-border-wide u-margin-bottom-large">
           <p className="heading-small">Based on the indicator of violence predictor:</p>
-          <ul className="list list-bullet">
+          <ul className="list">
             {outcome.reasons.map((reason, key) => <li key={key}>{reason}</li>)}
           </ul>
         </div>
@@ -128,7 +125,7 @@ const mapStateToProps = state => ({
 const mapActionsToProps = dispatch => ({
   onSubmit: (outcome) => {
     dispatch(completeAssessmentFor(outcome));
-    dispatch(push(routes.ASSESSMENT_CONFIRMATION));
+    dispatch(replace(routes.ASSESSMENT_CONFIRMATION));
   },
 });
 
