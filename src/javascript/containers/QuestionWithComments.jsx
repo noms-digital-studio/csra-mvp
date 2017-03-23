@@ -20,7 +20,7 @@ const QuestionWithComments = (
   <div className="grid-row">
     <div className="column-two-thirds">
       <form key={uuid()} action="/" method="post" className="form" onSubmit={onSubmit}>
-        <h3 className="heading-medium">{title}</h3>
+        <h1 className="heading-xlarge">{title}</h1>
         <div dangerouslySetInnerHTML={{__html: description}} />
 
         <div className="form-group">
