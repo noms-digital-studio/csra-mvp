@@ -29,7 +29,7 @@ const Header = ({ username, signedIn, onSignOut }) => {
           <div className="header-proposition">
             <div className="content">
               <nav id="proposition-menu">
-                <a href="/" id="proposition-name">Cell Sharing Risk Assessment</a>
+                <Link to="/" id="proposition-name">Cell Sharing Risk Assessment</Link>
                 {signedIn &&
                   <div className="c-global-header__wrapper">
                     <span className="c-global-header__username">{username}</span>
