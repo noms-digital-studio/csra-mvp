@@ -42,10 +42,10 @@ describe('Actions', () => {
 
   describe('#getViperScores', () => {
     it('returns a GET_VIPER_SCORES action', () => {
-      const scores = [{ nomisId: 'FOO', viperScore: 1 }];
+      const scores = { output: [{ nomisId: 'FOO', viperScore: 1 }] };
       expect(getViperScores(scores)).to.eql({
         type: 'GET_VIPER_SCORES',
-        payload: scores,
+        payload: scores.output,
       });
     });
   });

@@ -25,7 +25,7 @@ export const getOffenderNomisProfiles = (profiles = offenderNomisProfiles()) => 
 
 export const getViperScores = (scores = viperScores()) => ({
   type: GET_VIPER_SCORES,
-  payload: scores,
+  payload: scores.output,
 });
 
 export const selectOffender = offender => ({ type: SELECT_OFFENDER, payload: offender });
