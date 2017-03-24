@@ -175,7 +175,7 @@ describe('<Dashboard />', () => {
 
     it('calls actions when component mounts', () => {
       expect(
-        store.dispatch.calledWithMatch({ type: 'GET_VIPER_SCORES', payload: viperScores }),
+        store.dispatch.calledWithMatch({ type: 'GET_VIPER_SCORES', payload: viperScores.output }),
       ).to.equals(true, 'dispatch GET_VIPER_SCORES');
     });
   });
