@@ -14,6 +14,7 @@ const QuestionWithComments = (
       answer,
       comments,
     },
+    commentLabel,
     answerRequired,
   },
 ) => (
@@ -36,7 +37,9 @@ const QuestionWithComments = (
           </fieldset>
         </div>
         <p>
+          <label className="form-label" htmlFor="comments">{commentLabel}</label>
           <textarea
+            id="comments"
             defaultValue={comments}
             name="comments"
             placeholder="Comments"

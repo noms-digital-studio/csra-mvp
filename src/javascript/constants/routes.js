@@ -1,5 +1,6 @@
 export default {
   SIGN_IN: '/sign-in',
+  BEFORE_YOU_START: '/before-you-start',
   ASSESSMENT: '/assessment',
   ADMIN: '/admin',
   SUMMARY: '/summary',

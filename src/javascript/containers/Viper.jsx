@@ -11,7 +11,7 @@ const Viper = (
     <div className="grid-row">
       <div className="column-two-thirds">
         <h1 className="heading-large">{content[viperScore].title}</h1>
-
+        <p className="bold-medium">You can explain this to the prisoner:</p>
         <div dangerouslySetInnerHTML={{ __html: content[viperScore].description }} />
 
         <form className="c-confirmation-form" onSubmit={onSubmit} key={uuid()}>

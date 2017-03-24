@@ -11,16 +11,16 @@ const extractDecision = (questions, exitPoint) => {
     const question = questions.find(item => item.riskIndicator === exitPoint);
     return {
       recommendation: 'Single Cell',
-      rating: 'High',
+      rating: 'high',
       reasons: question.sharedCellPredicate.reasons,
     };
   }
 
   return {
     recommendation: 'Shared Cell',
-    rating: 'Low',
+    rating: 'low',
     reasons: [
-      'Based on the assessment the prisoner presents a low risk of violence and is unlikely to pose a risk against a cell mate',
+      'Take into consideration any prejudices and hostile views. Ensure that the nature of these views is taken into account when allocating a cell mate. Inform the keyworker to monitor the impact on other prisoners.',
     ],
   };
 };
@@ -49,7 +49,7 @@ const AssessmentComplete = (
                 </div>
                 <div>
                   <p className="c-offender-profile-item">
-                    <span className="heading-small">DOB:&nbsp;&nbsp;&nbsp;&nbsp;</span>
+                    <span className="heading-small">DOB:&nbsp;</span>
                     {Date_of_Birth}
                   </p>
                 </div>
@@ -66,16 +66,18 @@ const AssessmentComplete = (
       </div>
     </div>
 
-    <h2 className="heading-large">Assessment rating</h2>
-    <h3 className="heading-medium">
-      Suggested rating: {outcome.rating} - {outcome.recommendation}
-    </h3>
+    <h2 className="heading-large">
+      Recommended action: {outcome.recommendation}
+    </h2>
 
     <div className="grid-row">
       <div className="column-two-thirds">
         <div className="panel panel-border-wide u-margin-bottom-large">
-          <p className="heading-small">Based on the indicator of violence predictor:</p>
-          <ul className="list">
+          {outcome.rating === 'low' &&
+            <p>
+              Based on what we know about your offence and your previous time in prison, we think you can act calmly and appropriately around other prisoners.
+            </p>}
+          <ul className="list list-bullet">
             {outcome.reasons.map((reason, key) => <li key={key}>{reason}</li>)}
           </ul>
         </div>

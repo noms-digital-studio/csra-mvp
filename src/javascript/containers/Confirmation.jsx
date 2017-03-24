@@ -8,7 +8,7 @@ const Confirmation = ({ title, description, onSubmit, formDefaults: { confirmati
     <div className="grid-row">
       <div className="column-two-thirds">
         <h1 className="heading-large">{title}</h1>
-        <div dangerouslySetInnerHTML={{__html: description}} />
+        <div dangerouslySetInnerHTML={{ __html: description }} />
       </div>
     </div>
     <div className="grid-row">

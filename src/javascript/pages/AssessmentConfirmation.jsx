@@ -26,11 +26,11 @@ const AssessmentConfirmation = (props) => {
           </div>
 
           <p className="u-margin-bottom-default">
-            The Governor will receive a copy of the assessment.
+            Please ensure you have printed a copy of this page for your records.
           </p>
         </div>
       </div>
-      <h2 className="heading-medium u-margin-top-default">Prisoner Assessment Summary</h2>
+      <h2 className="heading-medium u-margin-top-default">Assessment Summary</h2>
 
       <div className="grid-row">
         <div className="column-two-thirds">
@@ -61,11 +61,6 @@ const AssessmentConfirmation = (props) => {
               </div>
               <div className="column-one-half">
                 <div className="c-offender-profile-prisoner">
-                  <p>
-                    <span className="heading-small u-text-capitalize">
-                      Rating: {outcome.rating}
-                    </span>
-                  </p>
                   <p><span className="heading-small">Outcome: {outcome.recommendation}</span></p>
                 </div>
               </div>
@@ -73,7 +68,11 @@ const AssessmentConfirmation = (props) => {
 
             <div className="grid-row">
               <div className="column-full">
-                <p className="heading-small">Reasons for the outcome of the assessment:</p>
+                <p className="bold-small">Recommended action:</p>
+                {outcome.rating === 'low' &&
+                  <p>
+                    Based on what we know about your offence and your previous time in prison, we think you can act calmly and appropriately around other prisoners.
+                  </p>}
                 <ul className="list list-bullet">
                   {outcome.reasons.map((reason, key) => <li key={key}>{reason}</li>)}
                 </ul>
@@ -98,7 +97,7 @@ const AssessmentConfirmation = (props) => {
                 type="checkbox"
                 id="confirmation"
                 value="accepted"
-                text="I have explained this rating outcome to the prisoner"
+                text="I have explained the reason for the decision to the prisoner."
                 name="confirmation"
               />
             </p>
@@ -149,7 +148,7 @@ AssessmentConfirmation.propTypes = {
 AssessmentConfirmation.defaultProps = {
   prisoner: {},
   outcome: {
-    reasons: []
+    reasons: [],
   },
   onSubmit: () => {},
 };

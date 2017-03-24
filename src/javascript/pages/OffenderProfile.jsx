@@ -45,7 +45,6 @@ const OffenderProfile = ({ details: { First_Name, Date_of_Birth, NOMS_Number, Su
             <p>
               <span className="heading-small">Offence:&nbsp;&nbsp;&nbsp;</span> Unavailable
             </p>
-            <p><span className="heading-small">Sentence:</span> Unavailable</p>
           </div>
         </div>
       </div>

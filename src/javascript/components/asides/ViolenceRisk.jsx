@@ -5,11 +5,11 @@ import { calculateRiskFor } from '../../services';
 
 const riskTextFor = (rating) => {
   const riskText = {
-    low: 'It’s safe for you to share a cell',
-    high: 'It’s safer for you to have a single cell',
+    low: 'Low risk',
+    high: 'High risk',
   };
 
-  return riskText[rating] || 'Unknown';
+  return riskText[rating] || 'We can\'t find this prisoner';
 };
 
 const ViolenceRisk = ({ rating }) => {
@@ -21,7 +21,7 @@ const ViolenceRisk = ({ rating }) => {
   return (
     <aside className="govuk-related-items" role="complementary">
       <h3 className="heading-medium u-margin-top-default" id="subsection-title">
-        Risk of Violence
+        Risk of Violence in prison
       </h3>
       <p>
         <span data-viper-rating={rating} className={riskScoreClasses}>{riskTextFor(rating)}</span>

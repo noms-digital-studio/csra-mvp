@@ -61,9 +61,9 @@ describe('<SignIn />', () => {
         expect(
           store.dispatch.calledWithMatch({
             type: '@@router/CALL_HISTORY_METHOD',
-            payload: { method: 'replace', args: ['/dashboard'] },
+            payload: { method: 'replace', args: ['/before-you-start'] },
           }),
-        ).to.be.true;
+        ).to.be.equal(true, 'Navigated to /before-you-start');
       });
     });
   });

@@ -49,7 +49,7 @@ describe('<AssessmentComplete />', () => {
     it('renders the outcome of the assessment', () => {
       const outcome = {
         recommendation: 'foo-recommendation',
-        rating: 'foo-rating',
+        rating: 'low',
         reasons: ['foo-reason'],
       };
       const wrapper = shallow(<AssessmentComplete outcome={outcome} />);
@@ -57,14 +57,14 @@ describe('<AssessmentComplete />', () => {
       const pageText = wrapper.text();
 
       expect(pageText).to.contain('foo-recommendation');
-      expect(pageText).to.contain('foo-rating');
+      expect(pageText).to.contain(' we think you can act calmly and appropriately around other prisoners');
       expect(pageText).to.contain('foo-reason');
     });
 
     it('handles callback on assessment submission', () => {
       const outcome = {
         recommendation: 'foo-recommendation',
-        rating: 'foo-rating',
+        rating: 'low',
         reasons: ['foo-reason'],
       };
 
@@ -119,7 +119,6 @@ describe('<AssessmentComplete />', () => {
         </Provider>,
       );
       const pageText = wrapper.text();
-      expect(pageText).to.contain('High');
       expect(pageText).to.contain('Single Cell');
       expect(pageText).to.contain('foo-reason');
     });
@@ -142,10 +141,10 @@ describe('<AssessmentComplete />', () => {
         </Provider>,
       );
       const pageText = wrapper.text();
-      expect(pageText).to.contain('Low');
+      expect(pageText).to.contain('we think you can act calmly and appropriately around other prisoners');
       expect(pageText).to.contain('Shared Cell');
       expect(pageText).to.contain(
-        'Based on the assessment the prisoner presents a low risk of violence and is unlikely to pose a risk against a cell mate',
+        'Ensure that the nature of these views is taken into account',
       );
     });
 
@@ -163,7 +162,7 @@ describe('<AssessmentComplete />', () => {
           payload: {
             nomisId: 'foo-nomis-id',
             recommendation: 'Single Cell',
-            rating: 'High',
+            rating: 'high',
             reasons: ['foo-reason'],
           },
         }),

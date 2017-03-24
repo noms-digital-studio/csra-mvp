@@ -10,12 +10,13 @@ import Admin from './pages/Admin';
 import SignInHoc from './pages/SignIn';
 import DashboardHoC from './pages/Dashboard';
 import AddOffenderHoc from './pages/AddOffender';
-import ConfirmOffender from './pages/ConfirmOffender';
+import ConfirmOffenderHoc from './pages/ConfirmOffender';
 import OffenderProfileHoc from './pages/OffenderProfile';
-import Question from './pages/Question';
+import QuestionHoc from './pages/Question';
 import SummaryHoc from './pages/Summary';
-import AssessmentComplete from './pages/AssessmentComplete';
-import AssessmentConfirmation from './pages/AssessmentConfirmation';
+import AssessmentCompleteHoc from './pages/AssessmentComplete';
+import AssessmentConfirmationHoc from './pages/AssessmentConfirmation';
+import BeforeYouStart from './pages/BeforeYouStart';
 import Error404 from './pages/Error404';
 
 export default (store) => {
@@ -26,16 +27,17 @@ export default (store) => {
       <Router history={history} onUpdate={() => window.scrollTo(0, 0)}>
         <Route component={Layout}>
           <Route path="/" name="home" component={SignInHoc} />
+          <Route path="/before-you-start" component={BeforeYouStart} />
           <Route path="/dashboard" name="dashboard" component={DashboardHoC} />
           <Route path="/add-offender" name="add-offender" component={AddOffenderHoc} />
-          <Route path="/confirm-offender" name="confirm-offender" component={ConfirmOffender} />
+          <Route path="/confirm-offender" name="confirm-offender" component={ConfirmOffenderHoc} />
           <Route path="/offender-profile" name="offender-profile" component={OffenderProfileHoc} />
           <Route path="/admin" name="admin" component={Admin} />
           <Route path="/sign-in" name="sign-in" component={SignInHoc} />
-          <Route path="/assessment/:section" component={Question} />
+          <Route path="/assessment/:section" component={QuestionHoc} />
           <Route path="/summary" component={SummaryHoc} />
-          <Route path="/assessment-complete" component={AssessmentComplete} />
-          <Route path="/assessment-confirmation" component={AssessmentConfirmation} />
+          <Route path="/assessment-complete" component={AssessmentCompleteHoc} />
+          <Route path="/assessment-confirmation" component={AssessmentConfirmationHoc} />
           <Route path="*" name="404" component={Error404} />
         </Route>
       </Router>

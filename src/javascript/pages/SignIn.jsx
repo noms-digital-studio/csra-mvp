@@ -23,11 +23,9 @@ class SignIn extends Component {
   render() {
     return (
       <form action="/" method="POST" className="form" onSubmit={event => this.handleSubmit(event)}>
-        <h1 className="form-title heading-large">Sign in</h1>
+        <h1 className="form-title heading-large">Enter your full name</h1>
 
         <div className="form-group">
-          <label className="form-label-bold" htmlFor="username">Username</label>
-          <span className="form-hint">Please enter your full name before continuing.</span>
           <input type="text" className="form-control" id="username" name="username" />
         </div>
 
@@ -45,7 +43,7 @@ SignIn.propTypes = {
 
 const mapActionsToProps = dispatch => ({
   onSubmit: (name) => {
-    dispatch(replace(routes.DASHBOARD));
+    dispatch(replace(routes.BEFORE_YOU_START));
     dispatch(signIn(name));
   },
 });

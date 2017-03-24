@@ -2,7 +2,6 @@ import React from 'react';
 import { mount } from 'enzyme';
 
 import Comments from '../../src/javascript/containers/Comments';
-import Aside from '../../src/javascript/components/asides/Index';
 
 describe('<Comments />', () => {
   it('renders the title', () => {
@@ -13,14 +12,6 @@ describe('<Comments />', () => {
   it('renders the description', () => {
     const wrapper = mount(<Comments description="foo-description" />);
     expect(wrapper.text()).to.contain('foo-description');
-  });
-
-  it('renders the an aside', () => {
-    const props = {
-      template: 'template',
-    };
-    const wrapper = mount(<Comments aside={props} />);
-    expect(wrapper.find(Aside).length).be.equal(1);
   });
 
   it('handles form submission', () => {

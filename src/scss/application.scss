@@ -34,12 +34,21 @@ $path: "../../node_modules/govuk_frontend_toolkit/images/";
 * Components
 ***************************/
 
+.c-header-proposition__name {
+    font-family: "nta", Arial, sans-serif;
+    font-weight: 400;
+    text-transform: none;
+    font-size: 24px;
+    line-height: 1.25;
+    font-weight: bold;
+    color: white !important;
+    text-decoration: none;
+}
+
 .c-global-header__wrapper {
     color: #FFF;
     font-weight: bold;
-    text-align: right;
-    float: right;
-    margin-top: -5px;
+    margin-bottom: 20px;
 }
 
 .c-global-header__username {
@@ -51,7 +60,6 @@ $path: "../../node_modules/govuk_frontend_toolkit/images/";
     background: none;
     color: #FFF;
     border: none;
-    margin-left: 20px;
     font-size: 16px;
     font-weight: bold;
     padding: 0.5em;
@@ -65,7 +73,6 @@ $path: "../../node_modules/govuk_frontend_toolkit/images/";
 }
 
 .c-dashboard-header {
-    // margin-top: 1em;
     border-bottom: solid 1px $grey-2;
     padding-top: $gutter;
     padding-bottom: $gutter;
@@ -171,7 +178,7 @@ $path: "../../node_modules/govuk_frontend_toolkit/images/";
     width: 35px;
     height: 35px;
     margin-right: 0;
-    margin-left: 20px;
+    margin-left: 10px;
 }
 
 .c-offender-profile-image img {
@@ -212,6 +219,10 @@ $path: "../../node_modules/govuk_frontend_toolkit/images/";
     padding: .5em 0 .5em 28px;
     zoom: 1;
     font-size: 1.8rem;
+}
+
+.c-text-hint {
+    color: $secondary-text-colour;
 }
 
 
@@ -276,4 +287,19 @@ $path: "../../node_modules/govuk_frontend_toolkit/images/";
 
 .u-text-capitalize {
     text-transform: capitalize;
+}
+
+@media screen and (min-width: 641px) {
+    .c-header-global {
+        width: 20% !important;
+    }
+    .c-header-proposition {
+        width: 80% !important;
+    }
+    .c-global-header__wrapper {
+        text-align: right;
+        float: right;
+        margin-top: -5px;
+        margin-bottom: 0;
+    }
 }

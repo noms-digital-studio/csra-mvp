@@ -12,7 +12,7 @@ const Header = ({ username, signedIn, onSignOut }) => {
     <div>
       <header role="banner" id="global-header" className="c-global-header with-proposition">
         <div className="header-wrapper">
-          <div className="header-global">
+          <div className="header-global c-header-global">
             <div className="header-logo">
               <Link to={url} title="Go to the HMPS homepage" id="logo" className="content">
                 <img
@@ -26,10 +26,9 @@ const Header = ({ username, signedIn, onSignOut }) => {
             </div>
           </div>
 
-          <div className="header-proposition">
+          <div className="header-proposition c-header-proposition">
             <div className="content">
               <nav id="proposition-menu">
-                <Link to="/" id="proposition-name">Cell Sharing Risk Assessment</Link>
                 {signedIn &&
                   <div className="c-global-header__wrapper">
                     <span className="c-global-header__username">{username}</span>
@@ -38,6 +37,7 @@ const Header = ({ username, signedIn, onSignOut }) => {
                       Sign out
                     </button>
                   </div>}
+                <Link to="/" id="proposition-name">Assess if a prisoner can share a cell safely</Link>
               </nav>
             </div>
           </div>

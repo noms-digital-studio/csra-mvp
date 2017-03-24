@@ -31,14 +31,14 @@ describe('<AssessmentConfirmation />', () => {
         <AssessmentConfirmation
           outcome={{
             recommendation: 'foo-recommendation',
-            rating: 'foo-rating',
+            rating: 'low',
             reasons: ['foo-reason'],
           }}
         />,
       );
       const pageText = wrapper.text();
       expect(pageText).to.contain('foo-recommendation');
-      expect(pageText).to.contain('foo-rating');
+      expect(pageText).to.contain('we think you can act calmly and appropriately around other prisoners');
       expect(pageText).to.contain('foo-reason');
     });
 
@@ -84,7 +84,6 @@ describe('<AssessmentConfirmation />', () => {
       expect(pageText).to.contain('foo-surname');
       expect(pageText).to.contain('foo-date');
       expect(pageText).to.contain('foo-nomis-id');
-      expect(pageText).to.contain('High');
       expect(pageText).to.contain('Single Cell');
       expect(pageText).to.contain('foo-reason');
     });
