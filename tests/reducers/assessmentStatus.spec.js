@@ -23,6 +23,25 @@ describe('#assessmentStatusReducer', () => {
     expect(assessmentStatusReducer(undefined, action)).to.eql(expectedState);
   });
 
+  it('resets a the exit point when a user is selected', () => {
+    const state = {
+      ...defaultState,
+      exitPoint: 'foo-exit-point',
+    };
+
+    const action = {
+      type: 'SELECT_OFFENDER',
+      payload: {},
+    };
+
+    const expectedState = {
+      ...state,
+      exitPoint: '',
+    };
+
+    expect(assessmentStatusReducer(state, action)).to.eql(expectedState);
+  });
+
   it('adds a nomis-id to the completed list', () => {
     const state = {
       ...defaultState,
