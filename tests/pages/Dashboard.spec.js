@@ -4,7 +4,6 @@ import { mount, shallow } from 'enzyme';
 
 import { fakeStore } from '../test-helpers';
 
-import offenderProfiles from '../../src/javascript/fixtures/nomis.json';
 import viperScores from '../../src/javascript/fixtures/viper.json';
 
 import ConnectedDashboard, { Dashboard } from '../../src/javascript/pages/Dashboard';
@@ -83,17 +82,14 @@ describe('<Dashboard />', () => {
 
     it('calls actions when component mounts', () => {
       const getViperScores = sinon.spy();
-      const getOffenderNomisProfiles = sinon.spy();
 
-      const wrapper = mount(
+      mount(
         <Dashboard
           getViperScores={getViperScores}
-          getOffenderNomisProfiles={getOffenderNomisProfiles}
         />,
       );
 
-      expect(getViperScores.calledOnce).to.be.true;
-      expect(getOffenderNomisProfiles.calledOnce).to.be.true;
+      expect(getViperScores.calledOnce).to.equal(true, 'getViperScores called');
     });
   });
 
@@ -181,13 +177,6 @@ describe('<Dashboard />', () => {
       expect(
         store.dispatch.calledWithMatch({ type: 'GET_VIPER_SCORES', payload: viperScores }),
       ).to.equals(true, 'dispatch GET_VIPER_SCORES');
-
-      expect(
-        store.dispatch.calledWithMatch({
-          type: 'GET_OFFENDER_NOMIS_PROFILES',
-          payload: offenderProfiles.output,
-        }),
-      ).to.equals(false, 'dispatch GET_OFFENDER_NOMIS_PROFILES');
     });
   });
 });

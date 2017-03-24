@@ -5,9 +5,8 @@ import { Link } from 'react-router';
 
 import isEmpty from 'ramda/src/isEmpty';
 import not from 'ramda/src/not';
-import length from 'ramda/src/length';
 
-import { getOffenderNomisProfiles, getViperScores, selectOffender } from '../actions';
+import { getViperScores, selectOffender } from '../actions';
 import { todaysDate } from '../utils';
 
 import routes from '../constants/routes';
@@ -15,9 +14,6 @@ import routes from '../constants/routes';
 class Dashboard extends Component {
   componentDidMount() {
     this.props.getViperScores();
-    if (not(length(this.props.profiles))) {
-      this.props.getOffenderNomisProfiles();
-    }
   }
 
   renderProfiles() {
@@ -71,21 +67,28 @@ class Dashboard extends Component {
           </h1>
         </div>
 
-        <table>
-          <thead>
-            <tr>
-              <th scope="col">Photo</th>
-              <th scope="col">Name</th>
-              <th scope="col">DOB</th>
-              <th scope="col">NOMIS ID</th>
-              <th className="u-text-align-center" scope="col">Cell sharing recommendation</th>
-              <th scope="col" />
-            </tr>
-          </thead>
-          <tbody>
-            {this.renderProfiles()}
-          </tbody>
-        </table>
+        {isEmpty(this.props.profiles)
+          ? <div className="u-text-align-center">
+            <h2 className="heading-large">
+                There are currently no prisoner to assess please add some to the list by clicking the &quot;Add a prisoner&quot; button above
+              </h2>
+          </div>
+          : <table>
+            <thead>
+              <tr>
+                <th scope="col">Photo</th>
+                <th scope="col">Name</th>
+                <th scope="col">DOB</th>
+                <th scope="col">NOMIS ID</th>
+                <th className="u-text-align-center" scope="col">Cell sharing recommendation</th>
+                <th scope="col" />
+              </tr>
+            </thead>
+            <tbody>
+              {this.renderProfiles()}
+            </tbody>
+          </table>}
+
       </div>
     );
   }
@@ -102,7 +105,6 @@ const mapStateToProps = state => ({
 
 const mapActionsToProps = dispatch => ({
   getViperScores: () => dispatch(getViperScores()),
-  getOffenderNomisProfiles: () => dispatch(getOffenderNomisProfiles()),
   onOffenderSelect: (offender) => {
     dispatch(selectOffender(offender));
     dispatch(push(routes.PRISONER_PROFILE));
@@ -120,14 +122,12 @@ Dashboard.propTypes = {
     }),
   ),
   getViperScores: PropTypes.func,
-  getOffenderNomisProfiles: PropTypes.func,
   onOffenderSelect: PropTypes.func,
   date: PropTypes.string,
 };
 
 Dashboard.defaultProps = {
   getViperScores: () => {},
-  getOffenderNomisProfiles: () => {},
   onOffenderSelect: () => {},
   profiles: [],
   date: todaysDate(),
