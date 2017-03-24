@@ -91,7 +91,7 @@ class Admin extends Component {
           Clear Browser Session and Local Storage
         </button>
 
-        <Link href="/" className="button c-btn-right--xcustom">Continue to sign in</Link>
+        <Link href="/#/sign-in" className="button c-btn-right--xcustom">Continue to sign in</Link>
 
       </div>
     );
