@@ -45,6 +45,12 @@
     "title": "Do you think you might hurt someone you had to share a cell with?",
     "description": "",
     "template": "default_with_aside",
+    "formFields": {
+      "input": {
+        "yes": { "text": "Yes - they might harm a cellmate" },
+        "no": { "text": "No indicators that they might harm a cellmate" }
+      }
+    },
     "sharedCellPredicate": {
       "type": "QUESTION",
       "value": "no",
@@ -66,6 +72,12 @@
     "riskIndicator": "vulnerability",
     "title": "Have you been hurt or threatened in prison before?",
     "template": "default_with_aside",
+    "formFields": {
+      "input": {
+        "yes": { "text": "Yes - at risk if sharing a cell" },
+        "no": { "text": "No - not obviously at risk if sharing a cell" }
+      }
+    },
     "description": "<p class='lede text'>Or do you have any reason to think that someone might hurt you if you shared a cell?</p>",
     "sharedCellPredicate": {
       "type": "QUESTION",
@@ -88,6 +100,12 @@
     "riskIndicator": "gang-affiliation",
     "title": "Are there any gangs or people you would rather not see while you’re here?",
     "template": "default_with_aside",
+    "formFields": {
+      "input": {
+        "yes": { "text": "Yes - has a gang affiliation" },
+        "no": { "text": "No - no obvious gang affiliation" }
+      }
+    },
     "description": "<p class='lede text c-text-hint'>If this is the only risk factor present, then it doesn't mean they will be recommended a single cell. Other risk factors that are relevant could affect the recommendation.</p>",
     "aside": {
       "template": "static",
@@ -100,6 +118,12 @@
     "riskIndicator": "drug-misuse",
     "title": "Have you used drugs in the last month?",
     "template": "default_with_aside",
+    "formFields": {
+      "input": {
+        "yes": { "text": "Yes - has used drugs recently" },
+        "no": { "text": "No - hasn’t used drugs recently" }
+      }
+    },
     "description": "<p class='lede text'>Tell me about what you’ve used and how often.</p><p class='lede text c-text-hint'>On its own this risk factor will not lead to the recommendation of a single cell. When combined with other risk factors, it can lead to the recommendation that it would be safer for the prisoner to be in a single cell.</p>",
     "aside": {
       "title": "Why is this important?",
@@ -113,6 +137,12 @@
     "title": "Are there any particular groups you would find it difficult to share a cell with?",
     "description": "<p class='lede text'>For example, someone of a different age, race, religion, sexuality, gender identity or certain offence history.</p><p class='lede text c-text-hint'>Hostile attitudes on their own don’t mean that someone will automatically be given a single cell. They may be safe to share with a range of other people, and this will be taken into account in the final recommendation.</p>",
     "template": "default_with_aside",
+    "formFields": {
+      "input": {
+        "yes": { "text": "Yes - likely to discriminate" },
+        "no": { "text": "No - not obviously likely to discriminate" }
+      }
+    },
     "sharedCellPredicate": {
       "type": "QUESTION",
       "value": "no",
@@ -137,6 +167,12 @@
     "title": "Are there any other reasons why this person should not share a cell?",
     "description": "<p class='lede text'>For example, if you have information from case records or the prisoner that raises concerns about them sharing a cell safely.</p>",
     "commentLabel": "Enter the reasons why you think they should not share a cell:",
+    "formFields": {
+      "input": {
+        "yes": { "text": "Yes - I have more information" },
+        "no": { "text": "No - nothing else to record" }
+      }
+    },
     "template": "question_with_comments",
     "aside": {
       "title": "Why is this important?",

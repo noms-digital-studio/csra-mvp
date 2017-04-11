@@ -16,6 +16,7 @@ const QuestionWithComments = (
     },
     commentLabel,
     answerRequired,
+    formFields: { input: { yes, no } },
   },
 ) => (
   <div className="grid-row">
@@ -30,8 +31,8 @@ const QuestionWithComments = (
               default={answer}
               type="radio"
               fields={[
-                { value: 'yes', text: 'Yes', name: 'answer', required: answerRequired },
-                { value: 'no', text: 'No', name: 'answer', required: answerRequired },
+                { value: 'yes', text: yes.text, name: 'answer', required: answerRequired },
+                { value: 'no', text: no.text, name: 'answer', required: answerRequired },
               ]}
             />
           </fieldset>
@@ -72,6 +73,12 @@ QuestionWithComments.propTypes = {
 };
 
 QuestionWithComments.defaultProps = {
+  formFields: {
+    input: {
+      yes: '',
+      no: '',
+    },
+  },
   formDefaults: {
     answer: '',
     comments: '',

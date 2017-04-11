@@ -29,7 +29,7 @@ describe('<QuestionWithComments />', () => {
 
     wrapper.find('form').simulate('submit');
 
-    expect(callback.calledOnce).to.be.true;
+    expect(callback.calledOnce).to.equal(true, 'form submitted');
   });
 
   it('pre-populates the forms if data is available', () => {
@@ -38,5 +38,18 @@ describe('<QuestionWithComments />', () => {
     expect(wrapper.find('[data-input="yes"]').node.checked).to.equal(true, 'radio button selected');
 
     expect(wrapper.find('textarea').node.value).to.equal('foo-comment');
+  });
+
+  it('accepts radio button label text', () => {
+    const wrapper = mount(
+      <QuestionWithComments
+        formFields={{
+          input: { yes: { text: 'foo-text' }, no: { text: 'bar-text' } },
+        }}
+      />,
+    );
+
+    expect(wrapper.find('[data-label="yes"]').text()).to.equal('foo-text');
+    expect(wrapper.find('[data-label="no"]').text()).to.equal('bar-text');
   });
 });

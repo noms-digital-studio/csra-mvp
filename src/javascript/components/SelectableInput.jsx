@@ -45,7 +45,7 @@ class SelectableInput extends Component {
           required={required}
           onChange={onChangeFnc}
         />
-        <label htmlFor={id}>{text}</label>
+        <label data-label={value} htmlFor={id}>{text}</label>
       </span>
     );
   }

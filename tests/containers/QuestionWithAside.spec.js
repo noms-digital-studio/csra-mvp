@@ -1,7 +1,8 @@
 import React from 'react';
 import { mount } from 'enzyme';
 
-import QuestionWithAside from '../../src/javascript/containers/QuestionWithAside';
+import QuestionWithAside
+  from '../../src/javascript/containers/QuestionWithAside';
 import Aside from '../../src/javascript/components/asides/Index';
 
 describe('<QuestionWithAside />', () => {
@@ -33,8 +34,26 @@ describe('<QuestionWithAside />', () => {
   });
 
   it('pre-populates the forms if data is available', () => {
-    const wrapper = mount(<QuestionWithAside formDefaults={{ answer: 'yes' }} />);
+    const wrapper = mount(
+      <QuestionWithAside formDefaults={{ answer: 'yes' }} />,
+    );
 
-    expect(wrapper.find('[data-input="yes"]').node.checked).to.equal(true, 'radio button selected');
+    expect(wrapper.find('[data-input="yes"]').node.checked).to.equal(
+      true,
+      'radio button selected',
+    );
+  });
+
+  it('accepts radio button label text', () => {
+    const wrapper = mount(
+      <QuestionWithAside
+        formFields={{
+          input: { yes: { text: 'foo-text' }, no: { text: 'bar-text' } },
+        }}
+      />,
+    );
+
+    expect(wrapper.find('[data-label="yes"]').text()).to.equal('foo-text');
+    expect(wrapper.find('[data-label="no"]').text()).to.equal('bar-text');
   });
 });
