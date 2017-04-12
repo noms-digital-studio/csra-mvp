@@ -51,7 +51,7 @@ const OffenderProfile = ({ details: { First_Name, Date_of_Birth, NOMS_Number, Su
     </div>
 
     <p>
-      <Link to={routes.SUMMARY} className="button button-start u-margin-bottom-default">
+      <Link to={`${routes.ASSESSMENT}/introduction`} className="button button-start u-margin-bottom-default">
         Continue to Assessment
       </Link>
     </p>
