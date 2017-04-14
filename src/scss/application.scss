@@ -29,7 +29,6 @@ $path: "../../node_modules/govuk_frontend_toolkit/images/";
     padding-top: $gutter;
 }
 
-
 /**************************
 * Components
 ***************************/
@@ -222,9 +221,25 @@ $path: "../../node_modules/govuk_frontend_toolkit/images/";
 }
 
 .c-text-hint {
-    color: $secondary-text-colour;
+  color: $secondary-text-colour;
 }
 
+
+.c-radio-comment {
+  width: 100%;
+  margin-bottom: 10px;
+}
+
+.c-radio-comment__label {
+  display: block;
+  margin-bottom: 10px;
+}
+
+.c-radio-comment__comment-box {
+  width: 100%;
+  padding-top: 1.5em;
+  padding-bottom: 1.5em;
+}
 
 /*******************
 * Utilities

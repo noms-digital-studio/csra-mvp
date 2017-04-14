@@ -173,7 +173,7 @@
         "no": { "text": "No - nothing else to record" }
       }
     },
-    "template": "question_with_comments",
+    "template": "default_with_aside",
     "aside": {
       "title": "Why is this important?",
       "template": "static",
