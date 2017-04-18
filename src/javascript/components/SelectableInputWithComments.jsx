@@ -50,19 +50,24 @@ class SelectableInputWithComments extends Component {
           <label data-label={value} htmlFor={id}>{text}</label>
         </span>
         {isSelected &&
-          <div className="c-radio-comment__comment-box u-clear-fix">
-            <label className="c-radio-comment__label c-text-hint" htmlFor={`reason-for-${name}`}>
-              Use the box below to record the reasons for your answer:
-            </label>
-            <textarea
-              maxLength="300"
-              id={`reason-for-${name}`}
-              name={`reasons-${value}`}
-              className="form-control form-control-3-4"
-              defaultValue={commentValue}
-              cols="20"
-              rows="5"
-            />
+          <div className="panel panel-border-narrow">
+            <div className="c-radio-comment__comment-box u-clear-fix">
+              <label
+                className="c-radio-comment__label"
+                htmlFor={`reason-for-${name}`}
+              >
+                Use the box below to record the reasons for your answer:
+              </label>
+              <textarea
+                maxLength="300"
+                id={`reason-for-${name}`}
+                name={`reasons-${value}`}
+                className="form-control form-control-3-4"
+                defaultValue={commentValue}
+                cols="20"
+                rows="5"
+              />
+            </div>
           </div>}
       </div>
     );
