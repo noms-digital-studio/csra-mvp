@@ -51,7 +51,7 @@ class SelectableInputWithComments extends Component {
         </span>
         {isSelected &&
           <div className="c-radio-comment__comment-box u-clear-fix">
-            <label className="c-radio-comment__label" htmlFor={`reason-for-${name}`}>
+            <label className="c-radio-comment__label c-text-hint" htmlFor={`reason-for-${name}`}>
               Use the box below to record the reasons for your answer:
             </label>
             <textarea
