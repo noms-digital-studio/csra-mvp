@@ -7,6 +7,8 @@ export default {
   PRISONER_PROFILE: '/offender-profile',
   ADD_OFFENDER: '/add-offender',
   CONFIRM_OFFENDER: '/confirm-offender',
-  ASSESSMENT_COMPLETE: 'assessment-complete',
-  ASSESSMENT_CONFIRMATION: 'assessment-confirmation',
+  ASSESSMENT_COMPLETE: '/assessment-complete',
+  ASSESSMENT_CONFIRMATION: '/assessment-confirmation',
+  FEEDBACK: '/feedback',
+  FEEDBACK_CONFIRMATION: '/feedback-confirmation',
 };

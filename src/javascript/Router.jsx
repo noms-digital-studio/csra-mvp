@@ -16,6 +16,8 @@ import QuestionHoc from './pages/Question';
 import AssessmentCompleteHoc from './pages/AssessmentComplete';
 import AssessmentConfirmationHoc from './pages/AssessmentConfirmation';
 import BeforeYouStart from './pages/BeforeYouStart';
+import Feedback from './pages/Feedback';
+import FeedbackConfirmation from './pages/FeedbackThankyou';
 import Error404 from './pages/Error404';
 
 export default (store) => {
@@ -36,6 +38,8 @@ export default (store) => {
           <Route path="/assessment/:section" component={QuestionHoc} />
           <Route path="/assessment-complete" component={AssessmentCompleteHoc} />
           <Route path="/assessment-confirmation" component={AssessmentConfirmationHoc} />
+          <Route path="/feedback" component={Feedback} />
+          <Route path="/feedback-confirmation" component={FeedbackConfirmation} />
           <Route path="*" name="404" component={Error404} />
         </Route>
       </Router>

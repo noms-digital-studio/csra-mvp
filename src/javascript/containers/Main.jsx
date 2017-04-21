@@ -1,6 +1,8 @@
 import React, { PropTypes } from 'react';
+import { Link } from 'react-router';
 import Header from '../components/Header';
 import Footer from '../components/Footer';
+import Routes from '../constants/routes';
 
 const MainTemplate = ({ children }) => (
   <div className="o-csra-container js-enabled">
@@ -10,7 +12,7 @@ const MainTemplate = ({ children }) => (
         <p>
           <strong className="phase-tag phase-alpha">Private Alpha</strong>
           <span>
-            This is a new service – your <a className="link">feedback</a> will help us to improve it.
+            This is a new service – your <Link to={Routes.FEEDBACK} className="link">feedback</Link> will help us to improve it.
           </span>
         </p>
       </div>
