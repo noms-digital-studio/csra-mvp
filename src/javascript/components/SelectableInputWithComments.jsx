@@ -1,6 +1,8 @@
 import React, { Component, PropTypes } from 'react';
 import classnames from 'classnames';
 
+import CommentBox from './CommentBox';
+
 class SelectableInputWithComments extends Component {
   constructor(props) {
     super();
@@ -58,15 +60,15 @@ class SelectableInputWithComments extends Component {
               >
                 Use the box below to record the reasons for your answer:
               </label>
-              <textarea
-                maxLength="300"
+
+              <CommentBox
+                limit={300}
                 id={`reason-for-${name}`}
                 name={`reasons-${value}`}
-                className="form-control form-control-3-4"
-                defaultValue={commentValue}
-                cols="20"
-                rows="5"
+                text={commentValue}
+                cssClassName="form-control form-control-3-4"
               />
+
             </div>
           </div>}
       </div>

@@ -1,6 +1,6 @@
 import React, { Component, PropTypes } from 'react';
 
-import SelectableInput from './SelectableInputWithComments';
+import SelectableInputWithComments from './SelectableInputWithComments';
 
 class SelectableInputWithCommentsGroup extends Component {
   constructor(props) {
@@ -18,7 +18,7 @@ class SelectableInputWithCommentsGroup extends Component {
     const { fields, type } = this.props;
 
     return fields.map(({ name, value, text, required, commentValue }) => (
-      <SelectableInput
+      <SelectableInputWithComments
         required={required}
         key={`radio-${value}`}
         id={`radio-${value}`}

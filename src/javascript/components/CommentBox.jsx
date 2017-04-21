@@ -16,7 +16,7 @@ class CommentBox extends Component {
 
   render() {
     const { charactersLeft } = this.state;
-    const { limit, text, name, cssClassName } = this.props;
+    const { limit, text, id, name, cssClassName } = this.props;
     const handleChange = e => this.handleChange(e);
 
     return (
@@ -26,7 +26,7 @@ class CommentBox extends Component {
           onPaste={handleChange}
           spellCheck="true"
           maxLength={limit}
-          id={name}
+          id={id}
           name={name}
           className={cssClassName}
           defaultValue={text}
@@ -47,6 +47,7 @@ CommentBox.defaultProps = {
 };
 
 CommentBox.propTypes = {
+  id: PropTypes.string,
   limit: PropTypes.number,
   text: PropTypes.string,
   name: PropTypes.string,
