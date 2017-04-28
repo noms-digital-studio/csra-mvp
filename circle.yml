@@ -4,7 +4,7 @@ machine:
 
 dependencies:
   override:
-    - yarn --frozen-lockfile
+    - yarn
   cache_directories:
     - ~/.cache/yarn
 
