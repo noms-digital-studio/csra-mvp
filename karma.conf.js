@@ -2,11 +2,11 @@ module.exports = function (config) {
   config.set({
     basePath: '',
     frameworks: ['mocha', 'chai', 'sinon'],
-    files: ['./node_modules/babel-polyfill/dist/polyfill.js', 'tests/**/*.spec.js'],
+    files: ['./node_modules/babel-polyfill/dist/polyfill.js', 'tests/unit/**/*.spec.js'],
     exclude: [],
     preprocessors: {
-      'tests/*.spec.js': ['webpack', 'sourcemap'],
-      'tests/**/*.spec.js': ['webpack', 'sourcemap'],
+      'tests/unit/*.spec.js': ['webpack', 'sourcemap'],
+      'tests/unit/**/*.spec.js': ['webpack', 'sourcemap'],
     },
     // webpack configuration
     webpack: require('./webpack.config.js'),
