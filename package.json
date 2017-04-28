@@ -10,6 +10,7 @@
     "lint": "eslint . --cache --max-warnings 0",
     "test": "karma start --single-run --browsers PhantomJS",
     "test:watch": "karma start",
+    "test:integration": "wdio wdio.conf.js",
     "start": "node server.js"
   },
   "postinstall": "npm run build",
@@ -48,6 +49,7 @@
     "redux-devtools-extension": "^2.13.0",
     "redux-sessionstorage": "^0.4.0",
     "uuid": "3.0.1",
+    "wdio": "^0.3.3",
     "webpack-cleanup-plugin": "^0.5.1",
     "webpack-dev-middleware": "^1.10.1"
   },
@@ -69,6 +71,7 @@
     "compression-webpack-plugin": "^0.3.2",
     "css-loader": "^0.26.2",
     "cssnano": "^3.10.0",
+    "dotenv": "^4.0.0",
     "enzyme": "^2.7.1",
     "eslint": "^3.17.1",
     "eslint-config-airbnb": "^14.1.0",
@@ -102,6 +105,11 @@
     "sinon-chai": "^2.8.0",
     "style-loader": "^0.13.2",
     "url-loader": "^0.5.8",
+    "wdio-junit-reporter": "^0.3.0",
+    "wdio-mocha-framework": "^0.5.9",
+    "wdio-selenium-standalone-service": "^0.0.8",
+    "wdio-spec-reporter": "^0.1.0",
+    "webdriverio": "^4.6.2",
     "webpack": "^2.3.0"
   },
   "author": "Steven Bapaga",
