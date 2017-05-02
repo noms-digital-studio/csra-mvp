@@ -18,6 +18,7 @@ import AssessmentConfirmationHoc from './pages/AssessmentConfirmation';
 import BeforeYouStart from './pages/BeforeYouStart';
 import Feedback from './pages/Feedback';
 import FeedbackConfirmation from './pages/FeedbackThankyou';
+import HealthcareComplete from './pages/HealthcareComplete';
 import Error404 from './pages/Error404';
 
 export default (store) => {
@@ -40,6 +41,7 @@ export default (store) => {
           <Route path="/assessment-confirmation" component={AssessmentConfirmationHoc} />
           <Route path="/feedback" component={Feedback} />
           <Route path="/feedback-confirmation" component={FeedbackConfirmation} />
+          <Route path="/healthcare-complete" component={HealthcareComplete} />
           <Route path="*" name="404" component={Error404} />
         </Route>
       </Router>

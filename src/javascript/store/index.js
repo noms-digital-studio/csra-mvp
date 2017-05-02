@@ -9,6 +9,7 @@ import offenderReducer from '../reducers/offender';
 import loginReducer from '../reducers/login';
 import answersReducer from '../reducers/answers';
 import assessmentStatusReducer from '../reducers/assessmentStatus';
+import healthcareStatusReducer from '../reducers/healthcareStatus';
 
 const enhancer = composeWithDevTools(
   applyMiddleware(routerMiddleware(hashHistory)),
@@ -22,6 +23,7 @@ const reducers = combineReducers({
   login: loginReducer,
   answers: answersReducer,
   assessmentStatus: assessmentStatusReducer,
+  healthcareStatus: healthcareStatusReducer,
 });
 
 export default createStore(reducers, enhancer);

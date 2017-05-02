@@ -23,23 +23,30 @@ class Dashboard extends Component {
           <span className="c-profile-holder" />
         </td>
         <td>{profile.First_Name} {profile.Surname}</td>
-        <td>{profile.Date_of_Birth}</td>
         <td>{profile.NOMS_Number}</td>
+        <td>{profile.Date_of_Birth}</td>
+        <td data-assessment-complete={not(isEmpty(profile.assessmentCompleted))}>
+          {isEmpty(profile.assessmentCompleted)
+            ? <a onClick={() => this.props.onOffenderSelect(profile)} className="link u-link">
+                Incomplete
+              </a>
+            : <span>Complete</span>}
+        </td>
+        <td data-health-assessment-complete={not(isEmpty(profile.healthAssessmentCompleted))}>
+          {isEmpty(profile.healthAssessmentCompleted)
+            ? <a onClick={() => this.props.onOffenderHealthcareSelect(profile)} className="link u-link">
+                Incomplete
+              </a>
+            : <span>Complete</span>}
+        </td>
         <td
-          data-cell-recommendation={profile.completed.recommendation}
+          data-cell-recommendation={profile.assessmentCompleted.recommendation}
           className="u-text-align-center"
         >
-          {isEmpty(profile.completed)
+          {isEmpty(profile.assessmentCompleted)
             ? <span className="c-status-indicator" />
-            : <span className="">{profile.completed.recommendation}</span>}
+            : <span className="">{profile.assessmentCompleted.recommendation}</span>}
 
-        </td>
-        <td className="numeric" data-status-complete={not(isEmpty(profile.completed))}>
-          {isEmpty(profile.completed)
-            ? <button onClick={() => this.props.onOffenderSelect(profile)} className="button">
-                Start
-              </button>
-            : <span className="heading-small">Done</span>}
         </td>
       </tr>
     ));
@@ -78,9 +85,11 @@ class Dashboard extends Component {
               <tr>
                 <th scope="col">Photo</th>
                 <th scope="col">Name</th>
-                <th scope="col">DOB</th>
                 <th scope="col">NOMIS ID</th>
-                <th className="u-text-align-center" scope="col">Cell sharing recommendation</th>
+                <th scope="col">DOB</th>
+                <th scope="col">Assessment</th>
+                <th scope="col">Healthcare</th>
+                <th className="u-text-align-center" scope="col">Cell sharing outcome</th>
                 <th scope="col" />
               </tr>
             </thead>
@@ -97,7 +106,10 @@ class Dashboard extends Component {
 const mapStateToProps = state => ({
   profiles: state.offender.profiles.map(profile => ({
     ...profile,
-    completed: state.assessmentStatus.completed.find(
+    healthAssessmentCompleted: state.healthcareStatus.completed.find(
+      assessment => assessment.NOMS_Number === profile.NOMS_Number,
+    ) || {},
+    assessmentCompleted: state.assessmentStatus.completed.find(
       assessment => assessment.nomisId === profile.NOMS_Number,
     ) || {},
   })),
@@ -109,6 +121,10 @@ const mapActionsToProps = dispatch => ({
     dispatch(selectOffender(offender));
     dispatch(push(routes.PRISONER_PROFILE));
   },
+  onOffenderHealthcareSelect: (offender) => {
+    dispatch(selectOffender(offender));
+    dispatch(push(routes.HEALTHCARE_COMPLETE));
+  },
 });
 
 Dashboard.propTypes = {
@@ -118,7 +134,8 @@ Dashboard.propTypes = {
       Surname: PropTypes.string,
       First_Name: PropTypes.string,
       Date_of_Birth: PropTypes.string,
-      completed: PropTypes.object,
+      assessmentCompleted: PropTypes.object,
+      healthAssessmentCompleted: PropTypes.object,
     }),
   ),
   getViperScores: PropTypes.func,

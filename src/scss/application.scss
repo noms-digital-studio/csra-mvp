@@ -294,6 +294,10 @@ $path: "../../node_modules/govuk_frontend_toolkit/images/";
     display: block;
 }
 
+.u-link {
+  cursor: pointer;
+}
+
 .u-no-link {
     text-decoration: none;
     color: $text-colour !important;

@@ -10,6 +10,7 @@ import {
   SAVE_ANSWER,
   COMPLETE_ASSESSMENT,
   SAVE_EXIT_POINT,
+  COMPLETE_HEALTH_ASSESSMENT,
 } from '../constants/actions';
 
 import Questions from '../fixtures/questions.json';
@@ -57,4 +58,9 @@ export const completeAssessmentFor = outcome => ({
 export const saveExitPoint = riskFactor => ({
   type: SAVE_EXIT_POINT,
   payload: riskFactor,
+});
+
+export const completeHealthAssessmentFor = offender => ({
+  type: COMPLETE_HEALTH_ASSESSMENT,
+  payload: offender,
 });
