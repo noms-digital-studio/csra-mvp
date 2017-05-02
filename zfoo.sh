@@ -131,9 +131,13 @@ selectNodeVersion
 installYarn
 
 echo "Installing npm packages via yarn"
-rm -rf node_modules
-yarn.cmd install --frozen-lockfile --production
+# unset NODE_ENV so we get dev dependencies included
+NODE_ENV= yarn.cmd install --frozen-lockfile
 exitWithMessageOnError "yarn install failed"
+
+echo "Building static assets via 'yarn run build'"
+yarn.cmd run build
+exitWithMessageOnError "yarn build failed"
 
 cd - > /dev/null
 
