@@ -6,10 +6,8 @@ machine:
 
 dependencies:
   override:
-    - yarn --frozen-lockfile
-  cache_directories:
-    - ~/.cache/yarn
+    - npm install
 
 test:
   override:
-    - yarn test
+    - npm run test
