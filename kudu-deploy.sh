@@ -128,10 +128,10 @@ fi
 cd "$DEPLOYMENT_TARGET"
 
 selectNodeVersion
-installYarn
+#installYarn
 
 echo "Installing npm packages via yarn"
-npm install
+npm.cmd install
 exitWithMessageOnError "yarn install failed"
 
 cd - > /dev/null
