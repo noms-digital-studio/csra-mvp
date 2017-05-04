@@ -1,3 +1,5 @@
+require('dotenv').config();
+
 module.exports = function (config) {
   config.set({
     basePath: '',
@@ -14,7 +16,12 @@ module.exports = function (config) {
       noInfo: true,
       stats: 'errors-only',
     },
-    reporters: ['spec'],
+    reporters: ['spec', 'junit'],
+    junitReporter: {
+      outputDir: process.env.JUNIT_REPORT_PATH,
+      outputFile: process.env.JUNIT_REPORT_NAME,
+      useBrowserName: false
+    },
     port: 9876,
     colors: true,
     logLevel: config.LOG_INFO,
