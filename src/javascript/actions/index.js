@@ -1,5 +1,5 @@
 import {
-  GET_QUESTIONS,
+  GET_ASSESSMENT_QUESTIONS,
   GET_OFFENDER_NOMIS_PROFILES,
   GET_VIPER_SCORES,
   SELECT_OFFENDER,
@@ -7,19 +7,30 @@ import {
   SIGN_OUT,
   ADD_PRISONER,
   CONFIRM_PRISONER,
-  SAVE_ANSWER,
+  SAVE_CSRA_ANSWER,
   COMPLETE_ASSESSMENT,
   SAVE_EXIT_POINT,
   COMPLETE_HEALTH_ASSESSMENT,
 } from '../constants/actions';
 
-import Questions from '../fixtures/questions.json';
+import AssessmentQuestions from '../fixtures/csra-questions.json';
+import HealthAssessmentQuestion from '../fixtures/healthcare-questions.json';
 
 import { offenderNomisProfiles, viperScores } from '../services';
 
-export const getQuestions = (data = Questions) => ({ type: GET_QUESTIONS, payload: data });
+export const getAssessmentQuestions = (data = AssessmentQuestions) => ({
+  type: GET_ASSESSMENT_QUESTIONS,
+  payload: data,
+});
 
-export const getOffenderNomisProfiles = (profiles = offenderNomisProfiles()) => ({
+export const getHealthAssessmentQuestions = (data = HealthAssessmentQuestion) => ({
+  type: GET_ASSESSMENT_QUESTIONS,
+  payload: data,
+});
+
+export const getOffenderNomisProfiles = (
+  profiles = offenderNomisProfiles(),
+) => ({
   type: GET_OFFENDER_NOMIS_PROFILES,
   payload: profiles.output,
 });
@@ -29,13 +40,19 @@ export const getViperScores = (scores = viperScores()) => ({
   payload: scores.output,
 });
 
-export const selectOffender = offender => ({ type: SELECT_OFFENDER, payload: offender });
+export const selectOffender = offender => ({
+  type: SELECT_OFFENDER,
+  payload: offender,
+});
 
 export const signIn = user => ({ type: SIGN_IN, payload: user });
 
 export const signOut = () => ({ type: SIGN_OUT });
 
-export const addPrisoner = prisoner => ({ type: ADD_PRISONER, payload: prisoner });
+export const addPrisoner = prisoner => ({
+  type: ADD_PRISONER,
+  payload: prisoner,
+});
 
 export const confirmPrisoner = (prisonerData) => {
   const prisoner = {
@@ -48,7 +65,10 @@ export const confirmPrisoner = (prisonerData) => {
   return { type: CONFIRM_PRISONER, payload: prisoner };
 };
 
-export const saveAnswer = (key, value) => ({ type: SAVE_ANSWER, payload: { [key]: value } });
+export const saveAnswer = (key, value) => ({
+  type: SAVE_CSRA_ANSWER,
+  payload: { [key]: value },
+});
 
 export const completeAssessmentFor = outcome => ({
   type: COMPLETE_ASSESSMENT,

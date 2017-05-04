@@ -1,12 +1,12 @@
 [
   {
-    "riskIndicator": "introduction",
+    "section": "introduction",
     "title": "Explanation to the prisoner",
     "description": "<p class='text'>We are going to decide whether it is safe for you to share a cell with someone else.  Most people share cells in this prison.  So it is important that we know as much as possible about you to help us make the best decision.  I have some information about you already and I also have some questions.  The information you give me will be recorded and may be used by other staff in the prison to support you and make sure you and others are safe. Do you have any concerns about sharing a cell?</p>",
     "template": "confirmation"
   },
   {
-    "riskIndicator": "risk-of-violence",
+    "section": "risk-of-violence",
     "title": "Viper result",
     "content": {
       "low": {
@@ -35,13 +35,13 @@
     }
   },
   {
-    "riskIndicator": "how-do-you-feel",
+    "section": "how-do-you-feel",
     "title": "How do you feel about sharing a cell?",
     "description": "Record any specific concerns shared by the prisoner.",
     "template": "comments"
   },
   {
-    "riskIndicator": "prison-self-assessment",
+    "section": "prison-self-assessment",
     "title": "Do you think you might hurt someone you had to share a cell with?",
     "description": "",
     "template": "default_with_aside",
@@ -69,7 +69,7 @@
     "answerRequired": true
   },
   {
-    "riskIndicator": "vulnerability",
+    "section": "vulnerability",
     "title": "Have you been hurt or threatened in prison before?",
     "template": "default_with_aside",
     "formFields": {
@@ -97,7 +97,7 @@
     "answerRequired": true
   },
   {
-    "riskIndicator": "gang-affiliation",
+    "section": "gang-affiliation",
     "title": "Are there any gangs or people you would rather not see while you’re here?",
     "template": "default_with_aside",
     "formFields": {
@@ -115,7 +115,7 @@
     "answerRequired": true
   },
   {
-    "riskIndicator": "drug-misuse",
+    "section": "drug-misuse",
     "title": "Have you used drugs in the last month?",
     "template": "default_with_aside",
     "formFields": {
@@ -133,7 +133,7 @@
     "answerRequired": true
   },
   {
-    "riskIndicator": "prejudice",
+    "section": "prejudice",
     "title": "Are there any particular groups you would find it difficult to share a cell with?",
     "description": "<p class='lede text'>For example, someone of a different age, race, religion, sexuality, gender identity or certain offence history.</p><p class='lede text c-text-hint'>Hostile attitudes on their own don’t mean that someone will automatically be given a single cell. They may be safe to share with a range of other people, and this will be taken into account in the final recommendation.</p>",
     "template": "default_with_aside",
@@ -163,7 +163,7 @@
     "answerRequired": true
   },
   {
-    "riskIndicator": "officers-assessment",
+    "section": "officers-assessment",
     "title": "Are there any other reasons why this person should not share a cell?",
     "description": "<p class='lede text'>For example, if you have information from case records or the prisoner that raises concerns about them sharing a cell safely.</p>",
     "commentLabel": "Enter the reasons why you think they should not share a cell:",

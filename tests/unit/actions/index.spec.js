@@ -1,7 +1,8 @@
 import {
   signIn,
   signOut,
-  getQuestions,
+  getAssessmentQuestions,
+  getHealthAssessmentQuestions,
   getOffenderNomisProfiles,
   getViperScores,
   selectOffender,
@@ -11,12 +12,28 @@ import {
   completeAssessmentFor,
   saveExitPoint,
 } from '../../../src/javascript/actions';
-import questions from '../../../src/javascript/fixtures/questions.json';
+
+import csraQuestions
+  from '../../../src/javascript/fixtures/csra-questions.json';
+import healthcareQuestions
+  from '../../../src/javascript/fixtures/healthcare-questions.json';
 
 describe('Actions', () => {
-  describe('#getQuestions', () => {
-    it('return a GET_QUESTIONS action', () => {
-      expect(getQuestions(questions)).to.eql({ type: 'GET_QUESTIONS', payload: questions });
+  describe('#getAssessmentQuestions', () => {
+    it('return a GET_ASSESSMENT_QUESTIONS action', () => {
+      expect(getAssessmentQuestions(csraQuestions)).to.eql({
+        type: 'GET_ASSESSMENT_QUESTIONS',
+        payload: csraQuestions,
+      });
+    });
+  });
+
+  describe('#getHealthAssessmentQuestions', () => {
+    it('return a GET_ASSESSMENT_QUESTIONS action', () => {
+      expect(getHealthAssessmentQuestions(healthcareQuestions)).to.eql({
+        type: 'GET_ASSESSMENT_QUESTIONS',
+        payload: healthcareQuestions,
+      });
     });
   });
 
@@ -59,7 +76,10 @@ describe('Actions', () => {
         Date_of_Birth: 'foo-age',
       };
 
-      expect(selectOffender(offender)).to.eql({ type: 'SELECT_OFFENDER', payload: offender });
+      expect(selectOffender(offender)).to.eql({
+        type: 'SELECT_OFFENDER',
+        payload: offender,
+      });
     });
   });
 
@@ -87,7 +107,10 @@ describe('Actions', () => {
         'nomis-id': 'AA12345',
       };
 
-      expect(addPrisoner(prisoner)).to.eql({ type: 'ADD_PRISONER', payload: prisoner });
+      expect(addPrisoner(prisoner)).to.eql({
+        type: 'ADD_PRISONER',
+        payload: prisoner,
+      });
     });
   });
 
@@ -108,17 +131,20 @@ describe('Actions', () => {
       Date_of_Birth: '01-10-1997',
     };
 
-    expect(confirmPrisoner(prisonerData)).to.eql({ type: 'CONFIRM_PRISONER', payload: prisoner });
+    expect(confirmPrisoner(prisonerData)).to.eql({
+      type: 'CONFIRM_PRISONER',
+      payload: prisoner,
+    });
   });
 
   describe('#saveAnswer', () => {
-    it('returns a SAVE_ANSWER action', () => {
-      const riskIndicator = 'foo-risk';
+    it('returns a SAVE_CSRA_ANSWER action', () => {
+      const section = 'foo-risk';
       const answer = { confirmation: 'accept' };
 
-      expect(saveAnswer(riskIndicator, answer)).to.eql({
-        type: 'SAVE_ANSWER',
-        payload: { [riskIndicator]: answer },
+      expect(saveAnswer(section, answer)).to.eql({
+        type: 'SAVE_CSRA_ANSWER',
+        payload: { [section]: answer },
       });
     });
   });

@@ -3,7 +3,7 @@ import { assessmentCanContinue } from '../../../src/javascript/services/index';
 describe('Decision Engine', () => {
   it('return false if given an invalid sharedCellPredicate type', () => {
     const question = {
-      riskIndicator: 'risk-of-violence',
+      section: 'risk-of-violence',
       sharedCellPredicate: { type: 'FOO', value: 'low' },
     };
     const answers = {};
@@ -15,7 +15,7 @@ describe('Decision Engine', () => {
   context('Viper score', () => {
     it('does not continue when the viper score is high', () => {
       const question = {
-        riskIndicator: 'risk-of-violence',
+        section: 'risk-of-violence',
         sharedCellPredicate: { type: 'VIPER_SCORE', value: 'low' },
       };
       const answers = {};
@@ -26,7 +26,7 @@ describe('Decision Engine', () => {
 
     it('continues when the viper score is low', () => {
       const question = {
-        riskIndicator: 'risk-of-violence',
+        section: 'risk-of-violence',
         sharedCellPredicate: { type: 'VIPER_SCORE', value: 'low' },
       };
       const answers = {};
@@ -39,7 +39,7 @@ describe('Decision Engine', () => {
   context('Single Question Decision', () => {
     it('continues when the is no sharedCellPredicate', () => {
       const question = {
-        riskIndicator: 'introduction',
+        section: 'introduction',
       };
       const answers = {};
       const viperScore = undefined;
@@ -49,7 +49,7 @@ describe('Decision Engine', () => {
 
     it('continues when the answer does not satisfy the sharedCellPredicate', () => {
       const question = {
-        riskIndicator: 'vulnerability',
+        section: 'vulnerability',
         sharedCellPredicate: { type: 'QUESTION', value: 'no', dependents: ['vulnerability'] },
       };
       const answers = {
@@ -62,7 +62,7 @@ describe('Decision Engine', () => {
 
     it('does not continues when the answer satisfies the sharedCellPredicate', () => {
       const question = {
-        riskIndicator: 'vulnerability',
+        section: 'vulnerability',
         sharedCellPredicate: { type: 'QUESTION', value: 'no', dependents: ['vulnerability'] },
       };
       const answers = {
@@ -77,7 +77,7 @@ describe('Decision Engine', () => {
   context('Multi Question Decision', () => {
     it('continues when the answer does not satisfy the sharedCellPredicate', () => {
       const question = {
-        riskIndicator: 'prejudice',
+        section: 'prejudice',
         sharedCellPredicate: {
           type: 'QUESTION',
           value: 'yes',
@@ -98,7 +98,7 @@ describe('Decision Engine', () => {
 
     it('does not continues when the answer satisfies the sharedCellPredicate', () => {
       const question = {
-        riskIndicator: 'prejudice',
+        section: 'prejudice',
         sharedCellPredicate: {
           type: 'QUESTION',
           value: 'no',

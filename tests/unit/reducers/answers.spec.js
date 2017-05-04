@@ -3,7 +3,8 @@ import answersReducer from '../../../src/javascript/reducers/answers';
 describe('answersReducer', () => {
   const defaultState = {
     selectedPrisonerId: '',
-    answers: {},
+    csra: {},
+    healthcare: {},
   };
 
   it('returns a default state', () => {
@@ -26,10 +27,10 @@ describe('answersReducer', () => {
   it('saves an answer for the selectedPrisonerId', () => {
     const selectedPrisonerId = 'foo-id';
     const state = { ...defaultState, selectedPrisonerId };
-    const action = { type: 'SAVE_ANSWER', payload: { fooRisk: { answer: 'yes' } } };
+    const action = { type: 'SAVE_CSRA_ANSWER', payload: { fooRisk: { answer: 'yes' } } };
     const expectedState = {
       ...state,
-      answers: {
+      csra: {
         [selectedPrisonerId]: {
           fooRisk: { answer: 'yes' },
         },
@@ -43,16 +44,16 @@ describe('answersReducer', () => {
     const selectedPrisonerId = 'foo-id';
     const state = {
       selectedPrisonerId,
-      answers: {
+      csra: {
         [selectedPrisonerId]: {
           fooRisk: { answer: 'yes' },
         },
       },
     };
-    const action = { type: 'SAVE_ANSWER', payload: { fooRisk: { answer: 'no' } } };
+    const action = { type: 'SAVE_CSRA_ANSWER', payload: { fooRisk: { answer: 'no' } } };
     const expectedState = {
       ...state,
-      answers: {
+      csra: {
         [selectedPrisonerId]: {
           fooRisk: { answer: 'no' },
         },

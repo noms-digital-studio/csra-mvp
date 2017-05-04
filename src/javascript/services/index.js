@@ -63,7 +63,7 @@ export const assessmentCanContinue = (question, answers, viperScore) => {
 
   if (question.sharedCellPredicate.type === 'QUESTION') {
     return question.sharedCellPredicate.dependents.some(
-      riskIndicator => answers[riskIndicator] === question.sharedCellPredicate.value,
+      section => answers[section] === question.sharedCellPredicate.value,
     );
   }
 

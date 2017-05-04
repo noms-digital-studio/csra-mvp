@@ -1,8 +1,9 @@
-import { SELECT_OFFENDER, SAVE_ANSWER } from '../constants/actions';
+import { SELECT_OFFENDER, SAVE_CSRA_ANSWER } from '../constants/actions';
 
 const defaultState = {
   selectedPrisonerId: '',
-  answers: {},
+  csra: {},
+  healthcare: {},
 };
 
 const upsertAnswer = (answers, newAnswer) => ({ ...answers, ...newAnswer });
@@ -12,13 +13,13 @@ export default (state = defaultState, { type, payload }) => {
     case SELECT_OFFENDER:
       return { ...state, selectedPrisonerId: payload.NOMS_Number };
 
-    case SAVE_ANSWER:
+    case SAVE_CSRA_ANSWER:
       return {
         ...state,
-        answers: {
-          ...state.answers,
+        csra: {
+          ...state.csra,
           [state.selectedPrisonerId]: upsertAnswer(
-            state.answers[state.selectedPrisonerId],
+            state.csra[state.selectedPrisonerId],
             payload,
           ),
         },

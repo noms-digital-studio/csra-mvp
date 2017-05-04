@@ -8,7 +8,7 @@ import SelectableInput from '../components/SelectableInput';
 
 const extractDecision = (questions, exitPoint) => {
   if (exitPoint) {
-    const question = questions.find(item => item.riskIndicator === exitPoint);
+    const question = questions.find(item => item.section === exitPoint);
     return {
       recommendation: 'Single Cell',
       rating: 'high',
@@ -25,9 +25,11 @@ const extractDecision = (questions, exitPoint) => {
   };
 };
 
-const AssessmentComplete = (
-  { prisoner: { First_Name, Date_of_Birth, NOMS_Number, Surname }, onSubmit, outcome },
-) => (
+const AssessmentComplete = ({
+  prisoner: { First_Name, Date_of_Birth, NOMS_Number, Surname },
+  onSubmit,
+  outcome,
+}) => (
   <div>
     <div className="grid-row">
       <div className="column-two-thirds">
@@ -40,7 +42,10 @@ const AssessmentComplete = (
               <div className="c-offender-profile-image">
                 <img src={require('../../images/profile-placeholder.gif')} />
               </div>
-              <div data-offender-profile-details className="c-offender-profile-details">
+              <div
+                data-offender-profile-details
+                className="c-offender-profile-details"
+              >
                 <div>
                   <p className="c-offender-profile-item">
                     <span className="heading-small">Name:&nbsp;</span>
@@ -75,7 +80,8 @@ const AssessmentComplete = (
         <div className="panel panel-border-wide u-margin-bottom-large">
           {outcome.rating === 'low' &&
             <p>
-              Based on what we know about your offence and your previous time in prison, we think you can act calmly and appropriately around other prisoners.
+              Based on what we know about your offence and your previous time in prison,
+              we think you can act calmly and appropriately around other prisoners.
             </p>}
           <ul className="list list-bullet">
             {outcome.reasons.map((reason, key) => <li key={key}>{reason}</li>)}
@@ -121,7 +127,10 @@ AssessmentComplete.defaultProps = {
 
 const mapStateToProps = state => ({
   prisoner: state.offender.selected,
-  outcome: extractDecision(state.questions.questions, state.assessmentStatus.exitPoint),
+  outcome: extractDecision(
+    state.questions.csra,
+    state.assessmentStatus.exitPoint,
+  ),
 });
 
 const mapActionsToProps = dispatch => ({

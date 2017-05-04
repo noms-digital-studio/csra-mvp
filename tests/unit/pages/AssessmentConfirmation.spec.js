@@ -88,7 +88,7 @@ describe('<AssessmentConfirmation />', () => {
       expect(pageText).to.contain('foo-reason');
     });
 
-    it('calls the onSubmit action with the answer and riskIndicator', () => {
+    it('calls the onSubmit action with the answer and section', () => {
       const wrapper = mount(
         <Provider store={store}>
           <ConnectedAssessmentConfirmation />

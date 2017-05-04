@@ -1,24 +1,19 @@
 import React, { Component, PropTypes } from 'react';
-import { connect } from 'react-redux';
-import { push } from 'react-router-redux';
 import serialize from 'form-serialize';
 
-import path from 'ramda/src/path';
 import isEmpty from 'ramda/src/isEmpty';
-import not from 'ramda/src/not';
 
+import { assessmentCanContinue } from '../services';
 
-import { assessmentCanContinue, calculateRiskFor } from '../services';
-import { getQuestions, saveAnswer, saveExitPoint } from '../actions';
 import routes from '../constants/routes';
 
-import QuestionWithAsideTemplate from '../containers/QuestionWithAside';
-import Viper from '../containers/Viper';
-import QuestionWithComments from '../containers/QuestionWithComments';
 import Comments from '../containers/Comments';
 import ConfirmationTemplate from '../containers/Confirmation';
 import ConfirmationWithAsideTemplate from '../containers/ConfirmationWithAside';
 import HealthcareAssessment from '../containers/HealthAssessment';
+import QuestionWithAsideTemplate from '../containers/QuestionWithAside';
+import QuestionWithComments from '../containers/QuestionWithComments';
+import Viper from '../containers/Viper';
 
 function templateSelector(data) {
   switch (data.template) {
@@ -42,7 +37,10 @@ function templateSelector(data) {
 }
 
 const reduceYesNoAnswers = answers =>
-  Object.keys(answers).reduce((result, key) => ({ ...result, [key]: answers[key].answer }), {});
+  Object.keys(answers).reduce(
+    (result, key) => ({ ...result, [key]: answers[key].answer }),
+    {},
+  );
 
 const sectionData = (questions = [], section = '') => {
   if (isEmpty(questions)) {
@@ -52,7 +50,7 @@ const sectionData = (questions = [], section = '') => {
       sectionIndex: 0,
     };
   }
-  const sectionEqls = item => item.riskIndicator === section;
+  const sectionEqls = item => item.section === section;
   const index = questions.findIndex(sectionEqls);
 
   const total = questions.length;
@@ -66,7 +64,7 @@ const sectionData = (questions = [], section = '') => {
   };
 };
 
-class Question extends Component {
+class Questionnaire extends Component {
   componentDidMount() {
     this.props.getQuestions();
   }
@@ -74,25 +72,38 @@ class Question extends Component {
   handleFormSubmit(event) {
     event.preventDefault();
 
-    const { params: { section }, questions, answers, prisonerViperScore } = this.props;
+    const {
+      params: { section },
+      questions,
+      answers,
+      prisonerViperScore,
+      basePath,
+      completionPath,
+    } = this.props;
     const { sectionIndex, question } = sectionData(questions, section);
     const answer = serialize(event.target, { hash: true });
-    const basePath = routes.ASSESSMENT;
     const nextSectionIndex = sectionIndex + 1;
-    const reducedAnswers = reduceYesNoAnswers({ ...answers, [section]: answer });
+    const reducedAnswers = reduceYesNoAnswers({
+      ...answers,
+      [section]: answer,
+    });
 
     let nextPath;
 
-    const canContinue = assessmentCanContinue(question, reducedAnswers, prisonerViperScore);
+    const canContinue = assessmentCanContinue(
+      question,
+      reducedAnswers,
+      prisonerViperScore,
+    );
 
     if (canContinue && questions[nextSectionIndex]) {
-      nextPath = `${basePath}/${questions[nextSectionIndex].riskIndicator}`;
+      nextPath = `${basePath}/${questions[nextSectionIndex].section}`;
     } else {
-      nextPath = routes.ASSESSMENT_COMPLETE;
+      nextPath = completionPath;
     }
 
     this.props.onSubmit({
-      riskIndicator: question.riskIndicator,
+      section: question.section,
       answer,
       nextPath,
       canContinue,
@@ -108,7 +119,10 @@ class Question extends Component {
       prisoner: { firstName, surname },
     } = this.props;
 
-    const { totalSections, sectionIndex, question } = sectionData(questions, section);
+    const { totalSections, sectionIndex, question } = sectionData(
+      questions,
+      section,
+    );
 
     return (
       <div className="o-question">
@@ -126,7 +140,10 @@ class Question extends Component {
 
           </div>
           <div className="column-half">
-            <h2 className="bold-medium u-text-align-right" id="subsection-title">
+            <h2
+              className="bold-medium u-text-align-right"
+              id="subsection-title"
+            >
               {firstName} {surname}
             </h2>
           </div>
@@ -142,7 +159,9 @@ class Question extends Component {
   }
 }
 
-Question.propTypes = {
+Questionnaire.propTypes = {
+  basePath: PropTypes.string,
+  completionPath: PropTypes.string,
   prisonerViperScore: PropTypes.string,
   answers: PropTypes.object,
   questions: PropTypes.array,
@@ -152,7 +171,7 @@ Question.propTypes = {
   onSubmit: PropTypes.func,
 };
 
-Question.defaultProps = {
+Questionnaire.defaultProps = {
   answers: {},
   questions: [],
   params: {},
@@ -161,34 +180,4 @@ Question.defaultProps = {
   onSubmit: () => {},
 };
 
-const mapStateToProps = (state, ownProps) => ({
-  ...ownProps,
-  questions: state.questions.questions,
-  prisoner: {
-    firstName: state.offender.selected.First_Name,
-    surname: state.offender.selected.Surname,
-  },
-  prisonerViperScore: calculateRiskFor(
-    state.offender.selected.NOMS_Number,
-    state.offender.viperScores,
-  ),
-  answers: path([state.answers.selectedPrisonerId], state.answers.answers),
-});
-
-const mapActionsToProps = dispatch => ({
-  getQuestions: () => {
-    dispatch(getQuestions());
-  },
-  onSubmit: ({ riskIndicator, answer, nextPath, canContinue }) => {
-    dispatch(saveAnswer(riskIndicator, answer));
-
-    if (not(canContinue)) {
-      dispatch(saveExitPoint(riskIndicator));
-    }
-
-    dispatch(push(nextPath));
-  },
-});
-
-export { Question };
-export default connect(mapStateToProps, mapActionsToProps)(Question);
+export default Questionnaire;

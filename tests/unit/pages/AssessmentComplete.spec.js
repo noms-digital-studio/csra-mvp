@@ -15,9 +15,9 @@ const prisonerDetails = {
   NOMS_Number: 'foo-nomis-id',
 };
 
-const questions = [
+const csraQuestions = [
   {
-    riskIndicator: 'foo-section',
+    section: 'foo-section',
     title: 'foo-title',
     description: 'foo-description',
     template: 'default_with_aside',
@@ -91,7 +91,7 @@ describe('<AssessmentComplete />', () => {
           exitPoint: 'foo-section',
         },
         questions: {
-          questions,
+          csra: csraQuestions,
         },
         offender: {
           selected: prisonerDetails,
@@ -129,7 +129,7 @@ describe('<AssessmentComplete />', () => {
           exitPoint: '',
         },
         questions: {
-          questions,
+          csra: csraQuestions,
         },
         offender: {
           selected: prisonerDetails,

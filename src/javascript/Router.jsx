@@ -12,7 +12,7 @@ import DashboardHoC from './pages/Dashboard';
 import AddOffenderHoc from './pages/AddOffender';
 import ConfirmOffenderHoc from './pages/ConfirmOffender';
 import OffenderProfileHoc from './pages/OffenderProfile';
-import QuestionHoc from './pages/Question';
+import RiskAssessment from './pages/RiskAssessment';
 import AssessmentCompleteHoc from './pages/AssessmentComplete';
 import AssessmentConfirmationHoc from './pages/AssessmentConfirmation';
 import BeforeYouStart from './pages/BeforeYouStart';
@@ -36,7 +36,7 @@ export default (store) => {
           <Route path="/offender-profile" name="offender-profile" component={OffenderProfileHoc} />
           <Route path="/admin" name="admin" component={Admin} />
           <Route path="/sign-in" name="sign-in" component={SignInHoc} />
-          <Route path="/assessment/:section" component={QuestionHoc} />
+          <Route path="/assessment/:section" component={RiskAssessment} />
           <Route path="/assessment-complete" component={AssessmentCompleteHoc} />
           <Route path="/assessment-confirmation" component={AssessmentConfirmationHoc} />
           <Route path="/feedback" component={Feedback} />
