@@ -1,7 +1,7 @@
 import React from 'react';
 import { mount } from 'enzyme';
 
-import QuestionWithComments from '../../../src/javascript/containers/QuestionWithComments';
+import QuestionWithComments from '../../../src/javascript/containers/QuestionWithTextBox';
 import Aside from '../../../src/javascript/components/asides/Index';
 
 describe('<QuestionWithComments />', () => {

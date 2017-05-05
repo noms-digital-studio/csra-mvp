@@ -44,7 +44,7 @@
     "section": "prison-self-assessment",
     "title": "Do you think you might hurt someone you had to share a cell with?",
     "description": "",
-    "template": "default_with_aside",
+    "template": "default_with_comment_aside",
     "formFields": {
       "input": {
         "yes": { "text": "Yes - they might harm a cellmate" },
@@ -71,7 +71,7 @@
   {
     "section": "vulnerability",
     "title": "Have you been hurt or threatened in prison before?",
-    "template": "default_with_aside",
+    "template": "default_with_comment_aside",
     "formFields": {
       "input": {
         "yes": { "text": "Yes - at risk if sharing a cell" },
@@ -99,7 +99,7 @@
   {
     "section": "gang-affiliation",
     "title": "Are there any gangs or people you would rather not see while you’re here?",
-    "template": "default_with_aside",
+    "template": "default_with_comment_aside",
     "formFields": {
       "input": {
         "yes": { "text": "Yes - has a gang affiliation" },
@@ -117,7 +117,7 @@
   {
     "section": "drug-misuse",
     "title": "Have you used drugs in the last month?",
-    "template": "default_with_aside",
+    "template": "default_with_comment_aside",
     "formFields": {
       "input": {
         "yes": { "text": "Yes - has used drugs recently" },
@@ -136,7 +136,7 @@
     "section": "prejudice",
     "title": "Are there any particular groups you would find it difficult to share a cell with?",
     "description": "<p class='lede text'>For example, someone of a different age, race, religion, sexuality, gender identity or certain offence history.</p><p class='lede text c-text-hint'>Hostile attitudes on their own don’t mean that someone will automatically be given a single cell. They may be safe to share with a range of other people, and this will be taken into account in the final recommendation.</p>",
-    "template": "default_with_aside",
+    "template": "default_with_comment_aside",
     "formFields": {
       "input": {
         "yes": { "text": "Yes - likely to discriminate" },
@@ -173,7 +173,7 @@
         "no": { "text": "No - nothing else to record" }
       }
     },
-    "template": "default_with_aside",
+    "template": "default_with_comment_aside",
     "aside": {
       "title": "Why is this important?",
       "template": "static",

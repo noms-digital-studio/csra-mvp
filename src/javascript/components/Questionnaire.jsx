@@ -12,7 +12,8 @@ import ConfirmationTemplate from '../containers/Confirmation';
 import ConfirmationWithAsideTemplate from '../containers/ConfirmationWithAside';
 import HealthcareAssessment from '../containers/HealthAssessment';
 import QuestionWithAsideTemplate from '../containers/QuestionWithAside';
-import QuestionWithComments from '../containers/QuestionWithComments';
+import QuestionWithCommentAndAsideTemplate from '../containers/QuestionWithCommentAndAside';
+import QuestionWithComments from '../containers/QuestionWithTextBox';
 import Viper from '../containers/Viper';
 
 function templateSelector(data) {
@@ -25,6 +26,8 @@ function templateSelector(data) {
       return <Viper {...data} />;
     case 'default_with_aside':
       return <QuestionWithAsideTemplate {...data} />;
+    case 'default_with_comment_aside':
+      return <QuestionWithCommentAndAsideTemplate {...data} />;
     case 'question_with_comments':
       return <QuestionWithComments {...data} />;
     case 'comments':

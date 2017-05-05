@@ -2,7 +2,7 @@ import React, { PropTypes } from 'react';
 import uuid from 'uuid/v4';
 
 import Aside from '../components/asides/Index';
-import SelectableInputGroup from '../components/SelectableInputGroup';
+import SelectableInputWithCommentGroup from '../components/SelectableInputWithCommentGroup';
 
 const QuestionWithAside = (
   {
@@ -29,7 +29,7 @@ const QuestionWithAside = (
 
         <div className="form-group">
           <fieldset>
-            <SelectableInputGroup
+            <SelectableInputWithCommentGroup
               default={formDefaults.answer}
               type="radio"
               fields={[
@@ -37,12 +37,14 @@ const QuestionWithAside = (
                   value: 'yes',
                   text: yes.text,
                   name: 'answer',
+                  commentValue: formDefaults['reasons-yes'],
                   required: answerRequired,
                 },
                 {
                   value: 'no',
                   text: no.text,
                   name: 'answer',
+                  commentValue: formDefaults['reasons-no'],
                   required: answerRequired,
                 },
               ]}
