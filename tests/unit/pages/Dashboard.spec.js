@@ -247,9 +247,9 @@ describe('<Dashboard />', () => {
       expect(
         store.dispatch.calledWithMatch({
           type: '@@router/CALL_HISTORY_METHOD',
-          payload: { method: 'push', args: ['/healthcare-complete'] },
+          payload: { method: 'push', args: ['/healthcare-assessment/comments'] },
         }),
-      ).to.equal(true, 'dispatch /healthcare-complete');
+      ).to.equal(true, 'dispatch /healthcare-assessment/comments');
     });
 
     it('calls actions when component mounts', () => {

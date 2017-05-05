@@ -1,5 +1,6 @@
 import {
   GET_ASSESSMENT_QUESTIONS,
+  GET_HEALTH_ASSESSMENT_QUESTIONS,
   GET_OFFENDER_NOMIS_PROFILES,
   GET_VIPER_SCORES,
   SELECT_OFFENDER,
@@ -8,13 +9,14 @@ import {
   ADD_PRISONER,
   CONFIRM_PRISONER,
   SAVE_CSRA_ANSWER,
+  SAVE_HEALTHCARE_ANSWER,
   COMPLETE_ASSESSMENT,
   SAVE_EXIT_POINT,
   COMPLETE_HEALTH_ASSESSMENT,
 } from '../constants/actions';
 
 import AssessmentQuestions from '../fixtures/csra-questions.json';
-import HealthAssessmentQuestion from '../fixtures/healthcare-questions.json';
+import HealthAssessmentQuestions from '../fixtures/healthcare-questions.json';
 
 import { offenderNomisProfiles, viperScores } from '../services';
 
@@ -23,8 +25,8 @@ export const getAssessmentQuestions = (data = AssessmentQuestions) => ({
   payload: data,
 });
 
-export const getHealthAssessmentQuestions = (data = HealthAssessmentQuestion) => ({
-  type: GET_ASSESSMENT_QUESTIONS,
+export const getHealthAssessmentQuestions = (data = HealthAssessmentQuestions) => ({
+  type: GET_HEALTH_ASSESSMENT_QUESTIONS,
   payload: data,
 });
 
@@ -65,8 +67,13 @@ export const confirmPrisoner = (prisonerData) => {
   return { type: CONFIRM_PRISONER, payload: prisoner };
 };
 
-export const saveAnswer = (key, value) => ({
+export const saveRiskAssessmentAnswer = (key, value) => ({
   type: SAVE_CSRA_ANSWER,
+  payload: { [key]: value },
+});
+
+export const saveHealthcareAssessmentAnswer = (key, value) => ({
+  type: SAVE_HEALTHCARE_ANSWER,
   payload: { [key]: value },
 });
 

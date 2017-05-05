@@ -2,6 +2,7 @@ export default {
   SIGN_IN: '/sign-in',
   BEFORE_YOU_START: '/before-you-start',
   ASSESSMENT: '/assessment',
+  HEALTHCARE_ASSESSMENT: '/healthcare-assessment',
   ADMIN: '/admin',
   DASHBOARD: '/dashboard',
   PRISONER_PROFILE: '/offender-profile',

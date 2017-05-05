@@ -176,6 +176,7 @@ Questionnaire.defaultProps = {
   questions: [],
   params: {},
   prisoner: {},
+  prisonerViperScore: '',
   getQuestions: () => {},
   onSubmit: () => {},
 };

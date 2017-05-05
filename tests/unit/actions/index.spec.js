@@ -8,7 +8,8 @@ import {
   selectOffender,
   addPrisoner,
   confirmPrisoner,
-  saveAnswer,
+  saveRiskAssessmentAnswer,
+  saveHealthcareAssessmentAnswer,
   completeAssessmentFor,
   saveExitPoint,
 } from '../../../src/javascript/actions';
@@ -29,9 +30,9 @@ describe('Actions', () => {
   });
 
   describe('#getHealthAssessmentQuestions', () => {
-    it('return a GET_ASSESSMENT_QUESTIONS action', () => {
+    it('return a GET_HEALTH_ASSESSMENT_QUESTIONS action', () => {
       expect(getHealthAssessmentQuestions(healthcareQuestions)).to.eql({
-        type: 'GET_ASSESSMENT_QUESTIONS',
+        type: 'GET_HEALTH_ASSESSMENT_QUESTIONS',
         payload: healthcareQuestions,
       });
     });
@@ -137,13 +138,25 @@ describe('Actions', () => {
     });
   });
 
-  describe('#saveAnswer', () => {
+  describe('#saveRiskAssessmentAnswer', () => {
     it('returns a SAVE_CSRA_ANSWER action', () => {
       const section = 'foo-risk';
       const answer = { confirmation: 'accept' };
 
-      expect(saveAnswer(section, answer)).to.eql({
+      expect(saveRiskAssessmentAnswer(section, answer)).to.eql({
         type: 'SAVE_CSRA_ANSWER',
+        payload: { [section]: answer },
+      });
+    });
+  });
+
+  describe('#saveHealthcareAssessmentAnswer', () => {
+    it('returns a SAVE_HEALTHCARE_ANSWER action', () => {
+      const section = 'foo-risk';
+      const answer = { confirmation: 'accept' };
+
+      expect(saveHealthcareAssessmentAnswer(section, answer)).to.eql({
+        type: 'SAVE_HEALTHCARE_ANSWER',
         payload: { [section]: answer },
       });
     });

@@ -123,7 +123,7 @@ const mapActionsToProps = dispatch => ({
   },
   onOffenderHealthcareSelect: (offender) => {
     dispatch(selectOffender(offender));
-    dispatch(push(routes.HEALTHCARE_COMPLETE));
+    dispatch(push(`${routes.HEALTHCARE_ASSESSMENT}/comments`));
   },
 });
 

@@ -6,7 +6,7 @@ import path from 'ramda/src/path';
 import not from 'ramda/src/not';
 
 import { calculateRiskFor } from '../services';
-import { getAssessmentQuestions, saveAnswer, saveExitPoint } from '../actions';
+import { getAssessmentQuestions, saveRiskAssessmentAnswer, saveExitPoint } from '../actions';
 
 import Questionnaire from '../components/Questionnaire';
 
@@ -39,7 +39,7 @@ const mapActionsToProps = dispatch => ({
     dispatch(getAssessmentQuestions());
   },
   onSubmit: ({ section, answer, nextPath, canContinue }) => {
-    dispatch(saveAnswer(section, answer));
+    dispatch(saveRiskAssessmentAnswer(section, answer));
 
     if (not(canContinue)) {
       dispatch(saveExitPoint(section));
