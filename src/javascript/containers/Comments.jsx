@@ -1,5 +1,6 @@
 import React, { PropTypes } from 'react';
 import uuid from 'uuid/v4';
+import CommentBox from '../components/CommentBox';
 
 const Comments = (
   {
@@ -16,13 +17,12 @@ const Comments = (
       <form key={uuid()} action="/" method="post" className="form" onSubmit={onSubmit}>
         <h1 className="heading-large">{title}</h1>
         <p className="lede text c-text-hint">{description}</p>
-        <textarea
-          defaultValue={comments}
+        <CommentBox
+          id="commentBox"
+          limit={300}
+          text={comments}
           name="comments"
-          placeholder="Comments"
-          rows="5"
-          cols="20"
-          className="form-control form-control-3-4 u-margin-bottom-default"
+          cssClassName="form-control form-control-3-4 u-margin-bottom-default"
         />
         <p>
           <input type="submit" className="button" value="Save and continue" />

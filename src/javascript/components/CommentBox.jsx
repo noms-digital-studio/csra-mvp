@@ -22,6 +22,7 @@ class CommentBox extends Component {
     return (
       <div>
         <textarea
+          data-element={id}
           onChange={handleChange}
           onPaste={handleChange}
           spellCheck="true"

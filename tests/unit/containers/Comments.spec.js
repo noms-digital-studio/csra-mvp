@@ -24,8 +24,8 @@ describe('<Comments />', () => {
   });
 
   it('pre-populates the forms if data is available', () => {
-    const wrapper = mount(<Comments formDefaults={{ answer: 'yes', comments: 'foo-comment' }} />);
+    const wrapper = mount(<Comments formDefaults={{ comments: 'foo-comment' }} />);
 
-    expect(wrapper.find('textarea').node.value).to.equal('foo-comment');
+    expect(wrapper.find('[data-element="commentBox"]').node.value).to.equal('foo-comment');
   });
 });
