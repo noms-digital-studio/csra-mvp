@@ -37,9 +37,9 @@ describe("<HealthcareAssessor />", () => {
     const formDefaults = {
       role: "foo-role",
       "full-name": "foo-name",
-      "dob-day": "01",
-      "dob-month": "11",
-      "dob-year": "1991"
+      "day": "01",
+      "month": "11",
+      "year": "1991"
     };
     const wrapper = mount(
       <HealthcareAssessor

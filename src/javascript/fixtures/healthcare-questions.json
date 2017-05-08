@@ -42,7 +42,7 @@
     "answerRequired": true
   },
   {
-    "section": "accessor",
+    "section": "assessor",
     "title": "Who complete the Healthcare assessment?",
     "template": "healthcare_assessment",
     "aside": {

@@ -13,7 +13,7 @@ import routes from '../constants/routes';
 const HealthcareAssessment = props => (
   <Questionnaire
     basePath={routes.HEALTHCARE_ASSESSMENT}
-    completionPath={routes.HEALTHCARE_COMPLETE}
+    completionPath={routes.HEALTHCARE_SUMMARY}
     {...props}
   />
 );

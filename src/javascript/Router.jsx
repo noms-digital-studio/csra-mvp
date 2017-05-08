@@ -19,6 +19,7 @@ import AssessmentConfirmationHoc from './pages/AssessmentConfirmation';
 import BeforeYouStart from './pages/BeforeYouStart';
 import Feedback from './pages/Feedback';
 import FeedbackConfirmation from './pages/FeedbackThankyou';
+import HealthcareSummary from './pages/HealthcareSummary';
 import HealthcareComplete from './pages/HealthcareComplete';
 import Error404 from './pages/Error404';
 
@@ -38,6 +39,7 @@ export default (store) => {
           <Route path="/admin" name="admin" component={Admin} />
           <Route path="/sign-in" name="sign-in" component={SignInHoc} />
           <Route path="/healthcare-assessment/:section" component={HealthcareAssessment} />
+          <Route path="/healthcare-summary" component={HealthcareSummary} />
           <Route path="/healthcare-complete" component={HealthcareComplete} />
 
           <Route path="/assessment/:section" component={RiskAssessment} />

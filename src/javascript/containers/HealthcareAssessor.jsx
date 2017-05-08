@@ -47,50 +47,50 @@ const HealthAssessment = ({
 
         <div className="form-date u-clear-fix u-margin-bottom-large">
           <span className="form-label-bold">Date Completed</span>
-          <span className="form-hint" id="dob-hint">For example, 31 3 1980</span>
+          <span className="form-hint" id="hint">For example, 31 3 1980</span>
           <div className="form-group form-group-day">
-            <label className="form-label" htmlFor="dob-day">Day</label>
+            <label className="form-label" htmlFor="day">Day</label>
             <input
-              data-input="dob-day"
+              data-input="day"
               className="form-control"
-              id="dob-day"
-              name="dob-day"
+              id="day"
+              name="day"
               type="number"
               pattern="[0-9]*"
               min="0"
               max="31"
-              aria-describedby="dob-hint"
-              defaultValue={formDefaults['dob-day']}
+              aria-describedby="hint"
+              defaultValue={formDefaults['day']}
               required
             />
           </div>
           <div className="form-group form-group-month">
-            <label className="form-label" htmlFor="dob-month">Month</label>
+            <label className="form-label" htmlFor="month">Month</label>
             <input
               className="form-control"
-              data-input="dob-month"
-              id="dob-month"
-              name="dob-month"
+              data-input="month"
+              id="month"
+              name="month"
               type="number"
               pattern="[0-9]*"
               min="0"
               max="12"
-              defaultValue={formDefaults['dob-month']}
+              defaultValue={formDefaults['month']}
               required
             />
           </div>
           <div className="form-group form-group-year">
-            <label className="form-label" htmlFor="dob-year">Year</label>
+            <label className="form-label" htmlFor="year">Year</label>
             <input
               className="form-control"
-              data-input="dob-year"
-              id="dob-year"
-              name="dob-year"
+              data-input="year"
+              id="year"
+              name="year"
               type="number"
               pattern="[0-9]*"
               min="0"
               max="2017"
-              defaultValue={formDefaults['dob-year']}
+              defaultValue={formDefaults['year']}
               required
             />
           </div>
@@ -114,9 +114,9 @@ HealthAssessment.propTypes = {
   formDefaults: PropTypes.shape({
     role: PropTypes.string,
     'full-name': PropTypes.string,
-    'dob-day': PropTypes.string,
-    'dob-month': PropTypes.string,
-    'dob-year': PropTypes.string,
+    'day': PropTypes.string,
+    'month': PropTypes.string,
+    'year': PropTypes.string,
   })
 };
 
@@ -124,9 +124,9 @@ HealthAssessment.defaultProps = {
   formDefaults: {
     role: '',
     'full-name': '',
-    'dob-day': '',
-    'dob-month': '',
-    'dob-year': '',
+    'day': '',
+    'month': '',
+    'year': '',
   },
 };
 
