@@ -1,7 +1,7 @@
 [
   {
     "section": "outcome",
-    "title": "What is the outcome of the Health Assessment",
+    "title": "What is the outcome of the Health Assessment?",
     "description": "<p>Complete the answer from the Healthcare Assessment form</p>",
     "template": "default_with_aside",
     "formFields": {
@@ -22,6 +22,23 @@
     "title": "Are there any comments made by Healthcare?",
     "description": "Insert any comments from Healthcare",
     "template": "comments"
+  },
+  {
+    "section": "consent",
+    "title": "Has the prisoner given consent to share their medical information?",
+    "description": "<p>Capture the answer whether the prisoner gave permission to share their information with other agencies involved in their care</p>",
+    "template": "default_with_aside",
+    "formFields": {
+      "input": {
+        "yes": { "text": "Yes - gives consent to share information" },
+        "no": { "text": "No - does not consent to share information" }
+      }
+    },
+    "aside": {
+      "template": "static",
+      "title": "Why is this important?",
+      "description": "<p class='text'>Lorum ipsum</p>"
+    },
+    "answerRequired": true
   }
-
 ]
