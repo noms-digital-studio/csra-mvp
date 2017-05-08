@@ -230,7 +230,7 @@ describe('<Dashboard />', () => {
       ).to.equal(true, 'dispatch /offender-profile');
     });
 
-    it('responds to the selection of an incomplete health assessment', () => {
+    it('responds to the selection of an incomplete health assessment by displaying the first question', () => {
       const profileBtn = wrapper.find(
         '[data-health-assessment-complete=false] > a',
       );
@@ -247,9 +247,9 @@ describe('<Dashboard />', () => {
       expect(
         store.dispatch.calledWithMatch({
           type: '@@router/CALL_HISTORY_METHOD',
-          payload: { method: 'push', args: ['/healthcare-assessment/comments'] },
+          payload: { method: 'push', args: ['/healthcare-assessment/outcome'] },
         }),
-      ).to.equal(true, 'dispatch /healthcare-assessment/comments');
+      ).to.equal(true, 'dispatch /healthcare-assessment/outcome');
     });
 
     it('calls actions when component mounts', () => {

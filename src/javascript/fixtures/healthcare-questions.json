@@ -1,11 +1,5 @@
 [
   {
-    "section": "comments",
-    "title": "Are there any comments made by Healthcare?",
-    "description": "Insert any comments from Healthcare",
-    "template": "comments"
-  },
-  {
     "section": "outcome",
     "title": "What is the outcome of the Health Assessment",
     "description": "<p>Complete the answer from the Healthcare Assessment form</p>",
@@ -22,5 +16,12 @@
       "description": "<p class='text'>Lorum ipsum</p>"
     },
     "answerRequired": true
+  },
+  {
+    "section": "comments",
+    "title": "Are there any comments made by Healthcare?",
+    "description": "Insert any comments from Healthcare",
+    "template": "comments"
   }
+
 ]
