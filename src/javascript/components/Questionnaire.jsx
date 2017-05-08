@@ -10,7 +10,7 @@ import routes from '../constants/routes';
 import Comments from '../containers/Comments';
 import ConfirmationTemplate from '../containers/Confirmation';
 import ConfirmationWithAsideTemplate from '../containers/ConfirmationWithAside';
-import HealthcareAssessment from '../containers/HealthAssessment';
+import HealthcareAssessor from '../containers/HealthcareAssessor';
 import QuestionWithAsideTemplate from '../containers/QuestionWithAside';
 import QuestionWithCommentAndAsideTemplate from '../containers/QuestionWithCommentAndAside';
 import QuestionWithComments from '../containers/QuestionWithTextBox';
@@ -33,7 +33,7 @@ function templateSelector(data) {
     case 'comments':
       return <Comments {...data} />;
     case 'healthcare_assessment':
-      return <HealthcareAssessment {...data} />;
+      return <HealthcareAssessor {...data} />;
     default:
       return null;
   }

@@ -40,5 +40,16 @@
       "description": "<p class='text'>Lorum ipsum</p>"
     },
     "answerRequired": true
+  },
+  {
+    "section": "accessor",
+    "title": "Who complete the Healthcare assessment?",
+    "template": "healthcare_assessment",
+    "aside": {
+      "template": "static",
+      "title": "Why is this important?",
+      "description": "<p class='text'>Lorum ipsum</p>"
+    },
+    "answerRequired": true
   }
 ]
