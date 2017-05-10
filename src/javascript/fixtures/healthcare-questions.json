@@ -13,7 +13,7 @@
     "aside": {
       "template": "static",
       "title": "Why is this important?",
-      "description": "<p class='text'>Lorum ipsum</p>"
+      "description": "<p class='text'>Healthcare can provide valuable information from their health assessment. It is vital to you record this accurately here.</p>"
     },
     "answerRequired": true
   },
@@ -21,7 +21,12 @@
     "section": "comments",
     "title": "Are there any comments made by Healthcare?",
     "description": "Insert any comments from Healthcare",
-    "template": "comments"
+    "template": "comments",
+    "aside": {
+      "template": "static",
+      "title": "Why is this important?",
+      "description": "<p class='text'>Healthcare can provide valuable information from their health assessment. It is vital to you record this accurately here.</p>"
+    }
   },
   {
     "section": "consent",
@@ -37,7 +42,7 @@
     "aside": {
       "template": "static",
       "title": "Why is this important?",
-      "description": "<p class='text'>Lorum ipsum</p>"
+      "description": "<p class='text'>Healthcare can provide valuable information from their health assessment. It is vital to you record this accurately here.</p>"
     },
     "answerRequired": true
   },
@@ -48,7 +53,7 @@
     "aside": {
       "template": "static",
       "title": "Why is this important?",
-      "description": "<p class='text'>Lorum ipsum</p>"
+      "description": "<p class='text'>Healthcare can provide valuable information from their health assessment. It is vital to you record this accurately here.</p>"
     },
     "answerRequired": true
   }

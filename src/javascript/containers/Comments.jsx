@@ -1,20 +1,24 @@
-import React, { PropTypes } from 'react';
-import uuid from 'uuid/v4';
-import CommentBox from '../components/CommentBox';
+import React, { PropTypes } from "react";
+import uuid from "uuid/v4";
+import Aside from "../components/asides/Index";
+import CommentBox from "../components/CommentBox";
 
-const Comments = (
-  {
-    title,
-    description,
-    onSubmit,
-    formDefaults: {
-      comments,
-    },
-  },
-) => (
+const Comments = ({
+  title,
+  description,
+  onSubmit,
+  aside,
+  formDefaults: { comments }
+}) => (
   <div className="grid-row">
     <div className="column-two-thirds">
-      <form key={uuid()} action="/" method="post" className="form" onSubmit={onSubmit}>
+      <form
+        key={uuid()}
+        action="/"
+        method="post"
+        className="form"
+        onSubmit={onSubmit}
+      >
         <h1 className="heading-large">{title}</h1>
         <p className="lede text c-text-hint">{description}</p>
         <CommentBox
@@ -29,6 +33,11 @@ const Comments = (
         </p>
       </form>
     </div>
+    {Object.keys(aside).length
+      ? <div className="column-third">
+          <Aside {...aside} />
+        </div>
+      : null}
   </div>
 );
 
@@ -38,14 +47,15 @@ Comments.propTypes = {
   aside: PropTypes.object,
   onSubmit: PropTypes.func,
   formDefaults: PropTypes.shape({
-    comments: PropTypes.string,
-  }),
+    comments: PropTypes.string
+  })
 };
 
 Comments.defaultProps = {
   formDefaults: {
-    comments: '',
+    comments: ""
   },
+  aside: {}
 };
 
 export default Comments;
