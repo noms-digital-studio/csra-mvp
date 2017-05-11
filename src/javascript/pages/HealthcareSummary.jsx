@@ -48,9 +48,9 @@ class HealthCareSummary extends Component {
               {riskText[answers.outcome.answer]}
             </td>
             <td className="change-answer">
-              <a href="#">
+              <Link to={`${routes.HEALTHCARE_ASSESSMENT}/outcome`}>
                 Change <span className="visuallyhidden">healthcare outcome</span>
-              </a>
+              </Link>
             </td>
           </tr>
           <tr data-healthcare-comments>
@@ -61,9 +61,9 @@ class HealthCareSummary extends Component {
               {answers.comments.comments || "none"}
             </td>
             <td className="change-answer">
-              <a href="#">
+              <Link to={`${routes.HEALTHCARE_ASSESSMENT}/comments`}>
                 Change <span className="visuallyhidden">further comments</span>
-              </a>
+              </Link>
             </td>
           </tr>
           <tr data-healthcare-consent>
@@ -74,9 +74,9 @@ class HealthCareSummary extends Component {
               {answers.consent.answer}
             </td>
             <td className="change-answer">
-              <a href="#">
+              <Link to={`${routes.HEALTHCARE_ASSESSMENT}/consent`}>
                 Change <span className="visuallyhidden">consent to share information</span>
-              </a>
+              </Link>
             </td>
           </tr>
           <tr data-healthcare-assessor>
@@ -89,9 +89,9 @@ class HealthCareSummary extends Component {
               {`${answers.assessor['day']}-${answers.assessor['month']}-${answers.assessor['year']}`}
             </td>
             <td className="change-answer">
-              <a href="#">
+              <Link to={`${routes.HEALTHCARE_ASSESSMENT}/assessor`}>
                 Change <span className="visuallyhidden">completed by</span>
-              </a>
+              </Link>
             </td>
           </tr>
           </tbody>
